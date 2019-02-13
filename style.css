@@ -48,32 +48,12 @@ style {
 }
 
 ul {
-  text-align: right; !important
-  list-style-type: none; !important
-  margin: 0; !important
-  padding-right: 50px; !important
+  text-align: right;
+  list-style-type: none;
+  margin: 0;
+  padding-right: 50px;
 }
 li {
-  text-align: right; !important
-  display: inline; !important
-}
-.body a: link, .body a: visited { 
-  color: black; 
-  background-color: transparent;
-  text-decoration: underline;
-}
-.body a: hover, .body a: active {
-  color: gray;
-  background-color: transparent;
-  text-decoration: underline;
-}
-.menu a: link, .menu a: visited {
-  color: black;
-  background-color: transparent;
-  text-decoration: none;
-}
-.menu a: hover, .menu a: active {
-  color: gray;
-  background-color: transparent;
-  text-decoration: bold;
+  text-align: right;
+  display: inline;
 }
