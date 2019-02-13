@@ -57,25 +57,15 @@ li {
   text-align: right;
   display: inline;
 }  
-.body a: link, .body a: visited { 
+a: link, a: visited { 
   color: black;
   background-color: transparent;
   text-decoration: underline;
 }
-.body a: hover, .body a: active {
+a: hover, a: active {
   color: gray;
   background-color: transparent;
   text-decoration: underline;
-}
-.menu a: link, .menu a: visited {
-  color: black;
-  background-color: transparent;
-  text-decoration: none;
-}
-.menu a: hover, .menu a: active {
-  color: gray;
-  background-color: transparent;
-  text-decoration: bold;
 }
 
 
