@@ -48,17 +48,17 @@ style {
 }
 
 ul {
-  text-align: right;
-  list-style-type: none;
-  margin: 0;
-  padding-right: 50px;
+  text-align: right; !important
+  list-style-type: none; !important
+  margin: 0; !important
+  padding-right: 50px; !important
 }
 li {
-  text-align: right;
-  display: inline;
+  text-align: right; !important
+  display: inline; !important
 }
 .body a: link, .body a: visited { 
-  color: black;
+  color: black; 
   background-color: transparent;
   text-decoration: underline;
 }
