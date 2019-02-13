@@ -57,3 +57,19 @@ li {
   text-align: right;
   display: inline;
 }
+  a:link {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+
+a:hover {
+  color: gray;
+}
+
+a:active {
+  color: black;
+}
