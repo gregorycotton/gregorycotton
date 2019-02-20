@@ -74,3 +74,33 @@ a:active {
   color: black;
   text-decoration: bold;
 }
+
+.wrapper {
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.gallery-box{
+    align-content: center;
+    overflow: hidden;
+    padding: 20px 20px;
+}
+
+img-single img {
+    margin 10px 5px;
+    float: left;
+    display:inline-block;
+    position: relative;
+}
+
+.halfsize {
+    width: 30%;
+    width: 30%;
+}
+
+.halfsize:hover {
+    width: 35%;
+    width: 35%;
+}
+
