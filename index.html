@@ -1,24 +1,121 @@
 <DOCTYPE html>
 <html>
-    
     <head>
         <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:350" rel="stylesheet">        
         <link rel = "stylesheet" type = "text/css" href = "style.css">
     </head>
+<body>
+<a href="index.html"><img class="homeImg" src="/gregorycotton.png"></a>
+<div id="mainText">
+    Hey! I'm Greg
+    <br/>
+    <br/>
+    I take photos, direct videos and design things. 
+<br/>
+<br/>
+<class id = "menu">
+        <ul>                
+           <li><a onclick="openGallery(event, 'photos')" id="defaultOpen" class="buttonC"><button type="button" class="button">PHOTO</button></a></li>
+           <li><a onclick="openGallery(event, 'video')" class="buttonC"><button type="button" class="button">VIDEO</button></a></li>
+           <li><a onclick="openGallery(event, 'design')" class="buttonC"><button type="button" class="button">DESIGN</button></a></li>
+           <li><a onclick="openGallery(event, 'commercial')" class="buttonC"><button type="button" class="button">COMMERCIAL</button></a></li>
+        </ul>
+</class>   
+</div> 
     
-<div id ="pagecontents">
-<div id = "title" >
-    <br/>
-    <br/>
-    Hey! My name is<br/> 
-    <br/> <div id = "name"> GREGORY COTTON. </div><br/>
+<!--  PHOTO -->
+<div id="photos" class="tabcontent">
+  <p>
+    <div class = "gallery-box">
+       <a href="instagram.com/greg.a.c"><img class="halfsize" src = "/amylaseicon.jpg"></a>
+       <a href="https://www.instagram.com/p/BoZoPb1BbVu/"><img class="halfsize" src = "/mondayicon.jpg"></a>
+       <a href="https://www.instagram.com/p/Be6bYM3Hlwh/"><img class="halfsize" src = "/oppositedayicon.jpg"></a>
+       <a href="https://www.instagram.com/p/BKT2AsAh1kI/"><img class="halfsize" src = "/smallworldicon.jpg"></a>
+       <a href="https://www.instagram.com/p/BMMrTVJj3BK/"><img class="halfsize" src = "/callowhallucinationsicon.jpg"></a>
+       <a href="https://www.instagram.com/p/BPGPYRGD2Y9/"><img class="halfsize" src = "/choosetoignoreicon.jpg"></a>  
+       <a href="https://www.instagram.com/p/BIquPpqBV6a/"><img class="halfsize" src = "/martyrcomplexicon.jpg"></a>
+       <a href="https://www.instagram.com/p/BEhPLPDCWaP/"><img class="halfsize" src = "/dulceticon.jpg"></a>
+    </div>
+</div>
+
+<!--  VIDEO -->
+<div id="video" class="tabcontent">
+  <p>
+    <div class = "gallery-box">
+       <a href="https://www.dailymotion.com/video/x6xxii9" target="_blank"><img class="halfsize" src = "/vintagicon.jpg"></a>
+    </div>
 </div>
     
-<div id = "body">
-    I take <a href="photos.html">photos</a>, direct <a href="videos.html">videos</a> and <a href="design.html">design</a> things. <br/>
+<!--  DESIGN -->
+<div id="design" class="tabcontent">
+  <p>
+    <div class = "gallery-box">
+       <a href="rencana.html"><img class="halfsize" src = "/rencanaicon.jpg"></a>
+       <a href="boomers.html"><img class="halfsize" src = "/bommersicon.jpg"></a>
+    </div>
+</div>
+
+<!--  COMMERCIAL -->
+<div id="commercial" class="tabcontent">
+  <p>
+    <div class = "gallery-box">
+       <a href="https://www.instagram.com/p/BhEzIkeHrY8/"><img class="halfsize" src = "/pacemagicon.jpg"></a>
+       <a href="https://www.instagram.com/p/BgoRKZ4F17H/"><img class="halfsize" src = "/cyrusicon.jpg"></a>
+       <a href="https://www.instagram.com/p/BSzS8lYACzW/"><img class="halfsize" src = "/palmcoicon.jpg"></a>
+       <a href="https://www.instagram.com/p/BNnXgXWD4xH/"><img class="halfsize" src = "/elmorelewisicon.jpg"></a>
+       <a href="instagram.com/greg.a.c"><img class="halfsize" src = "/gosimgoicon.jpg"></a>
+       <a href="https://www.instagram.com/p/BqgH3iSlyEi/"><img class="halfsize" src = "/jessicaicon.jpg"></a>
+       <a href="instagram.com/greg.a.c"><img class="halfsize" src = "/starterhacksicon.jpg"></a>
+       <a href="https://www.instagram.com/p/BMcTZ4hB0jd/"><img class="halfsize" src = "/cutsforkidsicon.jpg"></a>
+    </div>
+</div>
+    
+<!-- ABOUT -->
+<div id="about">
+<h3>about me.</h3>
+    Hello, my name is Gregory Cotton. I was born in Ottawa, and am currently studying Global Business and Digital Arts at the University of Waterloo. I have over five years of experience using Adobe CC, two cats, and am bilingual (among many other things). In my free time I like to drink a lot of coffee and listen to music. I excel when pushed out of my comfort zone and am always looking to try new things and meet new people. 
     <br/>
-    Feel free to <a href="contact.html">say hello</a> or to <a href="about.html">get to know me!</a>
+    <br/>
+    There's a lot more to learn about me: why not <u><a href="design/boomers/">download my resume?</a></u> Or <u><a href="#contact">contact me</a></u> if you have a pressing personal question, like what is my favourite pasta dish (lasagna). 
 </div>
+
+<!-- CONTACT -->
+<div id="contact">
+<h3>contact.</h3>
+    gregac.photo@gmail.com 
+    <br/>
+    <br/>
+    <a href = "https://www.instagram.com/greg.a.c/" target="_blank">instagram</a> | <a href = "https://www.linkedin.com/in/gregorycotton/" target="_blank">linkedin</a>
+    <br/>
+    <br/>
+ I would love to get to know you! Send me an email and lets talk.   
 </div>
+    
+<script>
+function openGallery(evt, photoGallery) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(photoGallery).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+document.getElementById("defaultOpen").click();
+</script>
+
+<footer>
+    Gregory Cotton &#169; 2019
+    <br/>
+    <a href = "https://www.instagram.com/greg.a.c/" target="_blank"><img class = "footerImg" src = "/instagram.png"></a>
+    <a href = "https://www.linkedin.com/in/gregorycotton/" target="_blank"><img class = "footerImg" src = "/linkedin.png"></a>
+</footer>
+</body>
 </html>
