@@ -1,71 +1,115 @@
-#pagecontents {
-    position: relative;
-    margin-top: 5%;
-    text-align: center;
-    vertical-align: middle;
+*:focus {
+    outline: none !important
 }
-#title {
+
+body {
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
 }
+
+.pageTop {
+    float: left;
+    width: 50%;
+}
+
+.pageTopMenu {
+    float: right;
+    width: 50%;
+}
+
+.homeImg {
+    display: inline-block;
+    padding-top: 2%;
+    padding-left: 2%;
+    width: 20%;
+    text-align: left;
+    float: left;
+}
+
+.homeMenu {
+    display: inline-block;
+    padding-top: 2%;
+    text-align: right;
+    float: right;
+}
+
+#mainText {
+    margin: 0 auto;
+    width: 100%;
+    font-size: 20px;
+    padding-top: 15%;
+    padding-bottom: 1%;
+    background-size: cover;
+    background-image: url(assets/banner.png);
+}
+
 #name {
-    font-size: 25px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#photos, #video, #design, #commercial {
+    padding-bottom: 1%;
+}
+
+#name:hover, #name:active {
     font-weight: bolder;
+    text-decoration: none;
     color: #cc5994;
     text-align: center;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-shadow: 0px 2px #86d6d3;    
 }
-#body {
-    text-align: center;
+
+#about {
+    line-height: 1.6;
+    text-align: left;
+    margin: 0 auto;
+    width: 58%;
+    background-size: cover;
+    background-image: url(assets/banner2.png);
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 37%;
+    min-height: 50%;
 }
 
-#aboutbody {
-    text-align: center;
-    padding-left: 25%;
-    padding-right: 25%;
-}
-
-#video {
-  font-size: 11.5px;
-  display:inline-block;
-  align-content: center;
-}
-#vintage {
-    text-align: center;
-    align-content: center;
-    float: left;
-    display: inline-block;
-}
-#checkmate {
-    text-align: center;
-    align-content: center;
-    float: left;
-    display: inline-block;
-}
-
-style {
+#contact {
+    line-height: 1.6;
     text-align: right;
+    margin: 0 auto;
+    width: 43%;
+    background-size: cover;
+    background-image: url(assets/banner3.png);
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-right: 5%;
+    padding-left: 52%;
+    min-height: 50%;
 }
 
 ul {
-  text-align: right;
+  text-align: center;
   list-style-type: none;
   margin: 0;
-  padding-right: 50px;
 }
+
 li {
   text-align: right;
   display: inline;
 }
 
 a:link {
+  text-decoration: none;
   color: black;
 }
 
 a:visited {
   color: black;
 }
-
 
 a:hover {
   color: gray;
@@ -76,24 +120,108 @@ a:active {
   text-decoration: bold;
 }
 
-.gallery-box {
+a.buttonC:link, a.buttonC:hover, a.buttonC:active {
+    text-decoration: none;
+    color: black;
+}
+
+.button {
+    font-family: 'Montserrat', sans-serif;
+    background-color: transparent;
+    border: 5px #cc5994;
     text-align: center;
-    width: 90%;
+    text-decoration: none;
+    transition-duration: 0.8s;
+    color: black;
+    padding: 10px 15px;
+    font-size: 10px;
+}
+
+.button:hover {
+    font-family: 'Montserrat', sans-serif;
+    background-color: transparent;
+    border: 5px #86d6d3;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.8s;
+    color: black;
+    padding: 10px 15px;
+    font-size: 10px;
+    box-shadow: 0px 4px #DE83AE;
+}
+
+.gallery-box {
+    width: 100%;
     margin: 0 auto;
 }
 
 .halfsize {
     display: inline;
-    width: 20%;
-    width: 20%;
+    width: 24%;
+    transition: 0.3s;
 }
 
 .halfsize:hover {
-    width: 22%;
-    width: 22%;
+  transition: 0.3s;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
 .imgdisplay {
     text-align: center;
     width: 35%;
+}
+
+.tablinks {
+  width: 50%;
+  align-content: center;
+  text-align: center;
+}
+
+.tab {
+  padding-left: 25%;
+  padding-right: 25%;
+  overflow: hidden;
+  background-color: white;
+}
+
+footer {
+    background-color: black;
+    text-align: center;
+    color: white;
+    padding-bottom: 1%;
+    padding-top: 2%;
+    font-size: 8px;
+    min-height: 3%;
+}
+
+footer a:link, footer a:visited, footer a:active {
+    text-decoration: none;
+    color: white;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.footerImg {
+    top: 10px;
+	display: inline;
+	width: 1.75%;
+    padding-left: 3.5px;
+    padding-right: 3.5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.footerImg:hover {
+    top: 10px;
+	display: inline;
+	width: 1.75%;
+    padding-left: 3.5px;
+    padding-right: 3.5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    opacity: 0.5;
+    transition: .8s ease;
 }
