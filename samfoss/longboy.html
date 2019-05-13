@@ -1,0 +1,39 @@
+<DOCTYPE html>
+<html>
+    <head>
+        <title>how tall is sam?</title>
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:350" rel="stylesheet">        
+        <link rel = "stylesheet" type = "text/css" href = "style.css">
+  </head>   
+<body>
+    
+<div id="setup">
+how tall is sam foss?<br/>
+&#8595;	scroll down to find out &#8595; <br/><br/><br/>
+</div> 
+    
+<div id="sam">
+<img src="assets/samnormal.png">
+<a href="sam.html"></a>
+</div>
+    
+<script>
+var page=1;
+window.onscroll = function(ev) {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        ifrm = document.createElement("IFRAME"); 
+        ifrm.setAttribute("src", "sam.html"); 
+        ifrm.style.width = 100+"%"; 
+        ifrm.style.height = 100+"%"; 
+        document.body.appendChild(ifrm); 
+        page++
+    }
+};
+</script>  
+
+</body>
+</html>
+</DOCTYPE>
