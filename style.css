@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 *:focus {
     outline: none !important
 }
@@ -5,96 +10,38 @@
 body {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
+    font-size: 12px;
+    line-height: 2em;
 }
 
-.pageTop {
-    float: left;
-    width: 50%;
+header {
+    text-align: left;
 }
 
-.pageTopMenu {
-    float: right;
-    width: 50%;
-}
-
-.homeImg {
-    display: inline-block;
-    padding-top: 2%;
+.banner {
+    width: 5%;
+    display: inline;
+    padding-right: 1%; 
     padding-left: 2%;
-    width: 20%;
+    padding-top: 2%
+}
+
+#setup {
+    margin-top: 7%;
+    margin-bottom: 3.5%;
+}
+
+#text {
     text-align: left;
-    float: left;
-}
-
-.homeMenu {
-    display: inline-block;
-    padding-top: 2%;
-    text-align: right;
-    float: right;
-}
-
-#mainText {
-    margin: 0 auto;
-    width: 100%;
-    font-size: 20px;
-    padding-top: 15%;
-    padding-bottom: 1%;
-    background-size: cover;
-    background-image: url(/banner.png);
-}
-
-#name {
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-}
-
-#photos, #video, #design, #commercial {
-    padding-bottom: 1%;
-}
-
-#name:hover, #name:active {
-    font-weight: bolder;
-    text-decoration: none;
-    color: #cc5994;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    text-shadow: 0px 2px #86d6d3;    
-}
-
-#about {
-    line-height: 1.6;
-    text-align: left;
-    margin: 0 auto;
-    width: 58%;
-    background-size: cover;
-    background-image: url(/banner2.png);
-    padding-top: 5%;
-    padding-bottom: 5%;
-    padding-left: 5%;
-    padding-right: 37%;
-    min-height: 50%;
-}
-
-#contact {
-    line-height: 1.6;
-    text-align: right;
-    margin: 0 auto;
-    width: 43%;
-    background-size: cover;
-    background-image: url(/banner3.png);
-    padding-top: 5%;
-    padding-bottom: 5%;
-    padding-right: 5%;
-    padding-left: 52%;
-    min-height: 50%;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 ul {
   text-align: center;
   list-style-type: none;
-  margin: 0;
+  margin-bottom: 3.5%;
 }
 
 li {
@@ -113,11 +60,28 @@ a:visited {
 
 a:hover {
   color: gray;
+  text-decoration: line-through;
 }
 
 a:active {
   color: black;
   text-decoration: bold;
+}
+
+.gallery-box {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.halfsize {
+    display: inline;
+    width: 20%;
+    transition: 0.3s;
+}
+
+.halfsize:hover {
+  transition: 0.3s;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
 a.buttonC:link, a.buttonC:hover, a.buttonC:active {
@@ -134,7 +98,7 @@ a.buttonC:link, a.buttonC:hover, a.buttonC:active {
     transition-duration: 0.8s;
     color: black;
     padding: 10px 15px;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .button:hover {
@@ -146,7 +110,7 @@ a.buttonC:link, a.buttonC:hover, a.buttonC:active {
     transition-duration: 0.8s;
     color: black;
     padding: 10px 15px;
-    font-size: 10px;
+    font-size: 12px;
     box-shadow: 0px 4px #DE83AE;
 }
 
@@ -155,20 +119,16 @@ a.buttonC:link, a.buttonC:hover, a.buttonC:active {
     margin: 0 auto;
 }
 
-.halfsize {
-    display: inline;
-    width: 24%;
-    transition: 0.3s;
+a.buttonC:link, a.buttonC:hover, a.buttonC:active {
+    text-decoration: none;
 }
 
-.halfsize:hover {
-  transition: 0.3s;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-}
-
-.imgdisplay {
-    text-align: center;
-    width: 35%;
+.imgDisplay {
+  display: inline;
+  width: 35%;
+  margin-bottom: 3%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .tablinks {
@@ -185,43 +145,10 @@ a.buttonC:link, a.buttonC:hover, a.buttonC:active {
 }
 
 footer {
-    background-color: black;
-    text-align: center;
-    color: white;
-    padding-bottom: 1%;
-    padding-top: 2%;
-    font-size: 8px;
-    min-height: 3%;
+    min-height: 10%;
 }
 
-footer a:link, footer a:visited, footer a:active {
-    text-decoration: none;
-    color: white;
-}
-
-footer a:hover {
-    text-decoration: underline;
-    color: white;
-}
-
-.footerImg {
-    top: 10px;
-	display: inline;
-	width: 1.75%;
-    padding-left: 3.5px;
-    padding-right: 3.5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.footerImg:hover {
-    top: 10px;
-	display: inline;
-	width: 1.75%;
-    padding-left: 3.5px;
-    padding-right: 3.5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    opacity: 0.5;
-    transition: .8s ease;
+figcaption {
+    text-transform: uppercase;
+    font-size: 10px;
 }
