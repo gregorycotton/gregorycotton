@@ -191,9 +191,10 @@ h1 {
 /* */
 
 .g {
-    height:10vh;
     width:72vh;
+    border-style:solid;
+    border-width:10px;
     margin:auto;
-    padding-top:.5rem;
     box-sizing:border-box;
+    border-color:333333;
 }
