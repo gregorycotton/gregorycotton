@@ -182,8 +182,8 @@ h1 {
     box-sizing:border-box;
     border-color:333333;
     top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    -ms-transform: translateY(50%);
+    transform: translateY(50%);
 }
 
 #smallbreak {
