@@ -188,11 +188,3 @@ h1 {
     margin-top: 2%;
     margin-bottom: 1%;
 }
-
-/* */
-
-.shwing {
-  -ms-transform: rotate(20deg); /* IE 9 */
-  -webkit-transform: rotate(20deg); /* Safari 3-8 */
-  transform: rotate(20deg);
-}
