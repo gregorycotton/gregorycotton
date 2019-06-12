@@ -187,3 +187,9 @@ h1 {
     margin-top: 2%;
     margin-bottom: 1%;
 }
+
+@media  only screen and (orientation: portrait) and (max-width:720px) { 
+    h1 { 
+        height:100vw; 
+    } 
+}
