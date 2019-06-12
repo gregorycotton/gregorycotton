@@ -190,6 +190,7 @@ h1 {
 
 @media  only screen and (orientation: portrait) and (max-width:720px) { 
     h1 { 
-        height:100vw; 
+        height:10vh;
+        width:72vh;
     } 
 }
