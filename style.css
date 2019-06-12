@@ -187,3 +187,13 @@ h1 {
     margin-top: 2%;
     margin-bottom: 1%;
 }
+
+/* */
+
+.g {
+    height:10vh;
+    width:72vh;
+    margin:auto;
+    padding-top:.5rem;
+    box-sizing:border-box;
+}
