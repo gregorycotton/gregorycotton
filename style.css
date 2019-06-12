@@ -172,6 +172,9 @@ h1 {
     line-height:9.5vh;
     margin:1vh auto;
     position:relative;
+    border-style:solid;
+    border-width:10px;
+    box-sizing:border-box;
 }
 
 .image {
@@ -186,15 +189,4 @@ h1 {
 #smallbreak {
     margin-top: 2%;
     margin-bottom: 1%;
-}
-
-/* */
-
-.g {
-    width:72vh;
-    border-style:solid;
-    border-width:10px;
-    margin:auto;
-    box-sizing:border-box;
-    border-color:333333;
 }
