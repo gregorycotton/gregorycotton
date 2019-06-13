@@ -185,3 +185,62 @@ h1 {
     margin-top: 2%;
     margin-bottom: 1%;
 }
+
+/* */
+
+.square {
+  margin-left: 20vh;
+  height: 50px;
+  width: 50px;
+  background-color: #8cd9d1;
+}
+
+.square1 {
+  margin-left: 25%;
+  height: 50px;
+  width: 50px;
+  background-color: #f2a8c3;
+}
+
+.square2 {
+  margin-left: 80%;
+  height: 50px;
+  width: 50px;
+  background-color: #f2a8c3;
+}
+
+.square3 {
+  margin-left: 20%;
+  height: 50px;
+  width: 50px;
+  display:inline-block;
+  background-color: #f2f2f2;
+}
+
+.square4 {
+  margin-left: 10%;
+  height: 50px;
+  width: 50px;
+  background-color: #d8a796;
+}
+
+.square5 {
+  margin-left: 65%;
+  height: 50px;
+  width: 50px;
+  background-color: #8cd9d1;
+}
+
+.square6 {
+  margin-left: 20%;
+  height: 50px;
+  width: 50px;
+  background-color: #f2f2f2;
+}
+
+.square7 {
+  margin-left: 80%;
+  height: 50px;
+  width: 50px;
+  background-color: #d8a796;
+}
