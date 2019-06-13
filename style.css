@@ -179,9 +179,6 @@ h1 {
     margin:auto;
     box-sizing:border-box;
     border-color:333333;
-    top: 50%;
-    -ms-transform: translateY(12.5%);
-    transform: translateY(12.5%);
 }
 
 #smallbreak {
