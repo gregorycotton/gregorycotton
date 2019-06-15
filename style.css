@@ -160,26 +160,28 @@ img {
 
 h1 {
     background-color:333333;
-    font-size:5vh;
+    font-size:3vh;
     color:#fff;
     text-align:center;
     letter-spacing:.5vh;
     font-weight:400;
-    width:72vh;
-    height:10vh;
+    width:10vh;
+    height:52vh;
+    display: inline;
     line-height:9.5vh;
-    margin:1vh auto;
+    margin: auto;
+    writing-mode: vertical-rl; 
     position:relative;
 }
 
 .image {
-    width:72vh;
+    width:52vh;
     border-style:solid;
     border-width:10px;
     margin:auto;
     box-sizing:border-box;
     border-color:333333;
-}
+} 
 
 #smallbreak {
     margin-top: 2%;
