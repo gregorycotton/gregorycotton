@@ -187,3 +187,8 @@ h1 {
     margin-top: 2%;
     margin-bottom: 1%;
 }
+
+#pad {
+    margin-left: 1vh;
+    margin-right: 1vh;
+}
