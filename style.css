@@ -1,54 +1,70 @@
-* {
-    margin: 0;
-    padding: 0;
-}
+/* ------------ Setup ---------- */
+* { margin: 0; padding: 0; }
 
-*:focus {
-    outline: none !important
-}
+::selection { background: #e7aac2; }
+
+*:focus { outline: none !important }
 
 body {
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    text-align: left;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-family:"Lucida Grande", arial, sans-serif;
+    font-size: 1.75vh;
     line-height: 2em;
 }
-
-header {
-    text-align: left;
+footer {
+    min-height: 100px;
 }
 
-.banner {
-    width: 5%;
-    display: inline;
-    padding-right: 1%; 
-    padding-left: 2%;
-    padding-top: 2%
+header, .header {
+    padding: 0;
+    text-align: center;
+    align-content: center;
+    text-transform: uppercase;
+    font-size: 8.5pt;
 }
 
-#setup {
-    margin-top: 7%;
-    margin-bottom: 3.5%;
+#centerTxt {
+    font-family:"Lucida Grande", arial, sans-serif;
+    text-align: center;
 }
 
-#text {
-    text-align: left;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+#gallerytext {
+    text-align: center;
+    padding-left: 10vh;
+    padding-right: 10vh;
 }
 
-ul {
-  text-align: center;
-  list-style-type: none;
-  margin-bottom: 3.5%;
+#abouttxt {
+    padding-right: 5vh;
+    padding-left: 0vh;
 }
 
-li {
-  text-align: right;
-  display: inline;
+@media only screen and (min-width: 50px) {
+    #abouttxt {
+        padding-left: 5vh;
+    }
+    #aboutimg {
+        display: block;
+    }
 }
 
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 10pt;
+}
+
+figcaption {
+    text-transform: uppercase;
+    padding: 1.5%;
+    color: darkgray;
+    text-align: center;
+    font-size: 8.5px;
+}
+/* ------------ End of Setup ---------- */
+
+/* ---------- Link Styles ---------- */
 a:link {
   text-decoration: none;
   color: black;
@@ -68,129 +84,79 @@ a:active {
   text-decoration: bold;
 }
 
+/* Buttons */
+.button {
+    background-color: #e7aac2;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-width: 2px;
+    border-radius: 5px; 
+    border-color: #e7aac2;
+}
+
+.button1 {
+    font-size: 10px; 
+    transition: 0.6s; 
+}
+
+.button1:hover {
+    background-color: #fff;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-width: 2px;
+    border-radius: 20px; 
+    border-color: #e7aac2;
+}
+/* ---------- End of Link Styles ---------- */
+
+/* ---------- Image Styles ---------- */
 .gallery-box {
     width: 100%;
     margin: 0 auto;
 }
 
-.halfsize {
+.imgico {
     display: inline;
     width: 20%;
     transition: 0.3s;
 }
 
-.halfsize:hover {
+.imgico:hover {
   transition: 0.3s;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
-a.buttonC:link, a.buttonC:hover, a.buttonC:active {
-    text-decoration: none;
-    color: black;
+@media only screen and (max-width: 50em) {
+    .imgico {
+        width: 100%;
+        padding-bottom: 5vh;
+        display: block;
+    }
 }
 
-.button {
-    font-family: 'Montserrat', sans-serif;
-    background-color: transparent;
-    border: 5px #cc5994;
-    text-align: center;
-    text-decoration: none;
-    transition-duration: 0.8s;
-    color: black;
-    padding: 10px 15px;
-    font-size: 12px;
-}
-
-.button:hover {
-    font-family: 'Montserrat', sans-serif;
-    background-color: transparent;
-    border: 5px #86d6d3;
-    text-align: center;
-    text-decoration: none;
-    transition-duration: 0.8s;
-    color: black;
-    padding: 10px 15px;
-    font-size: 12px;
-    box-shadow: 0px 4px #DE83AE;
-}
-
-.gallery-box {
-    width: 100%;
-    margin: 0 auto;
-}
-
-a.buttonC:link, a.buttonC:hover, a.buttonC:active {
-    text-decoration: none;
-}
-
-.imgDisplay {
-  display: inline;
-  width: 35%;
-  margin-bottom: 3%;
-  padding-left: 10%;
-  padding-right: 10%;
-}
-
-.tablinks {
-  width: 50%;
-  align-content: center;
-  text-align: center;
-}
-
-.tab {
-  padding-left: 25%;
-  padding-right: 25%;
-  overflow: hidden;
-  background-color: white;
-}
-
-footer {
-    min-height: 10%;
-}
-
-figcaption {
-    text-transform: uppercase;
-    font-size: 10px;
-}
-
-img {
-    max-width:100%;
-    max-height:100%;
-}
-
-h1 {
-    background-color:333333;
-    font-size:3vh;
-    color:#fff;
-    text-align:center;
-    letter-spacing:.5vh;
-    font-weight:400;
-    width:5vh;
-    height:50vh;
+.halfsize {
+    margin: 5px;
     display: inline;
-    line-height:5.5vh;
-    margin: auto;
-    writing-mode: vertical-rl; 
-    position:relative;
+    width: 20vh;
 }
 
-.image {
-    width:50vh;
-    border-style:solid;
-    border-width:10px;
-    margin:auto;
-    box-sizing:border-box;
-    border-color:333333;
-} 
-
-#smallbreak {
-    margin-top: 2%;
-    margin-bottom: 1%;
+.preview {
+    margin: 10px;
+    display: inline;
+    width: 40vh;
 }
 
-#pad {
-    margin-left: 1vh;
-    margin-right: 1vh;
+.banner {
+    width: 27.5vh;
+    display: inline;
 }
 
 #aboutimg {
@@ -200,3 +166,13 @@ h1 {
     padding-bottom: 2.5vh;
     width: 50vh;
 }
+
+.gallery-box {
+    text-align: center;
+    width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 5px;
+    margin: 0 auto;
+}
+/* ---------- End of Image Styles ---------- */
