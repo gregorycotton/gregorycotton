@@ -1,0 +1,162 @@
+<DOCTYPE html>
+<html>
+    <head>
+        <title>Design | Gregory Cotton</title>
+        <link rel="shortcut icon" href="favicon.ico" />        
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:350" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">    
+        <link rel = "stylesheet" type = "text/css" href = "style.css">
+        <script src="interact.min.js"></script>
+        <script src="jquery.min.js"></script>
+    </head>
+
+<header>
+<br/>
+    <span onclick="openNav()" style="cursor: pointer"><img alt="click for menu" class="banner" src="assets/logo.png"></span>
+</header> 
+    
+<body>
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">[x]</a>
+  <div class="overlay-content">
+            <div class="gallery-box">
+                <br/>
+                <br/>
+                <div class="panel-body">
+                    <img class="draggable" id="photo" src="assets/index/photoCircle.png">
+                    <img class="draggable" id="design" src="assets/index/designCircle.png">
+                    <img class="draggable" id="clients" src="assets/index/clientsCircle.png">
+                    <img class="draggable" id="about" src="assets/index/aboutCircle.png">
+                </div>
+                <br/>
+                <div class="panel-body">
+                    <div class="dropcircle"></div>
+                </div>
+        </div>  
+  </div>
+</div>
+
+<section id="indentText">
+        <p id="bigText"><strong>Toronto <span id="highlight">Animation</span>.</strong></p>
+        <br/>
+		<p id="mediumText" style="text-align: right;">Short animation and poster design done for a class. The goal of this project was to draw a positive reflective of an assigned partner's interests (name withheld), and to then animate individual elements of the poster into a short motion graphic.</p>
+        <br/>
+        <br/>
+    
+<div id="gallery-box">
+    <br/>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/KuZVmwgzedg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <br/>
+</div>
+ 
+</section>
+
+<footer></footer> 
+<script>
+// --------------- OPEN AND CLOSE MENU --------------- //
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+
+// --------------- INITIALIZE DRAG/DROP --------------- // 
+    interact('.draggable').draggable({
+        inertia: true,
+        restrict: {
+          restriction: "#myNav",
+          endOnly: true,
+        },
+        onmove: function (event) {
+          var target = event.target,
+              // --------------- SAVE THE DRAGGED POSITION ---------------
+              x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+              y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+    
+          // --------------- TRANSLATE --------------- //
+          target.style.webkitTransform =
+          target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+    
+          // --------------- UPDATE --------------- //
+          target.setAttribute('data-x', x);
+          target.setAttribute('data-y', y);
+        },
+        onend: function(event) {
+            console.log(event);
+        }
+    });
+
+    interact('.dropcircle').dropzone({
+        accept: '.draggable',
+        overlap: 0.01,
+
+        // --------------- ADD/REMOVE DROPCIRCLE EFFECTS --------------- //
+        ondropactivate: function (event) {
+            event.target.classList.add('drop-active');
+        },
+        ondropdeactivate: function (event) {
+            event.target.classList.remove('drop-active');
+        },
+
+        // --------------- ADD/REMOVE DROPCIRCLE EFFECTS --------------- //
+        ondragenter: function (event) {
+            var draggableElement = event.relatedTarget,
+                dropzoneElement = event.target;
+            
+            dropzoneElement.classList.add('drop-target');
+            draggableElement.classList.add('can-drop');
+            
+            // --------------- IDENTIFY WHAT LINK TO OPEN --------------- //
+            if(draggableElement == document.getElementById("about")) {
+                event.preventDefault();
+                window.open("about.html", "_self");
+            } else if (draggableElement == document.getElementById("photo")) {
+                event.preventDefault();
+                window.open("photography.html", "_self");
+            } else if (draggableElement == document.getElementById("design")) {
+                event.preventDefault();
+                window.open("design.html", "_self");
+            } else if (draggableElement == document.getElementById("doc")) {
+                event.preventDefault();
+                window.open("vintageuprising.html", "_self");
+            } else if (draggableElement == document.getElementById("boomers")) {
+                event.preventDefault();
+                window.open("boomers.html", "_self");
+            } else if (draggableElement == document.getElementById("clients")) {
+                event.preventDefault();
+                window.open("clients.html", "_self");
+            }
+        },
+                                   
+        ondragleave: function (event) {
+            event.target.classList.remove('drop-target');
+            event.relatedTarget.classList.remove('can-drop');
+        },
+
+        // --------------- IF SUCCESS --------------- //
+        ondrop: function (event) {
+            console.log(event);
+        }
+    });  
+
+// --------------- CHANGE TAB HEADER  --------------- //
+    $(function() {
+        var message = "hey no wait come back";
+        var original;
+
+    $(window).focus(function() {
+        if (original) { document.title = original;}
+            }).blur(function() {
+                var title = $('title').text();
+                if (title != message) { original = title }
+                    document.title = message;
+        });
+    });
+</script> 
+</body>
+</html>
+</DOCTYPE>
