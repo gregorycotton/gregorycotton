@@ -1,0 +1,443 @@
+/* ------------ Display ---------- */
+#mobile { display: none; }
+/* ------------ End of Display ---------- */
+
+/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
+
+/* ------------ Setup ---------- */
+* { margin: 0; padding: 0; }
+
+::selection { background: #e7aac2; }
+
+*:focus { outline: none !important }
+
+* { box-sizing: border-box; }
+
+body {
+    text-align: left;
+    font-family:"Lucida Grande", arial, sans-serif;
+    font-size: 1.75vh;
+    line-height: 2em;
+    min-height: 100%;
+}
+
+footer {
+    min-height: 100px;
+}
+
+header, .header {
+    padding: 0;
+    text-align: center;
+    align-content: center;
+    font-size: 8.5pt;
+}
+
+.menuText {
+    text-decoration: underline;
+    text-decoration-color: #86d6d3;
+    cursor: pointer;
+}
+
+.menuText:hover {
+    text-decoration: none; 
+    border-bottom: 5px solid #86d6d3;
+}
+
+#centerTxt {
+    font-family:"Lucida Grande", arial, sans-serif;
+    text-align: center;
+}
+
+#indentText {
+    text-align: center;
+    padding-left: 13.5vh;
+    padding-right: 13.5vh;
+}
+
+#indentTextLeft {
+    padding-left: 13.5vh;
+    padding-right: 13.5vh;
+}
+
+#abouttxt {
+    padding-right: 5vh;
+    padding-left: 0vh;
+}
+
+@media only screen and (min-width: 50px) {
+    #abouttxt {
+        padding-left: 5vh;
+    }
+    #aboutimg {
+        display: block;
+    }
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 10pt;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 10pt;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10pt; 
+}
+
+figcaption {
+    text-transform: uppercase;
+    padding: 1.5%;
+    color: gray;
+    text-align: center;
+    font-size: 8.5px;
+}
+
+#outer {  
+    position: relative;
+    top: 50%;
+    transform: translateY(50%);}
+
+#bigText {
+    text-align: right;
+    line-height: 1.5em;
+    font-size: 5em;
+    padding-right: 5vh;
+}
+
+#mediumText {
+    line-height: 1.5em;
+    font-size: 1.5em;
+}
+
+#linebreak {
+    padding-bottom: 3%;
+}
+
+#box {
+    background-color: #f6f6f6;
+}
+
+#bgcolour { background-color: #e7aac2; }
+
+#highlight { background-color: #e7aac2; }
+
+#underline { text-decoration: none; border-bottom: 10px solid #86d6d3; }
+/* ------------ End of Setup ---------- */
+
+/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
+
+/* ---------- Link Styles ---------- */
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+a:active {
+    text-decoration: none;
+    color: black;
+}
+/* ---------- End of Link Styles ---------- */
+
+/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
+
+/* ------------ Buttons ------------ */
+.button {
+    background-color: #e7aac2;
+    color: black;
+    padding: 20px 35px;
+    text-align: center;
+    text-decoration: bold;
+    font-size: 13pt;
+    display: inline-block;
+    cursor: pointer;
+    border-width: 2px;
+    border-radius: 15px; 
+    border-color: #e7aac2;
+    transition: 0.6s; 
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.8);
+}
+
+.button:hover {
+    background-color: #fff;
+    color: black;
+    padding: 20px 35px;
+    text-align: center;
+    text-decoration: bold;
+    font-size: 13pt;
+    display: inline-block;
+    cursor: pointer;
+    border-width: 2px;
+    border-radius: 15px; 
+    border-color: #e7aac2;
+    transition: 0.6s; 
+    box-shadow: 0 18px 10px 0 rgba(0, 0, 0, 0.8);
+}
+/* ---------- End of Buttons ---------- */
+
+/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
+
+/* ---------- Image Styles ---------- */
+.imgico {
+    display: inline;
+    width: 24%;
+    transition: 0.3s;
+}
+
+.imgico:hover {
+  transition: 0.3s;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.bannerheader {
+    width: 100%;
+    margin: 0;
+}
+
+#boomerimg {
+    margin-left: 15%;
+    margin-right: 15%; 
+    width: 70%;
+}
+
+#boomerimg1 {
+    margin: 0;
+    width: 100%;
+}
+
+figure {
+    display: inline-block;
+}
+
+@media only screen and (max-width: 768px) {
+    .imgico {
+        width: 100%;
+        padding-bottom: 5vh;
+        display: block;
+    }
+}
+
+.client {
+    display: inline;
+    width: 20vh;
+    padding: 2.5%;
+    transition: 0.3s;
+}
+
+.client:hover{
+    transition: 0.3s;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.halfsize {
+    margin: 5px;
+    display: inline;
+    width: 20vh;
+}
+
+.preview {
+    margin: 10px;
+    display: inline;
+    width: 60.25vh;
+}
+
+.banner {
+    width: 27.5vh;
+    display: inline;
+}
+
+#aboutimg {
+    text-align: center;
+    float: center;
+    margin: 0 auto;
+    padding-left: 5vh; 
+    padding-right: 5vh;
+    padding-bottom: 2.5vh;
+    width: 60vh;
+}
+
+.gallery-box {
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    padding-left: 13.5vh;
+    padding-right: 13.5vh;
+    margin-bottom: 5px;
+}
+
+.iframe-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+}
+
+.c-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* ---------- End of Image Styles ---------- */
+
+/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
+
+/* ---------- Draggable Menu ---------- */
+.dropdiv {
+    text-align: center;
+}
+
+.dropcircle {
+  background-color: #fff5f9;
+  border: solid 10px #e7aac2;
+  border-radius: 50%;
+  margin: 0 auto;
+  width: 15vh;
+  height: 15vh;
+  transition: background-color 1s;
+  animation: shadow-pulse 1.5s infinite;
+}
+
+@keyframes shadow-pulse {
+  0% { box-shadow: 0 0 0 0px rgba(231, 170, 204, 0.5);}
+  100% { box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);}
+}
+
+
+.draggable{
+	z-index: 1;
+    margin: 0;
+    display: inline;
+    width: 8vh;
+}
+
+.drop-active {
+    background-color: #ffe3ee;
+    border-color:#e7aac2 transparent transparent;
+    animation:spin 2s linear infinite;
+}
+
+  @keyframes spin { 
+      100% {transform:rotate(360deg);}
+  }
+/* ---------- End of Draggable Menu ---------- */
+
+/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
+
+/* ---------- Popup Menu ---------- */
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(255,255,255);
+  background-color: rgba(255,255,255, 0.92);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #000;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 20px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+/* ---------- End of Popup Menu ---------- */
+
+/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
+
+/* ---------- Three Column Layout ---------- */
+.wrapper {
+	padding: 5px;
+	max-width: 960px;
+	width: 95%;
+	margin: 20px auto;
+}
+
+.columns {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	margin: 5px 0;
+    padding-left: 5vh;
+    padding-right: 5vh;
+    padding-top: 10vh;
+}
+
+.column {
+	flex: 1;
+	margin: 2px;
+	padding: 10px;
+	&:first-child { margin-left: 0; }
+	&:last-child { margin-right: 0; }
+	
+}
+
+@media screen and (max-width: 78em) {
+  .columns .column { margin-bottom: 5px; flex-basis: 40%; 
+      &:nth-last-child(2) { margin-right: 0; }
+      &:last-child { flex-basis: 100%; margin: 0; }
+	}
+}
+
+@media screen and (max-width: 55em) {
+	.columns .column { flex-basis: 100%; margin: 0 0 5px 0; }
+}
+/* ---------- End of Three Column Layout ---------- */
+
+/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
+
+
+
+
+
+
