@@ -263,6 +263,15 @@ figure {
     width: 27.5vh;
 }
 
+@media (max-width: 480px) {
+  .banner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 55vh;
+  }
+}
+
 #aboutimg {
     text-align: center;
     float: center;
