@@ -1,5 +1,3 @@
-/* STYLESHEET */
-
 /* ------------ Display ---------- */
 #mobile { display: none; }
 /* ------------ End of Display ---------- */
@@ -259,8 +257,9 @@ figure {
 }
 
 .banner {
-    width: 27.5vh;
-    text-align: center;
+    margin-left: 41%;
+    margin-right: 41%;
+    width: 18%;
     display: inline-block;
 }
 
