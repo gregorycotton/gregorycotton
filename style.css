@@ -1,3 +1,5 @@
+/* STYLESHEET */
+
 /* ------------ Display ---------- */
 #mobile { display: none; }
 /* ------------ End of Display ---------- */
@@ -258,7 +260,8 @@ figure {
 
 .banner {
     width: 27.5vh;
-    display: inline;
+    text-align: center;
+    display: inline-block;
 }
 
 #aboutimg {
