@@ -421,7 +421,6 @@ figure {
 	margin: 5px 0;
     padding-left: 5vh;
     padding-right: 5vh;
-    padding-top: 10vh;
 }
 
 .column {
@@ -430,7 +429,6 @@ figure {
 	padding: 10px;
 	&:first-child { margin-left: 0; }
 	&:last-child { margin-right: 0; }
-	
 }
 
 @media screen and (max-width: 78em) {
