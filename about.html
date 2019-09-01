@@ -22,21 +22,45 @@
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">[x]</a>
   <div class="overlay-content">
-            <div class="gallery-box">
-                <br/>
-                <br/>
-                <div class="panel-body">
-                    <img class="draggable" id="photo" src="assets/index/photoCircle.png">
-                    <img class="draggable" id="design" src="assets/index/designCircle.png">
-                    <img class="draggable" id="clients" src="assets/index/clientsCircle.png">
-                    <img class="draggable" id="about" src="assets/index/aboutCircle.png">
-                </div>
-                <br/>
-                <div class="panel-body">
-                    <div class="dropcircle"></div>
-                </div>
-        </div>  
-  </div>
+<!-- DESKTOP -->
+<div id="desktop">
+        <div class="gallery-box">
+            <div class="panel-body">
+                <img class="draggable" id="photo" src="assets/index/photoCircle.png">
+                <img class="draggable" id="design" src="assets/index/designCircle.png">
+                <img class="draggable" id="clients" src="assets/index/clientsCircle.png">
+                <img class="draggable" id="about" src="assets/index/aboutCircle.png">
+            </div>
+        </div>
+            <br/>
+            <div class="panel-body">
+                <div class="dropcircle"></div>
+            </div>
+            <br/>
+</div>
+ 
+<!-- MOBILE -->
+<div id="mobile">
+        <div class="gallery-box">
+            <div class="panel-body">
+                <img class="draggable" id="photoM" src="assets/index/photoCircle.png">
+                <img class="draggable" id="designM" src="assets/index/designCircle.png">
+            </div>
+        </div>
+            <br/>
+            <div class="panel-body">
+                <div class="dropcircle"></div>
+            </div>
+            <br/>
+        <div class="gallery-box">
+            <div class="panel-body">
+                <img class="draggable" id="clientsM" src="assets/index/clientsCircle.png">
+                <img class="draggable" id="aboutM" src="assets/index/aboutCircle.png">
+            </div>
+        </div>
+                
+</div>
+</div>
 </div>
 
 <section class="columns">
@@ -58,10 +82,10 @@
 
 <section class="columns">
     <div class="column">
-        <p id="mediumText">I love working on new things, with new people, in new places. Don’t hesitate to reach out and send me an email; be it about an idea for a project or a question about my preferred pasta dishes, I’d love to have a conversation.</p>
+        &nbsp;
 	</div>
 	<div class="column">
-		<p id="bigText"><strong><span id="highlight">contact</span> <br/><span id="underline">me:</span></strong></p>
+        <p id="mediumText">I love working on new things, with new people, in new places. Don’t hesitate to reach out and send me an email; be it about an idea for a project or a question about my preferred pasta dishes, I’d love to have a conversation.</p>
 	</div>
     <div class="column">
       <p id="mediumText"><a class="menuText" href="assets/about/resume.pdf" target="_blank">my resume</a></p>
@@ -74,7 +98,7 @@
 <footer>
 </footer>
 
-<script>
+<script>  
 // --------------- OPEN AND CLOSE MENU --------------- //
 function openNav() {
   document.getElementById("myNav").style.width = "100%";
@@ -130,7 +154,7 @@ function closeNav() {
             dropzoneElement.classList.add('drop-target');
             draggableElement.classList.add('can-drop');
             
-            // --------------- IDENTIFY WHAT LINK TO OPEN --------------- //
+            // --------------- IDENTIFY WHAT LINK TO OPEN (M FOR MOBILE) --------------- //
             if(draggableElement == document.getElementById("about")) {
                 event.preventDefault();
                 window.open("about.html", "_self");
@@ -147,6 +171,24 @@ function closeNav() {
                 event.preventDefault();
                 window.open("boomers.html", "_self");
             } else if (draggableElement == document.getElementById("clients")) {
+                event.preventDefault();
+                window.open("clients.html", "_self");
+            } else if (draggableElement == document.getElementById("aboutM")) {
+                event.preventDefault();
+                window.open("photography.html", "_self");
+            } else if (draggableElement == document.getElementById("photoM")) {
+                event.preventDefault();
+                window.open("photography.html", "_self");
+            } else if (draggableElement == document.getElementById("designM")) {
+                event.preventDefault();
+                window.open("design.html", "_self");
+            } else if (draggableElement == document.getElementById("docM")) {
+                event.preventDefault();
+                window.open("vintageuprising.html", "_self");
+            } else if (draggableElement == document.getElementById("boomersM")) {
+                event.preventDefault();
+                window.open("boomers.html", "_self");
+            } else if (draggableElement == document.getElementById("clientsM")) {
                 event.preventDefault();
                 window.open("clients.html", "_self");
             }
