@@ -19,7 +19,9 @@
 </header>
 -->
 
-<body>      
+<body>
+<!-- DESKTOP -->
+<div id="desktop">
 <div id="outer">
         <div class="gallery-box">
             <div class="panel-body">
@@ -34,12 +36,37 @@
                 <div class="dropcircle"></div>
             </div>
             <br/>
-            <img class="banner" src="assets/logo.png">
-         
+            <img class="banner" src="assets/logo.png"> 
 </div>
+</div>
+ 
+<!-- MOBILE -->
+<div id="mobile">
+<div id="outer">
+        <div class="gallery-box">
+            <div class="panel-body">
+                <img class="draggable" id="photoM" src="assets/index/photoCircle.png">
+                <img class="draggable" id="designM" src="assets/index/designCircle.png">
+            </div>
+        </div>
+            <br/>
+            <div class="panel-body">
+                <div class="dropcircle"></div>
+            </div>
+            <br/>
+        <div class="gallery-box">
+            <div class="panel-body">
+                <img class="draggable" id="clientsM" src="assets/index/clientsCircle.png">
+                <img class="draggable" id="aboutM" src="assets/index/aboutCircle.png">
+            </div>
+        </div>
+            <img class="banner" src="assets/logo.png">     
+                
+</div>
+</div>    
 </body>  
     
-<script>
+<script> 
 // --------------- INITIALIZE DRAG/DROP --------------- //
     interact('.draggable').draggable({
         inertia: true,
@@ -86,7 +113,7 @@
             dropzoneElement.classList.add('drop-target');
             draggableElement.classList.add('can-drop');
             
-            // --------------- IDENTIFY WHAT LINK TO OPEN --------------- //
+            // --------------- IDENTIFY WHAT LINK TO OPEN (M FOR MOBILE) --------------- //
             if(draggableElement == document.getElementById("about")) {
                 event.preventDefault();
                 window.open("about.html", "_self");
@@ -103,6 +130,24 @@
                 event.preventDefault();
                 window.open("boomers.html", "_self");
             } else if (draggableElement == document.getElementById("clients")) {
+                event.preventDefault();
+                window.open("clients.html", "_self");
+            } else if (draggableElement == document.getElementById("aboutM")) {
+                event.preventDefault();
+                window.open("photography.html", "_self");
+            } else if (draggableElement == document.getElementById("photoM")) {
+                event.preventDefault();
+                window.open("photography.html", "_self");
+            } else if (draggableElement == document.getElementById("designM")) {
+                event.preventDefault();
+                window.open("design.html", "_self");
+            } else if (draggableElement == document.getElementById("docM")) {
+                event.preventDefault();
+                window.open("vintageuprising.html", "_self");
+            } else if (draggableElement == document.getElementById("boomersM")) {
+                event.preventDefault();
+                window.open("boomers.html", "_self");
+            } else if (draggableElement == document.getElementById("clientsM")) {
                 event.preventDefault();
                 window.open("clients.html", "_self");
             }
