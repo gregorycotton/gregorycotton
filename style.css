@@ -115,6 +115,19 @@ figcaption {
     font-size: 1.5em;
 }
 
+@media screen and (max-width: 640px) {
+    #bigText {
+        text-align: right;
+        line-height: 1.5em;
+        font-size: 2.75em;
+        padding-right: 0;
+    }
+    #mediumText {
+        line-height: 1.5em;
+        font-size: 1em;
+    }
+}
+
 #linebreak {
     padding-bottom: 3%;
 }
@@ -204,6 +217,14 @@ a:active {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
+@media screen and (max-width: 640px) {
+    .imgico {
+        width: 100%;
+        padding-bottom: 5vh;
+        display: block;
+    }
+}
+
 .bannerheader {
     width: 100%;
     margin: 0;
@@ -222,14 +243,6 @@ a:active {
 
 figure {
     display: inline-block;
-}
-
-@media only screen and (max-width: 768px) {
-    .imgico {
-        width: 100%;
-        padding-bottom: 5vh;
-        display: block;
-    }
 }
 
 .client {
@@ -263,22 +276,13 @@ figure {
     width: 27.5vh;
 }
 
-@media (max-width: 480px) {
-  .banner {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 55vh;
-  }
-}
-
 #aboutimg {
     text-align: center;
     float: center;
     margin: 0 auto;
     padding-left: 5vh; 
     padding-right: 5vh;
-    padding-bottom: 2.5vh;
+    padding-bottom: 0;
     width: 60vh;
 }
 
@@ -341,13 +345,23 @@ figure {
 
 .drop-active {
     background-color: #ffe3ee;
-    border-color:#e7aac2 transparent transparent;
+    border-color: #e7aac2 transparent transparent;
     animation:spin 2s linear infinite;
 }
 
   @keyframes spin { 
       100% {transform:rotate(360deg);}
   }
+
+@media screen and (min-width: 640px) {
+    #mobile {display: none;}
+    #desktop {display: block;}
+}
+
+@media screen and (max-width: 640px) {
+    #desktop {display: none;}
+    #mobile {display: block;}
+}
 /* ---------- End of Draggable Menu ---------- */
 
 /* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
@@ -432,7 +446,7 @@ figure {
 }
 
 @media screen and (max-width: 78em) {
-  .columns .column { margin-bottom: 5px; flex-basis: 40%; 
+  .columns .column { flex-basis: 40%; 
       &:nth-last-child(2) { margin-right: 0; }
       &:last-child { flex-basis: 100%; margin: 0; }
 	}
@@ -444,8 +458,6 @@ figure {
 /* ---------- End of Three Column Layout ---------- */
 
 /* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
-
-
 
 
 
