@@ -223,17 +223,6 @@ a:active {
         padding-bottom: 5vh;
         display: block;
     }
-     .error {
-        width: 100%;
-        margin-bottom: 5vh;
-        margin-top: 5vh;
-        display: block;
-    }
-
-.error {
-    display: inline;
-    width: 24%;
-	}
 }
 
 .bannerheader {
