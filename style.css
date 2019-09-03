@@ -212,25 +212,21 @@ a:active {
     transition: 0.3s;
 }
 
-.imgico:hover {
-  transition: 0.3s;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-}
-
 @media screen and (max-width: 800px) {
     .imgico {
         width: 100%;
         padding-bottom: 5vh;
         display: block;
     } 
-    .gallery-box {
-        margin: 0 auto;
-        text-align: center;
-        width: 100%;
-        padding-left: 1.5vh;
-        padding-right: 1.5vh;
-        margin-bottom: 5px;
-    }
+}
+
+.gallery-box {
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    padding-left: 13.5vh;
+    padding-right: 13.5vh;
+    margin-bottom: 5px;
 }
 
 .bannerheader {
@@ -294,15 +290,6 @@ figure {
     width: 60vh;
 }
 
-.gallery-box {
-    margin: 0 auto;
-    text-align: center;
-    width: 80%;
-    padding-left: 13.5vh;
-    padding-right: 13.5vh;
-    margin-bottom: 5px;
-}
-
 .iframe-container {
     position: relative;
     overflow: hidden;
@@ -343,7 +330,6 @@ figure {
   100% { box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);}
 }
 
-
 .draggable{
 	z-index: 1;
     margin: 0;
@@ -361,12 +347,12 @@ figure {
       100% {transform:rotate(360deg);}
   }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 800px) {
     #mobile {display: none;}
     #desktop {display: block;}
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 800px) {
     #desktop {display: none;}
     #mobile {display: block;}
 }
@@ -465,8 +451,68 @@ figure {
 }
 /* ---------- End of Three Column Layout ---------- */
 
+
+/* ---------- Responsive Image Gallery ---------- */
+@media screen and (max-width: 750px) {
+
+    }
+}
+    
+.image-list-small {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 1170px;
+  padding: 0;
+}
+
+.image-list-small li {
+  display: inline-block;
+  width: 181px;
+  margin: 0 12px 30px;
+}
+
+.image-list-small li > a {
+  display: block;
+  text-decoration: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 200px;
+  width: 200px;
+  margin: 0;
+  padding: 0;
+}
+
+.image-list-small li > a:hover {     
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.75);
+}
+
+.image-list-small .details {
+  margin-top: 13px;
+}
+
+.image-list-small .details h3 {
+  display: block;
+  font-size: 12px;
+  margin: 0 0 3px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.image-list-small .details h3 a {
+  color: #303030;
+  text-decoration: none;
+}
+
+.image-list-small .details .image-author {
+  display: block;
+  color: #717171;
+  font-size: 11px;
+  font-weight: normal;
+  margin: 0;
+}
+/* ---------- End of Responsive Image Gallery ---------- */
+
+
 /* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
-
-
-
 
