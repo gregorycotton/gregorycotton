@@ -222,6 +222,14 @@ a:active {
         width: 100%;
         padding-bottom: 5vh;
         display: block;
+    } 
+    .gallery-box {
+        margin: 0 auto;
+        text-align: center;
+        width: 100%;
+        padding-left: 1.5vh;
+        padding-right: 1.5vh;
+        margin-bottom: 5px;
     }
 }
 
