@@ -115,7 +115,7 @@ figcaption {
     font-size: 1.5em;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 800px) {
     #bigText {
         text-align: right;
         line-height: 1.5em;
@@ -217,7 +217,7 @@ a:active {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 800px) {
     .imgico {
         width: 100%;
         padding-bottom: 5vh;
