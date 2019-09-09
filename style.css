@@ -108,6 +108,17 @@ blockquote cite:before {
     content: "\2014 \2009";
 }
 
+@media only screen and (max-width: 850px) {
+    blockquote:before {
+        font-size: 45px;
+        padding-left: 1.5px;
+    }
+    blockquote {
+        font-size: 15px;
+        padding: 0.35em 10px;
+    }
+}
+
 h3 {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
