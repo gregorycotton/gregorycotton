@@ -1,10 +1,10 @@
-/* ------------ Display ---------- */
+/*  Display 
+    ------------------------------ */
 #mobile { display: none; }
-/* ------------ End of Display ---------- */
 
-/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
 
-/* ------------ Setup ---------- */
+/*  Setup 
+    ------------------------------ */
 * { margin: 0; padding: 0; }
 
 ::selection { background: #e7aac2; }
@@ -73,6 +73,41 @@ header, .header {
     }
 }
 
+blockquote {
+    margin: 3em auto !important;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-style: italic;
+    width: 500px;
+    margin: 0.25em 0;
+    padding: 0.35em 40px;
+    line-height: 1.45;
+    position: relative;
+    color: #383838;
+}
+
+blockquote:before {
+    display: block;
+    padding-left: 10px;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    color: #7a7a7a;
+}
+
+blockquote cite {
+    color: #999999;
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+ 
+blockquote cite:before {
+    content: "\2014 \2009";
+}
+
 h3 {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
@@ -115,7 +150,12 @@ figcaption {
     font-size: 1.5em;
 }
 
-@media screen and (max-width: 800px) {
+#imgCaption {
+    line-height: 1.5em;
+    font-size: 1.5em;
+}
+
+@media screen and (max-width: 900px) {
     #bigText {
         text-align: right;
         line-height: 1.5em;
@@ -123,6 +163,10 @@ figcaption {
         padding-right: 0;
     }
     #mediumText {
+        line-height: 1.5em;
+        font-size: 1em;
+    }
+    #imgCaption {
         line-height: 1.5em;
         font-size: 1em;
     }
@@ -141,11 +185,10 @@ figcaption {
 #highlight { background-color: #e7aac2; }
 
 #underline { text-decoration: none; border-bottom: 10px solid #86d6d3; }
-/* ------------ End of Setup ---------- */
 
-/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
 
-/* ---------- Link Styles ---------- */
+/*  Link Styles 
+    ------------------------------ */
 a:link {
     text-decoration: none;
     color: black;
@@ -165,11 +208,10 @@ a:active {
     text-decoration: none;
     color: black;
 }
-/* ---------- End of Link Styles ---------- */
 
-/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
 
-/* ------------ Buttons ------------ */
+/*  Buttons 
+    ------------------------------ */
 .button {
     background-color: #e7aac2;
     color: black;
@@ -201,11 +243,9 @@ a:active {
     transition: 0.6s; 
     box-shadow: 0 18px 10px 0 rgba(0, 0, 0, 0.8);
 }
-/* ---------- End of Buttons ---------- */
 
-/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
-
-/* ---------- Image Styles ---------- */
+/*  Primary Image Styles 
+    ------------------------------ */
 .imgico {
     display: inline;
     width: 24%;
@@ -305,11 +345,8 @@ figure {
     border: 0;
 }
 
-/* ---------- End of Image Styles ---------- */
-
-/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
-
-/* ---------- Draggable Menu ---------- */
+/*  Draggable Menu 
+    ------------------------------ */
 .dropdiv {
     text-align: center;
 }
@@ -356,11 +393,9 @@ figure {
     #desktop {display: none;}
     #mobile {display: block;}
 }
-/* ---------- End of Draggable Menu ---------- */
 
-/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
-
-/* ---------- Popup Menu ---------- */
+/*  Popup Menu 
+    ------------------------------ */
 .overlay {
   height: 100%;
   width: 0;
@@ -386,13 +421,13 @@ figure {
   padding: 8px;
   text-decoration: none;
   font-size: 36px;
-  color: #818181;
+  color: #000;
   display: block;
   transition: 0.3s;
 }
 
 .overlay a:hover, .overlay a:focus {
-  color: #000;
+  color: #818181;
 }
 
 .overlay .closebtn {
@@ -410,11 +445,9 @@ figure {
   right: 35px;
   }
 }
-/* ---------- End of Popup Menu ---------- */
 
-/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
-
-/* ---------- Three Column Layout ---------- */
+/*  Three Column Layout 
+    ------------------------------ */
 .wrapper {
 	padding: 5px;
 	max-width: 960px;
@@ -449,15 +482,40 @@ figure {
 @media screen and (max-width: 55em) {
 	.columns .column { flex-basis: 100%; margin: 0 0 5px 0; }
 }
-/* ---------- End of Three Column Layout ---------- */
 
+/*  Two Colum Layout 
+    ------------------------------ */
+.columnsContainer { 
+    position: relative; 
+    margin: .5em; 
+}
 
-/* ---------- Responsive Image Gallery ---------- */
-@media screen and (max-width: 750px) {
+.columnsContainer:after {
+    content:"";
+    display: table;
+    clear: both;
+}
 
+.rightColumn {
+    float: right;
+    width: 50%;
+}
+
+.leftColumn { 
+    float: left;
+    width: 50%; 
+}
+
+@media screen and (max-width: 800px) {
+    .leftColumn, .rightColumn {
+        float: none;
+        width: auto;
     }
 }
-    
+
+
+/*  Responsive Image Gallery 
+    ------------------------------ */
 .image-list-small {
   margin: 0 auto;
   text-align: center;
@@ -511,8 +569,135 @@ figure {
   font-weight: normal;
   margin: 0;
 }
-/* ---------- End of Responsive Image Gallery ---------- */
 
+.displayTall {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    display: inline;
+    max-width: 55%;
+    height: auto;
+}
 
-/* <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> */
+.displayWide {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
 
+.display-box {
+    margin: 0 auto;
+    text-align: center;
+    width: 70%;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 800px) {
+    .display-box { 
+        width: 100%;
+    }
+}
+
+/*  Modal Popups 
+    ------------------------------ */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+}
+
+@media screen and (max-width: 800px) {
+    .modal {
+        padding-top: 50px;
+        padding-bottom: 50px;  
+    }
+}
+
+.modal-content {
+    text-align: left;
+    position: relative;
+    background-color: #fff;
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.close {
+    color: #000;
+    float: right;
+    font-size: 20px;
+}
+
+.close:hover,
+.close:focus {
+    color: #818181;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 2px 16px;
+}
+
+#modalBG {
+    background-color: #f6f6f6;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/*  Scroll Icon 
+    ------------------------------ */
+.middle {
+    position: absolute;
+    left: 50%;
+}
+
+@media screen and (max-width: 900px) {
+    .middle {
+        display: none;
+    }
+}
+
+.mouse {
+    width: 22.22px; 
+    height: 33.33px; 
+    border: 2px solid #999999; 
+    border-radius: 40px;
+}
+
+.mouse::before { 
+    content: ""; 
+    width: 3.33px; 
+    height: 3.33px; 
+    position: absolute; 
+    top: 6.66px; 
+    background: #999999; 
+    left: 50%; 
+    transform: translateX(-50%);
+    border-radius: 50%; 
+    opacity: 1; 
+    animation: mouse 2s infinite;
+}
+
+@keyframes mouse { 
+    from { 
+        opacity: 1; 
+        top: 6.66px; 
+    } 
+    to { 
+        opacity: 0; 
+        top: 20px; 
+    }
+}
