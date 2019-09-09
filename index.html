@@ -21,9 +21,17 @@
 -->
 
 <body>
+<div id="border">
 <!-- DESKTOP -->
 <div id="desktop">
 <div id="outer">
+    <img class="banner" src="assets/logo.png">
+    <br/>
+            <div class="panel-body">
+                <div class="dropcircle"></div>
+            </div>
+    <br/>
+    <br/>
         <div class="gallery-box">
             <div class="panel-body">
                 <img class="draggable" id="photo" src="assets/index/photoCircle.png">
@@ -32,18 +40,14 @@
                 <img class="draggable" id="about" src="assets/index/aboutCircle.png">
             </div>
         </div>
-            <br/>
-            <div class="panel-body">
-                <div class="dropcircle"></div>
-            </div>
-            <br/>
-            <img class="banner" src="assets/logo.png"> 
+            
 </div>
 </div>
  
 <!-- MOBILE -->
 <div id="mobile">
 <div id="outer">
+    <img class="banner" src="assets/logo.png"> 
         <div class="gallery-box">
             <div class="panel-body">
                 <img class="draggable" id="photoM" src="assets/index/photoCircle.png">
@@ -61,10 +65,10 @@
                 <img class="draggable" id="aboutM" src="assets/index/aboutCircle.png">
             </div>
         </div>
-            <img class="banner" src="assets/logo.png">     
                 
 </div>
-</div>    
+</div>  
+</div>
 </body>  
     
 <script> 
@@ -135,7 +139,7 @@
                 window.open("clients.html", "_self");
             } else if (draggableElement == document.getElementById("aboutM")) {
                 event.preventDefault();
-                window.open("about.html", "_self");
+                window.open("photography.html", "_self");
             } else if (draggableElement == document.getElementById("photoM")) {
                 event.preventDefault();
                 window.open("photography.html", "_self");
