@@ -275,7 +275,10 @@ h3 {
 }
 
 .close {
+    z-index: 999;
     position: absolute;
+    overflow: hidden;
+    position: fixed;
     top: 20px;
     right: 45px;
     font-size: 30px;
