@@ -80,6 +80,34 @@ header, .header {
     background-repeat: no-repeat;
 }
 
+#bgimgMisc {
+    height: 100%;
+    background-image: url(assets/photography/backgrounds/mischeader.png);
+    background-size: cover;                    
+    background-repeat: no-repeat; 
+}
+
+#bgimg21 {
+    height: 100%;
+    background-image: url(assets/photography/backgrounds/21header.png);
+    background-size: cover;                    
+    background-repeat: no-repeat; 
+}
+
+#bgimgEnv {
+    height: 100%;
+    background-image: url(assets/photography/backgrounds/envheader.png);
+    background-size: cover;                    
+    background-repeat: no-repeat; 
+}
+
+#bgimgRandom {
+    height: 100%;
+    background-image: url(assets/photography/backgrounds/randomheader.png);
+    background-size: cover;                    
+    background-repeat: no-repeat; 
+}
+
 .menubutton {
     z-index: 1;
     margin: 0;
@@ -274,6 +302,17 @@ h3 {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
+.modal-content-box {
+    text-align: left;
+    position: relative;
+    background-color: #fff;
+    margin: auto;
+    width: 75%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.95),0 6px 20px 0 rgba(0,0,0,0.95);
+}
+
 .close {
     z-index: 999;
     position: absolute;
@@ -404,7 +443,39 @@ a:active {
     animation: mouse 1.75s infinite;
 }
 
+.mouse-b {
+    width: 22.22px; 
+    height: 33.33px; 
+    border: 2px solid #000; 
+    border-radius: 40px;
+}
+
+.mouse-b::before { 
+    content: ""; 
+    width: 3.33px; 
+    height: 5px; 
+    position: absolute; 
+    top: 6.66px; 
+    background: #000; 
+    left: 50%; 
+    transform: translateX(-50%);
+    border-radius: 50%; 
+    opacity: 1; 
+    animation: mouse 1.75s infinite;
+}
+
 @keyframes mouse { 
+    from { 
+        opacity: 1; 
+        top: 6.66px; 
+    } 
+    to { 
+        opacity: 0; 
+        top: 20px; 
+    }
+}
+
+@keyframes mouse-b { 
     from { 
         opacity: 1; 
         top: 6.66px; 
@@ -437,6 +508,12 @@ a:active {
     margin-left: auto;
     margin-right: auto;
     
+}
+
+.widerBanner {
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
 }
 
 #boomerimg {
