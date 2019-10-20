@@ -510,7 +510,10 @@ a:active {
 
 @media screen and (max-width: 800px) { 
     .preview {
-        margin: 0;
+        margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	margin-bottom: 10px;
         width: 100%;
     }
 }
