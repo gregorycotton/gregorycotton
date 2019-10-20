@@ -284,13 +284,6 @@ h3 {
     background-color: rgba(0,0,0,0.4);
 }
 
-@media screen and (max-width: 800px) {
-    .modal {
-        padding-top: 50px;
-        padding-bottom: 50px;  
-    }
-}
-
 .modal-content {
     text-align: left;
     position: relative;
@@ -302,6 +295,13 @@ h3 {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
+@media screen and (max-width: 800px) {
+    .modal-content {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
 .modal-content-box {
     text-align: left;
     position: relative;
@@ -310,7 +310,13 @@ h3 {
     width: 75%;
     padding-left: 20px;
     padding-right: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.95),0 6px 20px 0 rgba(0,0,0,0.95);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3),0 6px 20px 0 rgba(0,0,0,0.3);
+}
+
+@media screen and (max-width: 800px) { 
+    .modal-content-box {
+        width: 100%;
+    }
 }
 
 .close {
@@ -539,6 +545,12 @@ a:active {
     margin: 0 auto;
     max-width: 100%;
     height: auto;
+}
+
+@media screen and (max-width: 800px) {
+    .displayTall, .displayWide {
+        max-width: 100%;
+    }
 }
 
 .display-box {
