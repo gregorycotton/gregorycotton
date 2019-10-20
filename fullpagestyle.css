@@ -518,13 +518,6 @@ a:active {
     }
 }
 
-@media screen and (max-width: 800px) { 
-    .preview {
-        margin: 0;
-        width: 100%;
-    }
-}
-
 .uwrIcon {
     width: 30%;
     display: block;
