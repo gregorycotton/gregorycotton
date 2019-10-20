@@ -299,6 +299,7 @@ h3 {
     .modal-content {
         padding-left: 0px;
         padding-right: 0px;
+        margin: 0;
     }
 }
 
@@ -509,6 +510,7 @@ a:active {
 
 @media screen and (max-width: 800px) { 
     .preview {
+        margin: 0;
         width: 100%;
     }
 }
