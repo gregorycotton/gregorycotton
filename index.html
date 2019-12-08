@@ -1,7 +1,30 @@
-<title>sorry</title>	
-	
-	<center>
-	<br><br><br><br><br><br><br>
-	as of : (sunday december 8th 2019) : coming soon
-	<!-- /dream03 -->
-	</center>
+<DOCTYPE html>
+<html>
+<head>
+    <title>Gregory Cotton</title>
+    <meta name="viewport" content="width=device-width">    
+    <link rel = "stylesheet" type = "text/css" href = "style.css">
+</head>
+    
+<body>
+this is gregory cotton's website. 
+</body>
+
+</html>
+</DOCTYPE>
+
+<script>
+$(document).ready(function(){
+  $("a").on('click', function(event) {
+    if (this.hash !== "") {
+      event.preventDefault();
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+           window.location.hash = hash;
+      });
+    }
+  });
+});
+</script>
