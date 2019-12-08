@@ -1,0 +1,737 @@
+/*
+DIRECTORY:
+01. GENERAL STYLES
+02. GENERAL FULL PAGE 
+03. GENERAL TEXT TYPE
+04. MENU
+    Pop-up Desktop
+    Pop-up Mobile
+05. MOUSE SCROLL
+06. SLIDESHOW
+
+07. PLUTUS BANKING
+08. BOOMER'S GOURMET FRIES
+09. UW RENCANA
+*/
+
+/*
+----------------------------------------------------------------------------------------------------
+GENERAL STYLES */
+
+::selection { background: #000; color: white; }
+
+*:focus { outline: none !important }
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0 auto;
+    font-family: 'Work Sans', sans-serif;
+    color: black;
+    background-color: white;
+    position: relative;
+}
+
+figcaption {
+    font-family: 'Work Sans', sans-serif;
+    color: black;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+a:link {
+    color: black;
+    text-decoration: none
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+a:active {
+    color: black;
+    text-decoration: none;
+}
+
+#unlR { text-decoration: underline; text-decoration-color: #fe0000; }
+#unlB { text-decoration: underline; text-decoration-color: #0090ff; }
+#unlG { text-decoration: underline; text-decoration-color: #1ab51b; } 
+#unlY { text-decoration: underline; text-decoration-color: #f5ff00; } 
+
+#unlR:hover { color: black; background: #fe0000; }
+#unlB:hover { color: black; background: #0090ff; }
+#unlG:hover { color: black; background: #1ab51b; }
+#unlY:hover { color: black; background: #f5ff00; }
+
+/*
+----------------------------------------------------------------------------------------------------
+GENERAL FULL PAGE */
+
+#cuecard {
+    display: inline-block;
+    padding: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+    background-color: white;
+    font-size: 12pt;
+    color: #1d2758;
+    -webkit-box-shadow: 13px 23px 36px -19px rgba(0,0,0,0.75);
+    -moz-box-shadow: 13px 23px 36px -19px rgba(0,0,0,0.75);
+    box-shadow: 13px 23px 36px -19px rgba(0,0,0,0.75);
+}
+
+.wrapperTwo {
+  width: 100%;
+  text-align: center; /* center hack */
+}
+
+.containerTwo {
+  width: 90%;
+  max-width: 1000px;
+  text-align: left;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.containerThree {
+  width: 45%;
+  max-width: 1000px;
+  text-align: left;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.mainCol {
+  word-wrap: break-word;
+  background-color: #ffffff;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+
+.two-column {
+  float: none;
+  width: auto;
+  overflow: hidden;
+}
+
+.side-a {
+  float: left;
+  position: relative;
+  width: 320px;
+  word-wrap: break-word;
+  background-color: #ffffff;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+    .containerTwo {
+        width: 100%;
+        max-width: 767px;
+  }
+    .containerThree {
+        width: 100%;
+        max-width: 767px;
+  }
+    .side-a {
+        float: none;
+        position: static;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+  }
+}
+
+.row {
+  display: flex;
+}
+
+.col {
+  flex: 1; 
+}
+
+@media only screen and (max-width: 800px) {
+    #cuecard {
+        width: 100%;
+        margin-bottom: 25px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .row {
+        display: inline-block;
+    }
+}
+
+#personaIcon {
+    width: 40%;
+    align-content: center;
+    margin-bottom: auto 0;
+    text-align: center;
+}
+
+/*
+----------------------------------------------------------------------------------------------------
+GENERAL TEXT TYPE */
+
+#helloTxt { line-height: 60pt; }
+
+#highlight { background: black; }
+
+#imgCaption { text-align: center; font-size: 10pt; margin-left: 10%; margin-right: 10%; }
+
+#centerTextBig {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-weight: bold;
+    line-height: 100px;
+    font-size: 100px; 
+}
+
+#centerTextMed {
+    line-height: 20pt;
+    text-align: left;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#titleText {
+    font-weight: 200;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15pt;
+}
+
+#smallMediumText {
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 767px) {
+#centerTextBig {
+        text-align: center;
+        font-weight: bold;
+        line-height: 1.5em;
+        font-size: 55px;
+    }
+#centerTextMed {
+        font-size: 15px; 
+        line-height: 20pt;
+    }
+#smallMediumText {
+        font-size: 15px; 
+    }
+}
+
+#bigTxt {
+    font-family: 'Roboto', sans-serif;
+    font-size: 117px;
+    font-weight: 1000;
+    color: white;
+    mix-blend-mode: difference;
+    writing-mode: horizontal-tb;
+    display: block;
+    position: relative;
+    top: 50%;
+    margin-left: 50px;
+    transform: translateY(-50%);
+}
+
+#caption {
+    font-size: 15px;
+    color: white;
+    line-height: 18px;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(50%); 
+}
+
+@media screen and (max-width: 767px) {
+    #bigTxt {
+        font-family: 'Roboto', sans-serif;
+        font-size: 45px;
+        font-weight: 1000;
+        color: white;
+        mix-blend-mode: difference;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        display: block;
+        position: relative;
+        top: 50%;
+        margin-left: 20px;
+        transform: translateY(-50%);
+    }
+    #caption {
+        font-size: 12px;
+        line-height: 11px;
+        text-align: left;
+        transform: translateY(0);
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
+    #helloTxt { 
+        line-height: 30pt;
+        font-size: 25px; 
+    }
+}
+
+#introName {
+    background-color: #f5ff00;
+}
+
+/*
+----------------------------------------------------------------------------------------------------
+MENU */
+
+#mobile { 
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width: 767px) {
+    #mobile {display: none;}
+    #desktop {display: block;}
+}
+
+@media screen and (max-width: 767px) {
+    #desktop {display: none;}
+    #mobile {display: flex;}  
+    body {margin: 0;}
+}
+
+.sidenav { 
+    color: black;
+    width: 85px;
+    z-index: 1;
+    position: fixed;
+    overflow-x: hidden;
+}
+
+.main {
+    margin-left: 140px;
+}
+
+@media screen and (max-width: 767px) {
+    .main { margin: 0; }
+}
+
+#tab img {
+    vertical-align: middle;
+}
+
+#titleD {
+    color: black;
+    font-size: 22.5px;
+    line-height: 22.5pt;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform:scale(-1);
+    padding-top: 20px;
+    border-top: 1px solid black;
+}
+
+#titleM {
+    color: black;
+    font-size: 22.5px;
+    line-height: 22.5pt;
+    margin-top: 30px;
+    border-bottom: 1px solid black;
+}
+
+#menuD {
+    font-size: 10px;
+    line-height: 22.5pt;
+    padding-top: 20px;
+}
+
+#menuM {
+    font-size: 10px;
+    line-height: 22.5pt;
+}
+
+.small {
+    width: 12px;
+    padding-right: 5px
+}
+
+#backButton { 
+    z-index: 1;
+    text-align: center;
+    margin-top: 45px;
+    color: black;
+    font-size: 17.5px;
+    line-height: 22.5pt;    
+    overflow: hidden;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+/*
+----------------------------------------------------------------------------------------------------
+MOUSE SCROLL */
+
+.middle {
+    position: absolute;
+    left: 50%;
+}
+
+.mouse {
+    width: 22.22px; 
+    height: 33.33px; 
+    border: 2px solid #1d2758; 
+    border-radius: 40px;
+}
+
+.mouse::before { 
+    content: ""; 
+    width: 3.33px; 
+    height: 5px; 
+    position: absolute; 
+    top: 6.66px; 
+    background: #1d2758; 
+    left: 50%; 
+    transform: translateX(-50%);
+    border-radius: 50%; 
+    opacity: 1; 
+    animation: mouse 1.75s infinite;
+}
+
+@keyframes mouse { 
+    from { 
+        opacity: 1; 
+        top: 6.66px; 
+    } 
+    to { 
+        opacity: 0; 
+        top: 20px; 
+    }
+}
+
+/*
+----------------------------------------------------------------------------------------------------
+MOUSE SCROLL */
+
+.middle {
+    position: absolute;
+    left: 50%;
+}
+
+.mouse {
+    width: 22.22px; 
+    height: 33.33px; 
+    border: 2px solid #1d2758; 
+    border-radius: 40px;
+}
+
+.mouse::before { 
+    content: ""; 
+    width: 3.33px; 
+    height: 5px; 
+    position: absolute; 
+    top: 6.66px; 
+    background: #1d2758; 
+    left: 50%; 
+    transform: translateX(-50%);
+    border-radius: 50%; 
+    opacity: 1; 
+    animation: mouse 1.75s infinite;
+}
+
+@keyframes mouse { 
+    from { 
+        opacity: 1; 
+        top: 6.66px; 
+    } 
+    to { 
+        opacity: 0; 
+        top: 20px; 
+    }
+}
+
+/*
+----------------------------------------------------------------------------------------------------
+SLIDESHOW */
+
+.mySlides { display: none }
+
+.slideshow-container img { vertical-align: middle; }
+
+.slideshow-container {
+    padding-left: 12%;
+    padding-right: 12%;
+    position: relative;
+    margin: auto;
+}
+
+@media only screen and (max-width: 767px) { 
+    .slideshow-container { padding-left: 0%; padding-right: 0%; }
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0;
+    user-select: none;
+    background-color: gray;
+}
+
+.prev { transform: translateX(-50px); }
+.next { transform: translateX(0px); }
+
+@media only screen and (max-width: 767px) { 
+    .prev { transform: translateX(-50px); }
+    .next { transform: translateX(50px); }
+}
+
+.next {
+    right: 0;
+    border-radius: 0;
+}
+
+.prev:hover, .next:hover {
+    color: rgba(0,0,0,0.8);
+}
+
+.text {
+    color: dimgray;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    top: -30px;
+    width: 100%;
+    text-align: center;
+}
+
+.dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 6px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+@media only screen and (max-width: 767px) { .dot { width: 7px; height: 7px; margin: 0 2px; } }
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+@media only screen and (max-width: 300px) {
+    .prev, .next,.text {font-size: 11px}
+}
+
+/*
+----------------------------------------------------------------------------------------------------
+PLUTUS FULL PAGE */
+
+.plutusFull {
+    height: 700px;
+    line-height: 65pt;
+    text-align: center;
+    background-image: url(index/full_pages/plutus/plutusFull_D.png);
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: cover;                    
+    background-repeat: no-repeat;
+}
+
+.hfp {
+    height: 700px;
+    line-height: 65pt;
+    text-align: center;
+    background-image: url(index/full_pages/plutus/hf_overview_D.jpg);
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: cover;                    
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 767px) {
+    .htp {
+        margin: 0;
+        width: 100%;
+        text-decoration: none;
+        overflow: hidden;
+    }
+    .hfp { background-image: url(index/full_pages/plutus/hf_overview_M.jpg); overflow: hidden; }
+}
+
+#gifRight {
+    text-align: left;
+    padding: 10px;
+}
+
+#gifLeft {
+    text-align: right;
+    padding: 10px;
+} 
+
+.gif { width: 50%; }
+
+@media screen and (max-width: 767px) {
+    #gifRight { text-align-last: center; padding-bottom: 10px; }
+    #gifLeft { text-align-last: center; padding-bottom: 10px; }
+    .gif { width: 85%; }
+}
+
+@media screen and (max-width: 767px) {
+    .plutusFull {
+    margin-left: 0px;
+    }
+}
+
+#highlightPlutus { 
+    background: #ebeb67; 
+}
+
+#underlinePlutus { 
+    text-decoration: none; 
+    border-bottom: 3px solid #ebeb67; 
+}
+
+#plutusHeight {
+    min-height: 40%;
+    line-height: 28pt;
+}
+
+#plutusHeight a:link { color: #ebeb67; }
+#plutusHeight a:hover { color: #ebeb67; }
+#plutusHeight a:active { color: #ebeb67; }
+#plutusHeight a:visited { color: #ebeb67; }
+
+@media only screen and (max-width: 767px) {
+    #plutusHeight { text-align: left; min-height: 20%; line-height: 17pt;}
+}
+
+/*
+----------------------------------------------------------------------------------------------------
+BOOMER'S GOURMET FRIES */
+
+.boomersFull {
+    height: 700px;
+    line-height: 65pt;
+    text-align: center;
+    background-image: url(index/full_pages/boomers/boomersFull_D.jpg);
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: cover;                    
+    background-repeat: no-repeat;
+}
+
+.boomerImg { width: 75%; }
+
+@media screen and (max-width: 767px) {
+    .boomerImg { width: 100%; }
+}
+
+#boomerimg {
+    margin-left: 15%;
+    margin-right: 15%; 
+    width: 70%;
+}
+
+#boomerimg1 {
+    margin: 0;
+    width: 100%;
+}
+
+#underlineBoomer { 
+    text-decoration: none; 
+    border-bottom: 3px solid red; 
+}
+
+/*
+----------------------------------------------------------------------------------------------------
+UW RENCANA */
+
+.rencanaFull {
+    height: 700px;
+    line-height: 65pt;
+    text-align: center;
+    background-image: url(index/full_pages/rencana/uwrencana_D.jpg);
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: cover;                    
+    background-repeat: no-repeat;
+}
+
+.uwrImg { width: 75%; }
+
+@media screen and (max-width: 767px) {
+    .uwrImg { width: 100%; }
+}
+
+#marginAdj {
+    padding-left: 200px; 
+    padding-right: 200px;
+}
+
+@media only screen and (max-width: 1000px) { 
+    #marginAdj { padding-left: 15px; padding-right: 15px; }
+}
+
+#highlightUWR { background: #f28eaf; }
+
+#uwrimg {
+    margin: 0;
+    width: 100%;
+}
+
