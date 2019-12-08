@@ -402,15 +402,15 @@ IMAGE STYLES */
         text-decoration: none;
         overflow: hidden;
     }
-    .miscetc { background-image: url(index/banners/mobile/miscetc_M.jpg); overflow: hidden; }
-    .twoeightnine { background-image: url(index/banners/mobile/20182019_M.jpg); overflow: hidden; }
-    .twosixseven { background-image: url(index/banners/mobile/20162017_M.jpg); overflow: hidden; }
-    .boomers-banner { background-image: url(index/banners/mobile/boomers_M.jpg); overflow: hidden; }
-    .vintagedoc-banner { background-image: url(index/banners/mobile/vintagedoc_M.jpg); overflow: hidden; }
-    .fruitdesigns { background-image: url(index/banners/mobile/fruitcase_M.jpg); overflow: hidden; }
-    .uwrencana { background-image: url(index/banners/mobile/uwrencana_M.jpg); overflow: hidden; }
-    .animation { background-image: url(index/banners/mobile/animation_M.jpg); overflow: hidden; }
-    .plutus { background-image: url(index/banners/mobile/plutus_M.jpg); overflow: hidden; }
+    .miscetc { background-image: url(index/banners/mobile/miscetc_M.jpg); background-size: cover; overflow: hidden; }
+    .twoeightnine { background-image: url(index/banners/mobile/20182019_M.jpg); background-size: cover; overflow: hidden; }
+    .twosixseven { background-image: url(index/banners/mobile/20162017_M.jpg); background-size: cover; overflow: hidden; }
+    .boomers-banner { background-image: url(index/banners/mobile/boomers_M.jpg); background-size: cover; overflow: hidden; }
+    .vintagedoc-banner { background-image: url(index/banners/mobile/vintagedoc_M.jpg); background-size: cover; overflow: hidden; }
+    .fruitdesigns { background-image: url(index/banners/mobile/fruitcase_M.jpg); background-size: cover; overflow: hidden; }
+    .uwrencana { background-image: url(index/banners/mobile/uwrencana_M.jpg); background-size: cover; overflow: hidden; }
+    .animation { background-image: url(index/banners/mobile/animation_M.jpg); background-size: cover; overflow: hidden; }
+    .plutus { background-image: url(index/banners/mobile/plutus_M.jpg); background-size: cover; overflow: hidden; }
 }
 
 /*
