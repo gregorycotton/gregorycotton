@@ -402,15 +402,87 @@ IMAGE STYLES */
         text-decoration: none;
         overflow: hidden;
     }
-    .miscetc { background-image: url(index/banners/mobile/miscetc_M.jpg); background-size: cover; overflow: hidden; }
-    .twoeightnine { background-image: url(index/banners/mobile/20182019_M.jpg); background-size: cover; overflow: hidden; }
-    .twosixseven { background-image: url(index/banners/mobile/20162017_M.jpg); background-size: cover; overflow: hidden; }
-    .boomers-banner { background-image: url(index/banners/mobile/boomers_M.jpg); background-size: cover; overflow: hidden; }
-    .vintagedoc-banner { background-image: url(index/banners/mobile/vintagedoc_M.jpg); background-size: cover; overflow: hidden; }
-    .fruitdesigns { background-image: url(index/banners/mobile/fruitcase_M.jpg); background-size: cover; overflow: hidden; }
-    .uwrencana { background-image: url(index/banners/mobile/uwrencana_M.jpg); background-size: cover; overflow: hidden; }
-    .animation { background-image: url(index/banners/mobile/animation_M.jpg); background-size: cover; overflow: hidden; }
-    .plutus { background-image: url(index/banners/mobile/plutus_M.jpg); background-size: cover; overflow: hidden; }
+    .miscetc { 
+        background-image: url(index/banners/mobile/miscetc_M.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        background-size: cover; 
+        background-attachment: fixed; 
+        overflow: hidden; 
+    }
+    .twoeightnine { 
+        background-image: url(index/banners/mobile/20182019_M.jpg); 
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        background-size: cover; 
+        background-attachment: fixed; 
+        overflow: hidden; 
+    }
+    .twosixseven { 
+        background-image: url(index/banners/mobile/20162017_M.jpg); 
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        background-size: cover; 
+        background-attachment: fixed; 
+        overflow: hidden; 
+    }
+    .boomers-banner { 
+        background-image: url(index/banners/mobile/boomers_M.jpg); 
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        background-size: cover; 
+        background-attachment: fixed; 
+        overflow: hidden; 
+    }
+    .vintagedoc-banner { 
+        background-image: url(index/banners/mobile/vintagedoc_M.jpg); 
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        background-size: cover; 
+        background-attachment: fixed; 
+        overflow: hidden; 
+    }
+    .fruitdesigns { 
+        background-image: url(index/banners/mobile/fruitcase_M.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        background-size: cover; 
+        background-attachment: fixed; 
+        overflow: hidden; 
+    }
+    .uwrencana {
+        background-image: url(index/banners/mobile/uwrencana_M.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        background-size: cover; 
+        background-attachment: fixed; 
+        overflow: hidden; 
+    }
+    .animation { 
+        background-image: url(index/banners/mobile/animation_M.jpg); 
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        background-size: cover; 
+        background-attachment: fixed; 
+        overflow: hidden;
+    }
+    .plutus { 
+        background-image: url(index/banners/mobile/plutus_M.jpg); 
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        background-size: cover; 
+        background-attachment: fixed; 
+        overflow: hidden;
+    }
 }
 
 /*
