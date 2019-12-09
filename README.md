@@ -1,2 +1,0 @@
-# gregorycotton
-gregorycotton
