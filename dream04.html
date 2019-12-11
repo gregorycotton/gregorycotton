@@ -1,0 +1,33 @@
+<DOCTYPE html>
+<html>
+<head>
+    <title>dream 04.</title>
+    <meta name="viewport" content="width=device-width">    
+    <link rel = "stylesheet" type = "text/css" href = "style.css">
+</head>
+    
+<body>
+    i had a very weird dream two nights ago where i was in front of a large willow the size of a skyscraper<br/>
+    i swung from one of it's drooping branches into a cloud of dust, and when the cloud cleared i was in a school of sorts<br/>
+    a lot of kids were playing basketball and the kid in the blue shorts shone a harsh light in a shorter kid's eye and blinded him<br/>
+    i was chased through the halls by the kid in the blue shorts until i woke up.
+</body>
+
+</html>
+</DOCTYPE>
+
+<script>
+$(document).ready(function(){
+  $("a").on('click', function(event) {
+    if (this.hash !== "") {
+      event.preventDefault();
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+           window.location.hash = hash;
+      });
+    }
+  });
+});
+</script>
