@@ -1,6 +1,39 @@
-<title>roll call.</title>
+<DOCTYPE html>
+<html>
+<head>
+    <title>. . .</title>
+    <meta name="viewport" content="width=device-width">    
+    <link rel = "stylesheet" type = "text/css" href = "style.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+    
+<body>
+<img src="g.png">
+</body>
+    
+<script>
+function colorChoice(){
+    var colorArray = ['#ff0000', '#0090ff', '#1ab51b', '#f5ff00'];
+    return colorArray[Math.floor(Math.random() * colorArray.length)];
+}
 
-<center>
-    <br><br><br><br><br><br><br>
-    gregory cotton
-</center>
+function positionGen(){
+    return Math.floor((Math.random()*100)) + "%";
+}
+
+function newSqr(){
+    var div = document.createElement("div");
+    div.style.background = colorChoice();
+    div.style.left = positionGen();
+    div.style.top = positionGen();
+    $("body").append(div);
+}
+    
+var squares = window.setInterval(newSqr, 750);
+
+</script>    
+    
+</html>
+</DOCTYPE>
