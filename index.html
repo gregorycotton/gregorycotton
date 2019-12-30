@@ -1,20 +1,29 @@
 <DOCTYPE html>
 <html>
 <head>
-    <title>hello,</title>
+    <title>hello.</title>
     <meta name="viewport" content="width=device-width">    
-    <link rel = "stylesheet" type = "text/css" href = "style.css">
+    <link rel = "stylesheet" type = "text/css" href = "sqrstyle.css">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
     
-<body>
-<!-- ... -->
-<img src="g.png">
+<body onmousemove="mousemove()" onclick='window.location.href="portfolio.html"'>
+<a href="portfolio.html"><img src="index/display/logo.png"></a>
+    
+<span id="textSpan" style="position:absolute"><figcaption>click to begin</figcaption></span>
 </body>
     
 <script>
+function mousemove()
+{
+$('#textSpan').css({
+    'top' : event.pageY,
+    'left' : event.pageX
+}); 
+}
+    
 function colorChoice(){
     var colorArray = ['#ff0000', '#0090ff', '#1ab51b', '#f5ff00'];
     return colorArray[Math.floor(Math.random() * colorArray.length)];
@@ -33,8 +42,6 @@ function newSqr(){
 }
     
 var squares = window.setInterval(newSqr, 750);
-
 </script>    
-    
 </html>
 </DOCTYPE>
