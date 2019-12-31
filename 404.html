@@ -5,18 +5,58 @@ permalink: /404.html
 ---
 
 <DOCTYPE html>
-<html>
-    <head>
-        <title>Gregory Cotton</title>
-        <meta name="viewport" content="width=device-width">
-        <link rel="shortcut icon" href="favicon.ico" />        
-        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-        <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:350" rel="stylesheet"> -->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">    
-    </head>
+<html style="font-family: 'Work Sans', sans-serif;">
+<head>
+    <title>404. oops.</title>
+    <meta name="viewport" content="width=device-width">    
+    <link rel = "stylesheet" type = "text/css" href = "sqrstyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+    
+<body onmousemove="mousemove()" onclick='window.location.href="index.html"'>
 
-<body>
-    <p>this page doesn't exist. try searching again or visiting my home page.</p>
-    <p><a href="/index.html">gregorycotton.ca</a></p>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<p><strong>looks like this page doesn't exist.</strong></p>
+<p><strong>click anywhere to go to gregorycotton.ca</strong></p>
+    
+<span id="textSpan" style="position:absolute;">   
+    <figcaption>404&nbsp;404&nbsp;404</figcaption>
+    <figcaption>404&nbsp;404&nbsp;404</figcaption>
+    <figcaption>404&nbsp;404&nbsp;404</figcaption>
+    <figcaption>404&nbsp;404&nbsp;404</figcaption>
+    <figcaption>404&nbsp;404&nbsp;404</figcaption>
+    <figcaption>404&nbsp;404&nbsp;404</figcaption>
+</span>
+    
 </body>
+    
+<script>
+function mousemove()
+{
+$('#textSpan').css({
+    'top' : event.pageY,
+    'left' : event.pageX
+}); 
+}
+    
+function colorChoice(){
+    var colorArray = ['#ff0000', '#0090ff', '#1ab51b', '#f5ff00'];
+    return colorArray[Math.floor(Math.random() * colorArray.length)];
+}
+function positionGen(){
+    return Math.floor((Math.random()*100)) + "%";
+}
+function newSqr(){
+    var div = document.createElement("div");
+    div.style.background = colorChoice();
+    div.style.left = positionGen();
+    div.style.top = positionGen();
+    $("body").append(div);
+}
+    
+var squares = window.setInterval(newSqr, 750);
+</script>    
+</html>
+</DOCTYPE>
