@@ -1,0 +1,163 @@
+<DOCTYPE html>
+<html>
+<head>
+    <title>Misc Etc. | Gregory Cotton</title>
+    <link rel="shortcut icon" href="index/display/favicon.ico"/>
+    <meta name="viewport" content="width=device-width">    
+    <link rel = "stylesheet" type = "text/css" href = "style.css">
+    <link rel = "stylesheet" type = "text/css" href = "fullstyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300&display=swap" rel="stylesheet"> <!-- REMOVE -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+    
+<body>  
+<div class="cursor"></div>
+<div id="home"></div>
+    
+<div id="noMobile">
+<div id="menuD">
+    <a id="unlR" href="portfolio.html#projects">PROJECTS</a><img class="small" src="index/1.jpg">
+    <br/>
+    <a id="unlB" href="portfolio.html#designs">CASE STUDIES</a><img class="small" src="index/2.jpg">
+    <br/>
+    <a id="unlG" href="portfolio.html#about">ABOUT ME</a><img class="small" src="index/3.jpg">
+    <br/>   
+    <a id="unlY" href="index.html">SQUARES</a><img class="small" src="index/4.jpg">
+</div>
+</div>
+    
+<div id="noDesktop">
+    <div id="nav-toggle">
+        <img class="menubutton" src="index/menu_mobile.png">
+    </div>
+    
+    <div id="menu-content">
+        <a id="unlR" href="portfolio.html#projects">PROJECTS</a>
+        <br/>
+        <a id="unlB" href="portfolio.html#designs">CASE STUDIES</a>
+        <br/>
+        <a id="unlG" href="portfolio.html#about">ABOUT ME</a>
+        <br/>
+        <a id="unlY" href="index.html">SQUARES</a>
+    </div>
+</div>
+        
+<section class="section-display">
+<div style="text-align:center; line-height: 10px; padding-top:50px;">
+    <p id="prj-title">Misc Etc.</p>
+    <figcaption><a href="portfolio.html">&#8647;&nbsp;back</a></figcaption>
+</div>
+    
+<div class="page-wrap">
+    <div id="prj-txt-bg-top">
+        <p id="prj-txt">I have always been fascinated by large, high-density cities. One of the most staggering elements of Hong Kong to me is the scale of everything; from the height of the buildings, to the number of people.</p>
+        
+        <p id="prj-txt">Each image in this set is composed of 50 images I took (200 total). I edited the photos in Lightroom, and then brought them into Photoshop where I manually composited them. This gallery was created during autumn of 2019 in Hong Kong and was displayed at the City University of Hong Kong's School of Creative Media.</p>
+    </div>
+</div>
+    
+<br/>
+    
+<div class="page-wrap">
+    <div class="page-wrap-inner">
+        <div class="display-row">
+            <div class="col-left">
+                <div id="misc-img-container">
+                    <img id="misc-img" src="index/miscetc/ghost_walk.jpg">
+                    <figcaption>Crosswalk Ghosts</figcaption><br/> 
+                </div> 
+            </div>
+            
+            <div class="col-right">
+                <div id="misc-img-container">
+                    <img id="misc-img" src="index/miscetc/scary_buildings.jpg">
+                    <figcaption>Scary Buildings</figcaption>
+                </div>
+            </div>
+        </div>
+        
+        <br/>    
+    
+        <div class="display-row">
+            <div class="col-left">
+                <div id="misc-img-container">
+                    <img id="misc-img" src="index/miscetc/residential_walk.jpg">
+                    <figcaption>Residential Walk</figcaption><br/> 
+                </div>
+            </div>
+            
+            <div class="col-right">
+                <div id="misc-img-container">
+                    <img id="misc-img" src="index/miscetc/loud_neighbourhood.jpg">
+                    <figcaption>Loud Neighbourhood</figcaption>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+        
+</body>
+    
+<footer>
+<br/>
+<div style="text-align:center; line-height: 10px;">
+    <figcaption><a href="#home">back to top</a></figcaption>
+</div>
+<br/>
+</footer>
+    
+</html>
+</DOCTYPE>
+
+<script> 
+//Scroll Smooth
+$(document).ready(function() {
+  $("a").on('click', function(event) {
+    if (this.hash !== "") {
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 2000, function() {
+        window.location.hash = hash;
+      });
+      return false;
+    } 
+  });
+});
+    
+//Copy Email
+function copyTxt(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+ 
+//Cursor Box
+const cursor = document.querySelector('.cursor');
+
+document.addEventListener('mousemove', e => {
+    cursor.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
+})
+
+document.addEventListener('click', () => {
+    cursor.classList.add("expand");
+
+setTimeout(() => {
+    cursor.classList.remove("expand");
+}, 500)
+})
+    
+//Menu Slide Down
+$(document).ready(function(){
+  $("#nav-toggle").click(function(){
+    $("#menu-content").slideToggle(400);
+  });
+});
+</script>

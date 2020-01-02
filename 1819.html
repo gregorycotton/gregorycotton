@@ -1,0 +1,168 @@
+<DOCTYPE html>
+<html>
+<head>
+    <title>2018 - 2019 | Gregory Cotton</title>
+    <link rel="shortcut icon" href="index/display/favicon.ico"/>
+    <meta name="viewport" content="width=device-width">    
+    <link rel = "stylesheet" type = "text/css" href = "style.css">
+    <link rel = "stylesheet" type = "text/css" href = "fullstyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300&display=swap" rel="stylesheet"> <!-- REMOVE -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="./pointer.css" rel="stylesheet">
+</head>
+    
+<body>  
+<div class="cursor"></div>
+<div id="home"></div>
+    
+<div id="noMobile">
+<div id="menuD">
+    <a id="unlR" href="portfolio.html#projects">PROJECTS</a><img class="small" src="index/1.jpg">
+    <br/>
+    <a id="unlB" href="portfolio.html#designs">CASE STUDIES</a><img class="small" src="index/2.jpg">
+    <br/>
+    <a id="unlG" href="portfolio.html#about">ABOUT ME</a><img class="small" src="index/3.jpg">
+    <br/>   
+    <a id="unlY" href="index.html">SQUARES</a><img class="small" src="index/4.jpg">
+</div>
+</div>
+    
+<div id="noDesktop">
+    <div id="nav-toggle">
+        <img class="menubutton" src="index/menu_mobile.png">
+    </div>
+    
+    <div id="menu-content">
+        <a id="unlR" href="portfolio.html#projects">PROJECTS</a>
+        <br/>
+        <a id="unlB" href="portfolio.html#designs">CASE STUDIES</a>
+        <br/>
+        <a id="unlG" href="portfolio.html#about">ABOUT ME</a>
+        <br/>
+        <a id="unlY" href="index.html">SQUARES</a>
+    </div>
+</div>
+
+<section class="section-display">
+    
+<div style="text-align:center; line-height: 10px; padding-top:50px;">
+    <p id="prj-title">2018/2019</p>
+    <p id="prj-title">Assorted Works</p>
+    <figcaption><a href="portfolio.html">&#8647;&nbsp;back</a></figcaption>
+</div>
+    
+<div class="page-wrap">
+    <div id="prj-txt-bg-top">
+        <p id="prj-txt">2018 and 2019 saw me move slightly away from the traditional surrealist style I had adapted and more towards mixed media pieces that made use of collage art, computer science, and illustration. I continued to explore themes similar to those from my later 2017 work.</p>
+    </div>
+</div>
+    
+<br/>
+    
+<div class="page-wrap">
+    <div class="page-wrap-inner">
+        <div style="padding: 5px;">   
+            <img style="width: 100%;" src="index/20182019/oppositeday.jpg">
+            <figcaption>Opposite Day (2018)</figcaption>
+        </div>   
+        
+        <div class="display-row">
+            <div class="col-left" style="padding: 5px;">
+                <img style="width: 100%" src="index/20182019/monday.jpg">
+                <figcaption>Monday (2018)</figcaption>
+            </div>
+            
+            <div class="col-right" style="padding: 5px;">
+                <img style="width: 100%" src="index/20182019/weightless.jpg">
+                <figcaption>Weightless (2019)</figcaption>
+            </div> 
+        </div>
+    
+        <div style="padding: 5px;">
+            <img style="width: 100%;" src="index/20182019/teatime.jpg">
+            <figcaption>Teatime (2019)</figcaption>
+        </div>
+        
+        <div class="display-row">
+            <div class="col-left" style="padding: 5px;">
+                <img style="width: 100%" src="index/20182019/amylase.jpg">
+                <figcaption>Amylase (2019)</figcaption>
+            </div> 
+            <div class="col-right" style="padding: 5px;">
+                <img style="width: 100%" src="index/20182019/selfinducedmelancholy.jpg">
+                <figcaption>Self-Induced Melancholy (2018)</figcaption>
+            </div>
+        </div>
+    
+        <div style="padding: 5px;">
+            <img style="width: 100%;" src="index/20182019/development.jpg">
+            <figcaption>Development (2019)</figcaption>    
+        </div>
+    </div>
+</div> 
+    
+</section>
+</body>
+    
+<footer>
+<br/>
+<div style="text-align:center; line-height: 10px;">
+    <figcaption><a href="#home">back to top</a></figcaption>
+</div>
+<br/>
+</footer>
+    
+</html>
+</DOCTYPE>
+
+<script> 
+//Scroll Smooth
+$(document).ready(function() {
+  $("a").on('click', function(event) {
+    if (this.hash !== "") {
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 2000, function() {
+        window.location.hash = hash;
+      });
+      return false;
+    } 
+  });
+});
+    
+//Copy Email
+function copyTxt(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+ 
+//Cursor Box
+const cursor = document.querySelector('.cursor');
+
+document.addEventListener('mousemove', e => {
+    cursor.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
+})
+
+document.addEventListener('click', () => {
+    cursor.classList.add("expand");
+
+setTimeout(() => {
+    cursor.classList.remove("expand");
+}, 500)
+})
+    
+//Menu Slide Down
+$(document).ready(function(){
+  $("#nav-toggle").click(function(){
+    $("#menu-content").slideToggle(400);
+  });
+});
+</script>
