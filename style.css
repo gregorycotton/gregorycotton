@@ -295,8 +295,8 @@ figcaption {
 
 .strikethrough-b a:hover:before{
   animation: in 0.75s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
-
 }
+
 @keyframes in{
   0%{
     width: 0;
@@ -338,6 +338,26 @@ figcaption {
   }
 }
 
+@media screen and (max-width: 767px) {
+    .strikethrough-r a:before{
+        width: 0;
+        height: 0;
+    }
+    .strikethrough-b a:before{
+        width: 0;
+        height: 0;
+    }
+    .strikethrough-r a:hover:before{
+        animation: none;
+        width: 0;
+        height: 0;
+    }
+    .strikethrough-b a:hover:before{
+        animation: none;
+        width: 0;
+        height: 0;
+    }
+}
 /* Figcaption Links */
 figcaption {
     font-weight: 100;
