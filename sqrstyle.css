@@ -23,6 +23,9 @@ img, figure {
     img {
         width: 35vw;
     }
+    figcaption {
+        display: none;
+    }
 }
 
 figcaption {
