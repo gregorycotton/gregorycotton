@@ -9,13 +9,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
     
-<body onmousemove="mousemove()" onclick='window.location.href="portfolio.html"'>
+<body onmousemove="mousemove()">
 <a href="portfolio.html"><img src="index/display/logo.png"></a>
    
 <span id="textSpan" style="position:absolute"><figcaption>click to begin</figcaption></span>
 </body>
     
 <script>
+    
+$( "body" ).bind( "click", function() {
+    alert( "User clicked on 'foo.'" );
+});
+    
 function mousemove()
 {
 $('#textSpan').css({
