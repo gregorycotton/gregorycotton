@@ -1,0 +1,695 @@
+/*
+----------------------------------------------------------------------------------------------------
+01. GENERAL STYLES */
+
+.cursor {
+    z-index: 9999;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ff0000;
+    border-radius: 0;
+    position: absolute;
+    transition-duration: 250ms;
+    transition-timing-function: ease-out;
+    pointer-events: none;
+}
+
+@keyframes cursorAnim {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+        background-color: #ff0000;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.expand {
+    animation: cursorAnim .5s forwards;
+    border: 2px solid #ff0000;
+}
+
+::selection { background: #000; color: #fff; }
+
+*:focus { outline: none !important }
+
+body {
+    margin: 0 auto;
+    font-family: 'Work Sans', sans-serif;
+    color: #000;
+    background-color: #fff;
+    margin: 10px;
+}
+
+footer {
+    margin: 5px;
+    border-top: 1px dashed #000; 
+}
+
+#landing-page {
+    height: 100%;
+}
+
+#landing-page-content {
+    width: 55%; 
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    top: 50%; 
+    transform: translateY(-50%);
+}
+
+#noMobile {
+    display: block;
+}
+
+#noDesktop {
+    display: block;
+}
+
+@media screen and (max-width: 767px) {
+    #noMobile {
+        display: none;
+    }
+    #noDesktop {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    #noMobile {
+        display: block;
+    }
+    #noDesktop {
+        display: none;
+    }
+}
+
+figcaption {
+    font-family: 'Work Sans', sans-serif;
+    color: #000;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* ---------- 01.1. MENU */
+
+#menuD {
+    text-align: right;
+    right: 0;
+    z-index: 999;
+    float: right;
+    position: absolute;
+    position: fixed;
+    font-size: 15px;
+    line-height: 22.5pt;
+    padding-top: 25px;
+    padding-right: 50px;
+}
+
+#menu-content {
+    display: none;
+    text-align: right;
+    right: 0;
+    z-index: 999;
+    float: right;
+    position: absolute;
+    position: fixed;
+    font-size: 16px;
+    line-height: 22.5pt;
+    right: 10%; 
+}
+
+.small {
+    vertical-align: middle;
+    width: 10px;
+    padding-left: 5px;
+}
+
+.menubutton {
+    z-index: 10;
+    margin: 0;
+    display: inline;
+    width: 15px;
+}
+
+#nav-toggle { 
+    z-index: 999;
+    cursor: pointer;
+    position: absolute; 
+    right: 2.5%; 
+    overflow: hidden;
+    position: fixed;
+}
+
+/* ---------- 01.2. LINK STYLES */
+
+/* Desktop Nav Links */
+#unlR { 
+    background: linear-gradient(to bottom, #ff0000 0%, #ff0000 100%);
+	background-position: 0 100%;
+	background-repeat: repeat-x;
+	background-size: 4px 1px;
+    color: #000;
+    text-decoration: none;
+    transition: background-size 1s;
+}
+
+#unlB { 
+    background: linear-gradient(to bottom, #0090ff 0%, #0090ff 100%);
+	background-position: 0 100%;
+	background-repeat: repeat-x;
+	background-size: 4px 1px;
+    color: #000;
+    text-decoration: none;
+    transition: background-size 1s;
+}
+
+#unlG { 
+    background: linear-gradient(to bottom, #1ab51b 0%, #1ab51b 100%);
+	background-position: 0 100%;
+	background-repeat: repeat-x;
+	background-size: 4px 1px;
+    color: #000;
+    text-decoration: none;
+    transition: background-size 1s;
+} 
+
+#unlY { 
+    background: linear-gradient(to bottom, #f5ff00 0%, #f5ff00 100%);
+	background-position: 0 100%;
+	background-repeat: repeat-x;
+	background-size: 4px 1px;
+    color: #000;
+    text-decoration: none;
+    transition: background-size 1s;
+} 
+
+#unlR:hover { 
+    background-size: 4px 50px;
+}
+
+#unlB:hover { 
+    background-size: 4px 50px;
+}
+
+#unlG:hover { 
+    background-size: 4px 50px;
+}
+
+#unlY:hover { 
+    background-size: 4px 50px;
+}
+
+
+/* Strikethrough Animation Links: Red */
+.strikethrough-r a{
+  text-decoration: none;
+  color: #ff0000;
+  margin: 0 15px;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+.strikethrough-r a:before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2.5px;
+  background: #ff0000;
+  top: 50%;
+  animation: out 0.75s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+
+.strikethrough-r a:hover:before{
+  animation: in 0.75s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+
+}
+@keyframes in{
+  0%{
+    width: 0;
+    left: 0;
+    right:auto;
+  }
+  100%{
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}
+@keyframes out{
+  0%{
+    width: 100%;
+    left: auto;
+    right: 0;
+  }
+  100%{
+    width: 0;
+    left: auto;
+    right: 0;
+  }
+}
+@keyframes show{
+  0%{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@for $i from 1 through 5 {
+  .strikethrough-r a:nth-child(#{$i}){
+    animation: show .2s #{$i*0.1+1}s ease 1 both;
+  }
+}
+
+/* Strikethrough Animation Links: Blue */
+.strikethrough-b a{
+  text-decoration: none;
+  color: #0090ff;
+  margin: 0 15px;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+.strikethrough-b a:before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2.5px;
+  background: #0090ff;
+  top: 50%;
+  animation: out 0.75s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+
+.strikethrough-b a:hover:before{
+  animation: in 0.75s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+
+@keyframes in{
+  0%{
+    width: 0;
+    left: 0;
+    right: auto;
+  }
+  100%{
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}
+@keyframes out{
+  0%{
+    width: 100%;
+    left: auto;
+    right: 0;
+  }
+  100%{
+    width: 0;
+    left: auto;
+    right: 0;
+  }
+}
+@keyframes show{
+  0%{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@for $i from 1 through 5 {
+  .strikethrough-b a:nth-child(#{$i}){
+    animation: show .2s #{$i*0.1+1}s ease 1 both;
+  }
+}
+
+@media screen and (max-width: 767px) {
+    .strikethrough-r a:before{
+        width: 0;
+        height: 0;
+    }
+    .strikethrough-b a:before{
+        width: 0;
+        height: 0;
+    }
+    .strikethrough-r a:hover:before{
+        animation: none;
+        width: 0;
+        height: 0;
+    }
+    .strikethrough-b a:hover:before{
+        animation: none;
+        width: 0;
+        height: 0;
+    }
+}
+/* Figcaption Links */
+figcaption {
+    font-weight: 100;
+}
+
+figcaption a:link {
+    color: #000;
+    text-decoration: none
+}
+
+figcaption a:hover {
+    text-decoration: underline;
+}
+
+figcaption a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+figcaption a:active {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Table Menu Links */
+.menuTable a:link {
+    color: #000;
+    text-decoration: none
+}
+
+.menuTable a:hover {
+    cursor: cell;
+    text-decoration: underline;
+}
+
+.menuTable a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+.menuTable a:active {
+    color: #000;
+    text-decoration: none;
+}
+
+
+/*
+----------------------------------------------------------------------------------------------------
+02. TABLE STYLES */
+
+.menuTable table {
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.menuTable table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+}
+
+.menuTable table th,
+.menuTable table td {
+    padding: .625em;
+    text-align: center;
+}
+
+.menuTable table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 767px) {
+    .menuTable table th,
+    .menuTable table td {
+        border: 0px;
+    }
+    .menuTable table {
+        border: 0;
+  }
+
+  .menuTable table caption {
+        font-size: 1.3em;
+  }
+  
+  .menuTable table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        height: 100px;
+  }
+  
+  .menuTable table tr {
+        border-bottom: 3px dashed #000;
+        display: block;
+        margin-bottom: .625em;
+  }
+  
+  .menuTable table td {
+        border-bottom: 1px solid #000;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+  }
+  
+  .menuTable table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+  }
+  
+  .menuTable table td:last-child {
+        border-bottom: 0;
+  }
+}
+
+.menuTable td[colspan]:not([colspan="1"]) {
+    text-align: center;
+}
+
+/*
+----------------------------------------------------------------------------------------------------
+03. TEXT STYLES */
+
+#nameTitle {
+    line-height: 22.5pt;
+    margin: 5px;
+    color: #000;
+    font-size: 22.5px;
+}
+
+#titleText {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    mix-blend-mode: difference;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 60px;
+    color: #fff;
+    display: block;
+    position: relative;
+    top: 50%; 
+    transform: translateY(-50%);
+}
+
+@media screen and (max-width: 767px) {
+    #titleText {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        font-size: 52.5px;
+    }
+}
+
+#intro-body {
+    font-weight: 600;
+    color: #000;
+    font-size: 2.75em;
+}
+
+@media screen and (max-width: 767px) {
+    #intro-body {
+        font-size: 2.5em;
+    }
+}
+
+/* */
+
+.center-img {
+    z-index: 10;
+    width: 15vw;
+    position: absolute;
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.center-img-mobile {
+    z-index: 999;
+    width: 35vw;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.display-img {
+    width: 100%;
+    transition: ease 2s;
+}
+
+@media only screen and (min-width: 767px) {
+    .display-img:hover {
+        transform: scale(.95);
+        transition: ease 1.5s;
+    }
+}
+
+.display-row {
+    display: flex;
+}
+
+.col-right {
+    height: 100%;
+    flex: 1;
+    float: center;
+}
+
+.col-left {
+    height: 100%;
+    flex: 1;
+    float: center;
+}
+
+#col-text {
+    margin: 0 auto;
+    position: relative;
+    margin-top: 50%; 
+    margin-left: 20%;
+    transform: translateY(-50%);
+}
+
+.small-display-text {
+    font-size: 1.25em;
+}
+
+.large-display-text {
+    font-weight: 700;
+    font-size: 5vw;
+}
+    
+@media only screen and (max-width: 975px) {
+    body {
+        margin-top: 15px;
+    }
+    .col-right {
+        height: auto;
+}
+    .col-left {
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .display-row {
+        display: inline-block;
+    }
+    display-img:hover {
+        transform: none;
+    }
+    .small-display-text {
+        font-size: 2.75vw;
+    }
+    .large-display-text {
+        font-weight: 100;
+        font-size: 2.75vw;
+    }
+    #col-text {
+        margin: 0;
+        padding: 0;
+        margin-top: 2.5px;
+        margin-bottom: 2.5px;
+        background: #fff;
+    }
+    .col-right {
+        height: auto;
+        flex: 1;
+        float: center;
+    }
+    .col-left {
+        height: auto;
+        flex: 1;
+        float: center;
+    }
+}
+
+/*
+----------------------------------------------------------------------------------------------------
+04. ANIMATE */
+
+.transition-fade {
+    opacity: 1; 
+    transition: 500ms; 
+}
+
+html.is-animating .transition-fade { 
+    opacity: 0;
+}
+
+/*
+----------------------------------------------------------------------------------------------------
+05. ARCHIVE */
+
+.archive-title {
+    background-color: #f5ff00;
+    font-weight: 700;
+    font-size: 5vw;
+}
+
+.pic-hover a {
+    color: #000;
+    text-decoration: none;
+}
+
+.pic-hover a:link {
+    color: #000;
+    text-decoration: none;
+}
+
+.pic-hover a:active {
+    color: #000;
+    text-decoration: none;
+}
+
+.pic-hover a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+.pic-hover a:hover {
+    color: #000;
+    text-decoration: none;
+}
