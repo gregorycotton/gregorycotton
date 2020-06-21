@@ -600,6 +600,11 @@ figcaption a:active {
     font-weight: 700;
     font-size: 5vw;
 }
+
+.medium-display-text {
+    font-weight: 700;
+    font-size: 2.5vw;
+}
     
 @media only screen and (max-width: 975px) {
     body {
@@ -624,6 +629,10 @@ figcaption a:active {
         font-size: 2.75vw;
     }
     .large-display-text {
+        font-weight: 100;
+        font-size: 2.75vw;
+    }
+    .medium-display-text {
         font-weight: 100;
         font-size: 2.75vw;
     }
