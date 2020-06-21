@@ -1,3 +1,4 @@
+
 <DOCTYPE html>
 <html>
 <head>
@@ -65,14 +66,62 @@
 
 <p id="noMobile">&nbsp;</p> 
     
-<p><span class="archive-title">Archived Projects.</span><span class="small-display-text">&nbsp;&nbsp;01&nbsp;&#8595;</span></p>  
-    
-<p class="large-display-text">
-    <span class="pic-hover">
-        <a href="squares.html">Squares/Old Landing Page [2019].</a>
+<p><span class="archive-title">Archived Projects.</span><span class="small-display-text">&nbsp;&nbsp;09&nbsp;&#8595;</span></p>
+<p>A chronological archive of all projects, case studies, etc.</p>
+
+<p class="medium-display-text">
+    <span class="pic-hover random-colour">
+        <a href="openhouse.html">[2020] Open House — Gallery Event</a>
     </span>
 </p>
+    
+<p class="medium-display-text">
+    <span class="pic-hover random-colour">
+        <a href="squares.html">[2019] Squares — Old Landing Page</a>
+    </span>
+</p>    
+   
+<p class="medium-display-text">
+    <span class="pic-hover random-colour">  
+        <a href="miscetc.html">[2019] Misc. Etc. — Personal Project</a>
+    </span>
+</p>   
 
+<p class="medium-display-text">
+    <span class="pic-hover random-colour">  
+        <a href="plutus.html">[2019] Plutus Banking App Design — Case Study</a>
+    </span>
+</p>
+    
+<p class="medium-display-text">
+    <span class="pic-hover random-colour">  
+        <a href="boomers.html">[2019] Boomer's Redesign — Case Study</a>
+    </span>
+</p>
+    
+<p class="medium-display-text">
+    <span class="pic-hover random-colour">  
+        <a href="1819.html">[2018] Assorted Works — Personal Projects</a>
+    </span>
+</p>
+    
+<p class="medium-display-text">
+    <span class="pic-hover random-colour">  
+        <a href="vintageuprising.html">[2018] Vintage Uprising — Documentary</a>
+    </span>
+</p> 
+    
+<p class="medium-display-text">
+    <span class="pic-hover random-colour">  
+        <a href="rencana.html">[2017] UW Rencana App Design — Case Study</a>
+    </span>
+</p>   
+    
+<p class="medium-display-text">
+    <span class="pic-hover random-colour">  
+        <a href="1617.html">[2016] Assorted Works — Personal Projects</a>
+    </span>
+</p>
 </body>
     
 </html>
@@ -115,4 +164,13 @@ $(document).ready(function(){
     $("#menu-content").slideToggle(400);
   });
 }); 
+    
+//Random Colour
+var colors = ['#ff0000', '#1ab51b', '#0090ff', '#f5ff00'];
+$(".random-colour").hover(function() {
+    $(this).css("background-color", colors[(Math.random() * colors.length) | 0])
+}, function() {
+    $(this).css("background-color", "")
+});
+
 </script>
