@@ -20,7 +20,7 @@ a:hover {
   background: linear-gradient(to bottom, #f5ff00 0%, #f5ff00 100%);
   background-position: 0 100%;
   background-repeat: repeat-x;
-  background-size: 4px 17.5px;
+  background-size: 4px 100%;
   color: #000;
   text-decoration: none;
   transition: background-size 1s;
