@@ -1,3 +1,36 @@
+/* Temporary link style for placeholder page */
+a:link {
+  color: #000;
+  background: linear-gradient(to bottom, #f5ff00 0%, #f5ff00 100%);
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 4px 2.5px;
+  color: #000;
+  text-decoration: none;
+  transition: background-size 1s, opacity 0.75s;
+}
+
+a:visited {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+  background: linear-gradient(to bottom, #f5ff00 0%, #f5ff00 100%);
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 4px 17.5px;
+  color: #000;
+  text-decoration: none;
+  transition: background-size 1s;
+}
+
+a:active {
+  color: #000;
+  text-decoration: none;
+}
+
 /* 
 
 CSS content order
