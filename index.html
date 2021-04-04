@@ -4,25 +4,10 @@
     <head>
         <title>Gregory Cotton</title>
         <meta charset="UTF-8">
-
-        <!-- Favicons -->
-        <link rel="apple-touch-icon" sizes="180x180" href="index/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="index/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="index/favicon/favicon-16x16.png">
-        <link rel="manifest" href="index/favicon/site.webmanifest">
-        <link rel="mask-icon" href="index/favicon/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="theme-color" content="#ffffff">
-
-        <!-- Setup -->
-        <meta name="description" content="Gregory Cotton - art direction and product design.">
-        <meta name="viewport" content="width=device-width">
-
-        <!-- Stylesheets & fonts -->
         <link rel="stylesheet" type="text/css" href="style.css">
-        <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Work+Sans:700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500&display=swap" rel="stylesheet">
 
         <!-- Jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -30,10 +15,71 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     </head>
 
+    <script>
+    //Scroll Smooth
+     $(document).ready(function() {
+       $("a").on('click', function(event) {
+         if (this.hash !== "") {
+           var hash = this.hash;
+           $('html, body').animate({
+             scrollTop: $(hash).offset().top
+           }, 2000, function() {
+             window.location.hash = hash;
+           });
+           return false;
+         }
+       });
+     });    
+    </script>
+
     <body>
-        <section>
-            <p><span class="name-title">I'm Gregory Cotton, an art director and product designer. I'm kinda in the middle of revamping this website so maybe <a style href="mailto:gacotton@uwaterloo.ca">shoot me an email</a> if you want to see what I've been up to.</span></p>
-        </section>
+
+        <h1>Gregory Cotton</h1>
+
+        <p>&nbsp;</p>
+        
+        <div id="page-wrap">
+            <div id="top" class="gallery">
+                <img class="imgs" src="Images/01.jpg">
+                
+                <p>&nbsp;</p>
+                
+                <img class="imgs" src="Images/02.jpg">
+                
+                <p>&nbsp;</p>
+                
+                <img class="imgs" src="Images/03.jpg">
+                
+                <p>&nbsp;</p>
+                
+                <img class="imgs" src="Images/04.jpg">
+                
+                <p>&nbsp;</p>
+                
+                <img class="imgs" src="Images/05.jpg">
+                
+                <p>&nbsp;</p>
+                
+                <img class="imgs" src="Images/06.jpg">
+                
+                <p>&nbsp;</p>
+                
+                <img class="imgs" src="Images/07.jpg">
+                
+                <p>&nbsp;</p>
+                
+                <img class="imgs" src="Images/08.jpg">
+            </div>
+        </div>
+
+        <p>&nbsp;</p>
+        
+        <a class="txt" href="#top">&#8593;
+        <br />Top</a>
+        
+        <p>&nbsp;</p>
+
     </body>
-   </html>
+
+    </html>
 </DOCTYPE>
