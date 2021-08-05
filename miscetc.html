@@ -1,172 +1,200 @@
 <DOCTYPE html>
-<html>
-<head>
-    <title>Misc Etc. | Gregory Cotton</title>
-    <link rel="shortcut icon" href="index/display/favicon.ico"/>
-    <meta name="description" content="gregory cotton is a creative director, ux designer, and visual artist from canada.">
-    <meta name="viewport" content="width=device-width">    
-    <link rel = "stylesheet" type = "text/css" href = "style.css">
-    <link rel = "stylesheet" type = "text/css" href = "fullstyle.css">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300&display=swap" rel="stylesheet"> <!-- REMOVE -->
-    
-    <link rel="preload" href="index/miscetc/ghost_walk.jpg" as="image">
-    <link rel="preload" href="index/miscetc/scary_buildings.jpg" as="image">
-    <link rel="preload" href="index/miscetc/residential_walk.jpg" as="image">
-    <link rel="preload" href="index/miscetc/loud_neighbourhood.jpg" as="image"> 
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-</head>
-    
-<body>  
-<div id="noMobile" class="cursor"></div>
-<div id="home"></div>
-    
-<div id="noMobile">
-<div id="menuD">
-    <a id="unlR" href="index.html#projects">PROJECTS</a><img class="small" src="index/1.jpg">
-    <br/>
-    <a id="unlB" href="index.html#designs">CASE STUDIES</a><img class="small" src="index/2.jpg">
-    <br/>
-    <a id="unlG" href="index.html#about">ABOUT ME</a><img class="small" src="index/3.jpg">
-    <br/>   
-    <a id="unlY" href="archive.html">ARCHIVE</a><img class="small" src="index/4.jpg">
-</div>
-</div>
-  
-<!--
-<div id="noDesktop">
-    <div id="nav-toggle">
-        <img class="menubutton" src="index/menu_mobile.png">
-    </div>
-    
-    <div id="menu-content">
-        <a id="unlR" href="portfolio.html#projects">PROJECTS</a>
-        <br/>
-        <a id="unlB" href="portfolio.html#designs">CASE STUDIES</a>
-        <br/>
-        <a id="unlG" href="portfolio.html#about">ABOUT ME</a>
-        <br/>
-        <a id="unlY" href="archive.html">ARCHIVE</a>
-    </div>
-</div>
--->
-        
-<section class="section-display">
-<div style="text-align:center; line-height: 10px; padding-top:50px;">
-    <p id="prj-title">Misc Etc.</p>
-    <figcaption><a href="index.html">&#8647;&nbsp;back</a></figcaption>
-</div>
-    
-<div class="page-wrap">
-    <div id="prj-txt-bg-top">
-        <p id="prj-txt">I have always been fascinated by large, high-density cities. One of the most staggering elements of Hong Kong to me is the scale of everything; from the height of the buildings, to the number of people.</p>
-        
-        <p id="prj-txt">Each image in this set is composed of 50 images I took (200 total). I edited the photos in Lightroom, and then brought them into Photoshop where I manually composited them. This gallery was created during autumn of 2019 in Hong Kong and was displayed at the City University of Hong Kong's School of Creative Media.</p>
-    </div>
-</div>
-    
-<br/>
-    
-<div class="page-wrap">
-    <div class="page-wrap-inner">
-        <div class="display-row">
-            <div class="col-left">
-                <div id="misc-img-container">
-                    <img id="misc-img" src="index/miscetc/ghost_walk.jpg">
-                    <figcaption>Crosswalk Ghosts</figcaption><br/> 
-                </div> 
+    <html>
+
+    <head>
+        <title>Misc. Etc. / Gregory Cotton</title>
+        <meta charset="UTF-8">
+
+        <!-- Setup -->
+        <meta name="description" content="Gregory Cotton, creative direction, art direction, product design, ux design">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Stylesheets & fonts -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+        <!-- Jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <script>
+            document.documentElement.className = "js";
+
+            var supportsCssVars = function supportsCssVars() {
+                var e,
+                    t = document.createElement("style");
+                return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e;
+            };
+
+            supportsCssVars() || alert("Please view this webpage in a modern browser that supports CSS Variables.");
+
+        </script>
+
+    </head>
+
+    <body onload=display_ct();>
+
+        <div id="miscetc-bg">
+            <div class="content-center">
+                <nav class="projects">
+
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+
+                    <div class="menu__item">
+
+                        <h3>Misc. Etc. Hong Kong</h3>
+
+                        <div id="page-wrap">
+                            <h2>Visual Art&nbsp;&nbsp;&mdash;&nbsp;&nbsp; 2019</h2>
+
+                            <p class="body-text">I have always been fascinated by large, high-density cities. One of the most staggering elements of Hong Kong to me is the scale of everything; from the height of the buildings, to the number of people. Misc. Etc. is an abstract documentation of Hong Kong's density, created with hundreds of individual images and designed to look as busy as Hong Kong felt.</p>
+                        </div>
+
+                        <p>&nbsp;</p>
+
+                        <hr>
+
+                        <p>&nbsp;</p>
+
+                        <img class="standard-img" src="index-img/miscetc/miscetc-preview.png">
+
+                        <p>&nbsp;</p>
+                    </div>
+                </nav>
             </div>
-            
-            <div class="col-right">
-                <div id="misc-img-container">
-                    <img id="misc-img" src="index/miscetc/scary_buildings.jpg">
-                    <figcaption>Scary Buildings</figcaption>
+        </div>
+
+        <div class="content-center">
+            <nav class="projects">
+                <div class="menu__item">
+
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+
+                    <div id="page-wrap">
+                        <p class="body-text">Each image in this set is composed of 50 images I took (200 total). I edited the photos in Lightroom, and then brought them into Photoshop where I manually composited them. This gallery was created during autumn of 2019 in Hong Kong and was displayed at the City University of Hong Kong's School of Creative Media.</p>
+                    </div>
+                    
+                    <p>&nbsp;</p>
+
+                    <div id="page-wrap" style="text-align:center;">
+                        <img class="left-col-img" src="case-studies/miscetc/ghost_walk.png" data-action="zoom">
+                        <p class="body-text">Ghost Walk</p>
+                    </div>
+
+                    <p>&nbsp;</p>
+                    
+                    <div id="page-wrap" style="text-align:center;">
+                        <img class="left-col-img" src="case-studies/miscetc/scary_buildings.png" data-action="zoom">
+                        <p class="body-text">Scary Buildings</p>
+                    </div>
+
+                   <p>&nbsp;</p>
+                                        
+                    <div id="page-wrap" style="text-align:center;">
+                        <img class="left-col-img" src="case-studies/miscetc/loud_neighbourhood.png" data-action="zoom">
+                        <p class="body-text">Loud Neighborhood</p>
+                    </div>
+
+                    <p>&nbsp;</p>
+                    
+                    <div id="page-wrap" style="text-align:center;">
+                        <img class="left-col-img" src="case-studies/miscetc/residential_walk.png" data-action="zoom">
+                        <p class="body-text">Residential Walk</p>
+                    </div>
+                    
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    
+                </div>
+            </nav>
+        </div>
+
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+        <div id="fixed-content">
+            <div id="fixed-pos">
+                <!-- Desktop Navbar -->
+                <div id="noMobile" class="navbar">
+                    <span><strong>Gregory Cotton</strong></span>
+
+                    <br />
+                    <br />
+
+                    <div class="vert-menu">
+                        <span><a href="index.html">Projects</a></span>
+
+                        <br />
+
+                        <span><a href="#">About</a></span>
+                    </div>
+                </div>
+
+                <!-- Middle Sized Navbar -->
+                <div id="noDesktop">
+                    <div class="topnav">
+                        <a href="#home"><strong>Gregory Cotton</strong></a>
+                        <a href="#news">Projects</a>
+                        <a href="#contact">About</a>
+                        <div class="topnav-right">
+                            <a id="noSmallMobile" href="#search"><u>Resume</u>&nbsp;&nbsp;/&nbsp;&nbsp;<u>Email</u></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Navbar -->
+
+
+                <!-- Desktop Footer -->
+                <div id="noMobile" class="footer">
+                    <span><a href="#"><u>Resume</u></a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="#"><u>Email</u></a></span>
+                    <br />
+                    <span>2021&nbsp;&mdash;&nbsp;<span id="clock"></span></span>
                 </div>
             </div>
         </div>
-        
-        <br/>    
-    
-        <div class="display-row">
-            <div class="col-left">
-                <div id="misc-img-container">
-                    <img id="misc-img" src="index/miscetc/residential_walk.jpg">
-                    <figcaption>Residential Walk</figcaption><br/> 
-                </div>
-            </div>
-            
-            <div class="col-right">
-                <div id="misc-img-container">
-                    <img id="misc-img" src="index/miscetc/loud_neighbourhood.jpg">
-                    <figcaption>Loud Neighbourhood</figcaption>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-        
-</body>
-    
-<footer>
-<br/>
-<div style="text-align:center; line-height: 10px;">
-    <figcaption><a href="#home">back to top</a></figcaption>
-</div>
-<br/>
-</footer>
-    
-</html>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js" integrity="sha512-f5HTYZYTDZelxS7LEQYv8ppMHTZ6JJWglzeQmr0CVTS70vJgaJiIO15ALqI7bhsracojbXkezUIL+35UXwwGrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script>
+            let rellax = new Rellax('.rellax');
+
+        </script>
+
+    </body>
+
+    </html>
+
+    <script type="text/javascript">
+        function currentTime() {
+            var date = new Date();
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
+            var midday = "AM";
+            midday = (hour >= 12) ? "PM" : "AM";
+            hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12) : hour);
+            hour = updateTime(hour);
+            min = updateTime(min);
+            sec = updateTime(sec);
+            document.getElementById("clock").innerText = hour + " : " + min + " " + midday;
+            var t = setTimeout(currentTime, 1000);
+        }
+
+        function updateTime(k) {
+            if (k < 10) {
+                return "0" + k;
+            } else {
+                return k;
+            }
+        }
+
+        currentTime();
+
+    </script>
 </DOCTYPE>
-
-<script> 
-//Scroll Smooth
-$(document).ready(function() {
-  $("a").on('click', function(event) {
-    if (this.hash !== "") {
-      var hash = this.hash;
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 2000, function() {
-        window.location.hash = hash;
-      });
-      return false;
-    } 
-  });
-});
-    
-//Copy Email
-function copyTxt(element) {
-  var $temp = $("<input>");
-  $("body").append($temp);
-  $temp.val($(element).text()).select();
-  document.execCommand("copy");
-  $temp.remove();
-}
- 
-//Cursor Box
-const cursor = document.querySelector('.cursor');
-
-document.addEventListener('mousemove', e => {
-    cursor.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
-})
-
-document.addEventListener('click', () => {
-    cursor.classList.add("expand");
-
-setTimeout(() => {
-    cursor.classList.remove("expand");
-}, 500)
-})
-    
-//Menu Slide Down
-$(document).ready(function(){
-  $("#nav-toggle").click(function(){
-    $("#menu-content").slideToggle(400);
-  });
-});
-</script>
