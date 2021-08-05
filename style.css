@@ -219,19 +219,17 @@ body {
     .section-grid {
         display: none;
     }
-
-    #noSmallMobile {
-        display: none;
-    }
-
+    
     .section-mobile {
         padding-top: 5px;
         display: block;
     }
-
-
 }
 
+@media (max-width: 767px) {
+    #noSmallMobile {
+        display: none;
+    }
 
 /* –––––––––––––––––––––––––––––––––––
 ––––––––––––––––––––––––––––––––––– */
