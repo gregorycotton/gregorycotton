@@ -10,12 +10,17 @@ html {
 }
 
 body {
-    margin: 50px;
+    margin: 3.5vw;
 }
 
 /* Top menu */
 #menu {
     font-size: 20px;
+}
+
+#about-desc-home {
+    position: fixed;
+    bottom: 0;
 }
 
 .menulink:link,
@@ -32,8 +37,7 @@ body {
 
 .no-link-style:link,
 .no-link-style:visited,
-.no-link-style:active 
-.no-link-style:hover {
+.no-link-style:active .no-link-style:hover {
     text-decoration: none;
     color: #3C3C3C;
 }
@@ -42,7 +46,7 @@ h1 {
     margin-top: 140px;
     margin-bottom: 25px;
     font-weight: 100;
-    font-size: 100px;
+    font-size: 80px;
     color: #3C3C3C;
 }
 
@@ -50,9 +54,12 @@ h1 {
     padding: 40px 0px;
 }
 
-.project-title {
-    font-size: 20px;
-    color: #3C3C3C;
+#about-desc {
+    width: 75%;
+}
+
+.half-img {
+    width: 45%;
 }
 
 .project-desc {
@@ -62,10 +69,50 @@ h1 {
     color: #3C3C3C;
 }
 
-.project-desc-link:link,
-.project-desc-link:visited, 
-.project-desc-link:active {
+@media only screen and (max-width: 767px) {
+    body {
+        margin: 7vw;
+    }
+
+    #menu {
+        font-size: 3vw;
+    }
+
+    h1 {
+        margin-top: 140px;
+        margin-bottom: 25px;
+        font-weight: 100;
+        font-size: 12vw;
+    }
+
+    .project-desc {
+        font-size: 3vw;
+    }
+
+    #about-desc {
+        width: 100%;
+    }
+
+    .half-img {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+.project-title {
     font-size: 20px;
+    color: #3C3C3C;
+}
+
+.project-desc-link:link,
+.project-desc-link:visited,
+.project-desc-link:active {
     line-height: 1.5;
     text-decoration: underline;
     color: #3C3C3C;
@@ -73,12 +120,4 @@ h1 {
 
 #project-desc {
     width: 680px;
-}
-
-#about-desc {
-    width: 990px;
-}
-
-.half-img {
-    width: 45%;
 }
