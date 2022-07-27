@@ -20,6 +20,7 @@ body {
 
 #about-desc-home {
     position: fixed;
+    bottom: 0;
 }
 
 .menulink:link,
