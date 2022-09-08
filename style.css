@@ -4,120 +4,205 @@
 }
 
 html {
+    margin: 2vw;
     font-family: Arial, sans-serif;
-    background: #FFFCF7;
-    color: #3C3C3C;
+    background: #FFF;
 }
 
-body {
-    margin: 3.5vw;
+header {
+    padding-bottom: 3.75vw;
 }
 
-/* Top menu */
-#menu {
-    font-size: 20px;
-}
-
-#about-desc-home {
-    position: fixed;
-    bottom: 0;
-}
-
-.menulink:link,
-.menulink:visited,
-.menulink:active {
-    text-decoration: none;
-    color: #3C3C3C;
-}
-
-.menulink:hover {
-    text-decoration: underline;
-    color: #3C3C3C;
-}
-
-.no-link-style:link,
-.no-link-style:visited,
-.no-link-style:active .no-link-style:hover {
-    text-decoration: none;
-    color: #3C3C3C;
+#main-content {
+    text-align: justify;
+    width: 90%;
 }
 
 h1 {
-    margin-top: 140px;
-    margin-bottom: 25px;
+    font-size: 3.75vw;
+    color: #000;
     font-weight: 100;
-    font-size: 80px;
-    color: #3C3C3C;
+    line-height: 150%;
 }
 
-#project-item {
-    padding: 40px 0px;
+.lead-text {
+    font-size: 1.5vw;
+    color: #000;
+    font-weight: 100;
+    line-height: 150%;
 }
 
-#about-desc {
-    width: 75%;
+a.email,
+a.email:link,
+a.email:visited,
+a.email:active,
+a.email:hover {
+    text-decoration: none;
+    color: #000;
 }
 
-.half-img {
-    width: 45%;
+a.link,
+a.link:link,
+a.link:visited,
+a.link:active,
+a.link:hover {
+    text-decoration: underline;
+    color: #000;
 }
 
-.project-desc {
-    margin: 10px 0px;
-    font-size: 20px;
-    line-height: 1.5;
-    color: #3C3C3C;
+button {
+    font-size: 1.5vw;
+    line-height: 150%;
+    border: 0.2vw solid #000;
+    background: #FFF;
+    color: #000;
+    padding: 0.25vw;
+    margin: 0 0.25vw 0 0;
+    padding-bottom: 0.25vw;
+    padding-left: 0.75vw;
+    padding-right: 0.75vw;
+    display: inline-block;
+    outline: none;
 }
 
-@media only screen and (max-width: 767px) {
+button:hover,
+button:active {
+    font-size: 1.5vw;
+    line-height: 150%;
+    border: 0.2vw solid #000;
+    background: #000;
+    color: #FFF;
+    padding: 0.25vw;
+    margin: 0 0.25vw 0 0;
+    padding-bottom: 0.25vw;
+    padding-left: 0.75vw;
+    padding-right: 0.75vw;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+}
+
+.inline-button {
+    display: inline-block;
+}
+
+@media screen and (max-width:769px) {
+
+    html,
     body {
-        margin: 7vw;
+        font-size: 4vw;
+        line-height: 4.5vw;
     }
 
-    #menu {
-        font-size: 3vw;
+    #main-content {
+        width: 100%;
     }
 
     h1 {
-        margin-top: 140px;
-        margin-bottom: 25px;
-        font-weight: 100;
-        font-size: 12vw;
+        font-size: 5.4vw;
     }
 
-    .project-desc {
+    .lead-text {
+        font-size: 2.7vw;
+    }
+
+    button,
+    button:hover,
+    button:active {
+        border: 0.3vw solid #000;
+        font-size: 2.7vw;
+    }
+}
+
+@media screen and (max-width:500px) {
+    h1 {
+        font-size: 6vw;
+    }
+
+    .lead-text {
         font-size: 3vw;
     }
+}
 
-    #about-desc {
-        width: 100%;
+
+
+
+
+
+
+
+
+
+table {
+    border: 1px solid #000;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table tr {
+    background-color: #FFF;
+    color: #000;
+    border: 0.2vw solid #000;
+    padding: .35em;
+}
+
+.no-go:hover {
+    cursor: not-allowed; !important
+}
+
+table tr:hover {
+    background-color: #000;
+    color: #FFF;
+    cursor: pointer;
+}
+
+table td {
+    padding: .625em;
+    text-align: left;
+}
+
+@media screen and (max-width: 769px) {
+    table {
+        border: 0;
     }
 
-    .half-img {
-        width: 100%;
+    table tr {
+        border: 0.3vw solid #000;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    table td {
+        display: block;
+        text-align: left;
+    }
+
+    table tr:hover {
+        background-color: #FFF;
+        color: #000;
+        cursor: pointer;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td:last-child {
+        border-bottom: 0;
     }
 }
 
-
-
-
-
-
-
-
-.project-title {
-    font-size: 20px;
-    color: #3C3C3C;
+.full-img {
+    width: 100%;
+    padding: 3.75vw 0;
 }
 
-.project-desc-link:link,
-.project-desc-link:visited,
-.project-desc-link:active {
-    line-height: 1.5;
-    text-decoration: underline;
-    color: #3C3C3C;
-}
-
-#project-desc {
-    width: 680px;
+#section-block {
+    padding: 3.75vw 0 3.75vw 0;
 }
