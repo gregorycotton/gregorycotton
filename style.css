@@ -4,22 +4,41 @@
 }
 
 html {
-    margin: 2vw;
-    padding: 3vw;
     font-family: 'Arial', sans-serif;
-    font-size: 25px;
+    margin: 1.5vh;
+    padding: 1vh;
+}
+
+.lead-text {
+    color: #000;
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;
     line-height: 175%;
-    background: #FFF;
 }
 
 #main-content {
+    z-index: 2;
     width: 100%;
+}
+
+.highlight {
+    background-color: yellow;
 }
 
 @media screen and (max-width:769px) {
     #main-content {
         width: 100%;
     }
+
+    .lead-text {
+        font-family: 'Arial', sans-serif;
+        font-size: 20px;
+        line-height: 175%;
+    }
+}
+
+img.full-pic {
+    width: 50%;
 }
 
 a.link,
@@ -28,5 +47,5 @@ a.link:visited,
 a.link:active,
 a.link:hover {
     text-decoration: underline;
-    color: #1155CC;
+    color: #0000EE;
 }
