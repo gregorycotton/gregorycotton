@@ -4,48 +4,31 @@
 }
 
 html {
-    font-family: 'Arial', sans-serif;
-    margin: 1.5vh;
-    padding: 1vh;
+    font-family: Arial, sans-serif;
+    margin: 15px;
+    padding: 10px;
 }
 
 .lead-text {
     color: #000;
-    font-family: 'Arial', sans-serif;
-    font-size: 30px;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
     line-height: 175%;
 }
 
-#main-content {
-    z-index: 2;
-    width: 100%;
-}
-
-.highlight {
-    background-color: yellow;
-}
-
-@media screen and (max-width:769px) {
-    #main-content {
-        width: 100%;
-    }
-
-    .lead-text {
-        font-family: 'Arial', sans-serif;
-        font-size: 20px;
-        line-height: 175%;
-    }
-}
-
-img.full-pic {
-    width: 50%;
+#page-content {
+    width: 950px;
 }
 
 a.link,
 a.link:link,
 a.link:visited,
-a.link:active,
 a.link:hover {
     text-decoration: underline;
     color: #0000EE;
+}
+
+a.link:active {
+    text-decoration: underline;
+    color: #551A8B;
 }
