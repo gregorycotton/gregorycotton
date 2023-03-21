@@ -32,3 +32,9 @@ a.link:active {
     text-decoration: underline;
     color: #551A8B;
 }
+
+@media screen and (max-width: 1000px) {
+    #page-content {
+        width: 100%;
+    }
+}
