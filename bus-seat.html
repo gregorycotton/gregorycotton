@@ -1,0 +1,65 @@
+<DOCTYPE html>
+    <html>
+
+    <head>
+        <title>&#128652;&nbsp;Bus seat design</title>
+
+        <meta charset="UTF-8">
+        <meta name="author" content="Gregory Cotton">
+        <meta name="viewport" content="width=device-width">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <style>
+            body {
+                text-align: center;
+                background-color: #0c1445;
+            }
+
+            div {
+                position: absolute;
+                width: 12px;
+                height: 12px;
+            }
+
+            @keyframes hideAnim {
+                to {
+                    width: 0;
+                    height: 0;
+                    overflow: hidden;
+                }
+            }
+
+            @-webkit-keyframes hideAnim {
+                to {
+                    width: 0;
+                    height: 0;
+                    visibility: hidden;
+                }
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <script>
+            const randomColor = () => {
+                return "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0').toUpperCase();
+            }
+            function positionGen() {
+                return Math.floor((Math.random() * 100)) + "%";
+            }
+            function newSqr() {
+                var div = document.createElement("div");
+                div.style.background = randomColor();
+                div.style.left = positionGen();
+                div.style.top = positionGen();
+                $("body").append(div);
+            }
+            var squares = window.setInterval(newSqr, 750);
+        </script>
+    </body>
+
+    </html>
+</DOCTYPE>
