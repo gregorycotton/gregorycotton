@@ -20,6 +20,10 @@ html {
     width: 950px;
 }
 
+.profile {
+    width: 100px;
+}
+
 a.link,
 a.link:link,
 a.link:visited,
