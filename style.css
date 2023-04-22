@@ -16,8 +16,12 @@ html {
     line-height: 175%;
 }
 
-#page-content {
-    width: 950px;
+h1 {
+    color: #000;
+    font-family: Arial, sans-serif;
+    font-size: 2em;
+    line-height: 175%;
+    margin: 5px 0px;
 }
 
 .profile {
@@ -28,6 +32,10 @@ html {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+}
+
+#page-content {
+    width: 850px;
 }
 
 a.link,
@@ -43,14 +51,146 @@ a.link:active {
     color: #551A8B;
 }
 
+hr {
+    margin: 20px 0px;
+    border: 0.5px solid #000;
+}
+
+table {
+    font-size: 1em;
+    border-spacing: 0;
+    width: 100%;
+}
+
+th {
+    text-decoration: none;
+    color: #000;
+    font-weight: bolder;
+}
+
+th,
+td {
+    align-content: right;
+    text-align: left;
+    padding: 16px 0px;
+    border-bottom: 1px solid #000;
+    line-height: 175%;
+}
+
+td:nth-child(1) {
+    width: 55%;
+}
+
+td:nth-child(2) {
+    width: 12%;
+}
+
+td:nth-child(3) {
+    width: 33%;
+}
+
+#images {
+    width: 950px;
+    margin: 0;
+    padding: 0;
+}
+
+figure img {
+    max-width: 800px;
+    max-height: 800px;
+    width: 100%;
+    object-fit: contain;
+    object-position: left top;
+}
+
+figure video source {
+    max-width: 800px;
+    max-height: 800px;
+    width: 100%;
+    object-fit: contain;
+    object-position: left top;
+}
+
+.gallery {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.gallery-item {
+    flex-grow: 1;
+    min-width: 20%;
+    max-width: 20%;
+    position: relative;
+}
+
+.gallery-item:before {
+    content: "";
+    padding-top: 100%;
+    display: block;
+}
+
+.gallery-item__image {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
 figcaption {
     font-family: Arial, sans-serif;
     font-size: 0.75em;
     line-height: 175%;
 }
 
-@media screen and (max-width: 1000px) {
+button {
+    padding: 5px;
+}
+
+ul {
+    list-style: decimal;
+    list-style-position: inside;
+    padding: 5px;
+}
+
+li {
+    padding: 5px;
+}
+
+details {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+    td:nth-child(2) {
+        width: 0%;
+    }
+
+    .priority-3 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 900px) {
     #page-content {
+        width: 100%;
+    }
+
+    #images {
+        width: 100%;
+    }
+
+    figure img {
+        width: 100%;
+    }
+
+    figure video source {
+        width: 100%;
+    }
+
+    video {
         width: 100%;
     }
 }
