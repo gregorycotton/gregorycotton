@@ -1,41 +1,255 @@
+<!DOCTYPE html>
+<html>
+
 <head>
-        <title>Gregory Cotton</title>
+    <title>Gregory Cotton</title>
 
-        <meta charset="UTF-8">
-        <meta name="author" content="Gregory Cotton">
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Gregory Cotton">
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <body>
-        <div id="page-content">
-            <img class="profile" alt="A photo of Greg in 2021" src="gregorycotton.jpg">
+    <style>
+        body {
+            width: auto;
+            margin: 40px;
+            font-family: Arial, sans-serif;
+            background-color: #FFF;
+            font-size: 16px;
+            color: #000;
+        }
 
-            <p>&nbsp;</p>
+        body *::selection {
+            color: #FFF;
+            background: #000;
+        }
 
-            <p class="lead-text">Hello, I’m Greg, an interdisciplinary designer and artist.</p>
+        body *::-moz-selection {
+            color: #FFF;
+            background: #000;
+        }
 
-            <p>&nbsp;</p>
+        header {
+            padding-bottom: 20px;
+        }
 
-            <p class="lead-text">I'm currently living in Ottawa, working as an automation engineer at <a target="_blank" href="https://www.nokia.com/" class="link">Nokia</a>. Formerly, I was reimagining the future of government services as a product designer with the <a target="_blank" href="https://www.ontario.ca/page/ontario-digital-service" class="link">Ontario Digital Service</a>.</p>
+        hr {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: solid 1.5px #000;
+        }
 
-            <p>&nbsp;</p>
+        summary {
+            cursor: pointer;
 
-            <p class="lead-text">I believe that good design exists in whatever medium is best suited to prioritize inclusive, meaningful, and impactful solutions. Good design isn’t inherently digital-first, nor is it solely about aesthetics and font choice. Good design is about addressing inefficiencies and inequalities, leveraging existing systems or building new ones to improve quality of life, foster togetherness, and to encourage a sustainable long-term mindset in regards to our products, services, systems, and our world as a whole.</p>
+        }
 
-            <p>&nbsp;</p>
+        header details>summary::-webkit-details-marker {
+            display: none;
+        }
 
-            <p class="lead-text">Looking for more? You can say hello at <a target="_blank" href="mailto:cotton.gregory@proton.me" class="link">cotton.gregory@proton.me</a>, view my work experience on <a target="_blank" href="https://www.linkedin.com/in/gregorycotton/" class="link">LinkedIn</a>, or take a look through any of the links below.</p>
+        header details>summary::before {
+            content: '+';
+        }
 
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            
-            <p class="lead-text"><a>Extras:</a></p>
-            <p class="lead-text"><a target="_blank" href="https://fridge.gregorycotton.ca" class="link">Greg's Fridge</a></p>
-            <p class="lead-text"><a target="_blank" href="https://www.are.na/gregory-cotton" class="link">Are.na</a></p>
-            <p class="lead-text"><a target="_blank" href="https://open.spotify.com/user/greg.a.c" class="link">Spotify</a></p>
+        header details>summary {
+            list-style-type: none;
+        }
+
+        ul,
+        li {
+            margin-left: 0.25em;
+            padding-left: 0.25em;
+        }
+
+        ul {
+            margin-left: 0.5em;
+            list-style: disc;
+            list-style-position: outside;
+        }
+
+        li,
+        label {
+            padding: 0 0 0.5em 0;
+        }
+
+        a.link,
+        a.link:link,
+        a.link:visited,
+        a.link:hover,
+        a.link:active {
+            text-decoration: underline;
+            color: #0000EE;
+        }
+
+        #profile {
+            width: 150px;
+            border: solid 1.5px #000;
+            filter: drop-shadow(2px 2px 0px #000);
+            user-drag: none;
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
+        table,
+        th,
+        td {
+            text-align: left;
+            border: 1.5px solid black;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            padding: 8px 6px;
+        }
+
+        table {
+            filter: drop-shadow(1.5px 1.5px 0px #000);
+        }
+
+        tr:nth-child(even) {
+            background-color: #F6F6F6;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #FFFFFF;
+        }
+
+        table.narrow {
+            width: 350px;
+        }
+
+        table.wide {
+            width: 500px;
+        }
+
+        #page-content {
+            width: 500px;
+        }
+
+        #info {
+            line-height: 125%;
+        }
+
+        #name,
+        #profile,
+        #projects,
+        #contact,
+        #info {
+            margin: 0px 0px 20px 0px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                margin: 15px;
+            }
+
+            #page-content {
+                width: 90vw;
+                margin: 0;
+                padding: 0;
+            }
+
+            table.narrow {
+                width: 100%;
+            }
+
+            table.wide {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="page-content">
+        <header>
+            <details>
+                <summary>&nbsp;<a class="link">Index</a></summary>
+                <ul>
+                    <li><a class="link" href="https://fridge.gregorycotton.ca">Fridge</a>&nbsp;(&#8599;&#xFE0E;)</li>
+                </ul>
+                <hr>
+            </details>
+        </header>
+
+
+        <!-- <img id="profile" alt="A photo of Greg in 2021" src="gregorycotton.jpg"> -->
+        <img id="profile" alt="A photo of Greg in 2023" src="gregorycotton2.jpg">
+
+        <div id="name">
+            <table class="narrow">
+                <tr>
+                    <th>Gregory Cotton</th>
+                </tr>
+                <tr>
+                    <td>Interdisciplinary designer and artist</td>
+                </tr>
+                <tr>
+                    <td>Currently living in Ottawa</td>
+                </tr>
+                <tr>
+                    <td>Automation engineer @ <a class="link" href="https://www.nokia.com">Nokia</a></td>
+                </tr>
+            </table>
         </div>
-    </body>
 
-    </html>
-</DOCTYPE>
+        <!--
+        <div id="projects">
+            <table class="wide">
+                <tr>
+                    <th>Selected Projects</th>
+                </tr>
+                <tr>
+                    <td><a class="link" href="#">Live Text Poetry</a> 2023</td>
+                </tr>
+                <tr>
+                    <td><a class="link" href="#">i'll make it easy to understand me</a> 2023</td>
+                </tr>
+                <tr>
+                    <td><a class="link" href="#">Field Systems</a> 2023</td>
+                </tr>
+                <tr>
+                    <td><a class="link" href="#">Misc. Etc. Hong Kong</a> 2019</td>
+                </tr>
+            </table>
+        </div>
+        -->
+
+        <div id="contact">
+            <table class="narrow">
+                <tr>
+                    <th>Contact</th>
+                </tr>
+                <tr>
+                    <td><a class="link" href="mailto:cotton.gregory@proton.me">cotton.gregory@proton.me</a></td>
+                </tr>
+                <tr>
+                    <td><a class="link" href="https://read.cv/cotton">read.cv/cotton</a></td>
+                </tr>
+                <tr>
+                    <td><a class="link" href="https://www.are.na/gregory-cotton">are.na/gregorycotton</a></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="info">
+            <table class="wide">
+                <tr>
+                    <th>Info</th>
+                </tr>
+                <tr>
+                    <td>I studied experience design at the University of Waterloo’s <a class="link" href="https://uwaterloo.ca/stratford-school-of-interaction-design-and-business/undergraduate/">Stratford School of Interaction Design and Business</a>. My time at the University of Waterloo offered me the opportunity to study in Hong Kong, at <a class="link" href="https://www.scm.cityu.edu.hk/">City University’s School of Creative Media</a>, where I took classes in human-computer interaction and art history.<br><br>Over the years I have gleamed inspiration from geography as both a muse and medium in the arts, simple web design, the relationships between artists and technology, and the role of design in the development of both real-world and digital communities.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
