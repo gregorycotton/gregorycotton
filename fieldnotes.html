@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gregory Cotton | Fieldnotes</title>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Gregory Cotton">
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="archiveTable.css" />
+    <script src="jquery.dataTables.js"></script>
+    <script src="dataTables.responsive.min.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    
+    <style>
+        body {
+            width: auto;
+            margin: 40px;
+            font-family: Arial, sans-serif;
+            background-color: #FFF;
+            font-size: 16px;
+            color: #000;
+        }
+
+        body *::selection {
+            color: #FFF;
+            background: #000;
+        }
+
+        body *::-moz-selection {
+            color: #FFF;
+            background: #000;
+        }
+
+        header {
+            padding-bottom: 20px;
+        }
+
+        hr {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: solid 1.5px #000;
+        }
+
+        summary {
+            cursor: pointer;
+
+        }
+
+        header details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        header details>summary::before {
+            content: '+';
+        }
+
+        header details>summary {
+            list-style-type: none;
+        }
+
+        ul,
+        li {
+            margin-left: 0.25em;
+            padding-left: 0.25em;
+        }
+
+        ul {
+            margin-left: 0.5em;
+            list-style: disc;
+            list-style-position: outside;
+        }
+
+        li,
+        label {
+            padding: 0 0 0.5em 0;
+        }
+
+        a.link,
+        a.link:link,
+        a.link:visited,
+        a.link:hover,
+        a.link:active {
+            text-decoration: underline;
+            color: #0000EE;
+        }
+
+        #profile {
+            width: 150px;
+            border: solid 1.5px #000;
+            filter: drop-shadow(2px 2px 0px #000);
+            user-drag: none;
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
+        #table-container {
+            max-width: 70em;
+        }
+
+        #info {
+            line-height: 125%;
+        }
+
+        #name,
+        #profile,
+        #projects,
+        #contact,
+        #info {
+            margin: 0px 0px 20px 0px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                margin: 15px;
+            }
+
+            #page-content {
+                width: 90vw;
+                margin: 0;
+                padding: 0;
+            }
+
+            table.narrow {
+                width: 100%;
+            }
+
+            table.wide {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page-content">
+        <header>
+            <details>
+                <summary>&nbsp;<a class="link">Index</a>&nbsp;/&nbsp;Fieldnotes</summary>
+                <ul>
+                    <li><a class="link" href="index.html">Home</a></li>
+                    <li><a class="link" href="taxonomy.html">Taxonomy</a></li>
+                    <li><a class="link" href="notebook.html">Fieldnotes</a></li>
+                    <li><a class="link" href="https://fridge.gregorycotton.ca">Fridge</a>&nbsp;(&#8599;&#xFE0E;)</li>
+                </ul>
+                <hr>
+            </details>
+        </header>
+    </div>
+
+    <div id="table-content">
+        <p><strong>Fieldnotes</strong></p>
+        <p>A place to store and develop thoughts.</p><br>
+
+        <div id="table-container">
+            <table id="fieldnotes" class="display responsive" style="width:100%">
+                <thead>
+                    <tr>
+                        <th id="projects">Title</th>
+                        <th>DD/MM/YYYY</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="projects"><a class="link" href="notebook/iphone-nikon.html">Replacing my iPhone camera
+                                with a Nikon Coolpix L24</a></td>
+                        <td id="date">05-08-2023</td>
+                    </tr>
+                    <tr>
+                        <td id="projects"><a class="link" href="notebook/oppenheimer.html">Oppenheimer and the neutrality of technology</a></td>
+                        <td id="date">30-07-2023</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#fieldnotes').DataTable({
+                order: [
+                    [1, 'asc']
+                ],
+
+                "searching": false,
+                "bInfo": false,
+                paging: false,
+
+                columns: [{
+                    data: 'title',
+                    visible: true,
+                    searchable: true
+                },
+                {
+                    data: 'date',
+                    visible: true,
+                    searchable: true
+                }
+                ]
+            });
+        });
+    </script>
+    </div>
+</body>
+
+</html>
