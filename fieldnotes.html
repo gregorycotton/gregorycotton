@@ -34,6 +34,10 @@
             background: #000;
         }
 
+        #table-container {
+            max-width: 60em;
+        }
+
         header {
             padding-bottom: 20px;
         }
@@ -77,7 +81,6 @@
         li,
         label {
             padding: 0 0 0.5em 0;
-            line-height: 150%;
         }
 
         a.link,
@@ -89,49 +92,12 @@
             color: #0000EE;
         }
 
-        table,
-        th,
-        td {
-            text-align: left;
-            border: 1.5px solid black;
-            border-collapse: collapse;
-        }
-
-        td,
-        th {
-            padding: 8px 6px;
-        }
-
-        table {
-            filter: drop-shadow(1.5px 1.5px 0px #000);
-        }
-
-        tr:nth-child(even) {
-            background-color: #F6F6F6;
-        }
-
-        tr:nth-child(odd) {
-            background-color: #FFFFFF;
-        }
-        
         #page-content {
             width: 500px;
         }
-        
-        #table-container {
-            max-width: 70em;
-        }
 
-        #info {
-            line-height: 125%;
-        }
-
-        #name,
-        #profile,
-        #projects,
-        #contact,
-        #info {
-            margin: 0px 0px 20px 0px;
+        #table-content {
+            width: 100%;
         }
 
         @media only screen and (max-width: 600px) {
@@ -143,14 +109,6 @@
                 width: 90vw;
                 margin: 0;
                 padding: 0;
-            }
-
-            table.narrow {
-                width: 100%;
-            }
-
-            table.wide {
-                width: 100%;
             }
         }
     </style>
@@ -174,26 +132,43 @@
     </div>
 
     <div id="table-content">
+        <div id="page-content"></div>
         <p><strong>Fieldnotes</strong></p>
         <p>A place to store and develop thoughts.</p><br>
+    </div>
 
-        <div id="table-container">
-            <table id="fieldnotes" class="display responsive" style="width:100%">
+    <div id="table-container">
+        <table id="fieldnotes" class="display responsive" style="width:100%">
+            <thead>
                 <tr>
-                    <th id="projects">Title</th>
+                    <th>Title</th>
                     <th>DD/MM/YY</th>
                 </tr>
-                <tr>
-                    <td id="projects"><a class="link" href="https://gregorycotton.ca/fieldnotes/121123">Zaid's three questions</a></td>
-                    <td id="date">12/11/23</td>
-                </tr>
-                <tr>
-                    <td id="projects"><a class="link" href="https://gregorycotton.ca/fieldnotes/300723">Oppenheimer and the neutrality of technology</a></td>
-                    <td id="date">30/07/23</td>
-                </tr>
-            </table>
-        </div>
+            </thead>
+            <tr>
+                <td id="title"><a class="link" href="https://gregorycotton.ca/fieldnotes/121123">Zaid's three
+                        questions</a></td>
+                <td id="date">12/11/23</td>
+            </tr>
+            <tr>
+                <td id="title"><a class="link" href="https://gregorycotton.ca/fieldnotes/300723">Oppenheimer and the
+                        neutrality of technology</a></td>
+                <td id="date">30/07/23</td>
+            </tr>
+        </table>
     </div>
     </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var dataTable = $('#fieldnotes').DataTable({
+                order: [[1, 'desc']],
+                searching: false,
+                info: false,
+                paging: false,
+                responsive: true,
+            });
+        });
+    </script>
 </body>
 </html>
