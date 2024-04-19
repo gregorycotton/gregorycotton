@@ -20,6 +20,8 @@ permalink: /404.html
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
     
+    <link rel="stylesheet" href="archiveTable.css" />
+
     <style>
         body {
             width: auto;
@@ -40,6 +42,55 @@ permalink: /404.html
             background: #000;
         }
 
+        #table-container {
+            max-width: 60em;
+        }
+
+        header {
+            padding-bottom: 20px;
+        }
+
+        hr {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: solid 1.5px #000;
+        }
+
+        summary {
+            cursor: pointer;
+
+        }
+
+        header details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        header details>summary::before {
+            content: '+';
+        }
+
+        header details>summary {
+            list-style-type: none;
+        }
+
+        ul,
+        li {
+            margin-left: 0.25em;
+            padding-left: 0.25em;
+        }
+
+        ul {
+            margin-left: 0.5em;
+            list-style: disc;
+            list-style-position: outside;
+        }
+
+        li,
+        label {
+            padding: 0 0 0.5em 0;
+        }
+
         a.link,
         a.link:link,
         a.link:visited,
@@ -48,11 +99,180 @@ permalink: /404.html
             text-decoration: underline;
             color: #0000EE;
         }
-        </style>
+
+        #page-content {
+            width: 500px;
+        }
+
+        #info-page-content {
+            max-width: 50rem;
+        }
+
+        #table-content {
+            width: 100%;
+        }
+
+        #img404 {
+            width: 500px;
+            border: solid 1.5px #000;
+            filter: drop-shadow(2px 2px 0px #000);
+            user-drag: none;
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
+        figcaption {
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                margin: 15px;
+            }
+
+            #page-content {
+                width: 90vw;
+                margin: 0;
+                padding: 0;
+            }
+
+            #img404 {
+                width: 100%;
+            }
+        }
+
+        
+    </style>
 </head>
 
 <body>
-    <p>The page you were looking for was either deleted or never existed to begin with. You can try to find what you were looking for by going back <a class="link" href="https://gregorycotton.ca/">home</a>.</p>
+    <div id="page-content">
+    <header>
+        <details>
+            <summary>&nbsp;<a class="link">Index</a></summary>
+            <ul>
+                <li><a class="link" href="https://gregorycotton.ca/">Home</a></li>
+                <li><a class="link" href="https://gregorycotton.ca/taxonomy">Taxonomy</a></li>
+                <li><a class="link" href="https://gregorycotton.ca/fieldnotes">Fieldnotes</a></li>
+                <li><a class="link" href="https://fridge.gregorycotton.ca">Fridge</a>&nbsp;(&#8599;&#xFE0E;)</li>
+                <li><a class="link" href="https://parklibrary.org/">Park Library</a>&nbsp;(&#8599;&#xFE0E;)</li>
+            </ul>
+            <hr>
+        </details>
+    </header>
+</div>
+
+    <p><strong>HTTPS 404</strong></p>
+    <p>The page you are looking for doesn't exist.</p>
+
+    <img id="img404" src="">
+    <figcaption id="caption">Text</figcaption>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var images = [
+                "/404/DSCN6561.JPG",
+                "/404/DSCN6669.JPG",
+                "/404/DSCN6768.JPG",
+                "/404/DSCN6297.JPG",
+                "/404/DSCN6863.JPG",
+                "/404/DSCN6889.JPG",
+                "/404/DSCN6926.JPG",
+                "/404/DSCN6967.JPG",
+                "/404/DSCN7142.JPG",
+                "/404/DSCN7179.JPG",
+                "/404/DSCN7272.JPG",
+                "/404/DSCN7512.JPG",
+                "/404/DSCN7519.JPG",
+                "/404/DSCN7706.JPG",
+                "/404/DSCN7775.JPG",
+                "/404/DSCN6714.JPG",
+                "/404/DSCN6452.JPG",
+                "/404/DSCN7884.JPG",
+                "/404/DSCN7922.JPG",
+                "/404/DSCN8215.JPG",
+                "/404/DSCN8290.JPG",
+                "/404/DSCN8372.JPG",
+                "/404/DSCN8412.JPG",
+                "/404/DSCN8586.JPG",
+                "/404/DSCN8638.JPG",
+                "/404/DSCN6735.JPG",
+                "/404/DSCN7984.JPG",
+                "/404/DSCN8089.JPG",
+                "/404/DSCN8124.JPG",
+                "/404/DSCN8614.JPG",
+                "/404/DSCN6596.JPG",
+                "/404/DSCN6647.JPG",
+                "/404/DSCN6588.JPG",
+                "/404/DSCN6716.JPG",
+                "/404/DSCN6661.JPG",
+                "/404/DSCN6653.JPG",
+                "/404/DSCN6690.JPG",
+                "/404/DSCN6702.JPG",
+                "/404/DSCN6359.JPG",
+                "/404/DSCN6289.JPG",
+                "/404/DSCN6276.JPG",
+                "/404/DSCN6277.JPG"
+            ];
+
+            var captions = [
+                "Greg and Kiyan at Andrew’s.",
+                "Adam, at the National Gallery of Canada.",
+                "From left to right: Greg, Evan, Andrew and Kiyan go caving.",
+                "From left to right: Emile, Zaid, Damo and Daniel.",
+                "Greg makes coffee at Evan’s cottage.",
+                "Matt plays chess",
+                "From left to right: Max and Greg make salsa at Evan’s cottage.",
+                "Evan jumps into the lake",
+                "From left to right: Emile, Daniel and Sam go for a swim.",
+                "From left to right: Damo serves cake, Zaid takes the first bite.",
+                "Driving into town.",
+                "Sam and Emile go tubing.",
+                "Sam and Emile’s tubing ride comes to an end.",
+                "From left to right: Zaid, Damo, Emile, Sam in the lake at sunset.",
+                "Sunset on the lake.",
+                "A trip to a garden centre in Ottawa.",
+                "From left to right: Toby, DJ Son and Tank on set at the Hazeldean Mall for the filming of the music video for ‘Let it Go’.",
+                "Greg at a bar in Brussels.",
+                "Michael in Brussels.",
+                "From left to right: Matt, Michael and Greg on Christmas Eve, in Prague.",
+                "The city of Prague on a quiet Christmas Day.",
+                "Matt on a ski trip in Czechia.",
+                "Painting in Prague.",
+                "Emanuelle’s drawing of Greg with a dog filter.",
+                "In Porto.",
+                "Evan and Aidan play pool.",
+                "Evan tries his luck at striking the ball with his queue behind his back.",
+                "From left to right: Evan, Greg and Michael at a bar in Brussels.",
+                "Delirium Village in Brussels.",
+                "Nightfall from Jardim do Torel in Lisbon.",
+                "Emma’s birthday / chess tournament.",
+                "Daniel poses as the ’T’ in Ottawa.",
+                "Kiyan leans out the car window at a red light.",
+                "Kanata, Ontario.",
+                "Greg’s reflection in the window of a bus stop terminal.",
+                "The Chateau Laurier, downtown Ottawa.",
+                "Zaid at the Tulip Festival in Ottawa.",
+                "Waiting for the O-Train",
+                "From left to right: Sam, Greg, Daniel, Adam, Zaid.",
+                "A Foggy morning in Whistler.",
+                "The view from our balcony in Whistler.",
+                "Greg in the mirror."
+            ];
+
+            var randomIndex = Math.floor(Math.random() * images.length);
+
+            var profileImg = document.getElementById("img404");
+            profileImg.src = images[randomIndex];
+
+            var caption = document.getElementById("caption");
+            caption.textContent = captions[randomIndex];
+        });
+    </script>
 </body>
 
 </html>
