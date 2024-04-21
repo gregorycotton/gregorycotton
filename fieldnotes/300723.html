@@ -8,31 +8,85 @@
     <meta name="author" content="Gregory Cotton">
     <meta name="viewport" content="width=device-width">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-    <link rel="manifest" href="../favicon/site.webmanifest">
-    
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="archiveTable.css" />
+    <script src="jquery.dataTables.js"></script>
+    <script src="dataTables.responsive.min.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+
     <style>
-        html {
-            font-size: 14px;
-            font-family: monospace;
-            max-width: 50rem;
+        body {
+            width: auto;
+            margin: 40px;
+            font-family: Arial, sans-serif;
+            background-color: #FFF;
+            font-size: 16px;
+            color: #000;
         }
 
-        #image img {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            text-align: left;
+        body *::selection {
+            color: #FFF;
+            background: #000;
         }
 
-        #image {
-            margin: 0 0 0.5em 0;
+        body *::-moz-selection {
+            color: #FFF;
+            background: #000;
+        }
+
+        #table-container {
+            max-width: 60em;
+        }
+
+        header {
+            padding-bottom: 20px;
+        }
+
+        hr {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: solid 1.5px #000;
+        }
+
+        summary {
+            cursor: pointer;
+
+        }
+
+        header details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        header details>summary::before {
+            content: '+';
+        }
+
+        header details>summary {
+            list-style-type: none;
+        }
+
+        ul,
+        li {
+            margin-left: 0.25em;
+            padding-left: 0.25em;
+        }
+
+        ul {
+            margin-left: 0.5em;
+            list-style: disc;
+            list-style-position: outside;
+        }
+
+        li,
+        label {
+            padding: 0 0 0.5em 0;
         }
 
         a.link,
@@ -41,39 +95,90 @@
         a.link:hover,
         a.link:active {
             text-decoration: underline;
-            color: #000;
+            color: #0000EE;
         }
 
+        #page-content {
+            width: 500px;
+        }
+
+        #info-page-content {
+            max-width: 50rem;
+        }
+
+        #table-content {
+            width: 100%;
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                margin: 15px;
+            }
+
+            #page-content {
+                width: 90vw;
+                margin: 0;
+                padding: 0;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <p>Oppenheimer and the neutrality of technology<br>July 30, 2023</p>
+    <div id="page-content">
+        <header>
+            <p>
+                <a class="link" href="https://gregorycotton.ca/fieldnotes">Back</a>
+            </p>
+        </header>
+    </div>
 
-    <p>–</p>
+    <div id="table-content">
+        <div id="info-page-content">
+            <p><strong>Oppenheimer and the neutrality of technology</strong><br><i>July 30, 2023</i></p>
 
-    <p>While watching Oppenheimer in theatres, I couldn’t help but think of an interview I read with media theorist Fred Turner last year, in which he discusses the ways in which engineering disciplines presume the neutrality of technology and abscond questions of ethics and politics, leaving them to the humanities.</p>
+            <p>–</p>
 
-    <p>From <a class="link" href="https://032c.com/magazine/fred-turner-silicon-valley-thinks-politics-doesnt-exist">the interview</a>:</p>
+            <p>While watching Oppenheimer in theatres, I couldn’t help but think of an interview I read with media
+                theorist Fred Turner last year, in which he discusses the ways in which engineering disciplines presume
+                the neutrality of technology and abscond questions of ethics and politics, leaving them to the
+                humanities.</p>
 
-    <br>
-    
-    <hr>
+            <p>From <a class="link"
+                    href="https://032c.com/magazine/fred-turner-silicon-valley-thinks-politics-doesnt-exist">the
+                    interview</a>:</p>
 
-    <br>
-    
-    <p><em>"The practice of engineering is too often taught as if it were simply the design of functions, the design of things to do things. It’s sort of an explicit ethical choice, inside all parts of the field, to leave politics aside. […] This means you’ll get people who tell you,</em> “It’s not my business whether the bridge is good or bad. The bridge has to work. The bridge has to hold up.” <em>That’s the goal. That whole tool orientation is a pragmatic, self-serving vision inside professional engineering training. It’s been there a long time.”</em></p>
+            <br>
 
-    <br>
-    
-    <hr>
+            <hr>
 
-    <br>
+            <br>
 
-    <p>In my viewing experience, the story of Oppenheimer wasn’t just one of how the atom bomb came to be, but one that saw a man who struggled with the inherent politics of his engineering, as he was whisked out of the world of scientific theory and into boardrooms where politicians strategized about how this prospective technology was to be used. The politics that imbued his work with meaning could no longer be ignored, and he was forced to grapple with the moral reality of his creation.
-    </p>
+            <p><em>"The practice of engineering is too often taught as if it were simply the design of functions, the
+                    design of things to do things. It’s sort of an explicit ethical choice, inside all parts of the
+                    field, to leave politics aside. […] This means you’ll get people who tell you,</em> “It’s not my
+                business whether the bridge is good or bad. The bridge has to work. The bridge has to hold up.”
+                <em>That’s the goal. That whole tool orientation is a pragmatic, self-serving vision inside professional
+                    engineering training. It’s been there a long time.”</em></p>
 
-    <p>I don’t really have anything to contribute to this discussion of how engineering disciplines, and more specifically speaking in this day and age, Silicon Valley, seems to ignore the politics of it's own technology. It was just a connection to the aforementioned interview that I couldn’t get out of my brain, and an idea that the Oppenheimer film seemed to be very conscious about as well.</p>
+            <br>
+
+            <hr>
+
+            <br>
+
+            <p>In my viewing experience, the story of Oppenheimer wasn’t just one of how the atom bomb came to be, but
+                one that saw a man who struggled with the inherent politics of his engineering, as he was whisked out of
+                the world of scientific theory and into boardrooms where politicians strategized about how this
+                prospective technology was to be used. The politics that imbued his work with meaning could no longer be
+                ignored, and he was forced to grapple with the moral reality of his creation.
+            </p>
+
+            <p>I don’t really have anything to contribute to this discussion of how engineering disciplines, and more
+                specifically speaking in this day and age, Silicon Valley, seems to ignore the politics of it's own
+                technology. It was just a connection to the aforementioned interview that I couldn’t get out of my
+                brain, and an idea that the Oppenheimer film seemed to be very conscious about as well.</p>
+        </div>
 </body>
 
 </html>
