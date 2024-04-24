@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.js"
         integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="archiveTable.css" />
+    <link rel="stylesheet" href="style.css" />
     <script src="jquery.dataTables.js"></script>
     <script src="dataTables.responsive.min.js"></script>
 
@@ -19,105 +20,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
-    
-    <style>
-        body {
-            width: auto;
-            margin: 40px;
-            font-family: Arial, sans-serif;
-            background-color: #FFF;
-            font-size: 16px;
-            color: #000;
-        }
-
-        body *::selection {
-            color: #FFF;
-            background: #000;
-        }
-
-        body *::-moz-selection {
-            color: #FFF;
-            background: #000;
-        }
-
-        #table-container {
-            max-width: 60em;
-        }
-
-        header {
-            padding-bottom: 20px;
-        }
-
-        hr {
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            border-bottom: solid 1.5px #000;
-        }
-
-        summary {
-            cursor: pointer;
-
-        }
-
-        header details>summary::-webkit-details-marker {
-            display: none;
-        }
-
-        header details>summary::before {
-            content: '+';
-        }
-
-        header details>summary {
-            list-style-type: none;
-        }
-
-        ul,
-        li {
-            margin-left: 0.25em;
-            padding-left: 0.25em;
-        }
-
-        ul {
-            margin-left: 0.5em;
-            list-style: disc;
-            list-style-position: outside;
-        }
-
-        li,
-        label {
-            padding: 0 0 0.5em 0;
-        }
-
-        a.link,
-        a.link:link,
-        a.link:visited,
-        a.link:hover,
-        a.link:active {
-            text-decoration: underline;
-            color: #0000EE;
-        }
-
-        #page-content {
-            width: 500px;
-        }
-
-        #table-content {
-            width: 100%;
-        }
-
-        @media only screen and (max-width: 600px) {
-            body {
-                margin: 15px;
-            }
-
-            #page-content {
-                width: 90vw;
-                margin: 0;
-                padding: 0;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -137,149 +39,155 @@
         </header>
     </div>
 
-    <div id="table-content">
-        <div id="page-content">
-            <p><strong>Taxonomy</strong></p>
-            <p>An ever-evolving list of projects, past and present.</p><br>
-        </div>
-        <div id="table-container">
-            <table id="taxonomy" class="display responsive" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Project</th>
-                        <th>Year</th>
-                        <th>Discipline</th>
-                        <th>Subject</th>
-                        <th>Object</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/parklibrary.html">Park Library</a></td>
-                        <td id="year">2023</td>
-                        <td id="discipline">Development</td>
-                        <td id="subject">Curation</td>
-                        <td id="object">Website</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/livetext.html">Live Text Poetry</a></td>
-                        <td id="year">2023</td>
-                        <td id="discipline">Generative Art</td>
-                        <td id="subject">Language</td>
-                        <td id="object">Digital Outputs</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/pemichangan.html">Pemichangan Landscape
-                                Study</a>
-                        </td>
-                        <td id="year">2023</td>
-                        <td id="discipline">Photography</td>
-                        <td id="subject">Nature</td>
-                        <td id="object">Image Series</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/makeiteasy.html">I'll make it easy to understand
-                                me</a></td>
-                        <td id="year">2023</td>
-                        <td id="discipline">Music</td>
-                        <td id="subject">Self</td>
-                        <td id="object">Extended Play</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/gregsfridge.html">Greg's Fridge</a></td>
-                        <td id="year">2023</td>
-                        <td id="discipline">Development</td>
-                        <td id="subject">Community</td>
-                        <td id="object">Website</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/onlinetogether.html">Online together.</a></td>
-                        <td id="year">2023</td>
-                        <td id="discipline">Development</td>
-                        <td id="subject">Community</td>
-                        <td id="object">Website</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/forestsim.html">Forest simulator</a></td>
-                        <td id="year">2023</td>
-                        <td id="discipline">Development</td>
-                        <td id="subject">Self</td>
-                        <td id="object">Website</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/penportraits.html">Pen Portraits</a></td>
-                        <td id="year">2022</td>
-                        <td id="discipline">Visual Art</td>
-                        <td id="subject">Self</td>
-                        <td id="object">Illustration</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/foodlibrary.html">The Food Library</a></td>
-                        <td id="year">2021</td>
-                        <td id="discipline">Design Fiction</td>
-                        <td id="subject">Sustainability</td>
-                        <td id="object">Exhibit</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/patchwork.html">Patchwork</a></td>
-                        <td id="year">2021</td>
-                        <td id="discipline">Generative Art</td>
-                        <td id="subject">Urbanization</td>
-                        <td id="object">Digital Outputs</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/openhouse.html">The Open House</a></td>
-                        <td id="year">2020</td>
-                        <td id="discipline">Environment</td>
-                        <td id="subject">Community</td>
-                        <td id="object">Event</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/order.html">Order</a></td>
-                        <td id="year">2020</td>
-                        <td id="discipline">Visual Art</td>
-                        <td id="subject">Self</td>
-                        <td id="object">Image Series</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/oap.html">MyOAP Dashboard</a></td>
-                        <td id="year">2020</td>
-                        <td id="discipline">User Experience</td>
-                        <td id="subject">Public Service</td>
-                        <td id="object">Digital Product</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/sso.html">Ontario Provincial SSO</a></td>
-                        <td id="year">2020</td>
-                        <td id="discipline">User Experience</td>
-                        <td id="subject">Public Service</td>
-                        <td id="object">Digital Product</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/urbanfarmer.html">The Urban Farmer</a></td>
-                        <td id="year">2019</td>
-                        <td id="discipline">Photography</td>
-                        <td id="subject">Urbanization</td>
-                        <td id="object">Image Series</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/miscetc.html">Misc. Etc. Hong Kong</a></td>
-                        <td id="year">2019</td>
-                        <td id="discipline">Photography</td>
-                        <td id="subject">Urbanization</td>
-                        <td id="object">Image Series</td>
-                    </tr>
-                    <tr>
-                        <td id="projects"><a class="link" href="taxonomy/peinture.html">Une bouteille de peinture</a>
-                        </td>
-                        <td id="year">2007</td>
-                        <td id="discipline">Visual Art</td>
-                        <td id="subject">Self</td>
-                        <td id="object">Painting</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div id="page-content">
+        <p><strong>Taxonomy</strong></p>
+        <p>An ever-evolving list of projects, past and present.</p><br>
+    </div>
+    
+    <div id="table-container">
+        <table id="taxonomy" class="display responsive" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Project</th>
+                    <th>Year</th>
+                    <th>Discipline</th>
+                    <th>Subject</th>
+                    <th>Object</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/imessageui.html">iMessage UI Collages</a></td>
+                    <td id="year">2024</td>
+                    <td id="discipline">Digital Art</td>
+                    <td id="subject">Technology</td>
+                    <td id="object">Digital Outputs</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/parklibrary.html">Park Library</a></td>
+                    <td id="year">2023</td>
+                    <td id="discipline">Development</td>
+                    <td id="subject">Curation</td>
+                    <td id="object">Website</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/livetext.html">Live Text Poetry</a></td>
+                    <td id="year">2023</td>
+                    <td id="discipline">Generative Art</td>
+                    <td id="subject">Technology</td>
+                    <td id="object">Digital Outputs</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/pemichangan.html">Pemichangan Landscape
+                            Study</a>
+                    </td>
+                    <td id="year">2023</td>
+                    <td id="discipline">Photography</td>
+                    <td id="subject">Nature</td>
+                    <td id="object">Image Series</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/makeiteasy.html">I'll make it easy to understand
+                            me</a></td>
+                    <td id="year">2023</td>
+                    <td id="discipline">Music</td>
+                    <td id="subject">Self</td>
+                    <td id="object">Extended Play</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/gregsfridge.html">Greg's Fridge</a></td>
+                    <td id="year">2023</td>
+                    <td id="discipline">Development</td>
+                    <td id="subject">Community</td>
+                    <td id="object">Website</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/onlinetogether.html">Online together.</a></td>
+                    <td id="year">2023</td>
+                    <td id="discipline">Development</td>
+                    <td id="subject">Community</td>
+                    <td id="object">Website</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/forestsim.html">Forest simulator</a></td>
+                    <td id="year">2023</td>
+                    <td id="discipline">Development</td>
+                    <td id="subject">Self</td>
+                    <td id="object">Website</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/penportraits.html">Pen Portraits</a></td>
+                    <td id="year">2022</td>
+                    <td id="discipline">Visual Art</td>
+                    <td id="subject">Self</td>
+                    <td id="object">Illustration</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/foodlibrary.html">The Food Library</a></td>
+                    <td id="year">2021</td>
+                    <td id="discipline">Design Fiction</td>
+                    <td id="subject">Sustainability</td>
+                    <td id="object">Exhibit</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/patchwork.html">Patchwork</a></td>
+                    <td id="year">2021</td>
+                    <td id="discipline">Generative Art</td>
+                    <td id="subject">Urbanization</td>
+                    <td id="object">Digital Outputs</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/openhouse.html">The Open House</a></td>
+                    <td id="year">2020</td>
+                    <td id="discipline">Environment</td>
+                    <td id="subject">Community</td>
+                    <td id="object">Event</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/order.html">Order</a></td>
+                    <td id="year">2020</td>
+                    <td id="discipline">Visual Art</td>
+                    <td id="subject">Self</td>
+                    <td id="object">Image Series</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/oap.html">MyOAP Dashboard</a></td>
+                    <td id="year">2020</td>
+                    <td id="discipline">User Experience</td>
+                    <td id="subject">Public Service</td>
+                    <td id="object">Digital Product</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/sso.html">Ontario Provincial SSO</a></td>
+                    <td id="year">2020</td>
+                    <td id="discipline">User Experience</td>
+                    <td id="subject">Public Service</td>
+                    <td id="object">Digital Product</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/urbanfarmer.html">The Urban Farmer</a></td>
+                    <td id="year">2019</td>
+                    <td id="discipline">Photography</td>
+                    <td id="subject">Urbanization</td>
+                    <td id="object">Image Series</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/miscetc.html">Misc. Etc. Hong Kong</a></td>
+                    <td id="year">2019</td>
+                    <td id="discipline">Photography</td>
+                    <td id="subject">Urbanization</td>
+                    <td id="object">Image Series</td>
+                </tr>
+                <tr>
+                    <td id="projects"><a class="link" href="taxonomy/peinture.html">Une bouteille de peinture</a>
+                    </td>
+                    <td id="year">2007</td>
+                    <td id="discipline">Visual Art</td>
+                    <td id="subject">Self</td>
+                    <td id="object">Painting</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script>
@@ -302,8 +210,8 @@
                 var width = $(window).width();
                 if (width <= 600) {
                     dataTable.column(2).visible(false);
-                    dataTable.column(3).visible(false); 
-                    dataTable.column(4).visible(false); 
+                    dataTable.column(3).visible(false);
+                    dataTable.column(4).visible(false);
                 } else if (width <= 900) {
                     dataTable.column(2).visible(true);
                     dataTable.column(3).visible(false);
