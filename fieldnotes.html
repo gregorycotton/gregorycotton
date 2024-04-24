@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.js"
         integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="archiveTable.css" />
+    <link rel="stylesheet" href="style.css" />
     <script src="jquery.dataTables.js"></script>
     <script src="dataTables.responsive.min.js"></script>
 
@@ -19,105 +20,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
-    
-    <style>
-        body {
-            width: auto;
-            margin: 40px;
-            font-family: Arial, sans-serif;
-            background-color: #FFF;
-            font-size: 16px;
-            color: #000;
-        }
-
-        body *::selection {
-            color: #FFF;
-            background: #000;
-        }
-
-        body *::-moz-selection {
-            color: #FFF;
-            background: #000;
-        }
-
-        #table-container {
-            max-width: 60em;
-        }
-
-        header {
-            padding-bottom: 20px;
-        }
-
-        hr {
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            border-bottom: solid 1.5px #000;
-        }
-
-        summary {
-            cursor: pointer;
-
-        }
-
-        header details>summary::-webkit-details-marker {
-            display: none;
-        }
-
-        header details>summary::before {
-            content: '+';
-        }
-
-        header details>summary {
-            list-style-type: none;
-        }
-
-        ul,
-        li {
-            margin-left: 0.25em;
-            padding-left: 0.25em;
-        }
-
-        ul {
-            margin-left: 0.5em;
-            list-style: disc;
-            list-style-position: outside;
-        }
-
-        li,
-        label {
-            padding: 0 0 0.5em 0;
-        }
-
-        a.link,
-        a.link:link,
-        a.link:visited,
-        a.link:hover,
-        a.link:active {
-            text-decoration: underline;
-            color: #0000EE;
-        }
-
-        #page-content {
-            width: 500px;
-        }
-
-        #table-content {
-            width: 100%;
-        }
-
-        @media only screen and (max-width: 600px) {
-            body {
-                margin: 15px;
-            }
-
-            #page-content {
-                width: 90vw;
-                margin: 0;
-                padding: 0;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -137,11 +39,9 @@
         </header>
     </div>
 
-    <div id="table-content">
-        <div id="page-content">
-            <p><strong>Fieldnotes</strong></p>
-            <p>A place to store and develop thoughts.</p><br>
-        </div>
+    <div id="page-content">
+        <p><strong>Fieldnotes</strong></p>
+        <p>Writings, some more complete than others. A place to store and develop thoughts.</p><br>
     </div>
 
     <div id="table-container">
@@ -153,7 +53,8 @@
                 </tr>
             </thead>
             <tr>
-                <td id="title"><a class="link" href="https://gregorycotton.ca/fieldnotes/180124">Self portraiture</a></td>
+                <td id="title"><a class="link" href="https://gregorycotton.ca/fieldnotes/180124">Self portraiture</a>
+                </td>
                 <td id="date">18/01/24</td>
             </tr>
             <tr>
@@ -182,4 +83,5 @@
         });
     </script>
 </body>
+
 </html>
