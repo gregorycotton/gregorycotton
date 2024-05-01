@@ -88,7 +88,7 @@ a.link:active {
     -ms-user-select: none;
 }
 
-#page-content img {
+.taxonomy-page-content img {
     width: 100%
 }
 
