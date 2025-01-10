@@ -8,229 +8,111 @@ permalink: /404.html
 <html>
 
 <head>
-    <title>HTTPS 404</title>
+    <title>HTTPS 404 | Gregory Cotton</title>
 
     <meta charset="UTF-8">
     <meta name="author" content="Gregory Cotton">
     <meta name="viewport" content="width=device-width">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/site.webmanifest">
-    
-    <link rel="stylesheet" href="archiveTable.css" />
-
-    <style>
-        body {
-            width: auto;
-            margin: 40px;
-            font-family: Arial, sans-serif;
-            background-color: #FFF;
-            font-size: 16px;
-            color: #000;
-        }
-
-        body *::selection {
-            color: #FFF;
-            background: #000;
-        }
-
-        body *::-moz-selection {
-            color: #FFF;
-            background: #000;
-        }
-
-        #table-container {
-            max-width: 60em;
-        }
-
-        header {
-            padding-bottom: 20px;
-        }
-
-        hr {
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            border-bottom: solid 1.5px #000;
-        }
-
-        summary {
-            cursor: pointer;
-
-        }
-
-        header details>summary::-webkit-details-marker {
-            display: none;
-        }
-
-        header details>summary::before {
-            content: '+';
-        }
-
-        header details>summary {
-            list-style-type: none;
-        }
-
-        ul,
-        li {
-            margin-left: 0.25em;
-            padding-left: 0.25em;
-        }
-
-        ul {
-            margin-left: 0.5em;
-            list-style: disc;
-            list-style-position: outside;
-        }
-
-        li,
-        label {
-            padding: 0 0 0.5em 0;
-        }
-
-        a.link,
-        a.link:link,
-        a.link:visited,
-        a.link:hover,
-        a.link:active {
-            text-decoration: underline;
-            color: #0000EE;
-        }
-
-        #page-content {
-            width: 500px;
-        }
-
-        #info-page-content {
-            max-width: 50rem;
-        }
-
-        #table-content {
-            width: 100%;
-        }
-
-        #img404 {
-            width: 500px;
-            border: solid 1.5px #000;
-            filter: drop-shadow(2px 2px 0px #000);
-            user-drag: none;
-            -webkit-user-drag: none;
-            user-select: none;
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-        }
-
-        figcaption {
-            font-size: 12px;
-            font-style: italic;
-        }
-
-        @media only screen and (max-width: 600px) {
-            body {
-                margin: 15px;
-            }
-
-            #page-content {
-                width: 90vw;
-                margin: 0;
-                padding: 0;
-            }
-
-            #img404 {
-                width: 100%;
-            }
-        }
-
-        
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0">
+        <defs>
+          <filter id="text">
+            <feTurbulence baseFrequency="5 5" numOctaves="5" />
+            <feDisplacementMap in="SourceGraphic" scale="2" />
+          </filter>
+        </defs>
+      </svg>
 </head>
 
 <body>
-    <div id="page-content">
-    <header>
-        <details>
-            <summary>&nbsp;<a class="link">Index</a></summary>
-            <ul>
-                <li><a class="link" href="https://gregorycotton.ca/">Home</a></li>
-                <li><a class="link" href="https://gregorycotton.ca/taxonomy">Taxonomy</a></li>
-                <li><a class="link" href="https://gregorycotton.ca/fieldnotes">Fieldnotes</a></li>
-                <li><a class="link" href="https://fridge.gregorycotton.ca">Fridge</a>&nbsp;(&#8599;&#xFE0E;)</li>
-                <li><a class="link" href="https://parklibrary.org/">Park Library</a>&nbsp;(&#8599;&#xFE0E;)</li>
-            </ul>
-            <hr>
-        </details>
-    </header>
-</div>
+    <div id="page">
+        <header>
+            <details>
+                <summary>&nbsp;<a class="link">Index</a></summary>
+                <ul>
+                    <li><a class="link" href="https://gregorycotton.ca">Home</a></li>
+                    <li><a class="link" href="https://fridge.gregorycotton.ca">Fridge</a>&nbsp;(&#8599;&#xFE0E;)</li>
+                    <li><a class="link" href="https://parklibrary.org">Library</a>&nbsp;(&#8599;&#xFE0E;)</li>
+                </ul>
+                <hr>
+            </details>
+        </header>
 
-    <p><strong>HTTPS 404</strong></p>
-    <p>The page you are looking for doesn't exist.</p>
+        <p><strong>HTTPS 404</strong></p>
+        <p>The page you are looking for doesn't exist.</p>
+    </div>
 
-    <img id="img404" src="">
-    <figcaption id="caption"></figcaption>
+    <div id="page-clean">
+        <img id="img404" src="">
+    </div>
+    
+    <div id="page">
+        <figcaption id="caption"></figcaption>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var images = [
-                "/404/DSCN6561.jpg",
-                "/404/DSCN6669.jpg",
-                "/404/DSCN6768.jpg",
-                "/404/DSCN6297.jpg",
-                "/404/DSCN6863.jpg",
-                "/404/DSCN6889.jpg",
-                "/404/DSCN6926.jpg",
-                "/404/DSCN6967.jpg",
-                "/404/DSCN7142.jpg",
-                "/404/DSCN7179.jpg",
-                "/404/DSCN7272.jpg",
-                "/404/DSCN7512.jpg",
-                "/404/DSCN7519.jpg",
-                "/404/DSCN7706.jpg",
-                "/404/DSCN7775.jpg",
-                "/404/DSCN6714.jpg",
-                "/404/DSCN6452.jpg",
-                "/404/DSCN7884.jpg",
-                "/404/DSCN7922.jpg",
-                "/404/DSCN8215.jpg",
-                "/404/DSCN8290.jpg",
-                "/404/DSCN8372.jpg",
-                "/404/DSCN8412.jpg",
-                "/404/DSCN8586.jpg",
-                "/404/DSCN8638.jpg",
-                "/404/DSCN6735.jpg",
-                "/404/DSCN7984.jpg",
-                "/404/DSCN8089.jpg",
-                "/404/DSCN8124.jpg",
-                "/404/DSCN8614.jpg",
-                "/404/DSCN6596.jpg",
-                "/404/DSCN6647.jpg",
-                "/404/DSCN6588.jpg",
-                "/404/DSCN6716.jpg",
-                "/404/DSCN6661.jpg",
-                "/404/DSCN6653.jpg",
-                "/404/DSCN6690.jpg",
-                "/404/DSCN6702.jpg",
-                "/404/DSCN6359.jpg",
-                "/404/DSCN6289.jpg",
-                "/404/DSCN6276.jpg",
-                "/404/DSCN6277.jpg",
-                "/404/DSCN8589.jpg",
-                "/404/DSCN8540.jpg",
-                "/404/DSCN8256.jpg",
-                "/404/DSCN8059.jpg",
-                "/404/DSCN7953.jpg",
-                "/404/DSCN7241.jpg",
-                "/404/DSCN7219.jpg",
-                "/404/DSCN7215.jpg",
-                "/404/DSCN6339.jpg",
-                "/404/DSCN8932.jpg",
-                "/404/DSCN8927.jpg",
-                "/404/DSCN8778.jpg",
-                "/404/DSCN8791.jpg",
-                "/404/DSCN8839.jpg"
+                "/assets/404/DSCN6561.jpg",
+                "/assets/404/DSCN6669.jpg",
+                "/assets/404/DSCN6768.jpg",
+                "/assets/404/DSCN6297.jpg",
+                "/assets/404/DSCN6863.jpg",
+                "/assets/404/DSCN6889.jpg",
+                "/assets/404/DSCN6926.jpg",
+                "/assets/404/DSCN6967.jpg",
+                "/assets/404/DSCN7142.jpg",
+                "/assets/404/DSCN7179.jpg",
+                "/assets/404/DSCN7272.jpg",
+                "/assets/404/DSCN7512.jpg",
+                "/assets/404/DSCN7519.jpg",
+                "/assets/404/DSCN7706.jpg",
+                "/assets/404/DSCN7775.jpg",
+                "/assets/404/DSCN6714.jpg",
+                "/assets/404/DSCN6452.jpg",
+                "/assets/404/DSCN7884.jpg",
+                "/assets/404/DSCN7922.jpg",
+                "/assets/404/DSCN8215.jpg",
+                "/assets/404/DSCN8290.jpg",
+                "/assets/404/DSCN8372.jpg",
+                "/assets/404/DSCN8412.jpg",
+                "/assets/404/DSCN8586.jpg",
+                "/assets/404/DSCN8638.jpg",
+                "/assets/404/DSCN6735.jpg",
+                "/assets/404/DSCN7984.jpg",
+                "/assets/404/DSCN8089.jpg",
+                "/assets/404/DSCN8124.jpg",
+                "/assets/404/DSCN8614.jpg",
+                "/assets/404/DSCN6596.jpg",
+                "/assets/404/DSCN6647.jpg",
+                "/assets/404/DSCN6588.jpg",
+                "/assets/404/DSCN6716.jpg",
+                "/assets/404/DSCN6661.jpg",
+                "/assets/404/DSCN6653.jpg",
+                "/assets/404/DSCN6690.jpg",
+                "/assets/404/DSCN6702.jpg",
+                "/assets/404/DSCN6359.jpg",
+                "/assets/404/DSCN6289.jpg",
+                "/assets/404/DSCN6276.jpg",
+                "/assets/404/DSCN6277.jpg",
+                "/assets/404/DSCN8589.jpg",
+                "/assets/404/DSCN8540.jpg",
+                "/assets/404/DSCN8256.jpg",
+                "/assets/404/DSCN8059.jpg",
+                "/assets/404/DSCN7953.jpg",
+                "/assets/404/DSCN7241.jpg",
+                "/assets/404/DSCN7219.jpg",
+                "/assets/404/DSCN7215.jpg",
+                "/assets/404/DSCN6339.jpg",
+                "/assets/404/DSCN8932.jpg",
+                "/assets/404/DSCN8927.jpg",
+                "/assets/404/DSCN8778.jpg",
+                "/assets/404/DSCN8791.jpg",
+                "/assets/404/DSCN8839.jpg",
+                "/assets/404/DSCN0388.jpg",
+                "/assets/404/DSCN9110.jpg"
             ];
 
             var captions = [
@@ -239,9 +121,9 @@ permalink: /404.html
                 "From left to right: Greg, Evan, Andrew and Kiyan go caving.",
                 "From left to right: Emile, Zaid, Adam and Daniel.",
                 "Greg makes coffee at Evan’s cottage.",
-                "Matt plays chess",
+                "Matt plays chess.",
                 "From left to right: Max and Greg make salsa at Evan’s cottage.",
-                "Evan jumps into the lake",
+                "Evan jumps into the lake.",
                 "From left to right: Emile, Daniel and Sam go for a swim.",
                 "From left to right: Adam serves cake, Zaid takes the first bite.",
                 "Driving into town.",
@@ -257,7 +139,7 @@ permalink: /404.html
                 "The city of Prague on a quiet Christmas Day.",
                 "Matt on a ski trip in Czechia.",
                 "Painting in Prague.",
-                "Emanuelle’s drawing of Greg with a dog filter.",
+                "Emmanuelle's drawing of Greg with a dog filter.",
                 "In Porto.",
                 "Evan and Aidan play pool.",
                 "Evan tries his luck at striking the ball with his queue behind his back.",
@@ -271,7 +153,7 @@ permalink: /404.html
                 "Greg’s reflection in the window of a bus stop terminal.",
                 "The Chateau Laurier, downtown Ottawa.",
                 "Zaid at the Tulip Festival in Ottawa.",
-                "Waiting for the O-Train",
+                "Waiting for the O-Train.",
                 "From left to right: Sam, Greg, Daniel, Adam, Zaid.",
                 "A Foggy morning in Whistler.",
                 "The view from our balcony in Whistler.",
@@ -289,7 +171,9 @@ permalink: /404.html
                 "Andrew at Pena Palace in Sintra.",
                 "Michael in my Lisbon appartment.",
                 "Evan in Lisbon.",
-                "Santo António Festival in Alfama, 2024."
+                "Santo António Festival in Alfama, 2024.",
+                "Sam, in Budapest.",
+                "Sam sets up for a sunset timelapse of Lisbon from São Jorge Castle."
             ];
 
             var randomIndex = Math.floor(Math.random() * images.length);
