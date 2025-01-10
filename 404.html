@@ -18,40 +18,43 @@ permalink: /404.html
     <link rel="stylesheet" href="style.css">
     <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0">
         <defs>
-          <filter id="text">
-            <feTurbulence baseFrequency="5 5" numOctaves="5" />
-            <feDisplacementMap in="SourceGraphic" scale="2" />
-          </filter>
+            <filter id="text">
+                <feTurbulence baseFrequency="5 5" numOctaves="5" />
+                <feDisplacementMap in="SourceGraphic" scale="2" />
+            </filter>
         </defs>
-      </svg>
+    </svg>
 </head>
 
 <body>
-    <div id="page">
-        <header>
-            <details>
-                <summary>&nbsp;<a class="link">Index</a></summary>
-                <ul>
-                    <li><a class="link" href="https://gregorycotton.ca">Home</a></li>
-                    <li><a class="link" href="https://fridge.gregorycotton.ca">Fridge</a>&nbsp;(&#8599;&#xFE0E;)</li>
-                    <li><a class="link" href="https://parklibrary.org">Library</a>&nbsp;(&#8599;&#xFE0E;)</li>
-                </ul>
-                <hr>
-            </details>
-        </header>
+    <div id="page-wrapper">
+        <div id="distort-effect">
+            <header>
+                <details>
+                    <summary>&nbsp;<a class="link">Index</a></summary>
+                    <ul>
+                        <li><a class="link" href="https://gregorycotton.ca">Home</a></li>
+                        <li><a class="link" href="https://fridge.gregorycotton.ca">Fridge</a>&nbsp;(&#8599;&#xFE0E;)
+                        </li>
+                        <li><a class="link" href="https://parklibrary.org">Library</a>&nbsp;(&#8599;&#xFE0E;)</li>
+                    </ul>
+                    <hr>
+                </details>
+            </header>
 
-        <p><strong>HTTPS 404</strong></p>
-        <p>The page you are looking for doesn't exist.</p>
-    </div>
+            <p><strong>HTTPS 404</strong></p>
+            <p>The page you are looking for doesn't exist.</p>
+        </div>
 
-    <div id="page-clean">
-        <img id="img404" src="">
+        <div id="distort-effect-clean">
+            <img id="img404" src="">
+        </div>
+
+        <div id="distort-effect">
+            <figcaption id="caption"></figcaption>
+        </div>
     </div>
     
-    <div id="page">
-        <figcaption id="caption"></figcaption>
-    </div>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var images = [
