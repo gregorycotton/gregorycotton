@@ -6,6 +6,8 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: #E3E3E3;
+
+    padding-bottom: 50px;
 }
 
 hr {
