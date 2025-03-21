@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
+    <title>Toby's Breakfast</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            font-family: Arial, sans-serif;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .screenshot-container {
+            width: 350px;
+            height: 670px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            border: 1px solid #fefefe;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .screenshot {
+            width: 100%;
+            height: auto;
+        }
+
+        .scroll-hint {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="font-family: Herr Von Muellerhoff, cursive; font-size: 50px;">Toby's Breakfast</h1>
+    <div class="screenshot-container">
+        <img src="assets/breakfast.png" alt="SMS Conversation" class="screenshot">
+    </div>
+</body>
+
+</html>
