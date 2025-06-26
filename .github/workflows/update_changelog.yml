@@ -3,7 +3,7 @@ name: Update Changelog
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   build:
@@ -23,13 +23,12 @@ jobs:
           COMMIT_MSG=$(git log -1 --pretty=%s)
           COMMIT_DATE=$(date +'%d/%m/%Y')
           REPO_URL="https://github.com/${{ github.repository }}"
-          
-          # Create the new HTML table row
-          NEW_ROW="<tr>\n                            <td>${COMMIT_MSG}</td>\n                            <td>${COMMIT_DATE}</td>\n                            <td><a target=\"_blank\" class=\"table-link\" href=\"${REPO_URL}/commit/${{ github.sha }}\">${COMMIT_HASH_SHORT}</a></td>\n                        </tr>"
-          
-          # Use sed to find the placeholder and insert the new row
-          # The placeholder is also added back so it can be found on the next run
-          sed -i "s||${NEW_ROW}\n                        |" changelog.html
+
+          # Create the new HTML table row.
+          NEW_ROW="                        <tr>\n                            <td>${COMMIT_MSG}</td>\n                            <td>${COMMIT_DATE}</td>\n                            <td><a target=\"_blank\" class=\"table-link\" href=\"${REPO_URL}/commit/${{ github.sha }}\">${COMMIT_HASH_SHORT}</a></td>\n                        </tr>\n"
+
+          # Find the <tbody> tag and insert the new row right after it. This is the robust command.
+          sed -i "s|<tbody>|&\n${NEW_ROW}|" changelog.html
 
       - name: Commit updated changelog
         uses: stefanzweifel/git-auto-commit-action@v5
