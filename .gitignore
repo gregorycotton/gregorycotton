@@ -1,6 +1,6 @@
-database/
-*.db
-*.db-journal
-*.sqlite
-*.sqlite3
-.DS_Store
+# database/
+# *.db
+# *.db-journal
+# *.sqlite
+# *.sqlite3
+# .DS_Store
