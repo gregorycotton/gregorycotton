@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="title" content="Gregory Cotton">
+    <meta property="og:title" content="Gregory Cotton">
+    <meta name="twitter:title" content="Gregory Cotton">
+    <meta name="creator" content="gregorycotton.ca">
+    <meta name="author" content="Gregory Cotton">
+    <meta name="description"
+        content="Website of Gregory Cotton, user experience designer, engineer, interdisciplinary artist from Ottawa, Ontario, living in Lisbon, Portugal.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Urban Farmer | Gregory Cotton</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+    <script src="../scripts/fetch-properties.js"></script>
+    <script src="../scripts/image-loader.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h1><a href="../index.html" class="home-link">Gregory Cotton</a></h1>
+        </div>
+
+        <div class="right">
+            <h2>The Urban Farmer</h2>
+
+            <br>
+
+            <details id="propertiesDetails">
+                <summary class="secondary-link">Metadata</summary>
+                <div id="properties-content">
+                    <p>Loading metadata...</p>
+                </div>
+            </details>
+
+            <div class="proj-txt-container">
+                <p>Documenting Tom, a farmer who is set on growing high quality produce from his Toronto apartment.</p>
+            </div>
+
+            <br>
+
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="projectsTable">
+                        <thead>
+                            <tr>
+                                <th class="thumbnail-col">*</th>
+                                <th>Title</th>
+                                <th>Size (bytes)</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBodyStatic">
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/the-urban-farmer/the-urban-farmer-thumbnail.jpg"
+                                        alt="The Urban Farmer thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>The Urban Farmer</td>
+                                <td id="fileSize-the-urban-farmer">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/the-urban-farmer/the-urban-farmer.jpg"
+                                    data-title="The Urban Farmer"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/the-urban-farmer/toms-soup-i-thumbnail.jpg"
+                                        alt="Tom's Soup I thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Tom's Soup I</td>
+                                <td id="fileSize-toms-soup-i">Loading...</td>
+                                <td class="loadImageTrigger" data-fullimageurl="images/the-urban-farmer/toms-soup-i.jpg"
+                                    data-title="Tom's Soup I"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/the-urban-farmer/toms-soup-ii-thumbnail.jpg"
+                                        alt="Tom's Soup II thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Tom's Soup II</td>
+                                <td id="fileSize-toms-soup-ii">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/the-urban-farmer/toms-soup-ii.jpg"
+                                    data-title="Tom's Soup II"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/the-urban-farmer/afternoon-rest-thumbnail.jpg"
+                                        alt="Afternoon Rest thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Afternoon Rest</td>
+                                <td id="fileSize-afternoon-rest">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/the-urban-farmer/afternoon-rest.jpg"
+                                    data-title="Afternoon Rest"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/the-urban-farmer/toms-program-thumbnail.jpg"
+                                        alt="Tom's Program thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Tom's program</td>
+                                <td id="fileSize-toms-program">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/the-urban-farmer/toms-program.jpg" data-title="Full view">
+                                    <a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/the-urban-farmer/harvest-i-thumbnail.jpg"
+                                        alt="Harvest I thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Harvest I</td>
+                                <td id="fileSize-harvest-i">Loading...</td>
+                                <td class="loadImageTrigger" data-fullimageurl="images/the-urban-farmer/harvest-i.jpg"
+                                    data-title="Full view"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/the-urban-farmer/harvest-ii-thumbnail.jpg"
+                                        alt="Harvest I thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Harvest II</td>
+                                <td id="fileSize-harvest-ii">Loading...</td>
+                                <td class="loadImageTrigger" data-fullimageurl="images/the-urban-farmer/harvest-ii.jpg"
+                                    data-title="Full view"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/the-urban-farmer/portrait-of-a-farmer-i-thumbnail.jpg"
+                                        alt="Portrait of a Farmer I thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Portrait of a Farmer I</td>
+                                <td id="fileSize-portrait-of-a-farmer-i">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/the-urban-farmer/portrait-of-a-farmer-i.jpg"
+                                    data-title="Full view"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/the-urban-farmer/portrait-of-a-farmer-ii-thumbnail.jpg"
+                                        alt="Portrait of a Farmer II thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Portrait of a Farmer II</td>
+                                <td id="fileSize-portrait-of-a-farmer-ii">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/the-urban-farmer/portrait-of-a-farmer-ii.jpg"
+                                    data-title="Full view"><a class="table-link">Load image</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="image-display-area">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-left">Gregory Cotton, 2025</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank"
+                class="secondary-link">LinkedIn</a> | <a href="https://www.are.na/gregory-cotton/" target="_blank"
+                class="secondary-link">Are.na</a> | <a href="https://open.spotify.com/user/greg.a.c?si=2bd247bf3bf5481f"
+                target="_blank" class="secondary-link">Spotify</a>
+        </div>
+    </footer>
+
+    <script>
+        const imageConfigurations = [
+            {
+                idForFileSizeCell: 'fileSize-the-urban-farmer',
+                fullImageUrl: 'images/the-urban-farmer/the-urban-farmer.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-toms-soup-i',
+                fullImageUrl: 'images/the-urban-farmer/toms-soup-i.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-toms-soup-ii',
+                fullImageUrl: 'images/the-urban-farmer/toms-soup-ii.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-afternoon-rest',
+                fullImageUrl: 'images/the-urban-farmer/afternoon-rest.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-toms-program',
+                fullImageUrl: 'images/the-urban-farmer/toms-program.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-harvest-i',
+                fullImageUrl: 'images/the-urban-farmer/harvest-i.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-harvest-ii',
+                fullImageUrl: 'images/the-urban-farmer/harvest-ii.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-portrait-of-a-farmer-i',
+                fullImageUrl: 'images/the-urban-farmer/portrait-of-a-farmer-i.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-portrait-of-a-farmer-ii',
+                fullImageUrl: 'images/the-urban-farmer/portrait-of-a-farmer-ii.jpg'
+            }
+        ];
+    </script>
+</body>
+
+</html>

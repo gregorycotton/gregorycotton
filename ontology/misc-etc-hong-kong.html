@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="title" content="Gregory Cotton">
+    <meta property="og:title" content="Gregory Cotton">
+    <meta name="twitter:title" content="Gregory Cotton">
+    <meta name="creator" content="gregorycotton.ca">
+    <meta name="author" content="Gregory Cotton">
+    <meta name="description"
+        content="Website of Gregory Cotton, user experience designer, engineer, interdisciplinary artist from Ottawa, Ontario, living in Lisbon, Portugal.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misc. Etc. Hong Kong | Gregory Cotton</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+    <script src="../scripts/fetch-properties.js"></script>
+    <script src="../scripts/image-loader.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h1><a href="../index.html" class="home-link">Gregory Cotton</a></h1>
+        </div>
+
+        <div class="right">
+            <h2>Misc. Etc. Hong Kong</h2>
+
+            <br>
+
+            <details id="propertiesDetails">
+                <summary class="secondary-link">Metadata</summary>
+                <div id="properties-content">
+                    <p>Loading metadata...</p>
+                </div>
+            </details>
+
+            <div class="proj-txt-container">
+                <p>An abstract documentation and reflection of Hong Kong's density and geography, created with hundreds
+                    of individual images taken over the course of a month.</p>
+            </div>
+
+            <br>
+
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="projectsTable">
+                        <thead>
+                            <tr>
+                                <th class="thumbnail-col">*</th>
+                                <th>Title</th>
+                                <th>Size (bytes)</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBodyStatic">
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/misc-etc-hong-kong/ghost-walk-thumbnail.jpg"
+                                        alt="Ghost Walk thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Ghost Walk</td>
+                                <td id="fileSize-ghost-walk">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/misc-etc-hong-kong/ghost-walk.jpg" data-title="Ghost Walk"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/misc-etc-hong-kong/pipework-thumbnail.jpg"
+                                        alt="Pipework thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Pipework</td>
+                                <td id="fileSize-pipework">Loading...</td>
+                                <td class="loadImageTrigger" data-fullimageurl="images/misc-etc-hong-kong/pipework.jpg"
+                                    data-title="Pipework"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/misc-etc-hong-kong/residential-walk-thumbnail.jpg"
+                                        alt="Residential Walk thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Residential Walk</td>
+                                <td id="fileSize-residential-walk">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/misc-etc-hong-kong/residential-walk.jpg"
+                                    data-title="Residential Walk"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/misc-etc-hong-kong/loud-neighbourhood-thumbnail.jpg"
+                                        alt="Loud Neighbourhood thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Loud Neighbourhood</td>
+                                <td id="fileSize-loud-neighbourhood">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/misc-etc-hong-kong/loud-neighbourhood.jpg"
+                                    data-title="Loud Neighbourhood"><a class="table-link">Load image</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="image-display-area">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer-left">Gregory Cotton, 2025</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank"
+                class="secondary-link">LinkedIn</a> | <a href="https://www.are.na/gregory-cotton/" target="_blank"
+                class="secondary-link">Are.na</a> | <a href="https://open.spotify.com/user/greg.a.c?si=2bd247bf3bf5481f"
+                target="_blank" class="secondary-link">Spotify</a>
+        </div>
+    </footer>
+
+    <script>
+        const imageConfigurations = [
+            {
+                idForFileSizeCell: 'fileSize-ghost-walk',
+                fullImageUrl: 'images/misc-etc-hong-kong/ghost-walk.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-pipework',
+                fullImageUrl: 'images/misc-etc-hong-kong/pipework.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-residential-walk',
+                fullImageUrl: 'images/misc-etc-hong-kong/residential-walk.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-loud-neighbourhood',
+                fullImageUrl: 'images/misc-etc-hong-kong/loud-neighbourhood.jpg'
+            }
+        ];
+    </script>
+</body>
+
+</html>

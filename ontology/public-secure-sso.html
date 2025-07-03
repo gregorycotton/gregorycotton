@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="title" content="Gregory Cotton">
+    <meta property="og:title" content="Gregory Cotton">
+    <meta name="twitter:title" content="Gregory Cotton">
+    <meta name="creator" content="gregorycotton.ca">
+    <meta name="author" content="Gregory Cotton">
+    <meta name="description"
+        content="Website of Gregory Cotton, user experience designer, engineer, interdisciplinary artist from Ottawa, Ontario, living in Lisbon, Portugal.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Secure SSO | Gregory Cotton</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+    <script src="../scripts/fetch-properties.js"></script>
+    <script src="../scripts/image-loader.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h1><a href="../index.html" class="home-link">Gregory Cotton</a></h1>
+        </div>
+
+        <div class="right">
+            <h2>Public Secure SSO</h2>
+
+            <br>
+
+            <details id="propertiesDetails">
+                <summary class="secondary-link">Metadata</summary>
+                <div id="properties-content">
+                    <p>Loading metadata...</p>
+                </div>
+            </details>
+
+            <div class="proj-txt-container">
+                <p> I worked as a Product Designer with the Ontario Digital Service to help lay the groundwork for a new
+                    single sign-on (SSO) for the province's digital services. We worked alongside 13 different program
+                    areas and the Public Secure team before handing our work off.</p>
+
+                <br>
+
+                <h3>Scope and context</h3>
+                <p>As put by an end-user we spoke with, the current one key single sign-in portal acts as a 'fake front
+                    door', in that most of the program areas using ONe-key require further verification upon the
+                    completion of signing in. Some of the larger issues we tackled were:</p>
+
+                <br>
+
+                <p>
+                <ul style="list-style-position: inside;">
+                    <li>Old ONe-key accounts needed be effectively transferred to newer Public Secure accounts,</li>
+                    <li>Developing sign in and sign up flows that were consistent and provided the user with a seamless
+                        experience when it came to logging on with Public Secure directly through a program area for all
+                        levels of authentication,</li>
+                    <li>Wording and instruction, as well as around the description of the different sign-in options
+                        (making sure the options of signing in with a password versus with online banking versus with a
+                        Digital ID app (which is a hypothetical future-state and not a current option) was clear for
+                        users).</li>
+                </ul>
+                </p>
+
+                <br>
+
+                <h3>Problem statement</h3>
+                <p>We observed that ONe-key and Public Secure Pilot confuse our public users while not meeting the
+                    expectations of our internal stakeholders, which causes a lower adaption of Ontario's single sign-on
+                    solution from digital services, in addition to higher call centre volumes from users. Our goal was
+                    to improve Ontario's single sign-on solution so that more program areas and end-users would adopt
+                    Public Secure, and so that call centre volumes would subsequently be reduced.</p>
+
+                <br>
+
+                <h3>Authentication levels</h3>
+                <p>There are three unique levels of authentication: low (username and password), medium (username,
+                    password and an additional piece of ID), and high (username, password, two-factor authentication).
+                    Depending on the program area being accessed, different pieces of information were required within
+                    and throughout these three levels of authentication to sign-up or sign-in, making the concept of a
+                    single sign-on tricky (Fig. 1).</p>
+            </div>
+
+            <br>
+
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="ssoTable1">
+                        <thead>
+                            <tr>
+                                <th class="thumbnail-col">*</th>
+                                <th>Title</th>
+                                <th>Size (bytes)</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBodyStatic1">
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/public-secure-sso/authentication-levels-thumbnails.jpg"
+                                        alt="Authentication levels thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Fig. 1 – Authentication levels</td>
+                                <td id="fileSize-authentication-levels">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/public-secure-sso/authentication-levels.png"
+                                    data-title="Authentication"><a class="table-link">Load image</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="image-display-area">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="proj-txt-container">
+                <h3>User interviews and personas</h3>
+                <p>As this was an engagement occurring in the midst of the COVID-19 pandemic, recruiting users to
+                    interview proved to be a challenge. After the synthesis of our 12 user interviews, we grouped common
+                    traits and came up with three user personas (Fig. 2). As this is a single sign-on that has the
+                    potential to
+                    be used by effectively any member of the Ontario public, we chose not to create personas within a
+                    specific niche, instead opting for a more all-encompassing set of personas to help steer our work.
+                </p>
+            </div>
+
+            <br>
+
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="ssoTable2">
+                        <thead>
+                            <tr>
+                                <th class="thumbnail-col">*</th>
+                                <th>Title</th>
+                                <th>Size (bytes)</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBodyStatic2">
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/public-secure-sso/user-personas-thumbnail.jpg"
+                                        alt="Authentication levels thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Fig. 2 – User personas</td>
+                                <td id="fileSize-user-personas">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/public-secure-sso/user-personas.png"
+                                    data-title="Authentication"><a class="table-link">Load image</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="image-display-area">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="proj-txt-container">
+                <h3>User experience design</h3>
+                <p>After synthesizing stakeholder and user interviews notes we drafted up flows we found were
+                    particularly common and/or problematic:</p>
+
+                <br>
+
+                <ul style="list-style-position: inside;">
+                    <li>Net new user account creation,</li>
+                    <li>Needs to sign in,</li>
+                    <li>Forgot password,</li>
+                    <li>Migrating ONe-key acount,</li>
+                    <li>Single sign-on account management.</li>
+                </ul>
+
+                <br>
+
+                <p>We ultimately drafted numerous flows that encompassed everything from informing Public Secure users
+                    of the portal changes to incorrect sign-on attempts, but those five flows remained the most
+                    important throughout our testing sessions.</p>
+
+                <br>
+
+                <h3>Sign-up made simpler</h3>
+                <p>Shortly after we began user testing with our preliminary onboarding flows, we discovered that many
+                    users confused the different sign-in options as different types of accounts altogether. Since emails
+                    were mandatory regardless of the chosen sign-in method, we decided to use the email to initiate the
+                    account creation proccess. On top of simplifying the flows, this changed the way many users
+                    perceived the sign-in options: now instead of seeing them as different account types, they more
+                    appropriately recognized as different means of signing in to the same account (Fig. 3).</p>
+
+                <br>
+
+                <h3>Managing additional IDs</h3>
+                <p>During our testing sessions many users confused unique ID's (ie. MyBenefits' MemberID) with something
+                    needed to create/sign-in to an Ontario account, while some outright forgot that it was even a part
+                    of the registration process to begin with by the time the screen for it arrived. We changed it so
+                    that the user is prompted to input their unique ID before creating an account (Fig. 4).</p>
+            </div>
+
+            <br>
+
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="ssoTable3">
+                        <thead>
+                            <tr>
+                                <th class="thumbnail-col">*</th>
+                                <th>Title</th>
+                                <th>Size (bytes)</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBodyStatic3">
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/public-secure-sso/sign-up-flow-thumbnail.jpg"
+                                        alt="Sign up flow thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Fig. 3 – Sign-up made simpler</td>
+                                <td id="fileSize-sign-up-flow">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/public-secure-sso/sign-up-flow.png"
+                                    data-title="Authentication"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/public-secure-sso/managing-additional-ids-thumbnail.jpg"
+                                        alt="Managing additional IDs thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Fig. 4 – Managing additional IDs</td>
+                                <td id="fileSize-managing-additional-ids">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/public-secure-sso/managing-additional-ids.png"
+                                    data-title="Authentication"><a class="table-link">Load image</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="image-display-area">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="proj-txt-container">
+                <h3>Interface</h3>
+                <p>As we ran through 11 user testing sessions we ended up with five iterations of our prototypes. In the
+                    ensuing section I'll detail a few more interface related changes we made to our screens.</p>
+
+                <p>ONe-key alerts (Fig. 5): On our initial mockups we had a yellow banner, warning ONe-key users that
+                    their
+                    account needed to be transferred. Many non-ONe-key users we tested with were unable to determine
+                    whether this warning was relevant to them or not. We changed the warning box to be less verbose in
+                    future iterations, reducing the potential for confusion from those unfarmiliar with ONe-key, and
+                    increasing the likeliness of a user actually reading it, in case it was pertinent to them.</p>
+
+                <p>Improved buttons (Fig. 6): Another significant change made was the buttons on the landing page. Based
+                    on
+                    stakeholder feedback and then the subsequent first user tests, we were able to confirm that having
+                    primary and secondary buttons inherently created a hierarchy within the options, which are all of
+                    equal importance. We changed these buttons to radio buttons and soon after noticed that this users
+                    were more inclined to thoroughly read through all their options.</p>
+
+                <p>Account management (Fig. 7): With a single sign on for government services, users need the ability to
+                    manage
+                    profiles within a program area, as well as their overall account. For signed in users we needed a
+                    dropdown menu for the user to manage account settings/sign out as well, and for navigating different
+                    profiles within a service we needed a second dropdown menu.</p>
+            </div>
+
+            <br>
+
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="ssoTable4">
+                        <thead>
+                            <tr>
+                                <th class="thumbnail-col">*</th>
+                                <th>Title</th>
+                                <th>Size (bytes)</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBodyStatic4">
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/public-secure-sso/one-key-alert-thumbnail.jpg"
+                                        alt="ONe-key alerts thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Fig. 5 – ONe-key alerts</td>
+                                <td id="fileSize-one-key-alerts">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/public-secure-sso/one-key-alerts.png"
+                                    data-title="Authentication"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/public-secure-sso/improved-button-thumbnail.jpg"
+                                        alt="Improved buttons thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Fig. 6 – Improved buttons</td>
+                                <td id="fileSize-improved-buttons">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/public-secure-sso/improved-buttons.png"
+                                    data-title="Authentication"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/public-secure-sso/account-management-thumbnail.jpg"
+                                        alt="Account management thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Fig. 7 – Account management</td>
+                                <td id="fileSize-account-management">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/public-secure-sso/account-management.png"
+                                    data-title="Authentication"><a class="table-link">Load image</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="image-display-area">
+                </div>
+            </div>
+
+            <div class="proj-txt-container">
+                <h3>Final mockups</h3>
+                <p>All things said and done, we mocked up 8 scenarios, with over 15 flows and more than 120 total
+                    screens between them all. The five flows below are those that are relevant to the
+                    aforementioned five problematic flows, and were the ones we continued to test the most.</p>
+
+                <br>
+
+                <ul style="list-style-position: inside;">
+                    <li>High-level onboarding (App. A),</li>
+                    <li>Low-level sign-on (App. B),</li>
+                    <li>Password reset (App. C),</li>
+                    <li>Account migration (App. D),</li>
+                    <li>Account management (App. E).</li>
+                </ul>
+
+                <br>
+            </div>
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="ssoTable5">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Type</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBodyStatic5">
+                            <tr>
+                                <td>App. A – High-level onboarding</td>
+                                <td>Figma prototype</td>
+                                <td><a target="_blank" class="table-link"
+                                        href="https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&node-id=4139%3A9629&viewport=623%2C319%2C0.07&scaling=min-zoom&starting-point-node-id=4139%3A9629&show-proto-sidebar=1">New
+                                        tab</a></td>
+                            </tr>
+                            <tr>
+                                <td>App. B – Low-level sign-on</td>
+                                <td>Figma prototype</td>
+                                <td><a target="_blank" class="table-link"
+                                        href="https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&node-id=4139%3A10434&viewport=623%2C319%2C0.07&scaling=min-zoom&starting-point-node-id=4139%3A10434&show-proto-sidebar=1">New
+                                        tab</a></td>
+                            </tr>
+                            <tr>
+                                <td>App. C – Password reset</td>
+                                <td>Figma prototype</td>
+                                <td><a target="_blank" class="table-link"
+                                        href="https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&node-id=4139%3A10763&viewport=623%2C319%2C0.07&scaling=min-zoom&starting-point-node-id=4139%3A10763&show-proto-sidebar=1">New
+                                        tab</a></td>
+                            </tr>
+                            <tr>
+                                <td>App. D – Account migration</td>
+                                <td>Figma prototype</td>
+                                <td><a target="_blank" class="table-link"
+                                        href="https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&node-id=4139%3A11213&viewport=623%2C319%2C0.07&scaling=min-zoom&starting-point-node-id=4139%3A11213&show-proto-sidebar=1">New
+                                        tab</a></td>
+                            </tr>
+                            <tr>
+                                <td>App. E – Account management</td>
+                                <td>Figma prototype</td>
+                                <td><a target="_blank" class="table-link"
+                                        href="https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&node-id=4139%3A11880&viewport=623%2C319%2C0.07&scaling=min-zoom&starting-point-node-id=4139%3A11880&show-proto-sidebar=1">New
+                                        tab</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <div class="footer-left">Gregory Cotton, 2025</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank"
+                class="secondary-link">LinkedIn</a> | <a href="https://www.are.na/gregory-cotton/" target="_blank"
+                class="secondary-link">Are.na</a> | <a href="https://open.spotify.com/user/greg.a.c?si=2bd247bf3bf5481f"
+                target="_blank" class="secondary-link">Spotify</a>
+        </div>
+    </footer>
+
+    <script>
+        const imageConfigurations = [
+            {
+                idForFileSizeCell: 'fileSize-authentication-levels',
+                fullImageUrl: 'images/public-secure-sso/authentication-levels.png'
+            },
+            {
+                idForFileSizeCell: 'fileSize-user-personas',
+                fullImageUrl: 'images/public-secure-sso/user-personas.png'
+            },
+            {
+                idForFileSizeCell: 'fileSize-sign-up-flow',
+                fullImageUrl: 'images/public-secure-sso/sign-up-flow.png'
+            },
+            {
+                idForFileSizeCell: 'fileSize-managing-additional-ids',
+                fullImageUrl: 'images/public-secure-sso/managing-additional-ids.png'
+            },
+            {
+                idForFileSizeCell: 'fileSize-one-key-alerts',
+                fullImageUrl: 'images/public-secure-sso/one-key-alerts.png'
+            },
+            {
+                idForFileSizeCell: 'fileSize-improved-buttons',
+                fullImageUrl: 'images/public-secure-sso/improved-buttons.png'
+            },
+            {
+                idForFileSizeCell: 'fileSize-account-management',
+                fullImageUrl: 'images/public-secure-sso/account-management.png'
+            }
+        ];
+    </script>
+</body>
+
+</html>

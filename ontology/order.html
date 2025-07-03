@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="title" content="Gregory Cotton">
+    <meta property="og:title" content="Gregory Cotton">
+    <meta name="twitter:title" content="Gregory Cotton">
+    <meta name="creator" content="gregorycotton.ca">
+    <meta name="author" content="Gregory Cotton">
+    <meta name="description"
+        content="Website of Gregory Cotton, user experience designer, engineer, interdisciplinary artist from Ottawa, Ontario, living in Lisbon, Portugal.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order | Gregory Cotton</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+    <script src="../scripts/fetch-properties.js"></script>
+    <script src="../scripts/image-loader.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h1><a href="../index.html" class="home-link">Gregory Cotton</a></h1>
+        </div>
+
+        <div class="right">
+            <h2>Order</h2>
+
+            <br>
+
+            <details id="propertiesDetails">
+                <summary class="secondary-link">Metadata</summary>
+                <div id="properties-content">
+                    <p>Loading metadata...</p>
+                </div>
+            </details>
+
+            <div class="proj-txt-container">
+                <p>Order is a series of compositions created from hand-drawn characters that were digitally scanned.</p>
+            </div>
+
+            <br>
+
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="projectsTable">
+                        <thead>
+                            <tr>
+                                <th class="thumbnail-col">*</th>
+                                <th>Title</th>
+                                <th>Size (bytes)</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBodyStatic">
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/order/trace-log-thumbnail.jpg"
+                                        alt="Trace_log thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Trace_log</td>
+                                <td id="fileSize-trace-log">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/order/trace-log.jpg" data-title="Trace_log"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/order/queue-thumbnail.jpg"
+                                        alt="Queue thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Queue</td>
+                                <td id="fileSize-queue">Loading...</td>
+                                <td class="loadImageTrigger" data-fullimageurl="images/order/queue.jpg"
+                                    data-title="Queue"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/order/together-again-thumbnail.jpg"
+                                        alt="Together [again] thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Together [again]</td>
+                                <td id="fileSize-together-again">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/order/together-again.jpg"
+                                    data-title="Together [again]"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/order/corridor-thumbnail.jpg"
+                                        alt="Corridor thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Corridor</td>
+                                <td id="fileSize-corridor">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/order/corridor.jpg"
+                                    data-title="Corridor"><a class="table-link">Load image</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="image-display-area">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer-left">Gregory Cotton, 2025</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank"
+                class="secondary-link">LinkedIn</a> | <a href="https://www.are.na/gregory-cotton/" target="_blank"
+                class="secondary-link">Are.na</a> | <a href="https://open.spotify.com/user/greg.a.c?si=2bd247bf3bf5481f"
+                target="_blank" class="secondary-link">Spotify</a>
+        </div>
+    </footer>
+
+    <script>
+        const imageConfigurations = [
+            {
+                idForFileSizeCell: 'fileSize-trace-log',
+                fullImageUrl: 'images/order/trace-log.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-queue',
+                fullImageUrl: 'images/order/queue.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-together-again',
+                fullImageUrl: 'images/order/together-again.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-corridor',
+                fullImageUrl: 'images/order/corridor.jpg'
+            }
+        ];
+    </script>
+</body>
+
+</html>

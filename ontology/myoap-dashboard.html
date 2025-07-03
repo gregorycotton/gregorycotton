@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="title" content="Gregory Cotton">
+    <meta property="og:title" content="Gregory Cotton">
+    <meta name="twitter:title" content="Gregory Cotton">
+    <meta name="creator" content="gregorycotton.ca">
+    <meta name="author" content="Gregory Cotton">
+    <meta name="description"
+        content="Website of Gregory Cotton, user experience designer, engineer, interdisciplinary artist from Ottawa, Ontario, living in Lisbon, Portugal.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyOAP Dashboard | Gregory Cotton</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+    <script src="../scripts/fetch-properties.js"></script>
+    <script src="../scripts/image-loader.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h1><a href="../index.html" class="home-link">Gregory Cotton</a></h1>
+        </div>
+
+        <div class="right">
+            <h2>MyOAP Dashboard</h2>
+
+            <br>
+
+            <details id="propertiesDetails">
+                <summary class="secondary-link">Metadata</summary>
+                <div id="properties-content">
+                    <p>Loading metadata...</p>
+                </div>
+            </details>
+
+            <div class="proj-txt-container">
+                <p>To improve their digital delivery, the Ontario Autism Program wanted to create a secure web portal
+                    for families. I worked in the discovery and alpha phases as one of two Product Designers, alongside
+                    two developers and a lab leader, to create a proof of concept and to prototype some potential
+                    features.</p>
+
+                <br>
+
+                <h3>Program background</h3>
+                <p>Prior to 2019 the Ontario Autism Program offered a needs-based service, where therapy was funded in
+                    full. Funding was given to service providers who in turn kept waitlists. In 2019, as an attempt to
+                    reduce wait times, the existing program was replaced with an interim one-time funding program where
+                    a fixed amount was delivered to a family based on factors such as age, while the government worked
+                    to develop a new needs-based program.</p>
+
+                <br>
+
+                <h3>User cohorts</h3>
+                <p>Throughout the numerous stakeholder interviews we conducted, we saw different user cohorts emerge
+                    based on when families and individuals registered for the OAP. We then created a series of service
+                    blueprints (One example show in Fig 1.) to better understand the different in journeys, interactions with the OAP, and
+                    the processes that happened backstage to support the user.</p>
+            </div>
+
+            <br>
+
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="myoapTable1">
+                        <thead>
+                            <tr>
+                                <th class="thumbnail-col">*</th>
+                                <th>Title</th>
+                                <th>Size (bytes)</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBodyStatic1">
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/myoap-dashboard/service-blueprint-thumbnail.jpg"
+                                        alt="Service blueprint thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Fig. 1 – Service blueprint</td>
+                                <td id="fileSize-service-blueprint">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/myoap-dashboard/service-blueprint.png"
+                                    data-title="Service blueprint"><a class="table-link">Load image</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="image-display-area">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="proj-txt-container">
+                <p>We interviewed nine individuals, making sure to include a range of different regions in Ontario,
+                    languages, degrees of access to technology, etc. Through this, this we learned more about some
+                    commonly brought up pain points before workshopping with project managers and program analysts from
+                    the OAP to create early personas and journey maps that were updated as we validated any assumptions.
+                </p>
+
+                <p>As was expected, many of the most brought up pain points, despite being incredibly valid stressors,
+                    were about the program design itself. When it came to the pain points we could meaningfully address
+                    while creating a digital product, we narrowed them down to three main issues:</p>
+
+                <p>
+                <ul style="list-style-position: inside;">
+                    <li>Users were constantly unsure about the status of their funding/application,</li>
+                    <li>There was uncertainty surrounding what was/n't considered an eligible expense,</li>
+                    <li>Editing PDF forms requires Adobe Reader, which many users don't have access to.</li>
+                </ul>
+                </p>
+
+                <p>The journey map(s) we created were a living breathing document that was updated as the engagement
+                    progressed and we learned more about the program and applicants (Fig 2.).</p>
+            </div>
+
+            <br>
+
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="myoapTable2">
+                        <thead>
+                            <tr>
+                                <th class="thumbnail-col">*</th>
+                                <th>Title</th>
+                                <th>Size (bytes)</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBodyStatic2">
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/myoap-dashboard/journey-map-thumbnail.jpg"
+                                        alt="Journey map thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Fig. 2 – Journey map</td>
+                                <td id="fileSize-journey-map">Loading...</td>
+                                <td class="loadImageTrigger" data-fullimageurl="images/myoap-dashboard/journey-map.png"
+                                    data-title="Journey map"><a class="table-link">Load image</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="image-display-area">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="proj-txt-container">
+                <h3>User experience</h3>
+                <p>Throughout the process of creating determining what features to dive deeper into we worked closely
+                    with internal stakeholders to make sure we were consistently assessing the feasibility of our ideas
+                    and to keep everyone in the loop. This involved holding participatory workshops where we asked
+                    stakeholders to envision the flows themselves, as well as daily check-ins and biweekly
+                    presentations.</p>
+
+                <p>We had to decide on what features we would design for immediately, and what features we wanted to
+                    recommend for a future state portal. The features and flows (Fig 3.) we ended up focusing on were:
+                </p>
+
+                <br>
+
+                <p>
+                <ul style="list-style-position: inside;">
+                    <li>Register for OAP online,</li>
+                    <li>Apply for funding online,</li>
+                    <li>Manage your expenses online.</li>
+                </ul>
+                </p>
+            </div>
+
+            <br>
+
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="myoapTable3">
+                        <thead>
+                            <tr>
+                                <th class="thumbnail-col">*</th>
+                                <th>Title</th>
+                                <th>Size (bytes)</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBodyStatic3">
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/myoap-dashboard/user-flow-thumbnail.jpg"
+                                        alt="User flow thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Fig. 3 – User flow</td>
+                                <td id="fileSize-user-flow">Loading...</td>
+                                <td class="loadImageTrigger" data-fullimageurl="images/myoap-dashboard/user-flow.png"
+                                    data-title="User flow"><a class="table-link">Load image</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="image-display-area">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="proj-txt-container">
+                <h3>Interface</h3>
+                <p>Once the preliminary flows had been created we set out to design an interface that allowed for
+                    content to de displayed in the most easily understandable way possible. We continued to tweak our UI
+                    and content throughout testing sessions with users, and ultimately had over five different
+                    iterations for the interface.</p>
+
+                <br>
+
+                <p>Clarifying expense categories (Fig 4.): Much of our users' confusion surrounding the expense form
+                    came from
+                    the ambiguity of the expense category/subcategory names. We ran through a few iterations of how we
+                    could most clearly display categories before deciding on very explicitly describing each category.
+                </p>
+
+                <p>Dashboard notices (Fig 5.): Through our interviews, we learned that questions related status of
+                    application
+                    and other milestones/important dates were abundant. Having different notices depending on where the
+                    user is in the process of acquiring funding to keep them in the loop proved to be a hit during our
+                    testing sessions.</p>
+
+                <p>Breaking down pages (Fig 6.): User's did not enjoy forms that took up multiple page heights and
+                    required too
+                    much scrolling. We found that breaking down pages into well defined and brief sections resulted in
+                    an overall more pleasant experience during user testing.</p>
+            </div>
+
+            <br>
+
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="myoapTable4">
+                        <thead>
+                            <tr>
+                                <th class="thumbnail-col">*</th>
+                                <th>Title</th>
+                                <th>Size (bytes)</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBodyStatic4">
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/myoap-dashboard/expense-categories-thumbnail.jpg"
+                                        alt="Expense categories thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Fig. 4 – Expense categories</td>
+                                <td id="fileSize-expense-categories">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/myoap-dashboard/expense-categories.png"
+                                    data-title="Expense categories"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/myoap-dashboard/dashboard-states-thumbnail.jpg"
+                                        alt="Dashboard states thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Fig. 5 – Dashboard states</td>
+                                <td id="fileSize-dashboard-states">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/myoap-dashboard/dashboard-states.png"
+                                    data-title="Dashboard states"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/myoap-dashboard/paginated-form-thumbnail.jpg"
+                                        alt="Paginated forms thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Fig. 6 – Paginated forms</td>
+                                <td id="fileSize-paginated-forms">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/myoap-dashboard/paginated-form.png"
+                                    data-title="Paginated forms"><a class="table-link">Load image</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="image-display-area">
+                </div>
+
+                <br>
+
+                <div class="proj-txt-container">
+                    <h3>Final mockups</h3>
+                    <p>As we went through three rounds of iterative user testing we constantly made changes to our
+                        mockups before they were further developed into prototypes by the developers on our team. While
+                        we prototyped numerous flows, those we most rigorously tested and turned into coded prototypes
+                        were:</p>
+
+                    <p>
+                    <ul style="list-style-position: inside;">
+                        <li>Connect an existing profile to a new digital account (App. A),</li>
+                        <li>Register for OAP online (App. B),</li>
+                        <li>Add a new expense / managing expenses online (App. C).</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <br>
+
+                <div class="proj-resource-container">
+                    <div class="table-container">
+                        <table class="image-loader-table" id="myoapTable5">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Type</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                            <tbody id="projectsTableBodyStatic3">
+                                <tr>
+                                    <td>App. A – Connect a profile</td>
+                                    <td>Figma prototype</td>
+                                    <td><a target="_blank" class="table-link"
+                                            href="https://www.figma.com/proto/iWkpPgxH7mhY3BZvMDntdF/Ontario-Autism-Program-Client-Portal-*?page-id=3937%3A17026&node-id=3937%3A17194&viewport=1641%2C1875%2C0.46&scaling=scale-down&starting-point-node-id=3937%3A17194&show-proto-sidebar=1">New
+                                            tab</a></td>
+                                </tr>
+                                <tr>
+                                    <td>App. B – Register online</td>
+                                    <td>Figma prototype</td>
+                                    <td><a target="_blank" class="table-link"
+                                            href="https://www.figma.com/proto/iWkpPgxH7mhY3BZvMDntdF/Ontario-Autism-Program-Client-Portal-*?page-id=3937%3A17026&node-id=3961%3A17993&viewport=1641%2C1875%2C0.46&scaling=scale-down&starting-point-node-id=3961%3A17993&show-proto-sidebar=1">New
+                                            tab</a></td>
+                                </tr>
+                                <tr>
+                                    <td>App. C – Add a new expense</td>
+                                    <td>Figma prototype</td>
+                                    <td><a target="_blank" class="table-link"
+                                            href="https://www.figma.com/proto/iWkpPgxH7mhY3BZvMDntdF/Ontario-Autism-Program-Client-Portal-*?page-id=3937%3A17026&node-id=3937%3A18715&viewport=1641%2C1875%2C0.46&scaling=scale-down&starting-point-node-id=3937%3A18715&show-proto-sidebar=1">New
+                                            tab</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-left">Gregory Cotton, 2025</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank"
+                class="secondary-link">LinkedIn</a> | <a href="https://www.are.na/gregory-cotton/" target="_blank"
+                class="secondary-link">Are.na</a> | <a href="https://open.spotify.com/user/greg.a.c?si=2bd247bf3bf5481f"
+                target="_blank" class="secondary-link">Spotify</a>
+        </div>
+    </footer>
+
+    <script>
+        const imageConfigurations = [
+            {
+                idForFileSizeCell: 'fileSize-service-blueprint',
+                fullImageUrl: 'images/myoap-dashboard/service-blueprint.png'
+            },
+            {
+                idForFileSizeCell: 'fileSize-journey-map',
+                fullImageUrl: 'images/myoap-dashboard/journey-map.png'
+            },
+            {
+                idForFileSizeCell: 'fileSize-user-flow',
+                fullImageUrl: 'images/myoap-dashboard/user-flow.png'
+            },
+            {
+                idForFileSizeCell: 'fileSize-expense-categories',
+                fullImageUrl: 'images/myoap-dashboard/expense-categories.png'
+            },
+            {
+                idForFileSizeCell: 'fileSize-dashboard-states',
+                fullImageUrl: 'images/myoap-dashboard/dashboard-states.png'
+            },
+            {
+                idForFileSizeCell: 'fileSize-paginated-forms',
+                fullImageUrl: 'images/myoap-dashboard/paginated-form.png'
+            }
+        ];
+    </script>
+</body>
+
+</html>

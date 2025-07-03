@@ -20,9 +20,19 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+    <script src="scripts/config.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/table-manager.js"></script>
+    <script src="scripts/image-popup.js"></script>
+
+    <noscript>
+        <meta http-equiv="refresh" content="0;url=nojs.html">
+    </noscript>
 </head>
 
 <body>
+    <!-- Personal details -->
     <div class="container">
         <div class="left">
             <h1><a href="index.html" class="home-link">Gregory Cotton</a></h1>
@@ -40,30 +50,51 @@
             <p>Currently, I am:</p>
 
             <p><strong>Reading</strong>: <a class="primary-link" target="_blank"
-                    href="https://pair.withgoogle.com/explorables/patchscopes/">Can Large Language Models Explain Their
-                    Internal Mechanisms?</a> by Hussein, Nada, et al.</p>
+                    href="https://www.barnesandnoble.com/w/sun-and-steel-yukio-mishima/1103738660?ean=9786159424645">Sun and Steel</a> by Yukio Mishima</p>
 
             <p><strong>Listening to</strong>: <a class="primary-link" target="_blank"
-                    href="https://open.spotify.com/album/6tmZryIk5pXCueWH5Fm0pt?si=XwOiAQSYQ1Gx_Pt_aEL3lQ">弓长张</a> by
-                jackzebra, <a class="primary-link" target="_blank"
-                    href="https://open.spotify.com/album/6DlLdXBGCsSDPOV8R2pCl7?si=e21rW57NSHeBdcoLq3QUHQ">Two
-                    Star
-                    & The Dream Police</a> by Mk.gee, <a class="primary-link" target="_blank"
-                    href="https://open.spotify.com/album/57msisvMU9bweGU7ITMnvl?si=bzNAYhidRAaNe2YBJz_LlA">Trendsetter</a>
-                by
-                Lunaa
+                    href="https://open.spotify.com/album/2qwv7hNjSGfLarHY2adeq9?si=GbpiiE8qTPepty5N0ZtkcQ">14
+                    minutes</a> by
+                Dominic Fike, <a class="primary-link" target="_blank"
+                    href="https://open.spotify.com/album/52yD51X7yDinwlg6tbCtpP?si=kxDRAOgdTX65NJVNFjzZ7A">NEVER
+                    ENOUGH</a> by Turnstile, <a class="primary-link" target="_blank"
+                    href="https://open.spotify.com/album/1u3fACOWZ2FQZhpFiDe85n?si=ElzQAgTuT3Wnt65mbS8Jeg">HOLI GEO</a>
+                by João Mortágua</p>
 
             <p><strong>Watching</strong>: <a class="primary-link" target="_blank"
-                    href="https://www.youtube.com/playlist?list=PLUl4u3cNGP61-9PEhRognw5vryrSEVLPr">MIT 8.04 Quantum
-                    Physics I</a> lecture series from Allan Adams</p>
+                    href="https://www.youtube.com/playlist?list=PLUl4u3cNGP61-9PEhRognw5vryrSEVLPr">MIT 8.04
+                            Quantum
+                            Physics I</a> lecture series from Allan Adams</p>
 
             <br>
 
+            <!-- /now archive -->
             <details>
-                <summary class="secondary-link">Last updated May 11th 2025</summary>
+                <summary class="secondary-link">Last updated June 27th 2025</summary>
                 <div class="secondary-text">
                     <br>
-                    <!-- -->
+
+                    <!-- May 11th 2025 -->
+                    <p><strong>May 11th 2025</strong></p>
+                    <p><strong>Reading</strong>: <a class="secondary-link" target="_blank"
+                            href="https://pair.withgoogle.com/explorables/patchscopes/">Can Large Language Models
+                            Explain Their
+                            Internal Mechanisms?</a> by Hussein, Nada, et al.</p>
+                    <p><strong>Listening to</strong>: <a class="secondary-link" target="_blank"
+                            href="https://open.spotify.com/album/6tmZryIk5pXCueWH5Fm0pt?si=XwOiAQSYQ1Gx_Pt_aEL3lQ">弓长张</a>
+                        by
+                        jackzebra, <a class="secondary-link" target="_blank"
+                            href="https://open.spotify.com/album/6DlLdXBGCsSDPOV8R2pCl7?si=e21rW57NSHeBdcoLq3QUHQ">Two
+                            Star
+                            & The Dream Police</a> by Mk.gee, <a class="secondary-link" target="_blank"
+                            href="https://open.spotify.com/album/57msisvMU9bweGU7ITMnvl?si=bzNAYhidRAaNe2YBJz_LlA">Trendsetter</a>
+                        by
+                        Lunaa</p>
+                    <p><strong>Watching</strong>: <a class="secondary-link" target="_blank"
+                            href="https://youtu.be/tsbCSkvHhMo?si=TAiMOtZw-q8Jfrbn">Quantum Computing Course – Math and Theory for Beginners</a> from freeCodeCamp</p>  
+                    <br>
+
+                    <!-- April 14th 2025 -->
                     <p><strong>April 14th 2025</strong></p>
                     <p><strong>Reading</strong>: <a class="secondary-link" target="_blank"
                             href="https://arxiv.org/pdf/2504.01990">Advances and Challenges in Foundation Agents</a> by
@@ -73,24 +104,21 @@
                             href="https://open.spotify.com/album/7ikTrq7WTdtgLtphwS5S0v?si=vu1-iTPUScu3UCgplGoaEw">Grove</a>
                         by
                         Dion, <a class="secondary-link" target="_blank"
-                            href="https://open.spotify.com/album/60JwRRKU6wsdJex2cbq974?si=EQpHWShCQYuGSOXG17g_Rw">q
-                            p</a>
+                            href="https://open.spotify.com/album/60JwRRKU6wsdJex2cbq974?si=EQpHWShCQYuGSOXG17g_Rw">q p</a>
                         by
                         Ichiko Aoba, <a class="secondary-link" target="_blank"
                             href="https://open.spotify.com/album/784znju28Nz5zSuRuthPcO?si=-1WY38P5TSa_PB-MqtzWkQ">F*CK
                             U SKRILLEX</a> by Skrillex</p>
-
                     <p><strong>Watching</strong>: The <a class="secondary-link" target="_blank"
                             href="https://youtu.be/k2LEJb9OMNo?si=RJiBlJHAO35xfapM">Ottawa Senators</a> in the Stanely
                         Cup playoffs</p>
                     <br>
 
-                    <!-- -->
+                    <!-- January 30th 2025 -->
                     <p><strong>January 30th 2025</strong></p>
                     <p>Reading: <a class="secondary-link" target="_blank"
                             href="https://mitpress.mit.edu/9780262162098/types-and-programming-languages/">Types and
                             Programming Languages</a> by Benjamin C. Pierce</p>
-
                     <p>Listening to: <a class="secondary-link" target="_blank"
                             href="https://open.spotify.com/album/31yw2qZpLSdwx4JnwbBbYw?si=fHIbLDQ0QzqR4mh7cIj8wA">litterzzz</a>
                         by litterzzz, <a class="secondary-link" target="_blank"
@@ -98,19 +126,16 @@
                             Tired 2</a> by Joeyy, <a class="secondary-link" target="_blank"
                             href="https://open.spotify.com/album/58PwJKq5KH2MjVt2Ih4nEt?si=ab6wGPsTTDSzvJk-X6n6ww">choke
                             enough</a> by Oklou</p>
-
                     <p>Watching: <a class="secondary-link" target="_blank"
                             href="https://youtube.com/playlist?list=PLK06XT3hFPzilgF1mi_hHqcXO1-o_8OEe&si=tcoFdbfQyfO6xHMA">Principles
                             of Programming Languages</a> lecture series from Adam Doupé</p>
-
                     <br>
 
-                    <!-- -->
+                    <!-- December 15th 2024 -->
                     <p><strong>December 15th 2024</strong></p>
                     <p>Reading: <a class="secondary-link" target="_blank"
                             href="https://www.barnesandnoble.com/w/swanns-way-marcel-proust/1007393900">Swann’s Way</a>
                         by Marcel Proust</p>
-
                     <p>Listening to: <a class="secondary-link" target="_blank"
                             href="https://open.spotify.com/album/2cEL04tddUszYFy6tEM1rI?si=lw0e_nRrTwKp52UeN8Yawg">COLD
                             VISIONS</a> by Bladee, <a class="secondary-link" target="_blank"
@@ -118,7 +143,6 @@
                             :D</a> by Porter Robinson, <a class="secondary-link" target="_blank"
                             href="https://open.spotify.com/album/3J1xyysyRdiNlMMrRKsKQI?si=mOIE0X23SFaID0oCccVNmg">Brazen
                             Child</a> by Dyltwosix</p>
-
                     <p>Watching: <a class="secondary-link" target="_blank"
                             href="https://youtu.be/KMlA_czMyRE?si=6J07-UL2YCH1l4Az">My Movie 2: A Christmas
                             Movie!</a> by ANVIL</p>
@@ -126,6 +150,89 @@
             </details>
         </div>
     </div>
+
+    <!-- Table view -->
+    <div id="database">
+        <div class="view-selector">
+            <table>
+                <tr>
+                    <th>
+                        <strong class="db-view">Database view:</strong>
+                        <label class="db-view">
+                            <input type="radio" name="viewType" value="ontology" checked
+                                onchange="switchView('ontology')"> Ontology
+                        </label>
+                        <label class="db-view">
+                            <input type="radio" name="viewType" value="fieldnotes" onchange="switchView('fieldnotes')">
+                            Fieldnotes
+                        </label>
+                        <label class="db-view">
+                            <input type="radio" name="viewType" value="album" onchange="switchView('album')"> Album
+                        </label>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="controls">
+            <div class="controls-row">
+                <label>Search: <input type="search" id="searchInput" placeholder="Database search..."></label>
+                <button class="button-table-settings" onclick="toggleQueryBuilder()">Build Query</button>
+                <button class="button-table-settings" onclick="toggleColumnSelector()">Modify Columns</button>
+            </div>
+
+            <div id="queryBuilder" class="query-builder hidden">
+                <div id="conditionsContainer"></div>
+                <div class="controls-row">
+                    <button class="button-table-settings" onclick="addCondition()">Add Condition</button>
+                    <button class="button-table-settings" onclick="runQuery()">Run Query</button>
+                    <button class="button-table-settings" onclick="clearQuery()">Clear</button>
+                </div>
+            </div>
+
+            <div id="columnSelector" class="column-selector hidden">
+            </div>
+        </div>
+
+        <div id="ontologyView">
+            <div class="table-container">
+                <table id="projectsTable">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="fieldnotesView" class="hidden">
+            <div class="table-container">
+                <table id="fieldnotesTable">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div id="albumView" class="hidden">
+            <div class="table-container">
+                <table id="albumsTable">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="imageOverlay" class="image-overlay hidden" onclick="hideImagePopup()"></div>
+    <img id="popupImage" class="popup-image hidden" onclick="hideImagePopup()">
+
+    <footer>
+        <div class="footer-left">Gregory Cotton, 2025</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank" class="secondary-link">LinkedIn</a> |
+            <a href="https://www.are.na/gregory-cotton/" target="_blank" class="secondary-link">Are.na</a> | <a
+                href="https://open.spotify.com/user/greg.a.c?si=2bd247bf3bf5481f" target="_blank"
+                class="secondary-link">Spotify</a>
+        </div>
+    </footer>
 </body>
 
 </html>

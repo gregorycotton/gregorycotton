@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="title" content="Gregory Cotton">
+    <meta property="og:title" content="Gregory Cotton">
+    <meta name="twitter:title" content="Gregory Cotton">
+    <meta name="creator" content="gregorycotton.ca">
+    <meta name="author" content="Gregory Cotton">
+    <meta name="description"
+        content="Website of Gregory Cotton, user experience designer, engineer, interdisciplinary artist from Ottawa, Ontario, living in Lisbon, Portugal.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Stay At Home | Gregory Cotton</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+    <script src="../scripts/fetch-properties.js"></script>
+    <script src="../scripts/image-loader.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h1><a href="../index.html" class="home-link">Gregory Cotton</a></h1>
+        </div>
+
+        <div class="right">
+            <h2>To Stay At Home</h2>
+
+            <br>
+
+            <details id="propertiesDetails">
+                <summary class="secondary-link">Metadata</summary>
+                <div id="properties-content">
+                    <p>Loading metadata...</p>
+                </div>
+            </details>
+
+            <div class="proj-txt-container">
+                <p>Promotional material and album artwork for a musician from Toronto.</p>
+            </div>
+
+            <br>
+
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="projectsTable">
+                        <thead>
+                            <tr>
+                                <th class="thumbnail-col">*</th>
+                                <th>Title</th>
+                                <th>Size (bytes)</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/to-stay-at-home/listen-to-me-cover-thumbnail.jpg"
+                                        alt="Album artwork for 'Listen To Me' thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>'Listen To Me' album artwork</td>
+                                <td id="fileSize-listen-to-me-cover">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/to-stay-at-home/listen-to-me-cover.jpg"
+                                    data-title="Album artwork for 'Listen To Me'"><a class="table-link">Load image</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/to-stay-at-home/listen-to-me-lyric-sheet-thumbnail.jpg"
+                                        alt="Lyric sheet for 'Listen To Me' thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>'Listen To Me' lyric sheet</td>
+                                <td id="fileSize-listen-to-me-lyric-sheet">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/to-stay-at-home/listen-to-me-lyric-sheet.jpg"
+                                    data-title="Lyric sheet for 'Listen To Me'"><a class="table-link">Load image</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/to-stay-at-home/listen-to-me-canvas-thumbnail.jpg"
+                                        alt="Spotify Canvas for 'Listen To Me' thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>'Listen To Me' Spotify Canvas</td>
+                                <td id="fileSize-listen-to-me-canvas">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/to-stay-at-home/listen-to-me-canvas.gif"
+                                    data-title="Spotify Canvas for 'Listen To Me'"><a class="table-link">Load GIF</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/to-stay-at-home/an-evening-with-adam-thumbnal.jpg"
+                                        alt="'An Evening With Adam' promotional poster thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>'An Evening With Adam' promotional poster</td>
+                                <td id="fileSize-an-evening-with-adam">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/to-stay-at-home/an-evening-with-adam.jpg"
+                                    data-title="'An Evening With Adam' promotional poster"><a class="table-link">Load
+                                        image</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="image-display-area">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-left">Gregory Cotton, 2025</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank"
+                class="secondary-link">LinkedIn</a> | <a href="https://www.are.na/gregory-cotton/" target="_blank"
+                class="secondary-link">Are.na</a> | <a href="https://open.spotify.com/user/greg.a.c?si=2bd247bf3bf5481f"
+                target="_blank" class="secondary-link">Spotify</a>
+        </div>
+    </footer>
+
+    <script>
+        const imageConfigurations = [
+            {
+                idForFileSizeCell: 'fileSize-listen-to-me-cover',
+                fullImageUrl: 'images/to-stay-at-home/listen-to-me-cover.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-listen-to-me-lyric-sheet',
+                fullImageUrl: 'images/to-stay-at-home/listen-to-me-lyric-sheet.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-listen-to-me-canvas',
+                fullImageUrl: 'images/to-stay-at-home/listen-to-me-canvas.gif'
+            },
+            {
+                idForFileSizeCell: 'fileSize-an-evening-with-adam',
+                fullImageUrl: 'images/to-stay-at-home/an-evening-with-adam.jpg'
+            }
+        ];
+    </script>
+</body>
+
+</html>

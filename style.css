@@ -23,6 +23,8 @@
 /* Base Styles */
 html {
     scrollbar-gutter: stable;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 * {
@@ -89,6 +91,20 @@ h1 {
     font-weight: 800;
 }
 
+h2 {
+    padding: 5px 0px;
+    font-size: 12px;
+    font-weight: 100;
+    text-decoration: underline;
+}
+
+h3 {
+    padding: 5px 0px;
+    font-size: 12px;
+    font-weight: 100;
+    font-style: italic;
+}
+
 p {
     padding: 5px 0px;
 }
@@ -118,7 +134,7 @@ blockquote {
 }
 
 .primary-link {
-    color: var(--color-primary);
+    color: var(--color-accent);
     text-decoration: underline;
 }
 
@@ -154,10 +170,12 @@ blockquote {
 /* Details/Summary */
 details {
     padding-bottom: 24px;
+    font-size: 12px;
 }
 
 details summary {
     list-style: none;
+    font-size: 12px;
 }
 
 details summary::-webkit-details-marker {
@@ -166,6 +184,7 @@ details summary::-webkit-details-marker {
 
 #properties-content {
     margin-top: 15px;
+    font-size: 12px;
 }
 
 /* Layout */
@@ -589,7 +608,6 @@ tr:nth-child(even) {
     z-index: 1001;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    /* border: 3px solid var(--color-white); */
 }
 
 .hidden {
@@ -633,14 +651,18 @@ td.thumbnail-col {
     border: 0;
 }
 
-#imageDisplayArea {
+.image-display-area { 
     margin-top: 15px;
-    text-align: center;
+    text-align: left;
+}
+
+.image-display-area img { 
+    max-height: 95vh;
+    width: auto;
 }
 
 /* Mobile Responsiveness Adjustments */
 @media (max-width: 750px) {
-
     .controls .controls-row {
         flex-wrap: wrap;
         height: auto;
@@ -673,13 +695,11 @@ td.thumbnail-col {
     .query-builder .query-condition .value-container input {
         min-width: 150px;
         flex-basis: 100%;
-        /* margin-top: 5px; */
     }
 
     .query-builder .query-condition .query-remove {
         margin-left: auto;
     }
-
 
     .columns-grid {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));

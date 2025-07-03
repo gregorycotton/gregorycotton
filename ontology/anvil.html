@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="title" content="Gregory Cotton">
+    <meta property="og:title" content="Gregory Cotton">
+    <meta name="twitter:title" content="Gregory Cotton">
+    <meta name="creator" content="gregorycotton.ca">
+    <meta name="author" content="Gregory Cotton">
+    <meta name="description"
+        content="Website of Gregory Cotton, user experience designer, engineer, interdisciplinary artist from Ottawa, Ontario, living in Lisbon, Portugal.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anvil | Gregory Cotton</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+    <script src="../scripts/fetch-properties.js"></script>
+    <script src="../scripts/image-loader.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h1><a href="../index.html" class="home-link">Gregory Cotton</a></h1>
+        </div>
+
+        <div class="right">
+            <h2>Anvil</h2>
+
+            <br>
+
+            <details id="propertiesDetails">
+                <summary class="secondary-link">Metadata</summary>
+                <div id="properties-content">
+                    <p>Loading metadata...</p>
+                </div>
+            </details>
+
+            <div class="proj-txt-container">
+                <p>Web portfolio for ANVIL, a directing duo from Toronto, Ontario.</p>
+
+                <p>Fun highlights from this project include:</p>
+
+                <br>
+
+                <ul style="list-style-position: inside;">
+                    <li>We were very inspired by a raw early-2000s web aesthetic, and a lot of <a href="https://www.are.na/charles-broskoski/scientist-websites" target="_blank" class="primary-link">scientist websites</a> but wanted to mix this aesthetic with something more modern and on brand for ANVIL.</li>
+                    <li>I had a dream where Toby asked me for a dark mode on the website. I built the feature (inverting colours, as is typical on a lot of modern websites), and he told me he meant that he ‘wanted the lights off’. The next day, I shared this dream with Toby over FaceTime and we decided it was actually a funny enough play on 'dark mode' to implement on the site you see today. </li>
+                </ul>
+
+                <br>
+
+                <p>Co-creative directed alongside Toby and Tank. Developed by me. Additional graphics by me as well.</p>
+
+                <br>
+
+                <p>Visit the site at <a href="https://anvil.cool/" target="_blank" class="primary-link">anvil.cool</a>.</p>
+            </div>
+
+            <br>
+
+            <div class="proj-resource-container">
+                <div class="table-container">
+                    <table class="image-loader-table" id="projectsTable">
+                        <thead>
+                            <tr>
+                                <th class="thumbnail-col">*</th>
+                                <th>Title</th>
+                                <th>Size (bytes)</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBodyStatic">
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/anvil/anvil-homepage-thumbnail.jpg"
+                                        alt="Anvil homepage thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Anvil homepage</td>
+                                <td id="fileSize-anvil-homepage">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/anvil/anvil-homepage.jpg" data-title="Anvil homepage"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/anvil/anvil-video-direction-thumbnail.jpg"
+                                        alt="Anvil video direction thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Anvil video direction page</td>
+                                <td id="fileSize-anvil-video-direction">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/anvil/anvil-video-direction.jpg" data-title="Anvil video direction"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/anvil/anvil-dark-mode-thumbnail.jpg"
+                                        alt="Anvil dark mode thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Anvil dark mode feature</td>
+                                <td id="fileSize-anvil-dark-mode">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/anvil/anvil-dark-mode.jpg" data-title="Anvil dark mode"><a class="table-link">Load image</a></td>
+                            </tr>
+                            <tr>
+                                <td class="thumbnail-col">
+                                    <img src="thumbnails/anvil/anvil-404-page-thumbnail.jpg"
+                                        alt="Anvil 404 page thumbnail" class="thumbnail-img">
+                                </td>
+                                <td>Anvil 404 page</td>
+                                <td id="fileSize-anvil-404-page">Loading...</td>
+                                <td class="loadImageTrigger"
+                                    data-fullimageurl="images/anvil/anvil-404-page.jpg" data-title="Anvil 404 page"><a class="table-link">Load image</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="image-display-area">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer-left">Gregory Cotton, 2025</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank"
+                class="secondary-link">LinkedIn</a> | <a href="https://www.are.na/gregory-cotton/" target="_blank"
+                class="secondary-link">Are.na</a> | <a href="https://open.spotify.com/user/greg.a.c?si=2bd247bf3bf5481f"
+                target="_blank" class="secondary-link">Spotify</a>
+        </div>
+    </footer>
+
+    <script>
+        const imageConfigurations = [
+            {
+                idForFileSizeCell: 'fileSize-anvil-homepage',
+                fullImageUrl: 'images/anvil/anvil-homepage.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-anvil-video-direction',
+                fullImageUrl: 'images/anvil/anvil-video-direction.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-anvil-dark-mode',
+                fullImageUrl: 'images/anvil/anvil-dark-mode.jpg'
+            },
+            {
+                idForFileSizeCell: 'fileSize-anvil-404-page',
+                fullImageUrl: 'images/anvil/anvil-404-page.jpg'
+            }
+        ];
+    </script>
+</body>
+
+</html>
