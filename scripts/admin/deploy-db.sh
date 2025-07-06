@@ -15,7 +15,7 @@ if [ ! -f "$LOCAL_DB_PATH" ]; then
     exit 1
 fi
 
-echo "⬆️  Uploading $LOCAL_DB_PATH to server..."
+echo "Uploading $LOCAL_DB_PATH to server..."
 scp "$LOCAL_DB_PATH" ${SERVER_USER}@${SERVER_IP}:${REMOTE_DB_PATH}
 
 echo "Setting permissions on the remote database file..."
