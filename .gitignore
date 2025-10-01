@@ -4,3 +4,4 @@ database/
 *.sqlite
 *.sqlite3
 .DS_Store
+scripts/admin/deploy-db.sh
