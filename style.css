@@ -183,8 +183,24 @@ details summary::-webkit-details-marker {
 }
 
 #properties-content {
-    margin-top: 15px;
-    font-size: 12px;
+    max-width: 100%;
+    width: 100%;
+    display: block; 
+}
+
+#properties-content pre {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre;
+    padding: 10px;
+    margin-bottom: 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#properties-content pre::-webkit-scrollbar {
+    display: none;
 }
 
 /* Layout */
@@ -205,6 +221,7 @@ details summary::-webkit-details-marker {
 .left,
 .right {
     padding: 12px;
+    min-width: 0;
 }
 
 @media (max-width: 750px) {
