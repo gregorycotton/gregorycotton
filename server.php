@@ -29,8 +29,8 @@ header('Content-Type: application/json');
 
 // Database Connection
 try {
-    //$db = new PDO('sqlite:/var/www/gregorycotton.ca/database/projects.db');
-    $db = new PDO('sqlite:database/projects.db');
+    $db = new PDO('sqlite:/var/www/gregorycotton.ca/database/projects.db');
+    // $db = new PDO('sqlite:database/projects.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
