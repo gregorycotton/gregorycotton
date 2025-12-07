@@ -80,15 +80,13 @@
         </div>
     </div>
 
-    <footer>
-        <div class="footer-left">Gregory Cotton, 2025</div>
-        <div class="footer-right">
-            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank"
-                class="secondary-link">LinkedIn</a> | <a href="https://www.are.na/gregory-cotton/" target="_blank"
-                class="secondary-link">Are.na</a> | <a href="https://open.spotify.com/user/greg.a.c?si=2bd247bf3bf5481f"
-                target="_blank" class="secondary-link">Spotify</a>
-        </div>
-    </footer>
+    <script>
+        fetch('../footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+            });
+    </script>
 
     <script>
         const imageConfigurations = [
