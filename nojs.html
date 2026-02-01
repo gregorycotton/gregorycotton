@@ -16,63 +16,273 @@
 
     <style>
         body {
-            padding: 0;
-            margin: 25px;
-            width: 100vw;
-            background: #FFF;
-            color: #000;
-            font-size: 16px;
-        }
-
-        #no-js {
-            margin: 10px 0px;
-            padding: 2.5px 10px;
-            background-color: #F8EE9C80;
-            border: solid 1px #F9D536;
-            width: auto;
+            font-family: Times, "Times New Roman", serif;
+            background-color: #FFFEE5;
+            color: #000000;
+            margin: 20px;
+            line-height: 1.4;
             max-width: 500px;
         }
+        
+        h1 {
+            font-size: 26px;
+            font-weight: bold;
+        }
+        
+        table {
+            border: 1px solid #000000;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        
+        td {
+            border: 1px solid #000000;
+            padding: 10px 15px;
+            vertical-align: top;
+        }
+        
+        td.portrait {
+            width: 125px;
+            height: 125px;
+            padding: 0;
+            background-image: url('/assets/nojs/greg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        td h2 {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 8px 0;
+        }
+        
+        td p {
+            margin: 0 0 3px 0;
+            font-size: 16px;
+        }
+        
+        .icons {
+            margin-bottom: 15px;
+        }
+        
+        .icons img {
+            margin-right: 1px;
+            margin-bottom: 1px;
+        }
+        
+        .note {
+            margin-bottom: 20px;
+        }
+        
+        .note p {
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .badge {
+            display: inline-block;
+            font-size: 11px;
+            margin-bottom: 20px;
+            width: 200px
+        }
+        
+        hr {
+            border: none;
+            height: 1px;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            margin: 25px 0;
+        }
+        
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-style: italic;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .resume-line {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        
+        .spacer {
+            margin-bottom: 5px;
+        }
+        
+        .contact p {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            font-size: 16px;
+        }
+        
+        .footer-icons {
+            margin-top: 15px;
+        }
+        
+        .footer-icons img {
+            height: 31px;
+            margin-right: 3px;
+            margin-bottom: 3px;
+        }
+        
+        a {
+            color: #0000EE;
+            text-decoration: underline;
+        }
+        
+        a:visited {
+            color: #551A8B;
+        }
 
-        .icon {
-            width: 25px;
-            height: 50px;
+        .banner {
+            width: 80px;
+            height: 15px;
+        }
+
+        table.resume {
+            border: none;
+        }
+        
+        table.resume td {
+            border: none;
+            padding: 0;
+            padding-right: 15px;
+            padding-bottom: 5px;
+            padding-top: 5px;
         }
     </style>
 </head>
 
 <body>
-    <p>⚠️&nbsp;<em>You are viewing the HTML-only version of gregorycotton.ca</em></p>
+    <img class="badge" src="assets/nojs/welcome.gif" alt="Best viewed">
 
-    <br>
+    <h1>Greg's homepage</h1>
+    <p class="subtitle">Voted the internet's #1 source for news about Gregory Cotton.</p>
 
-    <img src="assets/nojs/greg.png" class="icon">
-    <p><strong>Greg</strong></p>
-    <p>Living in Lisbon</p>
-    <p>From Ottawa, Ontario</p>
-    <p>Automation engineer at Nokia</p>
+    <table>
+        <tr>
+            <td class="portrait"></td>
+            <td>
+                <h2>Greg is:</h2>
+                <p>Living in <a href="https://en.wikipedia.org/wiki/Lisbon">Lisbon</a></p>
+                <p>From <a href="https://en.wikipedia.org/wiki/Ottawa">Ottawa</a></p>
+                <p>An automation engineer at <a href="https://www.nokia.com/">Nokia</a></p>
+            </td>
+        </tr>
+    </table>
 
-    <br>
+    <div class="icons">
+        <img class="banner" src="assets/nojs/buttons/gosens.gif" alt="#GoSensGo">
+        <img class="banner" src="assets/nojs/buttons/waterloo.gif" alt="Waterloo">
+        <img class="banner" src="assets/nojs/buttons/coffeepowered.gif" alt="Coffee powered">
+        <img class="banner" src="assets/nojs/buttons/ilovemycat.gif" alt="I love my cat"><br>
+        <img class="banner" src="assets/nojs/buttons/canadian.gif" alt="Canadian">
+        <img class="banner" src="assets/nojs/buttons/portugal.gif" alt="Portugal">
+    </div>
 
-    <details>
-        <summary><strong>Resume</strong></summary>
-        <p>bGBDA University of Waterloo</p>
-        <p>2018: Jr. Web Publisher @ Govt. of Canada</p>
-        <p>2020: Digital Product Designer @ ODS</p>
-        <p>2022: UX @ Nokia</p>
-        <p>2023: Sr. IT Automation Eng @ Nokia</p>
-    </details>
-    <br>
-    <details>
-        <summary><strong>Links</strong></summary>
-        <p><a href="mailto:cotton.gregory@proton.me">cotton.gregory@proton.me</a></p>
-        <p><a href="https://github.com/gregorycotton/">github.com/gregorycotton</a></p>
-        <p><a href="https://are.na/gregory-cotton">are.na/gregory-cotton</a></p>
-    </details>
+    <div class="note">
+        <p><strong>Note</strong>: This is the HTML-only version of my website. Were you to have JavaScript enabled, you
+            would see a table containing all sorts of things I've worked on.</p>
 
-    <br><br>
+        <p>I've tried very hard to think about what I should write on a page such as this one but every time I give it
+            thought I come up empty handed. It's possible that some people simply were not meant to have biographies
+            written about themselves and that is perfectly fine to me, as I think it is much more fun to get to know me
+            by talking to me.</p>
+    </div>
 
-    <audio controls autoplay loop>
-        <source src="/assets/nojs/waitt2Rs.mp3" type="audio/mpeg">
-    </audio>
+    <img class="badge" src="assets/nojs/buttons/bestviewed.gif" alt="Best viewed">
 
+    <hr>
+
+    <h2>Projects</h2>
+    <p class="subtitle">Recently, some of the things I've worked on in my free time include:</p>
+    <ul>
+        <li><a href="https://anvil.cool/">ANVIL.COOL</a> : A website for a Toronto-based director duo,</li>
+        <li><a href="https://github.com/gregorycotton/spotify-multi-disc">Spotify Multi-disc player</a> : Shuffle albums together into a queue,</li>
+        <li><a href="https://github.com/gregorycotton/knot">Knot</a> : My terminal interface for using local language models,</li>
+    </ul>
+
+
+    <hr>
+
+    <h2>Resume</h2>
+    <p class="subtitle">A condensed summary of work and education. <a href="#">LinkedIn</a>.</p>
+
+    <table class="resume">
+        <tr>
+            <td>2017–2021</td>
+            <td>---</td>
+            <td>University of Waterloo (<a href="#">GBDA</a>)</td>
+        </tr>
+        <tr>
+            <td>2019</td>
+            <td>---</td>
+            <td>City University of Hong Kong (<a href="#">SCM</a>)</td>
+        </tr>
+    </table>
+
+    <p class="spacer">~</p>
     
+    <table class="resume">
+        <tr>
+            <td>2018</td>
+            <td>---</td>
+            <td>Jr. web publisher (<a href="#">Govt. of Canada</a>)</td>
+        </tr>
+        <tr>
+            <td>2020</td>
+            <td>---</td>
+            <td>Product designer (<a href="#">ODS</a>)</td>
+        </tr>
+        <tr>
+            <td>2022</td>
+            <td>---</td>
+            <td>UX designer (<a href="#">Nokia</a>)</td>
+        </tr>
+        <tr>
+            <td>2023–&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>---</td>
+            <td>Sr. automation engineer (<a href="#">Nokia</a>)</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>Contact</h2>
+
+    <div class="contact">
+        <p>Sign my guestbook: <a href="https://fridge.gregorycotton.ca/">fridge.gregorycotton.ca</a></p>
+        <p>Write to me: <a href="mailto:cotton.gregory@proton.me">cotton.gregory@proton.me</a>
+        </p>
+        <p>Finger me: <a href="https://github.com/gregorycotton/finger">finger hello@gregorycotton.ca</a> in
+            your terminal :-)</p>
+    </div>
+
+    <hr>
+
+    <div class="footer">
+        <p><em>© 2026 Gregory Cotton.<br>Last updated January 27th 2026 from Lisbon, Portugal.</em></p>
+        <div class="footer-icons">
+            <img src="assets/nojs/buttons/neovim.gif" alt="Made with Neovim">
+            <img src="assets/nojs/buttons/mspaint.gif" alt="I use MS Paint">
+            <img src="assets/nojs/buttons/www.gif" alt="World wide web">
+            <img src="assets/nojs/buttons/imissxp.gif" alt="I miss XP"><br>
+            <img src="assets/nojs/buttons/getfirefox.gif" alt="Get FireFox">
+            <img src="assets/nojs/buttons/hicolors.gif" alt="Hi colours">
+            <img src="assets/nojs/buttons/madewithmac.gif" alt="Made with Mac">
+            <img src="assets/nojs/buttons/reccomend.gif" alt="Tell a friend">
+        </div>
+    </div>
+</body>
+
+</html>
