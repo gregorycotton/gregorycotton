@@ -604,7 +604,7 @@ tr:nth-child(even) {
 }
 
 /* Image Popup Styles */
-.image-overlay {
+/* .image-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -625,7 +625,7 @@ tr:nth-child(even) {
     z-index: 1001;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
+} */
 
 .hidden {
     display: none !important;
