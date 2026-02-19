@@ -81,13 +81,13 @@ function renderTable(data) {
                         }
                     } catch (e) { /* Ignore formatting error */ }
                 }
-            } else if (currentView === 'album') {
-                if (col === 'SizeBytes' && value !== 'N/A') {
-                    value = Number(value).toLocaleString();
-                } else if (col === 'FileName' && value !== 'N/A') {
-                    const fileName = item[col];
-                    value = `<a class="table-link" href="#" onclick="showImagePopup('${fileName}'); return false;">${fileName}</a>`;
-                }
+            // } else if (currentView === 'album') {
+            //     if (col === 'SizeBytes' && value !== 'N/A') {
+            //         value = Number(value).toLocaleString();
+            //     } else if (col === 'FileName' && value !== 'N/A') {
+            //         const fileName = item[col];
+            //         value = `<a class="table-link" href="#" onclick="showImagePopup('${fileName}'); return false;">${fileName}</a>`;
+            //     }
             }
 
             return `<td>${value}</td>`;
@@ -151,15 +151,15 @@ function getCurrentViewConfig() {
                 titleField: 'Title',
                 defaultSort: 'PublishedDate'
             };
-        case 'album':
-            return {
-                columns: albumColumns,
-                tableId: 'albumsTable',
-                viewId: 'albumView',
-                apiBaseAction: 'albums',
-                titleField: 'FileName',
-                defaultSort: 'Year'
-            };
+        // case 'album':
+        //     return {
+        //         columns: albumColumns,
+        //         tableId: 'albumsTable',
+        //         viewId: 'albumView',
+        //         apiBaseAction: 'albums',
+        //         titleField: 'FileName',
+        //         defaultSort: 'Year'
+        //     };
         default:
             console.error("Invalid view selected:", currentView, ". Falling back to ontology.");
             currentView = 'ontology';
@@ -182,7 +182,7 @@ function switchView(view) {
 
     document.getElementById('ontologyView').classList.toggle('hidden', view !== 'ontology');
     document.getElementById('fieldnotesView').classList.toggle('hidden', view !== 'fieldnotes');
-    document.getElementById('albumView').classList.toggle('hidden', view !== 'album');
+    // document.getElementById('albumView').classList.toggle('hidden', view !== 'album');
 
     currentColumns = columnPrefs[currentView];
     sortColumn = config.defaultSort;
@@ -393,27 +393,27 @@ async function updateConditionInput(selectElement) {
             }
             break;
 
-        case 'album':
-            operators = {
-                'UUID': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
-                'FileName': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
-                'ShortDescription': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
-                'Camera': ['IS', 'IS NOT'],
-                'SizeBytes': ['IS', 'IS NOT', 'GREATER THAN', 'LESS THAN'],
-                'Year': ['IS', 'IS NOT', 'GREATER THAN', 'LESS THAN']
-            }[field] || ['IS', 'CONTAINS'];
+        // case 'album':
+        //     operators = {
+        //         'UUID': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
+        //         'FileName': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
+        //         'ShortDescription': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
+        //         'Camera': ['IS', 'IS NOT'],
+        //         'SizeBytes': ['IS', 'IS NOT', 'GREATER THAN', 'LESS THAN'],
+        //         'Year': ['IS', 'IS NOT', 'GREATER THAN', 'LESS THAN']
+        //     }[field] || ['IS', 'CONTAINS'];
 
-            if (field === 'Camera') {
-                try {
-                    const values = await getDistinctValues(field);
-                    inputHTML = `<div class="dropdown"><select class="value-select">${values.map(v => `<option>${v}</option>`).join('')}</select><div class="dropdown-button"></div></div>`;
-                } catch (error) {
-                    console.error('Error loading distinct values for album:', error);
-                    inputHTML = `<input type="text" placeholder="Error loading options" class="value-input" disabled>`;
-                }
-            } else if (['SizeBytes', 'Year'].includes(field)) {
-                inputHTML = `<input type="number" placeholder="Enter number..." class="value-input">`;
-            }
+        //     if (field === 'Camera') {
+        //         try {
+        //             const values = await getDistinctValues(field);
+        //             inputHTML = `<div class="dropdown"><select class="value-select">${values.map(v => `<option>${v}</option>`).join('')}</select><div class="dropdown-button"></div></div>`;
+        //         } catch (error) {
+        //             console.error('Error loading distinct values for album:', error);
+        //             inputHTML = `<input type="text" placeholder="Error loading options" class="value-input" disabled>`;
+        //         }
+        //     } else if (['SizeBytes', 'Year'].includes(field)) {
+        //         inputHTML = `<input type="number" placeholder="Enter number..." class="value-input">`;
+        //     }
             break;
     }
 
