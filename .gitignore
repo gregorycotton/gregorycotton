@@ -1,7 +1,7 @@
 database/
+scripts/admin/update-db.sh
 *.db
 *.db-journal
 *.sqlite
 *.sqlite3
 .DS_Store
-scripts/admin/deploy-db.sh
