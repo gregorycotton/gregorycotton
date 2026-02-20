@@ -1,13 +1,12 @@
 // Initialization
 // Set initial state, fetch data from server on page load
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('input[name="viewType"][value="ontology"]').checked = true;
-    currentView = 'ontology';
-    sortColumn = getCurrentViewConfig().defaultSort;
-    setupColumnSelectors();
-    loadData();
+document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('searchInput').addEventListener('input', debounce(searchHandler, 300));
+    await initializeTableStateFromUrl();
+    window.addEventListener('popstate', () => {
+        initializeTableStateFromUrl();
+    });
 });
 
 async function loadData() {

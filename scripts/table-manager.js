@@ -174,26 +174,45 @@ function getCurrentViewConfig() {
     }
 }
 
-function switchView(view) {
-    if (currentView === view) return;
+function normalizeView(view) {
+    if (view === 'fieldnotes') return 'fieldnotes';
+    return 'ontology';
+}
 
-    currentView = view;
+function applyViewState(view) {
+    currentView = normalizeView(view);
     const config = getCurrentViewConfig();
 
-    document.getElementById('ontologyView').classList.toggle('hidden', view !== 'ontology');
-    document.getElementById('fieldnotesView').classList.toggle('hidden', view !== 'fieldnotes');
-    // document.getElementById('albumView').classList.toggle('hidden', view !== 'album');
+    document.getElementById('ontologyView').classList.toggle('hidden', currentView !== 'ontology');
+    document.getElementById('fieldnotesView').classList.toggle('hidden', currentView !== 'fieldnotes');
+    // document.getElementById('albumView').classList.toggle('hidden', currentView !== 'album');
+
+    const selectedView = document.querySelector(`input[name="viewType"][value="${currentView}"]`);
+    if (selectedView) selectedView.checked = true;
 
     currentColumns = columnPrefs[currentView];
     sortColumn = config.defaultSort;
     sortDirection = ['Year', 'SizeBytes', 'PublishedDate', 'LastUpdated'].includes(sortColumn) ? 'desc' : 'asc';
     currentData = [];
+}
+
+function switchView(view, options = {}) {
+    const { force = false, skipLoadData = false, skipUrlUpdate = false, replaceHistory = false } = options;
+    const normalizedView = normalizeView(view);
+    if (!force && currentView === normalizedView) return;
+
+    applyViewState(normalizedView);
     document.getElementById('searchInput').value = '';
-    clearQuery();
+    clearQuery({ skipLoadData: true, skipUrlUpdate: true });
     toggleColumnSelector(true);
 
     setupColumnSelectors();
-    loadData();
+    if (!skipLoadData) {
+        loadData();
+    }
+    if (!skipUrlUpdate) {
+        updateQueryUrl([], { view: normalizedView, replaceHistory });
+    }
 }
 
 // Modifying columns
@@ -266,6 +285,60 @@ function handleColumnSelectionChange() {
     saveColumnPrefs();
 
     renderTable(currentData);
+}
+
+const URL_VIEW_PARAM = 'view';
+const URL_QUERY_PARAM = 'query';
+const URL_QUERY_SEPARATOR = '^';
+const URL_OPERATOR_BY_QUERY_OPERATOR = {
+    'IS': '=',
+    'IS NOT': '!=',
+    'CONTAINS': '~',
+    'STARTS WITH': '*=',
+    'ENDS WITH': '$=',
+    'GREATER THAN': '>',
+    'LESS THAN': '<',
+    'PUBLISHED ON': '=',
+    'UPDATED ON': '=',
+    'PUBLISHED BEFORE': '<=',
+    'UPDATED BEFORE': '<=',
+    'PUBLISHED AFTER': '>=',
+    'UPDATED AFTER': '>='
+};
+const URL_OPERATOR_TOKENS = ['>=', '<=', '!=', '*=', '$=', '=', '~', '>', '<'];
+
+function getOperatorMapForView(view = currentView) {
+    switch (view) {
+        case 'ontology':
+            return {
+                'UUID': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
+                'Title': ['IS', 'CONTAINS'],
+                'ShortDescription': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
+                'Year': ['IS', 'IS NOT', 'GREATER THAN', 'LESS THAN'],
+                'Modality': ['IS', 'IS NOT'],
+                'Medium': ['IS', 'IS NOT'],
+                'Tools': ['IS', 'IS NOT'],
+                'Object': ['IS', 'IS NOT'],
+                'Collaborators': ['IS', 'IS NOT'],
+                'Keywords': ['IS', 'IS NOT'],
+                'FeaturedWork': ['IS']
+            };
+        case 'fieldnotes':
+            return {
+                'UUID': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
+                'Title': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
+                'ShortDescription': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
+                'PublishedDate': ['PUBLISHED ON', 'PUBLISHED BEFORE', 'PUBLISHED AFTER'],
+                'LastUpdated': ['UPDATED ON', 'UPDATED BEFORE', 'UPDATED AFTER']
+            };
+        default:
+            return {};
+    }
+}
+
+function getOperatorsForField(field, view = currentView) {
+    const map = getOperatorMapForView(view);
+    return map[field] || ['IS', 'CONTAINS'];
 }
 
 // Query manager
@@ -346,24 +419,12 @@ async function updateConditionInput(selectElement) {
     const field = selectElement.value;
     const operatorSelect = conditionDiv.querySelector('.operator-select');
     const valueContainer = conditionDiv.querySelector('.value-container');
-    const config = getCurrentViewConfig();
 
-    let operators = [];
+    let operators = getOperatorsForField(field);
     let inputHTML = `<input type="text" placeholder="Enter value..." class="value-input">`;
 
     switch (currentView) {
         case 'ontology':
-            operators = {
-                'UUID': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
-                'Title': ['IS', 'CONTAINS'],
-                'ShortDescription': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
-                'Year': ['IS', 'IS NOT', 'GREATER THAN', 'LESS THAN'],
-                'Modality': ['IS', 'IS NOT'], 'Medium': ['IS', 'IS NOT'],
-                'Tools': ['IS', 'IS NOT'], 'Object': ['IS', 'IS NOT'],
-                'Collaborators': ['IS', 'IS NOT'], 'Keywords': ['IS', 'IS NOT'],
-                'FeaturedWork': ['IS']
-            }[field] || ['IS', 'CONTAINS'];
-
             if (['Modality', 'Medium', 'Tools', 'Object', 'Collaborators', 'Keywords'].includes(field)) {
                 try {
                     const values = await getDistinctValues(field);
@@ -380,29 +441,12 @@ async function updateConditionInput(selectElement) {
             break;
 
         case 'fieldnotes':
-            operators = {
-                'UUID': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
-                'Title': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
-                'ShortDescription': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
-                'PublishedDate': ['PUBLISHED ON', 'PUBLISHED BEFORE', 'PUBLISHED AFTER'],
-                'LastUpdated': ['UPDATED ON', 'UPDATED BEFORE', 'UPDATED AFTER']
-            }[field] || ['IS', 'CONTAINS'];
-
             if (['PublishedDate', 'LastUpdated'].includes(field)) {
                 inputHTML = `<input type="date" class="value-input">`;
             }
             break;
 
         // case 'album':
-        //     operators = {
-        //         'UUID': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
-        //         'FileName': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
-        //         'ShortDescription': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
-        //         'Camera': ['IS', 'IS NOT'],
-        //         'SizeBytes': ['IS', 'IS NOT', 'GREATER THAN', 'LESS THAN'],
-        //         'Year': ['IS', 'IS NOT', 'GREATER THAN', 'LESS THAN']
-        //     }[field] || ['IS', 'CONTAINS'];
-
         //     if (field === 'Camera') {
         //         try {
         //             const values = await getDistinctValues(field);
@@ -414,7 +458,7 @@ async function updateConditionInput(selectElement) {
         //     } else if (['SizeBytes', 'Year'].includes(field)) {
         //         inputHTML = `<input type="number" placeholder="Enter number..." class="value-input">`;
         //     }
-            break;
+        //     break;
     }
 
     operatorSelect.innerHTML = operators.map(op => `<option value="${op}">${op}</option>`).join('');
@@ -435,26 +479,166 @@ async function getDistinctValues(field) {
     }
 }
 
-async function runQuery() {
-    const config = getCurrentViewConfig();
-    const conditions = Array.from(document.querySelectorAll('#conditionsContainer .query-condition')).map(cond => {
+function getConditionsFromBuilder() {
+    return Array.from(document.querySelectorAll('#conditionsContainer .query-condition')).map(cond => {
         const logic = cond.querySelector('.logic-operator')?.value || 'AND';
         const field = cond.querySelector('.field-select').value;
         const operator = cond.querySelector('.operator-select').value;
         const valueElement = cond.querySelector('.value-select, .value-input');
-        let value = valueElement ? valueElement.value : '';
+        const value = valueElement ? String(valueElement.value).trim() : '';
         return { logic, field, operator, value };
     });
+}
 
+function validateConditions(conditions, showAlerts = false) {
     if (conditions.length === 0) {
-        alert("Please add at least one condition.");
-        return;
+        if (showAlerts) alert('Please add at least one condition.');
+        return false;
     }
     if (conditions.some(c => c.value === null || c.value === '')) {
-        alert("Please ensure all conditions have a value.");
-        return;
+        if (showAlerts) alert('Please ensure all conditions have a value.');
+        return false;
+    }
+    return true;
+}
+
+function getUrlTokenFromOperator(operator) {
+    return URL_OPERATOR_BY_QUERY_OPERATOR[operator] || '=';
+}
+
+function getOperatorFromUrlToken(token, field) {
+    if (field === 'PublishedDate') {
+        if (token === '=') return 'PUBLISHED ON';
+        if (token === '<=') return 'PUBLISHED BEFORE';
+        if (token === '>=') return 'PUBLISHED AFTER';
+        return null;
+    }
+    if (field === 'LastUpdated') {
+        if (token === '=') return 'UPDATED ON';
+        if (token === '<=') return 'UPDATED BEFORE';
+        if (token === '>=') return 'UPDATED AFTER';
+        return null;
     }
 
+    const mapping = {
+        '=': 'IS',
+        '!=': 'IS NOT',
+        '~': 'CONTAINS',
+        '*=': 'STARTS WITH',
+        '$=': 'ENDS WITH',
+        '>': 'GREATER THAN',
+        '<': 'LESS THAN'
+    };
+    return mapping[token] || null;
+}
+
+function safeDecodeComponent(value) {
+    try {
+        return decodeURIComponent(value);
+    } catch (error) {
+        return value;
+    }
+}
+
+function normalizeFieldForView(rawField, view) {
+    const configColumns = view === 'fieldnotes' ? fieldnotesColumns : ontologyColumns;
+    const normalizedField = String(rawField || '').replace(/\s+/g, '').toLowerCase();
+    return configColumns.find(column => column.toLowerCase() === normalizedField) || null;
+}
+
+function serializeConditionsForUrl(conditions) {
+    return conditions.map((condition, index) => {
+        const logic = String(condition.logic || 'AND').toUpperCase() === 'OR' ? 'OR' : 'AND';
+        const token = getUrlTokenFromOperator(condition.operator);
+        const field = encodeURIComponent(condition.field);
+        const value = encodeURIComponent(String(condition.value).trim());
+        const logicPrefix = index > 0 ? `${logic}:` : '';
+        return `${logicPrefix}${field}${token}${value}`;
+    }).join(URL_QUERY_SEPARATOR);
+}
+
+function parseConditionSegment(segment, view, index) {
+    let expression = segment.trim();
+    let logic = 'AND';
+
+    if (index > 0) {
+        const upperSegment = expression.toUpperCase();
+        if (upperSegment.startsWith('OR:')) {
+            logic = 'OR';
+            expression = expression.slice(3);
+        } else if (upperSegment.startsWith('AND:')) {
+            logic = 'AND';
+            expression = expression.slice(4);
+        }
+    }
+
+    let operatorMatch = null;
+    for (const token of URL_OPERATOR_TOKENS) {
+        const idx = expression.indexOf(token);
+        if (idx > 0) {
+            if (!operatorMatch || idx < operatorMatch.index || (idx === operatorMatch.index && token.length > operatorMatch.token.length)) {
+                operatorMatch = { token, index: idx };
+            }
+        }
+    }
+
+    if (!operatorMatch) return null;
+
+    const rawField = safeDecodeComponent(expression.slice(0, operatorMatch.index).trim());
+    const rawValue = safeDecodeComponent(expression.slice(operatorMatch.index + operatorMatch.token.length).trim());
+    if (!rawField || rawValue === '') return null;
+
+    const field = normalizeFieldForView(rawField, view);
+    if (!field) return null;
+
+    const operator = getOperatorFromUrlToken(operatorMatch.token, field);
+    if (!operator) return null;
+
+    const validOperators = getOperatorsForField(field, view);
+    if (!validOperators.includes(operator)) return null;
+
+    return {
+        logic,
+        field,
+        operator,
+        value: rawValue
+    };
+}
+
+function parseConditionsFromUrl(encodedQuery, view) {
+    if (!encodedQuery) return [];
+
+    return encodedQuery
+        .split(URL_QUERY_SEPARATOR)
+        .map((segment, index) => parseConditionSegment(segment, view, index))
+        .filter(Boolean);
+}
+
+function updateQueryUrl(conditions = [], options = {}) {
+    const { view = currentView, replaceHistory = false } = options;
+    const url = new URL(window.location.href);
+    url.searchParams.set(URL_VIEW_PARAM, normalizeView(view));
+
+    if (conditions.length > 0) {
+        url.searchParams.set(URL_QUERY_PARAM, serializeConditionsForUrl(conditions));
+    } else {
+        url.searchParams.delete(URL_QUERY_PARAM);
+    }
+
+    const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+    const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+    if (nextUrl === currentUrl) return;
+
+    if (replaceHistory) {
+        window.history.replaceState(null, '', nextUrl);
+    } else {
+        window.history.pushState(null, '', nextUrl);
+    }
+}
+
+async function executeQuery(conditions, options = {}) {
+    const { updateUrl = false, replaceHistory = false } = options;
+    const config = getCurrentViewConfig();
     const queryParams = new URLSearchParams();
     queryParams.append('action', `query_${config.apiBaseAction}`);
     conditions.forEach((cond, index) => {
@@ -476,6 +660,10 @@ async function runQuery() {
         }
         sortData();
         renderTable(currentData);
+
+        if (updateUrl) {
+            updateQueryUrl(conditions, { replaceHistory });
+        }
     } catch (error) {
         console.error('Fetch Error:', error);
         alert('Failed to fetch query results from the server.');
@@ -484,10 +672,79 @@ async function runQuery() {
     }
 }
 
-function clearQuery() {
+async function setQueryBuilderConditions(conditions) {
+    const container = document.getElementById('conditionsContainer');
+    container.innerHTML = '';
+
+    for (let index = 0; index < conditions.length; index++) {
+        const condition = conditions[index];
+        await addCondition();
+        const currentCondition = container.lastElementChild;
+        const logicOperator = currentCondition.querySelector('.logic-operator');
+        if (logicOperator) {
+            logicOperator.value = condition.logic === 'OR' ? 'OR' : 'AND';
+        }
+
+        const fieldSelect = currentCondition.querySelector('.field-select');
+        fieldSelect.value = condition.field;
+        await updateConditionInput(fieldSelect);
+
+        const operatorSelect = currentCondition.querySelector('.operator-select');
+        if (Array.from(operatorSelect.options).some(option => option.value === condition.operator)) {
+            operatorSelect.value = condition.operator;
+        }
+
+        const valueElement = currentCondition.querySelector('.value-select, .value-input');
+        if (valueElement) {
+            valueElement.value = condition.value;
+        }
+    }
+
+    if (conditions.length > 0) {
+        document.getElementById('queryBuilder').classList.remove('hidden');
+    }
+}
+
+function readTableStateFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const view = normalizeView(urlParams.get(URL_VIEW_PARAM));
+    const encodedQuery = urlParams.get(URL_QUERY_PARAM) || '';
+    const conditions = parseConditionsFromUrl(encodedQuery, view);
+    return { view, conditions };
+}
+
+async function initializeTableStateFromUrl() {
+    const state = readTableStateFromUrl();
+    switchView(state.view, { force: true, skipLoadData: true, skipUrlUpdate: true });
+
+    if (state.conditions.length > 0) {
+        await setQueryBuilderConditions(state.conditions);
+        await executeQuery(state.conditions, { updateUrl: false });
+    } else {
+        await clearQuery({ skipUrlUpdate: true });
+    }
+}
+
+async function runQuery() {
+    const conditions = getConditionsFromBuilder();
+    if (!validateConditions(conditions, true)) {
+        return;
+    }
+
+    await executeQuery(conditions, { updateUrl: true });
+}
+
+async function clearQuery(options = {}) {
+    const { skipLoadData = false, skipUrlUpdate = false, replaceHistory = false } = options;
     document.getElementById('conditionsContainer').innerHTML = '';
     toggleQueryBuilder(true);
-    loadData();
+
+    if (!skipLoadData) {
+        await loadData();
+    }
+    if (!skipUrlUpdate) {
+        updateQueryUrl([], { replaceHistory });
+    }
 }
 
 // Database search
