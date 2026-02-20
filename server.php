@@ -197,6 +197,289 @@ function buildWhereClause($conditions, $viewType = 'ontology') {
     return ['sql' => $whereSql, 'params' => $params];
 }
 
+function isFts5Available($db) {
+    static $fts5Available = null;
+    if ($fts5Available !== null) {
+        return $fts5Available;
+    }
+
+    try {
+        $db->exec("CREATE VIRTUAL TABLE IF NOT EXISTS __fts5_probe USING fts5(content)");
+        $db->exec("DROP TABLE IF EXISTS __fts5_probe");
+        $fts5Available = true;
+    } catch (PDOException $e) {
+        error_log("FTS5 unavailable: " . $e->getMessage());
+        $fts5Available = false;
+    }
+
+    return $fts5Available;
+}
+
+function buildFtsMatchQuery($term) {
+    $rawTerm = trim((string)$term);
+    if ($rawTerm === '') {
+        return '';
+    }
+
+    preg_match_all('/[\p{L}\p{N}_-]+/u', $rawTerm, $matches);
+    $tokens = array_values(array_unique(array_filter($matches[0], function($token) {
+        return $token !== '';
+    })));
+
+    if (empty($tokens)) {
+        return '';
+    }
+
+    $ftsParts = [];
+    foreach ($tokens as $token) {
+        $escapedToken = str_replace('"', '""', $token);
+        $ftsParts[] = '"' . $escapedToken . '"*';
+    }
+
+    return implode(' AND ', $ftsParts);
+}
+
+function ensureSearchIndexMetaAndTriggers($db) {
+    $db->exec("
+        CREATE TABLE IF NOT EXISTS search_index_meta (
+            IndexName TEXT PRIMARY KEY,
+            IsDirty INTEGER NOT NULL DEFAULT 1
+        )
+    ");
+
+    $db->exec("INSERT OR IGNORE INTO search_index_meta (IndexName, IsDirty) VALUES ('projects', 1)");
+    $db->exec("INSERT OR IGNORE INTO search_index_meta (IndexName, IsDirty) VALUES ('fieldnotes', 1)");
+
+    $triggerDefinitions = [
+        'projects' => ['projects', 'modalities', 'mediums', 'tools', 'objects', 'collaborators', 'keywords'],
+        'fieldnotes' => ['fieldnotes']
+    ];
+
+    foreach ($triggerDefinitions as $indexName => $tables) {
+        foreach ($tables as $tableName) {
+            foreach (['INSERT', 'UPDATE', 'DELETE'] as $event) {
+                $triggerName = "trg_{$tableName}_" . strtolower($event) . "_mark_{$indexName}_dirty";
+                $db->exec("
+                    CREATE TRIGGER IF NOT EXISTS $triggerName
+                    AFTER $event ON $tableName
+                    BEGIN
+                        UPDATE search_index_meta
+                        SET IsDirty = 1
+                        WHERE IndexName = '$indexName';
+                    END
+                ");
+            }
+        }
+    }
+}
+
+function ensureProjectsFtsTable($db) {
+    $sqlStmt = $db->query("SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'projects_fts'");
+    $existingSql = $sqlStmt ? $sqlStmt->fetchColumn() : false;
+    if ($sqlStmt) {
+        $sqlStmt->closeCursor();
+    }
+    if (is_string($existingSql) && stripos($existingSql, 'UUID UNINDEXED') !== false) {
+        $db->exec("DROP TABLE IF EXISTS projects_fts");
+        $db->exec("UPDATE search_index_meta SET IsDirty = 1 WHERE IndexName = 'projects'");
+    }
+
+    $db->exec("
+        CREATE VIRTUAL TABLE IF NOT EXISTS projects_fts USING fts5(
+            UUID,
+            Title,
+            ShortDescription,
+            Year,
+            Modality,
+            Medium,
+            Tools,
+            Object,
+            Collaborators,
+            Keywords,
+            tokenize = 'unicode61 remove_diacritics 2'
+        )
+    ");
+}
+
+function ensureFieldnotesFtsTable($db) {
+    $sqlStmt = $db->query("SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'fieldnotes_fts'");
+    $existingSql = $sqlStmt ? $sqlStmt->fetchColumn() : false;
+    if ($sqlStmt) {
+        $sqlStmt->closeCursor();
+    }
+    if (is_string($existingSql) && stripos($existingSql, 'UUID UNINDEXED') !== false) {
+        $db->exec("DROP TABLE IF EXISTS fieldnotes_fts");
+        $db->exec("UPDATE search_index_meta SET IsDirty = 1 WHERE IndexName = 'fieldnotes'");
+    }
+
+    $db->exec("
+        CREATE VIRTUAL TABLE IF NOT EXISTS fieldnotes_fts USING fts5(
+            UUID,
+            Title,
+            ShortDescription,
+            PublishedDate,
+            LastUpdated,
+            tokenize = 'unicode61 remove_diacritics 2'
+        )
+    ");
+}
+
+function rebuildProjectsFtsIndex($db) {
+    $db->beginTransaction();
+    try {
+        $db->exec("DELETE FROM projects_fts");
+        $db->exec("
+            INSERT INTO projects_fts (
+                UUID, Title, ShortDescription, Year,
+                Modality, Medium, Tools, Object, Collaborators, Keywords
+            )
+            SELECT
+                p.UUID,
+                COALESCE(p.Title, ''),
+                COALESCE(p.ShortDescription, ''),
+                COALESCE(CAST(p.Year AS TEXT), ''),
+                REPLACE(COALESCE(m.Modality, ''), ',', ' '),
+                REPLACE(COALESCE(md.Medium, ''), ',', ' '),
+                REPLACE(COALESCE(t.Tool, ''), ',', ' '),
+                REPLACE(COALESCE(o.Object, ''), ',', ' '),
+                REPLACE(COALESCE(c.Collaborator, ''), ',', ' '),
+                REPLACE(COALESCE(k.Keyword, ''), ',', ' ')
+            FROM projects p
+            LEFT JOIN (
+                SELECT UUID, GROUP_CONCAT(DISTINCT Modality) AS Modality
+                FROM modalities
+                GROUP BY UUID
+            ) m ON m.UUID = p.UUID
+            LEFT JOIN (
+                SELECT UUID, GROUP_CONCAT(DISTINCT Medium) AS Medium
+                FROM mediums
+                GROUP BY UUID
+            ) md ON md.UUID = p.UUID
+            LEFT JOIN (
+                SELECT UUID, GROUP_CONCAT(DISTINCT Tool) AS Tool
+                FROM tools
+                GROUP BY UUID
+            ) t ON t.UUID = p.UUID
+            LEFT JOIN (
+                SELECT UUID, GROUP_CONCAT(DISTINCT Object) AS Object
+                FROM objects
+                GROUP BY UUID
+            ) o ON o.UUID = p.UUID
+            LEFT JOIN (
+                SELECT UUID, GROUP_CONCAT(DISTINCT Collaborator) AS Collaborator
+                FROM collaborators
+                GROUP BY UUID
+            ) c ON c.UUID = p.UUID
+            LEFT JOIN (
+                SELECT UUID, GROUP_CONCAT(DISTINCT Keyword) AS Keyword
+                FROM keywords
+                GROUP BY UUID
+            ) k ON k.UUID = p.UUID
+        ");
+        $db->exec("UPDATE search_index_meta SET IsDirty = 0 WHERE IndexName = 'projects'");
+        $db->commit();
+    } catch (PDOException $e) {
+        if ($db->inTransaction()) {
+            $db->rollBack();
+        }
+        throw $e;
+    }
+}
+
+function rebuildFieldnotesFtsIndex($db) {
+    $db->beginTransaction();
+    try {
+        $db->exec("DELETE FROM fieldnotes_fts");
+        $db->exec("
+            INSERT INTO fieldnotes_fts (UUID, Title, ShortDescription, PublishedDate, LastUpdated)
+            SELECT
+                UUID,
+                COALESCE(Title, ''),
+                COALESCE(ShortDescription, ''),
+                COALESCE(PublishedDate, ''),
+                COALESCE(LastUpdated, '')
+            FROM fieldnotes
+        ");
+        $db->exec("UPDATE search_index_meta SET IsDirty = 0 WHERE IndexName = 'fieldnotes'");
+        $db->commit();
+    } catch (PDOException $e) {
+        if ($db->inTransaction()) {
+            $db->rollBack();
+        }
+        throw $e;
+    }
+}
+
+function ensureFtsSearchIndex($db, $indexName) {
+    if (!isFts5Available($db)) {
+        return false;
+    }
+
+    ensureSearchIndexMetaAndTriggers($db);
+
+    if ($indexName === 'projects') {
+        ensureProjectsFtsTable($db);
+    } elseif ($indexName === 'fieldnotes') {
+        ensureFieldnotesFtsTable($db);
+    } else {
+        throw new Exception("Invalid FTS index requested: $indexName");
+    }
+
+    $stmt = $db->prepare("SELECT IsDirty FROM search_index_meta WHERE IndexName = :indexName");
+    $stmt->execute([':indexName' => $indexName]);
+    $isDirty = (int)$stmt->fetchColumn();
+
+    if ($indexName === 'projects') {
+        $sourceCount = (int)$db->query("SELECT COUNT(*) FROM projects")->fetchColumn();
+        $indexCount = (int)$db->query("SELECT COUNT(*) FROM projects_fts")->fetchColumn();
+        if ($isDirty === 1 || $sourceCount !== $indexCount) {
+            rebuildProjectsFtsIndex($db);
+        }
+    } else {
+        $sourceCount = (int)$db->query("SELECT COUNT(*) FROM fieldnotes")->fetchColumn();
+        $indexCount = (int)$db->query("SELECT COUNT(*) FROM fieldnotes_fts")->fetchColumn();
+        if ($isDirty === 1 || $sourceCount !== $indexCount) {
+            rebuildFieldnotesFtsIndex($db);
+        }
+    }
+
+    return true;
+}
+
+function getProjectsBySearchLike($db, $rawTerm) {
+    $term = '%' . $rawTerm . '%';
+    $query = getProjectsBaseQuery() . "
+        WHERE p.UUID LIKE :term
+           OR p.Title LIKE :term
+           OR p.ShortDescription LIKE :term
+           OR p.Year LIKE :term
+           OR m.Modality LIKE :term
+           OR md.Medium LIKE :term
+           OR t.Tool LIKE :term
+           OR o.Object LIKE :term
+           OR c.Collaborator LIKE :term
+           OR k.Keyword LIKE :term
+        GROUP BY p.UUID
+    ";
+    $stmt = $db->prepare($query);
+    $stmt->execute([':term' => $term]);
+    return $stmt->fetchAll();
+}
+
+function getFieldnotesBySearchLike($db, $rawTerm) {
+    $term = '%' . $rawTerm . '%';
+    $query = getFieldnotesBaseQuery() . "
+        WHERE fn.UUID LIKE :term
+           OR fn.Title LIKE :term
+           OR fn.ShortDescription LIKE :term
+           OR fn.PublishedDate LIKE :term
+           OR fn.LastUpdated LIKE :term
+    ";
+    $stmt = $db->prepare($query);
+    $stmt->execute([':term' => $term]);
+    return $stmt->fetchAll();
+}
+
 // Main Action Switch
 try {
     switch($action) {
@@ -208,23 +491,33 @@ try {
             break;
 
         case 'search_projects':
-            $term = '%' . ($_GET['term'] ?? '') . '%';
-            $query = getProjectsBaseQuery() . "
-                WHERE p.UUID LIKE :term
-                   OR p.Title LIKE :term
-                   OR p.ShortDescription LIKE :term
-                   OR p.Year LIKE :term
-                   OR m.Modality LIKE :term
-                   OR md.Medium LIKE :term
-                   OR t.Tool LIKE :term
-                   OR o.Object LIKE :term
-                   OR c.Collaborator LIKE :term
-                   OR k.Keyword LIKE :term
-                GROUP BY p.UUID
-            ";
-             $stmt = $db->prepare($query);
-             $stmt->execute([':term' => $term]);
-            echo json_encode($stmt->fetchAll());
+            $rawTerm = trim($_GET['term'] ?? '');
+
+            if ($rawTerm === '') {
+                $query = getProjectsBaseQuery() . " GROUP BY p.UUID";
+                $stmt = $db->query($query);
+                echo json_encode($stmt->fetchAll());
+                break;
+            }
+
+            $useFts = ensureFtsSearchIndex($db, 'projects');
+            $ftsMatchQuery = buildFtsMatchQuery($rawTerm);
+
+            if ($useFts && $ftsMatchQuery !== '') {
+                $query = getProjectsBaseQuery() . "
+                    WHERE p.UUID IN (
+                        SELECT UUID
+                        FROM projects_fts
+                        WHERE projects_fts MATCH :match
+                    )
+                    GROUP BY p.UUID
+                ";
+                $stmt = $db->prepare($query);
+                $stmt->execute([':match' => $ftsMatchQuery]);
+                echo json_encode($stmt->fetchAll());
+            } else {
+                echo json_encode(getProjectsBySearchLike($db, $rawTerm));
+            }
             break;
 
         case 'get_distinct_projects':
@@ -319,16 +612,31 @@ try {
             break;
 
         case 'search_fieldnotes':
-             $term = '%' . ($_GET['term'] ?? '') . '%';
-             $query = getFieldnotesBaseQuery() . "
-                       WHERE fn.UUID LIKE :term
-                       OR fn.Title LIKE :term
-                       OR fn.ShortDescription LIKE :term
-                       OR fn.PublishedDate LIKE :term
-                       OR fn.LastUpdated LIKE :term";
-             $stmt = $db->prepare($query);
-             $stmt->execute([':term' => $term]);
-             echo json_encode($stmt->fetchAll());
+             $rawTerm = trim($_GET['term'] ?? '');
+
+             if ($rawTerm === '') {
+                 $query = getFieldnotesBaseQuery();
+                 $stmt = $db->query($query);
+                 echo json_encode($stmt->fetchAll());
+                 break;
+             }
+
+             $useFts = ensureFtsSearchIndex($db, 'fieldnotes');
+             $ftsMatchQuery = buildFtsMatchQuery($rawTerm);
+
+             if ($useFts && $ftsMatchQuery !== '') {
+                 $query = getFieldnotesBaseQuery() . "
+                           WHERE fn.UUID IN (
+                               SELECT UUID
+                               FROM fieldnotes_fts
+                               WHERE fieldnotes_fts MATCH :match
+                           )";
+                 $stmt = $db->prepare($query);
+                 $stmt->execute([':match' => $ftsMatchQuery]);
+                 echo json_encode($stmt->fetchAll());
+             } else {
+                 echo json_encode(getFieldnotesBySearchLike($db, $rawTerm));
+             }
             break;
 
         case 'get_distinct_fieldnotes':
