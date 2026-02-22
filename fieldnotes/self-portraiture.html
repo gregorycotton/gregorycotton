@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="title" content="Gregory Cotton">
+    <meta name="description"
+        content="Blog post from Greg, explaining the rationale behind the design decisions made during the creation of this website.">
+
+    <meta property="og:title" content="Motivating this site | Gregory Cotton">
+    <meta property="og:description"
+        content="Blog post from Greg, explaining the rationale behind the design decisions made during the creation of this website.">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:title" content="Motivating this site | Gregory Cotton">
+
+    <meta name="author" content="Gregory Cotton">
+    <meta name="creator" content="gregorycotton.ca">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Self portraiture | Gregory Cotton</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+    <script src="../scripts/fetch-properties.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h1><a href="../index.html" class="home-link">Gregory Cotton</a></h1>
+        </div>
+
+        <div class="right">
+            <p><u>Self portraiture</u></p>
+
+            <br>
+
+            <details id="propertiesDetails">
+                <summary class="secondary-link">Properties</summary>
+                <div id="properties-content" style="margin-top: 15px;">
+                    <p>Loading properties...</p>
+                </div>
+            </details>
+
+            <div class="proj-txt-container">
+                <p>I’ve been thinking a lot about self portraits over the last few months — specifically how we define
+                    them, and what it means to create a self portrait.</p>
+
+                <p>Conventionally, self portraits are thought of as representations or depiction of oneself, allowing
+                    for an outsider to gain insight into how an artist perceives themself. I’m used to thinking of self
+                    portraits as something reserved for art forms like photography, painting, or drawing, but have more
+                    recently taken to the idea of self portraiture as a more ephemeral and personal act. </p>
+
+                <p>As far as I’m concerned, I’ve been “creating” self portraits for a few months now every time I look
+                    in the mirror and consciously study my face and my beard. I’m not used to having such a big beard,
+                    as I normally keep it short, but from the first day of October 2023 until the day I begin to write
+                    this, in mid December of the same year, I’ve let it grow, and it’s gotten quite long and thick. It
+                    feels like I’m in a weird liminal space visual identity wise: I don’t recognize myself with the
+                    beard, but don’t think I’d recognize myself without it. </p>
+
+                <p>In a way, I’m scared to shave it off because I don’t know what I would look like underneath the
+                    facial hair. So every day, I look in the mirror and take a mental self portrait of my bearded face,
+                    a fleeting photo captured only by my eyes. It sounds silly, to take a self portrait with your eyes,
+                    but in practice, how is it any different than taking a “real” self portrait with a camera, and then
+                    immediately deleting the image, never to be seen again? If the intent to create a self portrait is
+                    there, I don’t think eyeballs make for any less legitimate a medium. Is the fact that the photo once
+                    existed as an artifact simply with the potential to be more permanent than a reflection in the
+                    mirror enough differentiation?</p>
+
+                <p>My plan is to go to Brussels, then to Prague, for Christmas and New Year’s Eve. I was trimming the
+                    sides of my beard beforehand, so it would stay long but not be so unruly and puffy on my cheeks,
+                    when my razor broke. The guard snapped, and in doing so my hand moved my razor, now with no guard,
+                    directly onto my cheek, shearing a huge chunk of facial hair, before the electric razor itself
+                    shutdown and refused to do anything beyond emit a low hum. With no razor and a huge chunk of hair
+                    missing from my beard, my only option was to take one of my few remaining blades that I usually used
+                    for cleaning up hair on my neck and to shave down to a baby face. Which is exactly what I did.</p>
+
+                <p>Even before I grew my beard long I had stubble, probably for the two or so years leading into the
+                    October I started letting it really grow. To see the skin on the lower half of my face was a
+                    borderline dissociative experience. At first I genuinely thought my face was lopsided. I think I
+                    stared at myself for at least fifteen minutes in the mirror, until my face no longer felt like
+                    someone else’s. It was by far the most alien self portrait I’ve ever created of myself with my own
+                    two eyes, despite the fact I should have been accustomed to seeing myself with no beard given the
+                    first two decades of my were spent beardless.</p>
+
+                <p>If a self portrait is meant to provide a window into how the artist perceives themselves, I do wonder
+                    if there’s any significance to the fact that I took the most memorable self portraits when I was the
+                    most unable to recognize myself. It’s been about a month now, since I shaved my beard off entirely,
+                    and I have yet to get a new electric razor, meaning that slowly but surely, my beard is growing
+                    back. </p>
+
+                <p>This time however, I am looking less, taking fewer self portraits, because this time I can recognize
+                    me — it feels like I’ve been here before.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        fetch('../footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+            });
+    </script>
+</body>
+
+</html>

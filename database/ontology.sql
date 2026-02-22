@@ -1291,33 +1291,37 @@
 -- DELETE FROM keywords
 -- WHERE UUID = '5b6c7d8e-9f0a-41b2-c3d4-e5f678901234';
 
--- Insert the main project record
-INSERT INTO projects (UUID, Title, ShortDescription, Year, FeaturedWork) VALUES
-('3096542b-b678-47ad-9215-614fd6950a14', 'RSS feed', 'My personal news feed', 2025, 'FALSE');
+-- -- Insert the main project record
+-- INSERT INTO projects (UUID, Title, ShortDescription, Year, FeaturedWork) VALUES
+-- ('3096542b-b678-47ad-9215-614fd6950a14', 'RSS feed', 'My personal news feed', 2025, 'FALSE');
 
--- Insert the modality
-INSERT INTO modalities (UUID, Modality) VALUES
-('3096542b-b678-47ad-9215-614fd6950a14', 'Digital');
+-- -- Insert the modality
+-- INSERT INTO modalities (UUID, Modality) VALUES
+-- ('3096542b-b678-47ad-9215-614fd6950a14', 'Digital');
 
--- Insert the mediums (multiple entries)
-INSERT INTO mediums (UUID, Medium) VALUES
-('3096542b-b678-47ad-9215-614fd6950a14', 'App'),
-('3096542b-b678-47ad-9215-614fd6950a14', 'Browser');
+-- -- Insert the mediums (multiple entries)
+-- INSERT INTO mediums (UUID, Medium) VALUES
+-- ('3096542b-b678-47ad-9215-614fd6950a14', 'App'),
+-- ('3096542b-b678-47ad-9215-614fd6950a14', 'Browser');
 
--- Insert the tools (multiple entries)
-INSERT INTO tools (UUID, Tool) VALUES
-('3096542b-b678-47ad-9215-614fd6950a14', 'Python'),
-('3096542b-b678-47ad-9215-614fd6950a14', 'JavaScript'),
-('3096542b-b678-47ad-9215-614fd6950a14', 'HTML/CSS');
+-- -- Insert the tools (multiple entries)
+-- INSERT INTO tools (UUID, Tool) VALUES
+-- ('3096542b-b678-47ad-9215-614fd6950a14', 'Python'),
+-- ('3096542b-b678-47ad-9215-614fd6950a14', 'JavaScript'),
+-- ('3096542b-b678-47ad-9215-614fd6950a14', 'HTML/CSS');
 
--- Insert the objects (multiple entries)
-INSERT INTO objects (UUID, Object) VALUES
-('3096542b-b678-47ad-9215-614fd6950a14', 'Website'),
-('3096542b-b678-47ad-9215-614fd6950a14', 'Web app');
+-- -- Insert the objects (multiple entries)
+-- INSERT INTO objects (UUID, Object) VALUES
+-- ('3096542b-b678-47ad-9215-614fd6950a14', 'Website'),
+-- ('3096542b-b678-47ad-9215-614fd6950a14', 'Web app');
 
--- Insert the keywords (multiple entries)
-INSERT INTO keywords (UUID, Keyword) VALUES
-('3096542b-b678-47ad-9215-614fd6950a14', 'Culture'),
-('3096542b-b678-47ad-9215-614fd6950a14', 'Self'),
-('3096542b-b678-47ad-9215-614fd6950a14', 'Technology'),
-('3096542b-b678-47ad-9215-614fd6950a14', 'Web');
+-- -- Insert the keywords (multiple entries)
+-- INSERT INTO keywords (UUID, Keyword) VALUES
+-- ('3096542b-b678-47ad-9215-614fd6950a14', 'Culture'),
+-- ('3096542b-b678-47ad-9215-614fd6950a14', 'Self'),
+-- ('3096542b-b678-47ad-9215-614fd6950a14', 'Technology'),
+-- ('3096542b-b678-47ad-9215-614fd6950a14', 'Web');
+
+UPDATE fieldnotes
+SET LastUpdated = '1999-05-07'
+WHERE UUID = 'e5f6a7b8-c9d0-4e67-a7b8-012345678901';
