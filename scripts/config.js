@@ -4,16 +4,16 @@
 const ontologyColumns = ['UUID', 'Title', 'ShortDescription', 'Year',
     'Modality', 'Medium', 'Tools', 'Object',
     'Collaborators', 'Keywords', 'FeaturedWork'];
-const fieldnotesColumns = ['UUID', 'Title', 'ShortDescription', 'PublishedDate', 'LastUpdated'];
+const fieldnotesColumns = ['UUID', 'Title', 'ShortDescription', 'PublishedDate', 'LastUpdated', 'ReadingTimeMinutes', 'WordCount'];
 // const albumColumns = ['UUID', 'FileName', 'ShortDescription', 'Camera', 'SizeBytes', 'Year'];
 
 const defaultColumns = {
     ontology: ['Title', 'ShortDescription', 'Year', 'Object'],
-    fieldnotes: ['Title', 'ShortDescription', 'PublishedDate', 'LastUpdated'],
+    fieldnotes: ['Title', 'ShortDescription', 'PublishedDate', 'LastUpdated', 'ReadingTimeMinutes'],
     // album: ['FileName', 'ShortDescription', 'Camera', 'Year']
 };
 
-const storageKey = 'gregoryCottonColumnPrefs_v2';
+const storageKey = 'gregoryCottonColumnPrefs_v3';
 let columnPrefs = loadColumnPrefs();
 
 let currentView = 'ontology';

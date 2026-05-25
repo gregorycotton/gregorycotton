@@ -38,6 +38,10 @@ function renderTable(data) {
             displayName = 'Published';
         } else if (col === 'LastUpdated') {
             displayName = 'Updated';
+        } else if (col === 'ReadingTimeMinutes') {
+            displayName = 'Reading Time';
+        } else if (col === 'WordCount') {
+            displayName = 'Word Count';
         } else if (col !== 'UUID') {
             displayName = col.replace(/([A-Z])/g, ' $1').trim();
         }
@@ -51,7 +55,7 @@ function renderTable(data) {
                 sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
             } else {
                 sortColumn = column;
-                sortDirection = ['Year', 'SizeBytes', 'PublishedDate', 'LastUpdated'].includes(column) ? 'desc' : 'asc';
+                sortDirection = ['Year', 'SizeBytes', 'PublishedDate', 'LastUpdated', 'ReadingTimeMinutes', 'WordCount'].includes(column) ? 'desc' : 'asc';
             }
             sortData();
             renderTable(currentData);
@@ -80,6 +84,10 @@ function renderTable(data) {
                             value = `${day}/${month}/${year}`;
                         }
                     } catch (e) { /* Ignore formatting error */ }
+                } else if (col === 'ReadingTimeMinutes' && value !== 'N/A') {
+                    value = `${value} min`;
+                } else if (col === 'WordCount' && value !== 'N/A') {
+                    value = Number(value).toLocaleString();
                 }
             // } else if (currentView === 'album') {
             //     if (col === 'SizeBytes' && value !== 'N/A') {
@@ -100,14 +108,14 @@ function sortData() {
     const config = getCurrentViewConfig();
     if (!config.columns.includes(sortColumn)) {
         sortColumn = config.defaultSort;
-        sortDirection = ['Year', 'SizeBytes', 'PublishedDate', 'LastUpdated'].includes(sortColumn) ? 'desc' : 'asc';
+        sortDirection = ['Year', 'SizeBytes', 'PublishedDate', 'LastUpdated', 'ReadingTimeMinutes', 'WordCount'].includes(sortColumn) ? 'desc' : 'asc';
     }
 
     currentData.sort((a, b) => {
         let valA = a[sortColumn];
         let valB = b[sortColumn];
 
-        if (['Year', 'SizeBytes'].includes(sortColumn)) {
+        if (['Year', 'SizeBytes', 'ReadingTimeMinutes', 'WordCount'].includes(sortColumn)) {
             valA = parseInt(valA, 10) || 0;
             valB = parseInt(valB, 10) || 0;
         } else if (['PublishedDate', 'LastUpdated'].includes(sortColumn)) {
@@ -192,7 +200,7 @@ function applyViewState(view) {
 
     currentColumns = columnPrefs[currentView];
     sortColumn = config.defaultSort;
-    sortDirection = ['Year', 'SizeBytes', 'PublishedDate', 'LastUpdated'].includes(sortColumn) ? 'desc' : 'asc';
+    sortDirection = ['Year', 'SizeBytes', 'PublishedDate', 'LastUpdated', 'ReadingTimeMinutes', 'WordCount'].includes(sortColumn) ? 'desc' : 'asc';
     currentData = [];
 }
 
@@ -256,6 +264,10 @@ function setupColumnSelectors() {
                 displayName = 'Published Date';
             } else if (col === 'LastUpdated') {
                 displayName = 'Last Updated';
+            } else if (col === 'ReadingTimeMinutes') {
+                displayName = 'Reading Time';
+            } else if (col === 'WordCount') {
+                displayName = 'Word Count';
             } else {
                 displayName = col.replace(/([A-Z])/g, ' $1').trim();
             }
@@ -329,7 +341,9 @@ function getOperatorMapForView(view = currentView) {
                 'Title': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
                 'ShortDescription': ['IS', 'CONTAINS', 'STARTS WITH', 'ENDS WITH'],
                 'PublishedDate': ['PUBLISHED ON', 'PUBLISHED BEFORE', 'PUBLISHED AFTER'],
-                'LastUpdated': ['UPDATED ON', 'UPDATED BEFORE', 'UPDATED AFTER']
+                'LastUpdated': ['UPDATED ON', 'UPDATED BEFORE', 'UPDATED AFTER'],
+                'ReadingTimeMinutes': ['IS', 'IS NOT', 'GREATER THAN', 'LESS THAN'],
+                'WordCount': ['IS', 'IS NOT', 'GREATER THAN', 'LESS THAN']
             };
         default:
             return {};
@@ -389,6 +403,8 @@ async function addCondition() {
         else if (col === 'FeaturedWork') displayName = 'Featured';
         else if (col === 'PublishedDate') displayName = 'Published Date';
         else if (col === 'LastUpdated') displayName = 'Last Updated';
+        else if (col === 'ReadingTimeMinutes') displayName = 'Reading Time';
+        else if (col === 'WordCount') displayName = 'Word Count';
         else if (col !== 'UUID') displayName = col.replace(/([A-Z])/g, ' $1').trim();
         return `<option value="${col}">${displayName}</option>`;
     }).join('')}
@@ -443,6 +459,8 @@ async function updateConditionInput(selectElement) {
         case 'fieldnotes':
             if (['PublishedDate', 'LastUpdated'].includes(field)) {
                 inputHTML = `<input type="date" class="value-input">`;
+            } else if (['ReadingTimeMinutes', 'WordCount'].includes(field)) {
+                inputHTML = `<input type="number" min="0" step="1" placeholder="Enter number..." class="value-input">`;
             }
             break;
 

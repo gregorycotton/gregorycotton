@@ -71,6 +71,7 @@ function getFieldnotesBaseQuery() {
 function buildWhereClause($conditions, $viewType = 'ontology') {
     $params = [];
     $whereClauses = [];
+    $numericFields = ['Year', 'SizeBytes', 'WordCount', 'ReadingTimeMinutes'];
 
     $ontologyTableMap = [
         'Modality' => ['table' => 'modalities', 'column' => 'Modality'],
@@ -92,7 +93,7 @@ function buildWhereClause($conditions, $viewType = 'ontology') {
     $validFields = [];
      switch($viewType) {
         case 'ontology': $validFields = ['UUID', 'Title', 'ShortDescription', 'Year', 'Modality', 'Medium', 'Tools', 'Object', 'Collaborators', 'Keywords', 'FeaturedWork']; break;
-        case 'fieldnotes': $validFields = ['UUID', 'Title', 'ShortDescription', 'PublishedDate', 'LastUpdated']; break;
+        case 'fieldnotes': $validFields = ['UUID', 'Title', 'ShortDescription', 'PublishedDate', 'LastUpdated', 'WordCount', 'ReadingTimeMinutes']; break;
         // case 'album': $validFields = ['UUID', 'FileName', 'ShortDescription', 'Camera', 'SizeBytes', 'Year']; break;
      }
 
@@ -134,14 +135,14 @@ function buildWhereClause($conditions, $viewType = 'ontology') {
                     break;
                 case 'GREATER THAN':
                      $whereFragment = "$logic $columnRef > ?";
-                      if (($field === 'Year' || $field === 'SizeBytes') && !is_numeric($value)) {
+                      if (in_array($field, $numericFields, true) && !is_numeric($value)) {
                           throw new Exception("Value for GREATER THAN must be numeric for field $field.");
                       }
                      $paramValue = $value;
                      break;
                 case 'LESS THAN':
                      $whereFragment = "$logic $columnRef < ?";
-                      if (($field === 'Year' || $field === 'SizeBytes') && !is_numeric($value)) {
+                      if (in_array($field, $numericFields, true) && !is_numeric($value)) {
                          throw new Exception("Value for LESS THAN must be numeric for field $field.");
                       }
                      $paramValue = $value;
@@ -167,7 +168,7 @@ function buildWhereClause($conditions, $viewType = 'ontology') {
                     if ($viewType === 'ontology' && $field === 'FeaturedWork' && strtoupper($value) === 'FALSE') {
                         $whereFragment = "$logic ($columnRef IS NULL OR $columnRef = ? OR $columnRef = '')";
                         $paramValue = 'FALSE';
-                    } elseif (($field === 'Year' || $field === 'SizeBytes') && !is_numeric($value)) {
+                    } elseif (in_array($field, $numericFields, true) && !is_numeric($value)) {
                          throw new Exception("Value for IS NOT must be numeric for field $field.");
                     }
                     break;
@@ -178,7 +179,7 @@ function buildWhereClause($conditions, $viewType = 'ontology') {
                     if ($viewType === 'ontology' && $field === 'FeaturedWork' && strtoupper($value) === 'FALSE') {
                          $whereFragment = "$logic ($columnRef IS NULL OR $columnRef = ? OR $columnRef = '')";
                          $paramValue = 'FALSE';
-                    } elseif (($field === 'Year' || $field === 'SizeBytes') && !is_numeric($value)) {
+                    } elseif (in_array($field, $numericFields, true) && !is_numeric($value)) {
                          throw new Exception("Value for IS must be numeric for field $field.");
                     }
                     break;
@@ -309,7 +310,14 @@ function ensureFieldnotesFtsTable($db) {
     if ($sqlStmt) {
         $sqlStmt->closeCursor();
     }
-    if (is_string($existingSql) && stripos($existingSql, 'UUID UNINDEXED') !== false) {
+    if (
+        is_string($existingSql) &&
+        (
+            stripos($existingSql, 'UUID UNINDEXED') !== false ||
+            stripos($existingSql, 'WordCount') === false ||
+            stripos($existingSql, 'ReadingTimeMinutes') === false
+        )
+    ) {
         $db->exec("DROP TABLE IF EXISTS fieldnotes_fts");
         $db->exec("UPDATE search_index_meta SET IsDirty = 1 WHERE IndexName = 'fieldnotes'");
     }
@@ -321,6 +329,8 @@ function ensureFieldnotesFtsTable($db) {
             ShortDescription,
             PublishedDate,
             LastUpdated,
+            WordCount,
+            ReadingTimeMinutes,
             tokenize = 'unicode61 remove_diacritics 2'
         )
     ");
@@ -393,13 +403,15 @@ function rebuildFieldnotesFtsIndex($db) {
     try {
         $db->exec("DELETE FROM fieldnotes_fts");
         $db->exec("
-            INSERT INTO fieldnotes_fts (UUID, Title, ShortDescription, PublishedDate, LastUpdated)
+            INSERT INTO fieldnotes_fts (UUID, Title, ShortDescription, PublishedDate, LastUpdated, WordCount, ReadingTimeMinutes)
             SELECT
                 UUID,
                 COALESCE(Title, ''),
                 COALESCE(ShortDescription, ''),
                 COALESCE(PublishedDate, ''),
-                COALESCE(LastUpdated, '')
+                COALESCE(LastUpdated, ''),
+                COALESCE(CAST(WordCount AS TEXT), ''),
+                COALESCE(CAST(ReadingTimeMinutes AS TEXT), '')
             FROM fieldnotes
         ");
         $db->exec("UPDATE search_index_meta SET IsDirty = 0 WHERE IndexName = 'fieldnotes'");
@@ -476,6 +488,8 @@ function getFieldnotesBySearchLike($db, $rawTerm) {
            OR fn.ShortDescription LIKE :term
            OR fn.PublishedDate LIKE :term
            OR fn.LastUpdated LIKE :term
+           OR CAST(fn.WordCount AS TEXT) LIKE :term
+           OR CAST(fn.ReadingTimeMinutes AS TEXT) LIKE :term
     ";
     $stmt = $db->prepare($query);
     $stmt->execute([':term' => $term]);
