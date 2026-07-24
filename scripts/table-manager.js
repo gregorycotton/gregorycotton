@@ -9,7 +9,8 @@ function escapeHtml(value) {
         .replace(/'/g, '&#039;');
 }
 
-function renderTable(data) {
+function renderTable(data, options = {}) {
+    const { renderRows = true } = options;
     const config = getCurrentViewConfig();
     const table = document.getElementById(config.tableId);
     const thead = table.querySelector('thead');
@@ -70,6 +71,10 @@ function renderTable(data) {
             renderTable(currentData);
         });
     });
+
+    if (!renderRows) {
+        return;
+    }
 
     tbody.innerHTML = data.map(item => {
         const rowContent = orderedColumns.map(col => {
@@ -148,6 +153,16 @@ function sortData() {
 
         if (valA < valB) return sortDirection === 'asc' ? -1 : 1;
         if (valA > valB) return sortDirection === 'asc' ? 1 : -1;
+
+        const titleA = String(a.Title ?? '').toLowerCase();
+        const titleB = String(b.Title ?? '').toLowerCase();
+        if (titleA < titleB) return -1;
+        if (titleA > titleB) return 1;
+
+        const uuidA = String(a.UUID ?? '').toLowerCase();
+        const uuidB = String(b.UUID ?? '').toLowerCase();
+        if (uuidA < uuidB) return -1;
+        if (uuidA > uuidB) return 1;
         return 0;
     });
 }
@@ -793,6 +808,12 @@ function readTableStateFromUrl() {
     return { view, conditions };
 }
 
+function hasCustomColumnPrefs(view) {
+    const defaults = defaultColumns[view] || [];
+    const selected = columnPrefs[view] || defaults;
+    return selected.length !== defaults.length || selected.some((column, index) => column !== defaults[index]);
+}
+
 async function initializeTableStateFromUrl() {
     const state = readTableStateFromUrl();
     switchView(state.view, { force: true, skipLoadData: true, skipUrlUpdate: true });
@@ -800,8 +821,12 @@ async function initializeTableStateFromUrl() {
     if (state.conditions.length > 0) {
         await setQueryBuilderConditions(state.conditions);
         await executeQuery(state.conditions, { updateUrl: false });
-    } else {
+    } else if (hasCustomColumnPrefs(state.view)) {
         await clearQuery({ skipUrlUpdate: true });
+    } else {
+        currentData = [...getCatalogueRows(state.view)];
+        sortData();
+        renderTable(currentData, { renderRows: false });
     }
 }
 
