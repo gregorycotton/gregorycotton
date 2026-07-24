@@ -5,3 +5,5 @@ scripts/admin/update-db.sh
 *.sqlite
 *.sqlite3
 .DS_Store
+ARCHITECTURE_MIGRATION_SPRINTS.md
+.build/
