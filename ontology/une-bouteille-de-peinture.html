@@ -1,108 +1,83 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
-
     <meta name="title" content="Gregory Cotton">
-    <meta name="description"
-        content="Project page for Greg's 'Une bouteille de peinture', a watercolour painting from his elementary school art class.">
-
+    <meta name="description" content="My magnum opus">
     <meta property="og:title" content="Une bouteille de peinture | Gregory Cotton">
-    <meta property="og:description" content="Project page for Greg's 'Une bouteille de peinture', a watercolour painting from his elementary school art class.">
+    <meta property="og:description" content="My magnum opus">
     <meta property="og:type" content="website">
-
     <meta name="twitter:title" content="Une bouteille de peinture | Gregory Cotton">
-    
     <meta name="author" content="Gregory Cotton">
     <meta name="creator" content="gregorycotton.ca">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Une bouteille de peinture | Gregory Cotton</title>
     <link rel="stylesheet" href="../style.css">
-
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="../assets/favicon/site.webmanifest">
-
-    <script src="../scripts/fetch-properties.js"></script>
     <script src="../scripts/image-loader.js"></script>
+<script>
+const imageConfigurations = [
+  {
+    "idForFileSizeCell": "fileSize-une-bouteille-de-peinture-0-0",
+    "fullImageUrl": "images/une-bouteille-de-peinture/une-bouteille-de-peinture.jpg"
+  }
+];
+</script>
 </head>
-
 <body>
     <div class="container">
-        <div class="left">
-            <h1><a href="/" class="home-link">Gregory Cotton</a></h1>
-        </div>
-
+        <div class="left"><h1><a href="../" class="home-link">Gregory Cotton</a></h1></div>
         <div class="right">
             <h2>Une bouteille de peinture</h2>
-
             <br>
-
-            <details id="propertiesDetails">
-                <summary class="secondary-link">Metadata</summary>
-                <div id="properties-content">
-                    <p>Loading metadata...</p>
-                </div>
-            </details>
-
+            <details id="propertiesDetails"><summary class="secondary-link">Metadata</summary><div id="properties-content"><pre class="secondary-text"><code style="font-size: 12px;">{
+  &quot;UUID&quot;: &quot;dd21a1b5-1bf4-46e0-947d-06e4540775de&quot;,
+  &quot;Title&quot;: &quot;Une bouteille de peinture&quot;,
+  &quot;ShortDescription&quot;: &quot;My magnum opus&quot;,
+  &quot;Year&quot;: 2007,
+  &quot;FeaturedWork&quot;: &quot;FALSE&quot;,
+  &quot;URL&quot;: &quot;une-bouteille-de-peinture&quot;,
+  &quot;Modality&quot;: [
+    &quot;Traditional&quot;
+  ],
+  &quot;Medium&quot;: [
+    &quot;Painting&quot;
+  ],
+  &quot;Tools&quot;: [
+    &quot;Watercolour&quot;
+  ],
+  &quot;Object&quot;: [
+    &quot;Painting&quot;
+  ],
+  &quot;Collaborators&quot;: [],
+  &quot;Keywords&quot;: [
+    &quot;Self&quot;
+  ]
+}</code></pre></div></details>
             <div class="proj-txt-container">
-                <p>An eight-year-old Gregory Cotton makes his debut in the art scene with an abstract painting created
+                <br>
+
+<p>An eight-year-old Gregory Cotton makes his debut in the art scene with an abstract painting created
                     during a fourth grade art class. Critics argue it remains his finest work to date.</p>
+
+<br>
+
+<div class="proj-resource-container"><div class="table-container"><table class="image-loader-table" id="resourceTable-une-bouteille-de-peinture-0"><thead><tr><th class="thumbnail-col">*</th><th>Title</th><th>Size (bytes)</th><th>View</th></tr></thead><tbody><tr><td class="thumbnail-col"><img src="thumbnails/une-bouteille-de-peinture/une-bouteille-de-peinture-thumbnail.jpg" alt="Une bouteille de peinture thumbnail" class="thumbnail-img"></td><td>Une bouteille de peinture</td><td id="fileSize-une-bouteille-de-peinture-0-0">200,166</td><td class="loadImageTrigger" data-fullimageurl="images/une-bouteille-de-peinture/une-bouteille-de-peinture.jpg" data-title="Une bouteille de peinture"><a class="table-link">Load image</a></td></tr></tbody></table></div><div class="image-display-area"></div></div>
             </div>
 
-            <br>
-
-            <div class="proj-resource-container">
-                <div class="table-container">
-                    <table class="image-loader-table" id="projectsTable">
-                        <thead>
-                            <tr>
-                                <th class="thumbnail-col">*</th>
-                                <th>Title</th>
-                                <th>Size (bytes)</th>
-                                <th>View</th>
-                            </tr>
-                        </thead>
-                        <tbody id="projectsTableBodyStatic">
-                            <tr>
-                                <td class="thumbnail-col">
-                                    <img src="thumbnails/une-bouteille-de-peinture/une-bouteille-de-peinture-thumbnail.jpg"
-                                        alt="Une bouteille de peinture thumbnail" class="thumbnail-img">
-                                </td>
-                                <td>Une bouteille de peinture</td>
-                                <td id="fileSize-une-bouteille-de-peinture">Loading...</td>
-                                <td class="loadImageTrigger"
-                                    data-fullimageurl="images/une-bouteille-de-peinture/une-bouteille-de-peinture.jpg"
-                                    data-title="Une bouteille de peinture"><a class="table-link">Load image</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="image-display-area">
-                </div>
-            </div>
         </div>
     </div>
-
-    <script>
-        fetch('../footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.body.insertAdjacentHTML('beforeend', data);
-            });
-    </script>
-
-    <script>
-        const imageConfigurations = [
-            {
-                idForFileSizeCell: 'fileSize-une-bouteille-de-peinture',
-                fullImageUrl: 'images/une-bouteille-de-peinture/une-bouteille-de-peinture.jpg'
-            }
-        ];
-    </script>
+    <footer>
+        <div class="footer-left">Gregory Cotton&nbsp;[2025 v04.02]</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank"
+                class="secondary-link">LinkedIn</a> | <a href="https://www.are.na/gregory-cotton/" target="_blank"
+                class="secondary-link">Are.na</a> | <a href="https://github.com/gregorycotton"
+                target="_blank" class="secondary-link">GitHub</a>
+        </div>
+    </footer>
 </body>
-
 </html>

@@ -1,5 +1,14 @@
 // Responsible for all DOM manipulation related to rendering the data table and handling data sorting logic.
 
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
 function renderTable(data) {
     const config = getCurrentViewConfig();
     const table = document.getElementById(config.tableId);
@@ -64,19 +73,19 @@ function renderTable(data) {
 
     tbody.innerHTML = data.map(item => {
         const rowContent = orderedColumns.map(col => {
-            let value = item[col] ?? 'N/A';
+            let value = item[col];
 
             if (currentView === 'ontology') {
                 if (col === 'Title' && item.URL) {
-                    value = `<a class="table-link" href="/ontology/${item.URL}.html">${item[col]}</a>`;
+                    value = `<a class="table-link" href="/ontology/${escapeHtml(item.URL)}.html">${escapeHtml(item[col] ?? 'N/A')}</a>`;
                 } else if (['Modality', 'Medium', 'Tools', 'Object', 'Collaborators', 'Keywords'].includes(col)) {
-                    value = item[col] ? item[col].split(',').map(v => v.trim()).join(', ') : 'N/A';
+                    value = Array.isArray(item[col]) ? item[col].join(', ') : (item[col] || 'N/A');
                 } else if (col === 'FeaturedWork') {
                     value = item[col] === 'TRUE' ? 'TRUE' : 'FALSE';
                 }
             } else if (currentView === 'fieldnotes') {
                 if (col === 'Title' && item.URL) {
-                    value = `<a class="table-link" href="/fieldnotes/${item.URL}.html">${item[col]}</a>`;
+                    value = `<a class="table-link" href="/fieldnotes/${escapeHtml(item.URL)}.html">${escapeHtml(item[col] ?? 'N/A')}</a>`;
                 } else if (['PublishedDate', 'LastUpdated'].includes(col) && value !== 'N/A') {
                     try {
                         const [year, month, day] = value.split('-');
@@ -98,6 +107,9 @@ function renderTable(data) {
             //     }
             }
 
+            if (!(typeof value === 'string' && value.startsWith('<a '))) {
+                value = escapeHtml(value ?? 'N/A');
+            }
             return `<td>${value}</td>`;
         }).join('');
         return `<tr>${rowContent}</tr>`;
@@ -121,6 +133,9 @@ function sortData() {
         } else if (['PublishedDate', 'LastUpdated'].includes(sortColumn)) {
             valA = valA ?? '';
             valB = valB ?? '';
+        } else if (Array.isArray(valA) || Array.isArray(valB)) {
+            valA = Array.isArray(valA) ? valA.join(', ') : (valA ?? '');
+            valB = Array.isArray(valB) ? valB.join(', ') : (valB ?? '');
         } else if (typeof valA === 'string' && typeof valB === 'string') {
             valA = valA.toLowerCase();
             valB = valB.toLowerCase();
@@ -148,7 +163,8 @@ function getCurrentViewConfig() {
                 viewId: 'ontologyView',
                 apiBaseAction: 'projects',
                 titleField: 'Title',
-                defaultSort: 'Year'
+                defaultSort: 'Year',
+                searchColumns: ['UUID', 'Title', 'ShortDescription', 'Year', 'Modality', 'Medium', 'Tools', 'Object', 'Collaborators', 'Keywords']
             };
         case 'fieldnotes':
             return {
@@ -157,7 +173,8 @@ function getCurrentViewConfig() {
                 viewId: 'fieldnotesView',
                 apiBaseAction: 'fieldnotes',
                 titleField: 'Title',
-                defaultSort: 'PublishedDate'
+                defaultSort: 'PublishedDate',
+                searchColumns: ['UUID', 'Title', 'ShortDescription', 'PublishedDate', 'LastUpdated', 'WordCount', 'ReadingTimeMinutes']
             };
         // case 'album':
         //     return {
@@ -177,7 +194,8 @@ function getCurrentViewConfig() {
                 viewId: 'ontologyView',
                 apiBaseAction: 'projects',
                 titleField: 'Title',
-                defaultSort: 'Year'
+                defaultSort: 'Year',
+                searchColumns: ['UUID', 'Title', 'ShortDescription', 'Year', 'Modality', 'Medium', 'Tools', 'Object', 'Collaborators', 'Keywords']
             };
     }
 }
@@ -355,8 +373,80 @@ function getOperatorsForField(field, view = currentView) {
     return map[field] || ['IS', 'CONTAINS'];
 }
 
+function getCatalogueRows(view = currentView) {
+    return catalogueData?.views?.[view]?.rows || [];
+}
+
+function getRecordValues(record, field) {
+    const value = record[field];
+    if (Array.isArray(value)) return value;
+    return [value];
+}
+
+function conditionMatches(record, condition, view = currentView) {
+    const field = condition.field;
+    const operator = condition.operator;
+    const expected = String(condition.value ?? '').trim();
+    const rawValue = record[field];
+    const values = getRecordValues(record, field).filter(value => value !== null && value !== undefined && value !== '');
+    const normalizedValues = values.map(value => String(value));
+    const metadataFields = ['Modality', 'Medium', 'Tools', 'Object', 'Collaborators', 'Keywords'];
+
+    if (view === 'ontology' && field === 'FeaturedWork' && expected.toUpperCase() === 'FALSE') {
+        const isFalse = rawValue === null || rawValue === undefined || rawValue === '' || String(rawValue).toUpperCase() === 'FALSE';
+        return operator === 'IS' || operator === 'IS NOT' ? isFalse : false;
+    }
+
+    if (operator === 'IS') {
+        return normalizedValues.some(value => value === expected);
+    }
+    if (operator === 'IS NOT') {
+        if (metadataFields.includes(field) && view === 'ontology') {
+            return normalizedValues.every(value => value !== expected);
+        }
+        return rawValue !== null && rawValue !== undefined && normalizedValues.every(value => value !== expected);
+    }
+    if (operator === 'CONTAINS') {
+        return normalizedValues.some(value => value.toLowerCase().includes(expected.toLowerCase()));
+    }
+    if (operator === 'STARTS WITH') {
+        return normalizedValues.some(value => value.toLowerCase().startsWith(expected.toLowerCase()));
+    }
+    if (operator === 'ENDS WITH') {
+        return normalizedValues.some(value => value.toLowerCase().endsWith(expected.toLowerCase()));
+    }
+    if (['GREATER THAN', 'LESS THAN'].includes(operator)) {
+        const actual = Number(rawValue);
+        const target = Number(expected);
+        if (!Number.isFinite(actual) || !Number.isFinite(target)) return false;
+        return operator === 'GREATER THAN' ? actual > target : actual < target;
+    }
+    if (['PUBLISHED ON', 'UPDATED ON'].includes(operator)) {
+        return normalizedValues.some(value => value === expected);
+    }
+    if (['PUBLISHED BEFORE', 'UPDATED BEFORE'].includes(operator)) {
+        return normalizedValues.some(value => value <= expected);
+    }
+    if (['PUBLISHED AFTER', 'UPDATED AFTER'].includes(operator)) {
+        return normalizedValues.some(value => value >= expected);
+    }
+    return false;
+}
+
+function filterByConditions(rows, conditions) {
+    return rows.filter(record => {
+        if (conditions.length === 0) return true;
+        let result = conditionMatches(record, conditions[0]);
+        for (let index = 1; index < conditions.length; index += 1) {
+            const matches = conditionMatches(record, conditions[index]);
+            result = conditions[index].logic === 'OR' ? result || matches : result && matches;
+        }
+        return result;
+    });
+}
+
 // Query manager
-// Fetch unique options from the server, gather user selections, construct query string, fetch filtered data from server, update table
+// Gather unique options locally, filter the embedded catalogue, and update the table.
 function toggleQueryBuilder(forceHide = false) {
     const queryBuilder = document.getElementById('queryBuilder');
     if (forceHide) {
@@ -484,17 +574,13 @@ async function updateConditionInput(selectElement) {
 }
 
 async function getDistinctValues(field) {
-    const config = getCurrentViewConfig();
-    try {
-        const response = await fetch(`server.php?action=get_distinct_${config.apiBaseAction}&field=${field}`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await response.json();
-    } catch (error) {
-        console.error(`Failed to fetch distinct values for ${field} in view ${currentView}:`, error);
-        return [];
-    }
+    if (field === 'FeaturedWork') return ['TRUE', 'FALSE'];
+
+    const values = getCatalogueRows().flatMap(record => getRecordValues(record, field));
+    return [...new Set(values
+        .filter(value => value !== null && value !== undefined && value !== '')
+        .map(value => String(value)))]
+        .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base', numeric: true }));
 }
 
 function getConditionsFromBuilder() {
@@ -656,37 +742,13 @@ function updateQueryUrl(conditions = [], options = {}) {
 
 async function executeQuery(conditions, options = {}) {
     const { updateUrl = false, replaceHistory = false } = options;
-    const config = getCurrentViewConfig();
-    const queryParams = new URLSearchParams();
-    queryParams.append('action', `query_${config.apiBaseAction}`);
-    conditions.forEach((cond, index) => {
-        queryParams.append(`conditions[${index}][logic]`, cond.logic);
-        queryParams.append(`conditions[${index}][field]`, cond.field);
-        queryParams.append(`conditions[${index}][operator]`, cond.operator);
-        queryParams.append(`conditions[${index}][value]`, cond.value);
-    });
 
-    try {
-        const response = await fetch(`server.php?${queryParams.toString()}`);
-        const data = await response.json();
-        if (data.error) {
-            console.error('Server Error:', data.error);
-            alert(`Error running query: ${data.error}`);
-            currentData = [];
-        } else {
-            currentData = data;
-        }
-        sortData();
-        renderTable(currentData);
+    currentData = filterByConditions(getCatalogueRows(), conditions);
+    sortData();
+    renderTable(currentData);
 
-        if (updateUrl) {
-            updateQueryUrl(conditions, { replaceHistory });
-        }
-    } catch (error) {
-        console.error('Fetch Error:', error);
-        alert('Failed to fetch query results from the server.');
-        currentData = [];
-        renderTable(currentData);
+    if (updateUrl) {
+        updateQueryUrl(conditions, { replaceHistory });
     }
 }
 
@@ -765,30 +827,29 @@ async function clearQuery(options = {}) {
     }
 }
 
-// Database search
-// TODO: FTS5 for database search
+// Static catalogue search
 async function searchHandler() {
     const config = getCurrentViewConfig();
     const searchTerm = document.getElementById('searchInput').value;
+    const tokens = searchTerm.trim().match(/[\p{L}\p{N}_-]+/gu) || [];
+    const searchableRows = getCatalogueRows();
 
-    try {
-        const response = await fetch(`server.php?action=search_${config.apiBaseAction}&term=${encodeURIComponent(searchTerm)}`);
-        const data = await response.json();
-        if (data.error) {
-            console.error('Server Error:', data.error);
-            alert(`Error during search: ${data.error}`);
-            currentData = [];
-        } else {
-            currentData = data;
-        }
-        sortData();
-        renderTable(currentData);
-    } catch (error) {
-        console.error('Search Fetch Error:', error);
-        alert('Failed to fetch search results from the server.');
-        currentData = [];
-        renderTable(currentData);
+    if (tokens.length === 0) {
+        currentData = [...searchableRows];
+    } else {
+        const normalizedTokens = tokens.map(token => token.toLocaleLowerCase());
+        currentData = searchableRows.filter(record => {
+            const searchableText = config.searchColumns
+                .flatMap(field => getRecordValues(record, field))
+                .filter(value => value !== null && value !== undefined)
+                .join(' ')
+                .toLocaleLowerCase();
+            return normalizedTokens.every(token => searchableText.includes(token));
+        });
     }
+
+    sortData();
+    renderTable(currentData);
 }
 
 function debounce(func, timeout = 300) {

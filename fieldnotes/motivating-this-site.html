@@ -1,54 +1,44 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
-
     <meta name="title" content="Gregory Cotton">
-    <meta name="description"
-        content="Blog post from Greg, explaining the rationale behind the design decisions made during the creation of this website.">
-
+    <meta name="description" content="About gregorycotton.ca">
     <meta property="og:title" content="Motivating this site | Gregory Cotton">
-    <meta property="og:description" content="Blog post from Greg, explaining the rationale behind the design decisions made during the creation of this website.">
+    <meta property="og:description" content="About gregorycotton.ca">
     <meta property="og:type" content="website">
-
     <meta name="twitter:title" content="Motivating this site | Gregory Cotton">
-    
     <meta name="author" content="Gregory Cotton">
     <meta name="creator" content="gregorycotton.ca">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Motivating this site | Gregory Cotton</title>
     <link rel="stylesheet" href="../style.css">
-
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="../assets/favicon/site.webmanifest">
 
-    <script src="../scripts/fetch-properties.js"></script>
 </head>
-
 <body>
     <div class="container">
-        <div class="left">
-            <h1><a href="../" class="home-link">Gregory Cotton</a></h1>
-        </div>
-
+        <div class="left"><h1><a href="../" class="home-link">Gregory Cotton</a></h1></div>
         <div class="right">
             <p><u>Motivating this site</u></p>
-
             <br>
-
-            <details id="propertiesDetails">
-                <summary class="secondary-link">Properties</summary>
-                <div id="properties-content" style="margin-top: 15px;">
-                    <p>Loading properties...</p>
-                </div>
-            </details>
-
+            <details id="propertiesDetails"><summary class="secondary-link">Metadata</summary><div id="properties-content"><pre class="secondary-text"><code style="font-size: 12px;">{
+  &quot;UUID&quot;: &quot;486a4f38-ae3d-4346-a934-2bc38ed4f767&quot;,
+  &quot;Title&quot;: &quot;Motivating this site&quot;,
+  &quot;ShortDescription&quot;: &quot;About gregorycotton.ca&quot;,
+  &quot;PublishedDate&quot;: &quot;2025-06-17&quot;,
+  &quot;LastUpdated&quot;: &quot;2025-09-30&quot;,
+  &quot;URL&quot;: &quot;motivating-this-site&quot;,
+  &quot;WordCount&quot;: 537,
+  &quot;ReadingTimeMinutes&quot;: 3
+}</code></pre></div></details>
             <div class="proj-txt-container">
-                <p>I read a quote a while back, from whom I can't remember, that said (and I'm paraphrasing here) that
+                <br>
+
+<p>I read a quote a while back, from whom I can't remember, that said (and I'm paraphrasing here) that
                     "with as much information and data as we have in our society today, context is the ultimate
                     luxury". I actually can't find who said this anywhere or where I saw it, but it's one that's stayed
                     with me.</p>
@@ -57,9 +47,7 @@
 
                 <blockquote>17/06/2025: I stumbled back across it: the quote, verbatim this time, is "In the age of
                     information overload, the ultimate luxury is meaning and context" and it was written by Kevin Kelly,
-                    co-founder of WIRED, in the early 1990s. <a
-                        href="https://medium.com/@thepilotrunner/wired-to-build-e35cc8b7399c" class="secondary-link"
-                        target="_blank">Link.</a></blockquote>
+                    co-founder of WIRED, in the early 1990s. <a href="https://medium.com/@thepilotrunner/wired-to-build-e35cc8b7399c" class="secondary-link" target="_blank">Link.</a></blockquote>
 
                 <br>
 
@@ -81,8 +69,7 @@
                 <p>Ideally, rather than having who I am laid bare in a tell-all 'about' page, or curating what I've worked
                     on to a tidy set of projects, I've decided you can get to know me by watching my interests change
                     along with the mediums and topics I engage in, supplemented by a quick blurb about what my media
-                    diet looks like whenever I choose to update this site further. I was largely inspired by <a
-                        href="https://eatock.com/" class="primary-link" target="_blank">Daniel
+                    diet looks like whenever I choose to update this site further. I was largely inspired by <a href="https://eatock.com/" class="primary-link" target="_blank">Daniel
                         Eatock</a> and <a href="https://www.maxkohler.com/" class="primary-link" target="_blank">Max
                         Kohler</a> who's websites are amongst
                     my favourites. I am quite fond of Daniel's site in particular, which has creations of his dating back
@@ -101,17 +88,17 @@
                     which exists in opposition to tactless contextualization. Now I just think it's kind of silly and
                     figured why not.</blockquote>
             </div>
+
         </div>
     </div>
-
-
-    <script>
-        fetch('../footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.body.insertAdjacentHTML('beforeend', data);
-            });
-    </script>
+    <footer>
+        <div class="footer-left">Gregory Cotton&nbsp;[2025 v04.02]</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank"
+                class="secondary-link">LinkedIn</a> | <a href="https://www.are.na/gregory-cotton/" target="_blank"
+                class="secondary-link">Are.na</a> | <a href="https://github.com/gregorycotton"
+                target="_blank" class="secondary-link">GitHub</a>
+        </div>
+    </footer>
 </body>
-
 </html>

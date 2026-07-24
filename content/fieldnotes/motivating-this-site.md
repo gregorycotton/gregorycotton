@@ -1,0 +1,57 @@
++++
+kind = "fieldnote"
+slug = "motivating-this-site"
+display_title = "Motivating this site"
+template = "custom"
++++
+<br>
+
+<p>I read a quote a while back, from whom I can't remember, that said (and I'm paraphrasing here) that
+                    "with as much information and data as we have in our society today, context is the ultimate
+                    luxury". I actually can't find who said this anywhere or where I saw it, but it's one that's stayed
+                    with me.</p>
+
+                <br>
+
+                <blockquote>17/06/2025: I stumbled back across it: the quote, verbatim this time, is "In the age of
+                    information overload, the ultimate luxury is meaning and context" and it was written by Kevin Kelly,
+                    co-founder of WIRED, in the early 1990s. <a href="https://medium.com/@thepilotrunner/wired-to-build-e35cc8b7399c" class="secondary-link" target="_blank">Link.</a></blockquote>
+
+                <br>
+
+                <p>But but as much as I appreciate context, it can be garish – it can be imposing, heavy-handed. Like a
+                    lengthy plaque on a museum who's statement about an art piece is a little <i>too</i> didactic, a
+                    little <i>too</i> prescriptive; as if you cannot be trusted to engage meaningfully on your own.</p>
+
+                <p>I've long struggled with how to contextualize and present my work. I've spent a great deal of time
+                    over the last half decade thinking about the best approach to taxonomizing my projects, but no matter what conclusion I
+                    come to it always comes mentally-undone within a short few months. This obsession of mine is so
+                    great that I think a lot of my friends believe I consistently have reworked my website out of a love
+                    for designing websites – and while partially true, really what it has been is a search for how to
+                    present myself on the internet.</p>
+
+                <p>I ultimately have decided upon this website: rather creating a taxonomy for my work I have settled on
+                    an ontology of sorts, where projects can be filtered or searched for based on attributes I have
+                    defined, but where no hierarchy exists.</p>
+
+                <p>Ideally, rather than having who I am laid bare in a tell-all 'about' page, or curating what I've worked
+                    on to a tidy set of projects, I've decided you can get to know me by watching my interests change
+                    along with the mediums and topics I engage in, supplemented by a quick blurb about what my media
+                    diet looks like whenever I choose to update this site further. I was largely inspired by <a href="https://eatock.com/" class="primary-link" target="_blank">Daniel
+                        Eatock</a> and <a href="https://www.maxkohler.com/" class="primary-link" target="_blank">Max
+                        Kohler</a> who's websites are amongst
+                    my favourites. I am quite fond of Daniel's site in particular, which has creations of his dating back
+                    to when he was in high school. In a similar vein, I aim to continuously add works from my past to
+                    this site to build a better picture for others of who I am and how I became who I am at any given
+                    moment.</p>
+
+                <p>The site itself is just HTML/CSS and JavaScript with a PHP backend and a SQLite database. I like it,
+                    I think it works well – maybe a bit overkill for my use case but I had fun making it, and
+                    for a personal website I believe that's what matters most.</p>
+
+                <br>
+
+                <blockquote>30/09/2025: I wrote (and was planning on publishing) this closer to when I first pushed this
+                    version of my site live, but found it really ironic to publish writing contextualizing my website
+                    which exists in opposition to tactless contextualization. Now I just think it's kind of silly and
+                    figured why not.</blockquote>

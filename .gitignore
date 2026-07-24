@@ -7,3 +7,5 @@ scripts/admin/update-db.sh
 .DS_Store
 ARCHITECTURE_MIGRATION_SPRINTS.md
 .build/
+__pycache__/
+*.pyc

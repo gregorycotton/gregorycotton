@@ -1,122 +1,91 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
-
     <meta name="title" content="Gregory Cotton">
-    <meta name="description"
-        content="Project page for Greg's 'Browser Expressionism', in which browser popups are used as paint, and the web page as the canvas.">
-
+    <meta name="description" content="Tool for abstract browser art">
     <meta property="og:title" content="Browser Expressionism | Gregory Cotton">
-    <meta property="og:description" content="Project page for Greg's 'Browser Expressionism', in which browser popups are used as paint, and the web page as the canvas.">
+    <meta property="og:description" content="Tool for abstract browser art">
     <meta property="og:type" content="website">
-
     <meta name="twitter:title" content="Browser Expressionism | Gregory Cotton">
-    
     <meta name="author" content="Gregory Cotton">
     <meta name="creator" content="gregorycotton.ca">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Browser Expressionism | Gregory Cotton</title>
     <link rel="stylesheet" href="../style.css">
-
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="../assets/favicon/site.webmanifest">
-
-    <script src="../scripts/fetch-properties.js"></script>
     <script src="../scripts/image-loader.js"></script>
+<script>
+const imageConfigurations = [
+  {
+    "idForFileSizeCell": "fileSize-browser-expressionism-0-0",
+    "fullImageUrl": "images/browser-expressionism/sample-export.jpg"
+  },
+  {
+    "idForFileSizeCell": "fileSize-browser-expressionism-0-1",
+    "fullImageUrl": "images/browser-expressionism/browser-expressionism-demo.gif"
+  }
+];
+</script>
 </head>
-
 <body>
     <div class="container">
-        <div class="left">
-            <h1><a href="/" class="home-link">Gregory Cotton</a></h1>
-        </div>
-
+        <div class="left"><h1><a href="../" class="home-link">Gregory Cotton</a></h1></div>
         <div class="right">
             <h2>Browser Expressionism</h2>
-
             <br>
-
-            <details id="propertiesDetails">
-                <summary class="secondary-link">Metadata</summary>
-                <div id="properties-content">
-                    <p>Loading metadata...</p>
-                </div>
-            </details>
-
+            <details id="propertiesDetails"><summary class="secondary-link">Metadata</summary><div id="properties-content"><pre class="secondary-text"><code style="font-size: 12px;">{
+  &quot;UUID&quot;: &quot;518296ea-205f-4001-b37a-e4830f8f019e&quot;,
+  &quot;Title&quot;: &quot;Browser Expressionism&quot;,
+  &quot;ShortDescription&quot;: &quot;Tool for abstract browser art&quot;,
+  &quot;Year&quot;: 2024,
+  &quot;FeaturedWork&quot;: &quot;TRUE&quot;,
+  &quot;URL&quot;: &quot;browser-expressionism&quot;,
+  &quot;Modality&quot;: [
+    &quot;Digital&quot;
+  ],
+  &quot;Medium&quot;: [
+    &quot;Browser&quot;
+  ],
+  &quot;Tools&quot;: [
+    &quot;HTML/CSS&quot;,
+    &quot;JavaScript&quot;
+  ],
+  &quot;Object&quot;: [
+    &quot;Generative output&quot;,
+    &quot;Web art&quot;,
+    &quot;Website&quot;
+  ],
+  &quot;Collaborators&quot;: [],
+  &quot;Keywords&quot;: [
+    &quot;Abstract&quot;,
+    &quot;Technology&quot;,
+    &quot;Web&quot;
+  ]
+}</code></pre></div></details>
             <div class="proj-txt-container">
-                <p>Generative expressionist art using the browser and it's native pop-up functionality.</p>
+                <br>
+
+<p>Generative expressionist art using the browser and it's native pop-up functionality.</p>
+
+<br>
+
+<div class="proj-resource-container"><div class="table-container"><table class="image-loader-table" id="resourceTable-browser-expressionism-0"><thead><tr><th class="thumbnail-col">*</th><th>Title</th><th>Size (bytes)</th><th>View</th></tr></thead><tbody><tr><td class="thumbnail-col"><img src="thumbnails/browser-expressionism/sample-export-thumbnail.jpg" alt="Sample export thumbnail" class="thumbnail-img"></td><td>Sample export</td><td id="fileSize-browser-expressionism-0-0">230,792</td><td class="loadImageTrigger" data-fullimageurl="images/browser-expressionism/sample-export.jpg" data-title="Sample export"><a class="table-link">Load image</a></td></tr><tr><td class="thumbnail-col"><img src="thumbnails/browser-expressionism/browser-expressionism-demo-thumbnail.jpg" alt="Browser Expressionism demo thumbnail" class="thumbnail-img"></td><td>Browser Expressionism demo</td><td id="fileSize-browser-expressionism-0-1">795,048</td><td class="loadImageTrigger" data-fullimageurl="images/browser-expressionism/browser-expressionism-demo.gif" data-title="Browser Expressionism demo"><a class="table-link">Load GIF</a></td></tr></tbody></table></div><div class="image-display-area"></div></div>
             </div>
 
-            <br>
-
-            <div class="proj-resource-container">
-                <div class="table-container">
-                    <table class="image-loader-table" id="projectsTable">
-                        <thead>
-                            <tr>
-                                <th class="thumbnail-col">*</th>
-                                <th>Title</th>
-                                <th>Size (bytes)</th>
-                                <th>View</th>
-                            </tr>
-                        </thead>
-                        <tbody id="projectsTableBodyStatic">
-                            <tr>
-                                <td class="thumbnail-col">
-                                    <img src="thumbnails/browser-expressionism/sample-export-thumbnail.jpg"
-                                        alt="Sample export thumbnail" class="thumbnail-img">
-                                </td>
-                                <td>Sample export</td>
-                                <td id="fileSize-export">Loading...</td>
-                                <td class="loadImageTrigger"
-                                    data-fullimageurl="images/browser-expressionism/sample-export.jpg"
-                                    data-title="Sample export"><a class="table-link">Load image</a></td>
-                            </tr>
-                            <tr>
-                                <td class="thumbnail-col">
-                                    <img src="thumbnails/browser-expressionism/browser-expressionism-demo-thumbnail.jpg"
-                                        alt="Browser Expressionism demo thumbnail" class="thumbnail-img">
-                                </td>
-                                <td>Browser Expressionism demo</td>
-                                <td id="fileSize-browser-expressionism-demo">Loading...</td>
-                                <td class="loadImageTrigger"
-                                    data-fullimageurl="images/browser-expressionism/browser-expressionism-demo.gif"
-                                    data-title="Browser Expressionism demo"><a class="table-link">Load GIF</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="image-display-area">
-                </div>
-            </div>
         </div>
     </div>
-
-    <script>
-        fetch('../footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.body.insertAdjacentHTML('beforeend', data);
-            });
-    </script>
-
-    <script>
-        const imageConfigurations = [
-            {
-                idForFileSizeCell: 'fileSize-export',
-                fullImageUrl: 'images/browser-expressionism/sample-export.jpg'
-            },
-            {
-                idForFileSizeCell: 'fileSize-browser-expressionism-demo',
-                fullImageUrl: 'images/browser-expressionism/browser-expressionism-demo.gif'
-            }
-        ];
-    </script>
+    <footer>
+        <div class="footer-left">Gregory Cotton&nbsp;[2025 v04.02]</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank"
+                class="secondary-link">LinkedIn</a> | <a href="https://www.are.na/gregory-cotton/" target="_blank"
+                class="secondary-link">Are.na</a> | <a href="https://github.com/gregorycotton"
+                target="_blank" class="secondary-link">GitHub</a>
+        </div>
+    </footer>
 </body>
-
 </html>

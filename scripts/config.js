@@ -19,6 +19,7 @@ let columnPrefs = loadColumnPrefs();
 let currentView = 'ontology';
 let currentColumns = columnPrefs[currentView];
 let currentData = [];
+let catalogueData = null;
 let sortColumn = 'Year';
 let sortDirection = 'desc';
 

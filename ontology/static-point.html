@@ -1,107 +1,86 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
-
     <meta name="title" content="Gregory Cotton">
-    <meta name="description"
-        content="Project page for Greg's collaboration with Adam of Static Point to create a logo for the band.">
-
+    <meta name="description" content="Logo for a band">
     <meta property="og:title" content="Static Point | Gregory Cotton">
-    <meta property="og:description" content="Project page for Greg's collaboration with Adam of Static Point to create a logo for the band.">
+    <meta property="og:description" content="Logo for a band">
     <meta property="og:type" content="website">
-
     <meta name="twitter:title" content="Static Point | Gregory Cotton">
-    
     <meta name="author" content="Gregory Cotton">
     <meta name="creator" content="gregorycotton.ca">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Static Point | Gregory Cotton</title>
     <link rel="stylesheet" href="../style.css">
-
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="../assets/favicon/site.webmanifest">
-
-    <script src="../scripts/fetch-properties.js"></script>
     <script src="../scripts/image-loader.js"></script>
+<script>
+const imageConfigurations = [
+  {
+    "idForFileSizeCell": "fileSize-static-point-0-0",
+    "fullImageUrl": "images/static-point/static-point-logo.png"
+  }
+];
+</script>
 </head>
-
 <body>
     <div class="container">
-        <div class="left">
-            <h1><a href="/" class="home-link">Gregory Cotton</a></h1>
-        </div>
-
+        <div class="left"><h1><a href="../" class="home-link">Gregory Cotton</a></h1></div>
         <div class="right">
             <h2>Static Point</h2>
-
             <br>
-
-            <details id="propertiesDetails">
-                <summary class="secondary-link">Metadata</summary>
-                <div id="properties-content">
-                    <p>Loading metadata...</p>
-                </div>
-            </details>
-
+            <details id="propertiesDetails"><summary class="secondary-link">Metadata</summary><div id="properties-content"><pre class="secondary-text"><code style="font-size: 12px;">{
+  &quot;UUID&quot;: &quot;c6854b1c-4b79-4cf1-b12c-a652eb324791&quot;,
+  &quot;Title&quot;: &quot;Static Point&quot;,
+  &quot;ShortDescription&quot;: &quot;Logo for a band&quot;,
+  &quot;Year&quot;: 2023,
+  &quot;FeaturedWork&quot;: &quot;FALSE&quot;,
+  &quot;URL&quot;: &quot;static-point&quot;,
+  &quot;Modality&quot;: [
+    &quot;Digital&quot;
+  ],
+  &quot;Medium&quot;: [
+    &quot;Graphic design&quot;
+  ],
+  &quot;Tools&quot;: [
+    &quot;Photoshop&quot;
+  ],
+  &quot;Object&quot;: [
+    &quot;Image&quot;,
+    &quot;Logo&quot;
+  ],
+  &quot;Collaborators&quot;: [
+    &quot;Adam Collings&quot;
+  ],
+  &quot;Keywords&quot;: [
+    &quot;Commercial/client&quot;,
+    &quot;Culture&quot;
+  ]
+}</code></pre></div></details>
             <div class="proj-txt-container">
-                <p>Logo for a Toronto-based band.</p>
+                <br>
+
+<p>Logo for a Toronto-based band.</p>
+
+<br>
+
+<div class="proj-resource-container"><div class="table-container"><table class="image-loader-table" id="resourceTable-static-point-0"><thead><tr><th class="thumbnail-col">*</th><th>Title</th><th>Size (bytes)</th><th>View</th></tr></thead><tbody><tr><td class="thumbnail-col"><img src="thumbnails/static-point/static-point-logo-thumbnail.jpg" alt="Static Point logo thumbnail" class="thumbnail-img"></td><td>Static Point logo</td><td id="fileSize-static-point-0-0">92,729</td><td class="loadImageTrigger" data-fullimageurl="images/static-point/static-point-logo.png" data-title="Static Point logo"><a class="table-link">Load image</a></td></tr></tbody></table></div><div class="image-display-area"></div></div>
             </div>
 
-            <br>
-
-            <div class="proj-resource-container">
-                <div class="table-container">
-                    <table class="image-loader-table" id="projectsTable">
-                        <thead>
-                            <tr>
-                                <th class="thumbnail-col">*</th>
-                                <th>Title</th>
-                                <th>Size (bytes)</th>
-                                <th>View</th>
-                            </tr>
-                        </thead>
-                        <tbody id="projectsTableBodyStatic">
-                            <tr>
-                                <td class="thumbnail-col">
-                                    <img src="thumbnails/static-point/static-point-logo-thumbnail.jpg"
-                                        alt="Static Point logo thumbnail" class="thumbnail-img">
-                                </td>
-                                <td>Static Point logo</td>
-                                <td id="fileSize-static-point-logo">Loading...</td>
-                                <td class="loadImageTrigger"
-                                    data-fullimageurl="images/static-point/static-point-logo.png"
-                                    data-title="Static Point logo"><a class="table-link">Load image</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="image-display-area">
-                </div>
-            </div>
         </div>
     </div>
-
-    <script>
-        fetch('../footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.body.insertAdjacentHTML('beforeend', data);
-            });
-    </script>
-
-    <script>
-        const imageConfigurations = [
-            {
-                idForFileSizeCell: 'fileSize-static-point-logo',
-                fullImageUrl: 'images/static-point/static-point-logo.png'
-            }
-        ];
-    </script>
+    <footer>
+        <div class="footer-left">Gregory Cotton&nbsp;[2025 v04.02]</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank"
+                class="secondary-link">LinkedIn</a> | <a href="https://www.are.na/gregory-cotton/" target="_blank"
+                class="secondary-link">Are.na</a> | <a href="https://github.com/gregorycotton"
+                target="_blank" class="secondary-link">GitHub</a>
+        </div>
+    </footer>
 </body>
-
 </html>

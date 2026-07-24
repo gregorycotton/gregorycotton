@@ -59,6 +59,12 @@ METADATA_TABLES = {
     "Keywords": ("keywords", "Keyword"),
 }
 
+GENERATED_BLOCKS = {
+    "ontology": ("<!-- GENERATED ONTOLOGY TABLE:START -->", "<!-- GENERATED ONTOLOGY TABLE:END -->"),
+    "fieldnotes": ("<!-- GENERATED FIELDNOTES TABLE:START -->", "<!-- GENERATED FIELDNOTES TABLE:END -->"),
+    "data": ("<!-- GENERATED CATALOGUE DATA:START -->", "<!-- GENERATED CATALOGUE DATA:END -->"),
+}
+
 
 class BuildError(Exception):
     """A user-correctable catalogue build failure."""
@@ -70,6 +76,13 @@ def sha256_file(path: Path) -> str:
         for chunk in iter(lambda: source.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def database_label(database_path: Path, root: Path) -> str:
+    try:
+        return database_path.relative_to(root).as_posix()
+    except ValueError:
+        return database_path.as_posix()
 
 
 def quote_identifier(identifier: str) -> str:
@@ -247,7 +260,55 @@ def write_json(path: Path, value: object) -> None:
     )
 
 
-def build(database_path: Path, output_dir: Path, root: Path) -> dict:
+def replace_generated_block(template: str, block: str, replacement: str) -> str:
+    start_marker, end_marker = GENERATED_BLOCKS[block]
+    pattern = re.compile(
+        rf"{re.escape(start_marker)}.*?{re.escape(end_marker)}", re.DOTALL
+    )
+    matches = pattern.findall(template)
+    if len(matches) != 1:
+        raise BuildError(
+            f"Expected exactly one generated {block} block, found {len(matches)}"
+        )
+    replacement_block = f"{start_marker}\n{replacement.rstrip()}\n{end_marker}"
+    return pattern.sub(lambda _match: replacement_block, template, count=1)
+
+
+def update_homepage(homepage_path: Path, catalogue: dict) -> None:
+    try:
+        homepage = homepage_path.read_text(encoding="utf-8")
+    except OSError as error:
+        raise BuildError(f"Could not read homepage template: {error}") from error
+
+    homepage = replace_generated_block(
+        homepage, "ontology", render_table("ontology", catalogue["views"]["ontology"]["rows"])
+    )
+    homepage = replace_generated_block(
+        homepage, "fieldnotes", render_table("fieldnotes", catalogue["views"]["fieldnotes"]["rows"])
+    )
+
+    embedded_json = json.dumps(
+        catalogue, ensure_ascii=False, indent=2, sort_keys=False
+    )
+    embedded_json = (
+        embedded_json.replace("&", "\\u0026")
+        .replace("<", "\\u003c")
+        .replace(">", "\\u003e")
+    )
+    data_block = (
+        '<script id="catalogue-data" type="application/json">'
+        f"{embedded_json}"
+        "</script>"
+    )
+    homepage = replace_generated_block(homepage, "data", data_block)
+
+    try:
+        homepage_path.write_text(homepage, encoding="utf-8")
+    except OSError as error:
+        raise BuildError(f"Could not write generated homepage: {error}") from error
+
+
+def build(database_path: Path, output_dir: Path, root: Path, homepage_path: Path | None = None) -> dict:
     if not database_path.is_file():
         raise BuildError(f"Database not found: {database_path}")
 
@@ -265,7 +326,7 @@ def build(database_path: Path, output_dir: Path, root: Path) -> dict:
     catalogue = {
         "schemaVersion": CATALOGUE_SCHEMA_VERSION,
         "source": {
-            "database": database_path.relative_to(root).as_posix(),
+            "database": database_label(database_path, root),
             "sha256": source_hash,
         },
         "views": {
@@ -290,6 +351,7 @@ def build(database_path: Path, output_dir: Path, root: Path) -> dict:
     (output_dir / "fieldnotes.html").write_text(
         render_table("fieldnotes", records["fieldnotes"]), encoding="utf-8"
     )
+    update_homepage(homepage_path or root / "index.html", catalogue)
 
     manifest = {
         "builder": {
@@ -298,14 +360,19 @@ def build(database_path: Path, output_dir: Path, root: Path) -> dict:
         },
         "catalogueSchemaVersion": CATALOGUE_SCHEMA_VERSION,
         "source": {
-            "database": database_path.relative_to(root).as_posix(),
+            "database": database_label(database_path, root),
             "sha256": source_hash,
         },
         "counts": {
             "ontology": len(records["ontology"]),
             "fieldnotes": len(records["fieldnotes"]),
         },
-        "outputs": ["catalogue.json", "ontology.html", "fieldnotes.html"],
+        "outputs": [
+            "catalogue.json",
+            "ontology.html",
+            "fieldnotes.html",
+            "index.html",
+        ],
     }
     write_json(output_dir / "manifest.json", manifest)
     return manifest
@@ -332,6 +399,12 @@ def parse_args() -> argparse.Namespace:
         default=root,
         help=argparse.SUPPRESS,
     )
+    parser.add_argument(
+        "--homepage",
+        type=Path,
+        default=root / "index.html",
+        help="Homepage template/output path (default: index.html)",
+    )
     return parser.parse_args()
 
 
@@ -341,7 +414,7 @@ def main() -> int:
     database_path = args.database.resolve()
     output_dir = args.output_dir.resolve()
     try:
-        manifest = build(database_path, output_dir, root)
+        manifest = build(database_path, output_dir, root, args.homepage.resolve())
     except (BuildError, OSError, sqlite3.Error) as error:
         print(f"Catalogue build failed: {error}", file=sys.stderr)
         return 1
