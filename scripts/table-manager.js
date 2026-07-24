@@ -9,6 +9,121 @@ function escapeHtml(value) {
         .replace(/'/g, '&#039;');
 }
 
+const resizedTableColumns = {};
+const minimumColumnWidth = 60;
+
+function boundColumnResizeDelta(delta, leftWidth, rightWidth) {
+    return Math.max(
+        minimumColumnWidth - leftWidth,
+        Math.min(delta, rightWidth - minimumColumnWidth)
+    );
+}
+
+function applyColumnWidths(table, columns, widths, tableWidth) {
+    let colgroup = table.querySelector('colgroup[data-resizable-columns]');
+    if (!colgroup) {
+        colgroup = document.createElement('colgroup');
+        colgroup.dataset.resizableColumns = '';
+        table.insertBefore(colgroup, table.firstChild);
+    }
+
+    if (colgroup.children.length !== widths.length) {
+        colgroup.replaceChildren(...widths.map(() => document.createElement('col')));
+    }
+    widths.forEach((width, index) => {
+        colgroup.children[index].style.width = `${width}px`;
+    });
+    table.style.width = `${tableWidth}px`;
+    table.classList.add('columns-resized');
+    resizedTableColumns[table.id] = { columns: columns.join('|'), widths, tableWidth };
+}
+
+function setupColumnResizing(table, columns) {
+    const storedWidths = resizedTableColumns[table.id];
+    if (storedWidths?.columns === columns.join('|')) {
+        applyColumnWidths(table, columns, storedWidths.widths, storedWidths.tableWidth);
+    } else {
+        table.querySelector('colgroup[data-resizable-columns]')?.remove();
+        table.style.removeProperty('width');
+        table.classList.remove('columns-resized');
+    }
+
+    const headers = Array.from(table.querySelectorAll('thead th'));
+    headers.slice(0, -1).forEach((th, index) => {
+        const handle = document.createElement('span');
+        handle.className = 'column-resizer';
+        handle.setAttribute('role', 'separator');
+        handle.tabIndex = 0;
+        handle.setAttribute('aria-label', `Resize ${columns[index]} column`);
+        handle.setAttribute('aria-orientation', 'vertical');
+        handle.setAttribute('aria-valuemin', minimumColumnWidth);
+        th.appendChild(handle);
+
+        const initialWidth = th.getBoundingClientRect().width;
+        const adjacentWidth = headers[index + 1].getBoundingClientRect().width;
+        handle.setAttribute('aria-valuenow', Math.round(initialWidth));
+        handle.setAttribute('aria-valuemax', Math.round(initialWidth + adjacentWidth - minimumColumnWidth));
+
+        const resizeBy = delta => {
+            const widths = headers.map(header => header.getBoundingClientRect().width);
+            const tableWidth = table.getBoundingClientRect().width;
+            const boundedDelta = boundColumnResizeDelta(delta, widths[index], widths[index + 1]);
+            widths[index] += boundedDelta;
+            widths[index + 1] -= boundedDelta;
+            applyColumnWidths(table, columns, widths, tableWidth);
+            handle.setAttribute('aria-valuenow', Math.round(widths[index]));
+        };
+
+        handle.addEventListener('keydown', event => {
+            if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+            event.preventDefault();
+            event.stopPropagation();
+            resizeBy(event.key === 'ArrowLeft' ? -10 : 10);
+        });
+
+        handle.addEventListener('pointerdown', event => {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const startX = event.clientX;
+            const startWidths = headers.map(header => header.getBoundingClientRect().width);
+            const tableWidth = table.getBoundingClientRect().width;
+            th.classList.add('column-resize-hover');
+            handle.setPointerCapture(event.pointerId);
+
+            const move = moveEvent => {
+                const boundedDelta = boundColumnResizeDelta(
+                    moveEvent.clientX - startX,
+                    startWidths[index],
+                    startWidths[index + 1]
+                );
+                const widths = [...startWidths];
+                widths[index] += boundedDelta;
+                widths[index + 1] -= boundedDelta;
+                applyColumnWidths(table, columns, widths, tableWidth);
+                handle.setAttribute('aria-valuenow', Math.round(widths[index]));
+            };
+            const finish = () => {
+                th.classList.remove('column-resize-hover');
+                handle.removeEventListener('pointermove', move);
+                handle.removeEventListener('pointerup', finish);
+                handle.removeEventListener('pointercancel', finish);
+            };
+
+            handle.addEventListener('pointermove', move);
+            handle.addEventListener('pointerup', finish);
+            handle.addEventListener('pointercancel', finish);
+        });
+
+        handle.addEventListener('pointerenter', () => th.classList.add('column-resize-hover'));
+        handle.addEventListener('pointerleave', event => {
+            if (!handle.hasPointerCapture(event.pointerId)) th.classList.remove('column-resize-hover');
+        });
+        handle.addEventListener('focus', () => th.classList.add('column-resize-hover'));
+        handle.addEventListener('blur', () => th.classList.remove('column-resize-hover'));
+    });
+}
+
 function renderTable(data, options = {}) {
     const { renderRows = true } = options;
     const config = getCurrentViewConfig();
@@ -60,7 +175,8 @@ function renderTable(data, options = {}) {
 
     thead.querySelectorAll('th').forEach((th, index) => {
         const column = orderedColumns[index];
-        th.addEventListener('click', () => {
+        th.addEventListener('click', event => {
+            if (event.target.closest('.column-resizer')) return;
             if (sortColumn === column) {
                 sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
             } else {
@@ -71,6 +187,8 @@ function renderTable(data, options = {}) {
             renderTable(currentData);
         });
     });
+
+    setupColumnResizing(table, orderedColumns);
 
     if (!renderRows) {
         return;
@@ -883,4 +1001,8 @@ function debounce(func, timeout = 300) {
         clearTimeout(timer);
         timer = setTimeout(() => { func.apply(this, args); }, timeout);
     };
+}
+
+if (typeof module !== 'undefined') {
+    module.exports = { boundColumnResizeDelta };
 }

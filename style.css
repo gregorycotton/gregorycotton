@@ -756,3 +756,33 @@ td.thumbnail-col {
         gap: 5px;
     }
 }
+
+#projectsTable.columns-resized,
+#fieldnotesTable.columns-resized {
+    table-layout: fixed;
+}
+
+#projectsTable.columns-resized th,
+#projectsTable.columns-resized td,
+#fieldnotesTable.columns-resized th,
+#fieldnotesTable.columns-resized td {
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+#projectsTable th.column-resize-hover,
+#fieldnotesTable th.column-resize-hover {
+    background-color: #C8C8C8;
+}
+
+.column-resizer {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: -5px;
+    width: 10px;
+    height: 100%;
+    cursor: col-resize;
+    touch-action: none;
+    outline: none;
+}
