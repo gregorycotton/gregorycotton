@@ -169,7 +169,7 @@ def render_markdown(body: str) -> str:
                     break
                 items.append(f"<li>{inline_markdown(item.group(1))}</li>")
                 index += 1
-            output.append('<ul style="list-style-position: inside;">' + "".join(items) + "</ul>")
+            output.append('<ul class="project-list">' + "".join(items) + "</ul>")
             continue
         if stripped.startswith("<") and (stripped.endswith(">") or stripped.startswith("</")):
             flush_paragraph()
@@ -302,13 +302,30 @@ def render_page(source: Path, output_dir: Path, root: Path, database: sqlite3.Co
     body_html = body if metadata.get("template") == "custom" else render_markdown(body)
     body_html = "\n".join(line.rstrip() for line in body_html.splitlines())
     used_blocks: set[str] = set()
-    for group, block in resource_blocks.items():
+    body_html = body_html.replace(
+        'style="list-style-position: inside;"', 'class="project-list"'
+    )
+    for group in resource_blocks:
         token = f"{{{{resource-block:{group}}}}}"
         if token in body_html:
-            body_html = body_html.replace(token, block)
+            body_html = body_html.replace(token, f"<!-- RESOURCE-BLOCK:{group} -->")
             used_blocks.add(group)
-    remaining_blocks = [block for group, block in resource_blocks.items() if group not in used_blocks]
-    remaining_resources_html = "\n\n".join(remaining_blocks)
+    content_sections: list[str] = []
+    sections = re.split(r"<!-- RESOURCE-BLOCK:([^>]+) -->", body_html)
+    for index, section in enumerate(sections):
+        if index % 2 == 0:
+            if section.strip():
+                content_sections.append(
+                    '<div class="proj-txt-container">\n'
+                    f"{section}\n"
+                    "</div>"
+                )
+            continue
+        content_sections.append(f"<br>\n{resource_blocks[section]}")
+    for group, block in resource_blocks.items():
+        if group not in used_blocks:
+            content_sections.append(f"<br>\n{block}")
+    content_html = "\n".join(content_sections)
     if configurations:
         scripts = (
             '<script src="../scripts/image-loader.js"></script>\n'
@@ -345,10 +362,7 @@ def render_page(source: Path, output_dir: Path, root: Path, database: sqlite3.Co
             {heading}
             <br>
             {render_metadata(record)}
-            <div class="proj-txt-container">
-                {body_html}
-            </div>
-            {('<br>\n' + remaining_resources_html) if remaining_resources_html else ''}
+            {content_html}
         </div>
     </div>
     {Path(root / 'footer.html').read_text(encoding='utf-8')}
@@ -403,6 +417,12 @@ def self_test(root: Path, database_path: Path) -> None:
     assert anvil.count("<td id=\"fileSize-") == 4
     assert anvil.count('class="image-loader-table"') == 1
     assert "anvil-homepage.jpg" in anvil
+    text_start = anvil.index('<div class="proj-txt-container">')
+    text_end = anvil.index("</div>", text_start)
+    resource_start = anvil.index('<div class="proj-resource-container">')
+    assert text_end < resource_start
+    assert anvil.count('class="project-list"') == 1
+    assert "list-style-position: inside" not in anvil
     toby = (output_dir / "ontology/tobys-barbershop.html").read_text(encoding="utf-8")
     assert "youtube.com/embed/WYxXBu0DFFA" in toby
     fridge = (output_dir / "ontology/gregs-fridge.html").read_text(encoding="utf-8")
