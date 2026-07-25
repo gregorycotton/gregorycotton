@@ -30,7 +30,6 @@
     <script src="scripts/config.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/table-manager.js"></script>
-    <!-- <script src="scripts/image-popup.js"></script> -->
 
     <noscript>
         <meta http-equiv="refresh" content="0;url=nojs.html">
@@ -296,6 +295,12 @@
       </tr>
     </thead>
     <tbody>
+        <tr>
+            <td><a class="table-link" href="/ontology/iso2jpg.html">iso2jpg</a></td>
+            <td>Extract PCD files from ISO containers and convert to JPG</td>
+            <td>2026</td>
+            <td>CLI tool</td>
+        </tr>
         <tr>
             <td><a class="table-link" href="/ontology/jazz-calendar.html">Jazz calendar</a></td>
             <td>Daily jazz recommendations</td>
@@ -634,7 +639,7 @@
   "schemaVersion": 1,
   "source": {
     "database": "database/projects.db",
-    "sha256": "c5a5e64dcc304b46798e7ffc6d22a13feae0ff2f69edc254c3d7fca0e3e2fa71"
+    "sha256": "7193633d1fdfb8e326abf429421909a720713de6178b4b1048e6643edb90d9cf"
   },
   "views": {
     "ontology": {
@@ -658,6 +663,31 @@
         "Object"
       ],
       "rows": [
+        {
+          "UUID": "73e5e4a0-8b71-4a57-8592-d7a66633c8d3",
+          "Title": "iso2jpg",
+          "ShortDescription": "Extract PCD files from ISO containers and convert to JPG",
+          "Year": 2026,
+          "FeaturedWork": "FALSE",
+          "URL": "iso2jpg",
+          "Modality": [
+            "Digital"
+          ],
+          "Medium": [
+            "Terminal"
+          ],
+          "Tools": [
+            "Rust"
+          ],
+          "Object": [
+            "CLI tool"
+          ],
+          "Collaborators": [],
+          "Keywords": [
+            "Self",
+            "Technology"
+          ]
+        },
         {
           "UUID": "96a71a64-6877-4178-8422-1b8cfc48125b",
           "Title": "Jazz calendar",
@@ -2038,17 +2068,17 @@
 }</script>
 <!-- GENERATED CATALOGUE DATA:END -->
 
-    <div id="imageOverlay" class="image-overlay hidden" onclick="hideImagePopup()"></div>
-    <img id="popupImage" class="popup-image hidden" onclick="hideImagePopup()">
-
-    <script>
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.body.insertAdjacentHTML('beforeend', data);
-            });
-    </script>
+<!-- GENERATED FOOTER:START -->
+<footer>
+        <div class="footer-left">Gregory Cotton&nbsp;[2026 v04.20]</div>
+        <div class="footer-right">
+            <a href="https://www.linkedin.com/in/gregorycotton/" target="_blank"
+                class="secondary-link">LinkedIn</a> | <a href="https://www.are.na/gregory-cotton/" target="_blank"
+                class="secondary-link">Are.na</a> | <a href="https://github.com/gregorycotton"
+                target="_blank" class="secondary-link">GitHub</a>
+        </div>
     </footer>
+<!-- GENERATED FOOTER:END -->
 </body>
 
 </html>

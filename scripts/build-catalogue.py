@@ -138,7 +138,7 @@ def validate_record(record: dict, view: str, root: Path) -> None:
         raise BuildError(f"Missing page for {view} URL {url!r}: {page_path}")
 
 
-def load_records(connection: sqlite3.Connection, root: Path) -> dict[str, list[dict]]:
+def load_records(connection: sqlite3.Connection, page_root: Path) -> dict[str, list[dict]]:
     require_columns(connection, "projects", ONTOLOGY_COLUMNS[:4] + ["FeaturedWork", "URL"])
     require_columns(connection, "fieldnotes", FIELDNOTE_COLUMNS + ["URL"])
     for table, column in METADATA_TABLES.values():
@@ -159,7 +159,7 @@ def load_records(connection: sqlite3.Connection, root: Path) -> dict[str, list[d
         record = dict(row)
         for field in METADATA_TABLES:
             record[field] = metadata[field].get(record["UUID"], [])
-        validate_record(record, "ontology", root)
+        validate_record(record, "ontology", page_root)
         project_rows.append(record)
 
     fieldnote_rows = []
@@ -171,7 +171,7 @@ def load_records(connection: sqlite3.Connection, root: Path) -> dict[str, list[d
     """
     for row in connection.execute(fieldnote_query):
         record = dict(row)
-        validate_record(record, "fieldnotes", root)
+        validate_record(record, "fieldnotes", page_root)
         fieldnote_rows.append(record)
 
     project_ids = {record["UUID"] for record in project_rows}
@@ -310,7 +310,13 @@ def update_homepage(homepage_path: Path, catalogue: dict) -> None:
         raise BuildError(f"Could not write generated homepage: {error}") from error
 
 
-def build(database_path: Path, output_dir: Path, root: Path, homepage_path: Path | None = None) -> dict:
+def build(
+    database_path: Path,
+    output_dir: Path,
+    root: Path,
+    homepage_path: Path | None = None,
+    page_root: Path | None = None,
+) -> dict:
     if not database_path.is_file():
         raise BuildError(f"Database not found: {database_path}")
 
@@ -320,7 +326,7 @@ def build(database_path: Path, output_dir: Path, root: Path, homepage_path: Path
         integrity = connection.execute("PRAGMA integrity_check").fetchone()[0]
         if integrity != "ok":
             raise BuildError(f"SQLite integrity check failed: {integrity}")
-        records = load_records(connection, root)
+        records = load_records(connection, page_root or root)
     finally:
         connection.close()
 
@@ -407,6 +413,11 @@ def parse_args() -> argparse.Namespace:
         default=root / "index.html",
         help="Homepage template/output path (default: index.html)",
     )
+    parser.add_argument(
+        "--page-root",
+        type=Path,
+        help=argparse.SUPPRESS,
+    )
     return parser.parse_args()
 
 
@@ -416,7 +427,13 @@ def main() -> int:
     database_path = args.database.resolve()
     output_dir = args.output_dir.resolve()
     try:
-        manifest = build(database_path, output_dir, root, args.homepage.resolve())
+        manifest = build(
+            database_path,
+            output_dir,
+            root,
+            args.homepage.resolve(),
+            args.page_root.resolve() if args.page_root else None,
+        )
     except (BuildError, OSError, sqlite3.Error) as error:
         print(f"Catalogue build failed: {error}", file=sys.stderr)
         return 1

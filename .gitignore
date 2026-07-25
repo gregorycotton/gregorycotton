@@ -1,5 +1,6 @@
 database/
 scripts/admin/update-db.sh
+scripts/admin/content-manager/
 *.db
 *.db-journal
 *.sqlite

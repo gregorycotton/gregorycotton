@@ -1,22 +1,6 @@
-// Load images on ontology pages using imageConfigurations variable
+// Load full-size images only when a visitor selects one from a resource table.
 
 const imageCache = new Map();
-
-async function fetchAndDisplayFileSizeInTable(imageUrl, cellId) {
-    const cell = document.getElementById(cellId);
-    if (!cell) return;
-    try {
-        const response = await fetch(imageUrl);
-        if (!response.ok) {
-            cell.textContent = 'Error';
-            return;
-        }
-        const blob = await response.blob();
-        cell.textContent = blob.size.toLocaleString();
-    } catch (error) {
-        cell.textContent = 'N/A';
-    }
-}
 
 function displayImageFromBlob(imageBlob, imageTitle, displayElement) {
     const img = document.createElement('img');
@@ -72,12 +56,6 @@ async function loadAndDisplayFullImage(imageUrl, imageTitle, displayElement) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    if (typeof imageConfigurations !== 'undefined' && Array.isArray(imageConfigurations)) {
-        imageConfigurations.forEach(config => {
-            fetchAndDisplayFileSizeInTable(config.fullImageUrl, config.idForFileSizeCell);
-        });
-    }
-
     const interactiveTables = document.querySelectorAll('.image-loader-table');
 
     interactiveTables.forEach(table => {

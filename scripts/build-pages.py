@@ -201,9 +201,8 @@ def render_metadata(record: dict) -> str:
     )
 
 
-def render_image_group(resources: list[dict], page_rel: str, slug: str, group_index: int) -> tuple[str, list[dict]]:
+def render_image_group(resources: list[dict], page_rel: str, slug: str, group_index: int) -> str:
     rows: list[str] = []
-    configurations: list[dict] = []
     for image_index, resource in enumerate(resources):
         file_url = public_asset_url(resource["file"], page_rel)
         thumbnail_url = public_asset_url(resource["thumbnail"], page_rel)
@@ -216,9 +215,8 @@ def render_image_group(resources: list[dict], page_rel: str, slug: str, group_in
             f'<td class="loadImageTrigger" data-fullimageurl="{html.escape(file_url, quote=True)}" data-title="{html.escape(resource["title"], quote=True)}"><a class="table-link">Load {"GIF" if file_url.lower().endswith(".gif") else "image"}</a></td>'
             "</tr>"
         )
-        configurations.append({"idForFileSizeCell": cell_id, "fullImageUrl": file_url})
     table_id = f"resourceTable-{slug}-{group_index}"
-    table = (
+    return (
         '<div class="proj-resource-container">'
         '<div class="table-container">'
         f'<table class="image-loader-table" id="{table_id}">'
@@ -226,7 +224,44 @@ def render_image_group(resources: list[dict], page_rel: str, slug: str, group_in
         f'<tbody>{"".join(rows)}</tbody>'
         "</table></div><div class=\"image-display-area\"></div></div>"
     )
-    return table, configurations
+
+
+def render_link_group(resources: list[dict]) -> str:
+    rows = []
+    for resource in resources:
+        url = safe_url(resource["url"], "resource url")
+        link_type = resource.get("link_type") or "External link"
+        action = resource.get("action") or "New tab"
+        rows.append(
+            "<tr>"
+            f'<td>{inline_markdown(resource["title"])}</td>'
+            f'<td>{html.escape(link_type)}</td>'
+            f'<td><a class="table-link" target="_blank" rel="noopener" href="{html.escape(url, quote=True)}">{html.escape(action)}</a></td>'
+            "</tr>"
+        )
+    return (
+        '<div class="proj-resource-container"><div class="table-container">'
+        '<table class="image-loader-table"><thead><tr><th>Title</th><th>Type</th><th>View</th></tr></thead>'
+        f'<tbody>{"".join(rows)}</tbody></table></div></div>'
+    )
+
+
+def render_download_group(resources: list[dict], page_rel: str) -> str:
+    rows = []
+    for resource in resources:
+        url = public_asset_url(resource["file"], page_rel)
+        rows.append(
+            "<tr>"
+            f'<td>{inline_markdown(resource["title"])}</td>'
+            f'<td>{resource["size"]:,}</td>'
+            f'<td><a class="table-link" href="{html.escape(url, quote=True)}" download>Download</a></td>'
+            "</tr>"
+        )
+    return (
+        '<div class="proj-resource-container"><div class="table-container">'
+        '<table class="image-loader-table"><thead><tr><th>Title</th><th>Size (bytes)</th><th>File</th></tr></thead>'
+        f'<tbody>{"".join(rows)}</tbody></table></div></div>'
+    )
 
 
 def extract_raw_resource_containers(markup: str) -> tuple[str, OrderedDict[str, str]]:
@@ -257,7 +292,7 @@ def extract_raw_resource_containers(markup: str) -> tuple[str, OrderedDict[str, 
     return "".join(pieces), blocks
 
 
-def render_resources(resources: list[dict], page_rel: str, slug: str, root: Path) -> tuple[str, list[dict], OrderedDict[str, str]]:
+def render_resources(resources: list[dict], page_rel: str, slug: str, root: Path) -> OrderedDict[str, str]:
     groups: OrderedDict[str, list[dict]] = OrderedDict()
     for index, resource in enumerate(resources):
         resource = dict(resource)
@@ -273,33 +308,22 @@ def render_resources(resources: list[dict], page_rel: str, slug: str, root: Path
 
     output: list[str] = []
     blocks: OrderedDict[str, str] = OrderedDict()
-    configurations: list[dict] = []
     for group_index, (group, grouped) in enumerate(groups.items()):
         group_start = len(output)
         if group not in {"__default_images__"} and not group.startswith(("resource-", "block-")):
             output.append(f'<h3 class="resource-group-title">{html.escape(group)}</h3>')
         images = [resource for resource in grouped if resource["type"] == "image"]
         if images:
-            block, image_configurations = render_image_group(images, page_rel, slug, group_index)
-            output.append(block)
-            configurations.extend(image_configurations)
+            output.append(render_image_group(images, page_rel, slug, group_index))
+        links = [resource for resource in grouped if resource["type"] == "link"]
+        if links:
+            output.append(render_link_group(links))
+        downloads = [resource for resource in grouped if resource["type"] == "download"]
+        if downloads:
+            output.append(render_download_group(downloads, page_rel))
         for resource in grouped:
             resource_type = resource["type"]
-            if resource_type == "link":
-                url = safe_url(resource["url"], "resource url")
-                output.append(
-                    '<div class="proj-resource-container">'
-                    f'<p><a class="primary-link" target="_blank" rel="noopener" href="{html.escape(url, quote=True)}">{inline_markdown(resource["title"])}</a></p>'
-                    "</div>"
-                )
-            elif resource_type == "download":
-                url = public_asset_url(resource["file"], page_rel)
-                output.append(
-                    '<div class="proj-resource-container">'
-                    f'<p><a class="primary-link" href="{html.escape(url, quote=True)}" download>{inline_markdown(resource["title"])}</a> ({resource["size"]:,} bytes)</p>'
-                    "</div>"
-                )
-            elif resource_type in {"embed", "iframe"}:
+            if resource_type in {"embed", "iframe"}:
                 url = safe_url(resource["url"], "resource url")
                 attributes = [f'src="{html.escape(url, quote=True)}"', f'title="{html.escape(resource["title"], quote=True)}"', 'frameborder="0"']
                 if resource_type == "embed":
@@ -317,7 +341,7 @@ def render_resources(resources: list[dict], page_rel: str, slug: str, root: Path
                     "</div></div>"
                 )
         blocks[group] = "\n\n".join(output[group_start:])
-    return "\n\n".join(output), configurations, blocks
+    return blocks
 
 
 def render_page(source: Path, output_dir: Path, root: Path, database: sqlite3.Connection, validator) -> Path:
@@ -332,7 +356,8 @@ def render_page(source: Path, output_dir: Path, root: Path, database: sqlite3.Co
     title = metadata.get("display_title") or record["Title"]
     home_url = "../"
     scripts = ""
-    resources_html, configurations, resource_blocks = render_resources(metadata.get("resources", []), page_rel, slug, root)
+    resources = metadata.get("resources", [])
+    resource_blocks = render_resources(resources, page_rel, slug, root)
     body_html = body if metadata.get("template") == "custom" else render_markdown(body)
     body_html = "\n".join(line.rstrip() for line in body_html.splitlines())
     used_blocks: set[str] = set()
@@ -363,13 +388,8 @@ def render_page(source: Path, output_dir: Path, root: Path, database: sqlite3.Co
         if group not in used_blocks:
             content_sections.append(f"<br>\n{block}")
     content_html = "\n".join(content_sections)
-    if configurations:
-        scripts = (
-            '<script src="../scripts/image-loader.js"></script>\n'
-            "<script>\n"
-            f"const imageConfigurations = {json.dumps(configurations, ensure_ascii=False, indent=2)};\n"
-            "</script>"
-        )
+    if any(resource["type"] == "image" for resource in resources):
+        scripts = '<script src="../scripts/image-loader.js"></script>'
     heading = f"<h2>{html.escape(title)}</h2>" if kind == "project" else f"<p><u>{html.escape(title)}</u></p>"
     page = f'''<!DOCTYPE html>
 <html>
@@ -452,6 +472,7 @@ def self_test(root: Path, database_path: Path) -> None:
     anvil = (output_dir / "ontology/anvil.html").read_text(encoding="utf-8")
     assert anvil.count("data-fullimageurl=") == 4
     assert anvil.count("<td id=\"fileSize-") == 4
+    assert "imageConfigurations" not in anvil
     assert anvil.count('class="image-loader-table"') == 1
     assert "anvil-homepage.jpg" in anvil
     text_start = anvil.index('<div class="proj-txt-container">')
