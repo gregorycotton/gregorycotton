@@ -228,6 +228,8 @@ def render_table(view: str, records: list[dict]) -> str:
         cells = []
         for column in columns:
             value = cell_value(record.get(column))
+            if column == "ReadingTimeMinutes" and value != "N/A":
+                value = f"{value} min"
             if column == "Title":
                 href = f"/{page_directory}/{record['URL']}.html"
                 value = (

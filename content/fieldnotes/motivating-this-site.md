@@ -51,6 +51,10 @@ template = "custom"
 
                 <br>
 
+                <blockquote>25/07/2026: This website is now a static build.</blockquote>
+
+                <br>
+
                 <blockquote>30/09/2025: I wrote (and was planning on publishing) this closer to when I first pushed this
                     version of my site live, but found it really ironic to publish writing contextualizing my website
                     which exists in opposition to tactless contextualization. Now I just think it's kind of silly and
