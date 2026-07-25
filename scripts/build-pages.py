@@ -24,6 +24,12 @@ ARRAY_FIELDS = {
     "Collaborators": ("collaborators", "Collaborator"),
     "Keywords": ("keywords", "Keyword"),
 }
+
+DIV_TAG_RE = re.compile(r"</?div\b[^>]*>", re.IGNORECASE)
+RESOURCE_CONTAINER_RE = re.compile(
+    r'<div\b[^>]*class=["\'][^"\']*\bproj-resource-container\b[^"\']*["\'][^>]*>',
+    re.IGNORECASE,
+)
 MARKDOWN_LINK = re.compile(r"!?(\[[^\]]*\])\(([^)\s]+)(?:\s+['\"]([^'\"]*)['\"])?\)")
 HTML_TAG = re.compile(r"(<[^>]+>)")
 
@@ -223,6 +229,34 @@ def render_image_group(resources: list[dict], page_rel: str, slug: str, group_in
     return table, configurations
 
 
+def extract_raw_resource_containers(markup: str) -> tuple[str, OrderedDict[str, str]]:
+    blocks: OrderedDict[str, str] = OrderedDict()
+    pieces: list[str] = []
+    cursor = 0
+    block_index = 0
+    while match := RESOURCE_CONTAINER_RE.search(markup, cursor):
+        depth = 0
+        closing_end = None
+        for tag in DIV_TAG_RE.finditer(markup, match.start()):
+            if tag.group(0).startswith("</"):
+                depth -= 1
+            else:
+                depth += 1
+            if depth == 0:
+                closing_end = tag.end()
+                break
+        if closing_end is None:
+            raise ValueError("unclosed project resource container in page content")
+        group = f"__raw_resource_{block_index}__"
+        pieces.append(markup[cursor:match.start()])
+        pieces.append(f"<!-- RESOURCE-BLOCK:{group} -->")
+        blocks[group] = markup[match.start():closing_end]
+        cursor = closing_end
+        block_index += 1
+    pieces.append(markup[cursor:])
+    return "".join(pieces), blocks
+
+
 def render_resources(resources: list[dict], page_rel: str, slug: str, root: Path) -> tuple[str, list[dict], OrderedDict[str, str]]:
     groups: OrderedDict[str, list[dict]] = OrderedDict()
     for index, resource in enumerate(resources):
@@ -309,7 +343,9 @@ def render_page(source: Path, output_dir: Path, root: Path, database: sqlite3.Co
         token = f"{{{{resource-block:{group}}}}}"
         if token in body_html:
             body_html = body_html.replace(token, f"<!-- RESOURCE-BLOCK:{group} -->")
-            used_blocks.add(group)
+    body_html, raw_resource_blocks = extract_raw_resource_containers(body_html)
+    all_resource_blocks = OrderedDict(resource_blocks)
+    all_resource_blocks.update(raw_resource_blocks)
     content_sections: list[str] = []
     sections = re.split(r"<!-- RESOURCE-BLOCK:([^>]+) -->", body_html)
     for index, section in enumerate(sections):
@@ -321,8 +357,9 @@ def render_page(source: Path, output_dir: Path, root: Path, database: sqlite3.Co
                     "</div>"
                 )
             continue
-        content_sections.append(f"<br>\n{resource_blocks[section]}")
-    for group, block in resource_blocks.items():
+        content_sections.append(f"<br>\n{all_resource_blocks[section]}")
+        used_blocks.add(section)
+    for group, block in all_resource_blocks.items():
         if group not in used_blocks:
             content_sections.append(f"<br>\n{block}")
     content_html = "\n".join(content_sections)
@@ -423,6 +460,9 @@ def self_test(root: Path, database_path: Path) -> None:
     assert text_end < resource_start
     assert anvil.count('class="project-list"') == 1
     assert "list-style-position: inside" not in anvil
+    amplify = (output_dir / "ontology/amplify.html").read_text(encoding="utf-8")
+    assert amplify.count('id="projectsTable"') == 1
+    assert "</div>\n<br>\n<div class=\"proj-resource-container\">" in amplify
     toby = (output_dir / "ontology/tobys-barbershop.html").read_text(encoding="utf-8")
     assert "youtube.com/embed/WYxXBu0DFFA" in toby
     fridge = (output_dir / "ontology/gregs-fridge.html").read_text(encoding="utf-8")
