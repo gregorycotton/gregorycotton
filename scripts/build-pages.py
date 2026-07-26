@@ -456,7 +456,7 @@ def self_test(root: Path, database_path: Path) -> None:
     source_dir = root / "content"
     output_dir = root / ".build/pages-self-test"
     generated = build(source_dir, output_dir, database_path, root)
-    assert len(generated) == 49
+    assert len(generated) == len(list(source_dir.rglob("*.md")))
     expected = {
         "ontology/anvil.html",
         "ontology/gregs-fridge.html",

@@ -1,4 +1,5 @@
 database/
+media-originals/
 scripts/admin/update-db.sh
 scripts/admin/content-manager/
 *.db
