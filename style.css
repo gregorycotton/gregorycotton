@@ -767,7 +767,13 @@ td.thumbnail-col {
 #fieldnotesTable.columns-resized th,
 #fieldnotesTable.columns-resized td {
     min-width: 0;
-    overflow-wrap: break-word;
+}
+
+#projectsTable.columns-resized td,
+#fieldnotesTable.columns-resized td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 #projectsTable th.column-resize-hover,

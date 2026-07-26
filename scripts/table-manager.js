@@ -12,10 +12,10 @@ function escapeHtml(value) {
 const resizedTableColumns = {};
 const minimumColumnWidth = 60;
 
-function boundColumnResizeDelta(delta, leftWidth, rightWidth) {
+function boundColumnResizeDelta(delta, leftWidth, rightWidth, leftMinimum, rightMinimum) {
     return Math.max(
-        minimumColumnWidth - leftWidth,
-        Math.min(delta, rightWidth - minimumColumnWidth)
+        leftMinimum - leftWidth,
+        Math.min(delta, rightWidth - rightMinimum)
     );
 }
 
@@ -49,6 +49,17 @@ function setupColumnResizing(table, columns) {
     }
 
     const headers = Array.from(table.querySelectorAll('thead th'));
+    const minimumWidths = headers.map(th => {
+        const style = getComputedStyle(th);
+        return Math.max(
+            minimumColumnWidth,
+            Math.ceil(
+                th.querySelector('.column-title').getBoundingClientRect().width +
+                parseFloat(style.paddingLeft) +
+                parseFloat(style.paddingRight)
+            )
+        );
+    });
     headers.slice(0, -1).forEach((th, index) => {
         const handle = document.createElement('span');
         handle.className = 'column-resizer';
@@ -56,18 +67,24 @@ function setupColumnResizing(table, columns) {
         handle.tabIndex = 0;
         handle.setAttribute('aria-label', `Resize ${columns[index]} column`);
         handle.setAttribute('aria-orientation', 'vertical');
-        handle.setAttribute('aria-valuemin', minimumColumnWidth);
+        handle.setAttribute('aria-valuemin', minimumWidths[index]);
         th.appendChild(handle);
 
         const initialWidth = th.getBoundingClientRect().width;
         const adjacentWidth = headers[index + 1].getBoundingClientRect().width;
         handle.setAttribute('aria-valuenow', Math.round(initialWidth));
-        handle.setAttribute('aria-valuemax', Math.round(initialWidth + adjacentWidth - minimumColumnWidth));
+        handle.setAttribute('aria-valuemax', Math.round(initialWidth + adjacentWidth - minimumWidths[index + 1]));
 
         const resizeBy = delta => {
             const widths = headers.map(header => header.getBoundingClientRect().width);
             const tableWidth = table.getBoundingClientRect().width;
-            const boundedDelta = boundColumnResizeDelta(delta, widths[index], widths[index + 1]);
+            const boundedDelta = boundColumnResizeDelta(
+                delta,
+                widths[index],
+                widths[index + 1],
+                minimumWidths[index],
+                minimumWidths[index + 1]
+            );
             widths[index] += boundedDelta;
             widths[index + 1] -= boundedDelta;
             applyColumnWidths(table, columns, widths, tableWidth);
@@ -95,7 +112,9 @@ function setupColumnResizing(table, columns) {
                 const boundedDelta = boundColumnResizeDelta(
                     moveEvent.clientX - startX,
                     startWidths[index],
-                    startWidths[index + 1]
+                    startWidths[index + 1],
+                    minimumWidths[index],
+                    minimumWidths[index + 1]
                 );
                 const widths = [...startWidths];
                 widths[index] += boundedDelta;
@@ -170,7 +189,7 @@ function renderTable(data, options = {}) {
         } else if (col !== 'UUID') {
             displayName = col.replace(/([A-Z])/g, ' $1').trim();
         }
-        return `<th class="sort-th">${displayName}${arrow}</th>`;
+        return `<th class="sort-th"><span class="column-title">${displayName}</span>${arrow}</th>`;
     }).join('');
 
     thead.querySelectorAll('th').forEach((th, index) => {
