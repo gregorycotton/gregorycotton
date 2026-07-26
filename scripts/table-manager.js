@@ -19,6 +19,21 @@ function boundColumnResizeDelta(delta, leftWidth, rightWidth, leftMinimum, right
     );
 }
 
+function fitColumnWidths(widths, minimums, tableWidth) {
+    const minimumTotal = minimums.reduce((total, width) => total + width, 0);
+    const fittedTableWidth = Math.max(tableWidth, minimumTotal);
+    const extras = widths.map((width, index) => Math.max(0, width - minimums[index]));
+    const extraTotal = extras.reduce((total, width) => total + width, 0);
+    const availableExtra = fittedTableWidth - minimumTotal;
+
+    return {
+        tableWidth: fittedTableWidth,
+        widths: minimums.map((minimum, index) =>
+            minimum + (extraTotal ? (extras[index] / extraTotal) * availableExtra : 0)
+        )
+    };
+}
+
 function applyColumnWidths(table, columns, widths, tableWidth) {
     let colgroup = table.querySelector('colgroup[data-resizable-columns]');
     if (!colgroup) {
@@ -40,7 +55,8 @@ function applyColumnWidths(table, columns, widths, tableWidth) {
 
 function setupColumnResizing(table, columns) {
     const storedWidths = resizedTableColumns[table.id];
-    if (storedWidths?.columns === columns.join('|')) {
+    const hasStoredWidths = storedWidths?.columns === columns.join('|');
+    if (hasStoredWidths) {
         applyColumnWidths(table, columns, storedWidths.widths, storedWidths.tableWidth);
     } else {
         table.querySelector('colgroup[data-resizable-columns]')?.remove();
@@ -49,17 +65,45 @@ function setupColumnResizing(table, columns) {
     }
 
     const headers = Array.from(table.querySelectorAll('thead th'));
-    const minimumWidths = headers.map(th => {
+    const titleIndex = columns.indexOf('Title');
+    table.querySelectorAll('tbody tr').forEach(row => {
+        row.cells[titleIndex]?.classList.add('title-column');
+    });
+
+    const minimumWidths = headers.map((th, index) => {
         const style = getComputedStyle(th);
+        let contentWidth = th.querySelector('.column-title').getBoundingClientRect().width;
+        if (columns[index] === 'Title') {
+            const probe = document.createElement('span');
+            probe.style.cssText = 'position:absolute;visibility:hidden;width:15ch';
+            th.appendChild(probe);
+            contentWidth = probe.getBoundingClientRect().width;
+            probe.remove();
+        }
         return Math.max(
             minimumColumnWidth,
             Math.ceil(
-                th.querySelector('.column-title').getBoundingClientRect().width +
+                contentWidth +
                 parseFloat(style.paddingLeft) +
                 parseFloat(style.paddingRight)
             )
         );
     });
+
+    if (!hasStoredWidths) {
+        const fittedWidths = fitColumnWidths(
+            headers.map(header => header.getBoundingClientRect().width),
+            minimumWidths,
+            table.parentElement.getBoundingClientRect().width
+        );
+        applyColumnWidths(
+            table,
+            columns,
+            fittedWidths.widths,
+            fittedWidths.tableWidth
+        );
+    }
+
     headers.slice(0, -1).forEach((th, index) => {
         const handle = document.createElement('span');
         handle.className = 'column-resizer';
@@ -207,55 +251,53 @@ function renderTable(data, options = {}) {
         });
     });
 
-    setupColumnResizing(table, orderedColumns);
+    if (renderRows) {
+        tbody.innerHTML = data.map(item => {
+            const rowContent = orderedColumns.map(col => {
+                let value = item[col];
 
-    if (!renderRows) {
-        return;
+                if (currentView === 'ontology') {
+                    if (col === 'Title' && item.URL) {
+                        value = `<a class="table-link" href="/ontology/${escapeHtml(item.URL)}.html">${escapeHtml(item[col] ?? 'N/A')}</a>`;
+                    } else if (['Modality', 'Medium', 'Tools', 'Object', 'Collaborators', 'Keywords'].includes(col)) {
+                        value = Array.isArray(item[col]) ? item[col].join(', ') : (item[col] || 'N/A');
+                    } else if (col === 'FeaturedWork') {
+                        value = item[col] === 'TRUE' ? 'TRUE' : 'FALSE';
+                    }
+                } else if (currentView === 'fieldnotes') {
+                    if (col === 'Title' && item.URL) {
+                        value = `<a class="table-link" href="/fieldnotes/${escapeHtml(item.URL)}.html">${escapeHtml(item[col] ?? 'N/A')}</a>`;
+                    } else if (['PublishedDate', 'LastUpdated'].includes(col) && value !== 'N/A') {
+                        try {
+                            const [year, month, day] = value.split('-');
+                            if (year && month && day) {
+                                value = `${day}/${month}/${year}`;
+                            }
+                        } catch (e) { /* Ignore formatting error */ }
+                    } else if (col === 'ReadingTimeMinutes' && value !== 'N/A') {
+                        value = `${value} min`;
+                    } else if (col === 'WordCount' && value !== 'N/A') {
+                        value = Number(value).toLocaleString();
+                    }
+                // } else if (currentView === 'album') {
+                //     if (col === 'SizeBytes' && value !== 'N/A') {
+                //         value = Number(value).toLocaleString();
+                //     } else if (col === 'FileName' && value !== 'N/A') {
+                //         const fileName = item[col];
+                //         value = `<a class="table-link" href="#" onclick="showImagePopup('${fileName}'); return false;">${fileName}</a>`;
+                //     }
+                }
+
+                if (!(typeof value === 'string' && value.startsWith('<a '))) {
+                    value = escapeHtml(value ?? 'N/A');
+                }
+                return `<td>${value}</td>`;
+            }).join('');
+            return `<tr>${rowContent}</tr>`;
+        }).join('');
     }
 
-    tbody.innerHTML = data.map(item => {
-        const rowContent = orderedColumns.map(col => {
-            let value = item[col];
-
-            if (currentView === 'ontology') {
-                if (col === 'Title' && item.URL) {
-                    value = `<a class="table-link" href="/ontology/${escapeHtml(item.URL)}.html">${escapeHtml(item[col] ?? 'N/A')}</a>`;
-                } else if (['Modality', 'Medium', 'Tools', 'Object', 'Collaborators', 'Keywords'].includes(col)) {
-                    value = Array.isArray(item[col]) ? item[col].join(', ') : (item[col] || 'N/A');
-                } else if (col === 'FeaturedWork') {
-                    value = item[col] === 'TRUE' ? 'TRUE' : 'FALSE';
-                }
-            } else if (currentView === 'fieldnotes') {
-                if (col === 'Title' && item.URL) {
-                    value = `<a class="table-link" href="/fieldnotes/${escapeHtml(item.URL)}.html">${escapeHtml(item[col] ?? 'N/A')}</a>`;
-                } else if (['PublishedDate', 'LastUpdated'].includes(col) && value !== 'N/A') {
-                    try {
-                        const [year, month, day] = value.split('-');
-                        if (year && month && day) {
-                            value = `${day}/${month}/${year}`;
-                        }
-                    } catch (e) { /* Ignore formatting error */ }
-                } else if (col === 'ReadingTimeMinutes' && value !== 'N/A') {
-                    value = `${value} min`;
-                } else if (col === 'WordCount' && value !== 'N/A') {
-                    value = Number(value).toLocaleString();
-                }
-            // } else if (currentView === 'album') {
-            //     if (col === 'SizeBytes' && value !== 'N/A') {
-            //         value = Number(value).toLocaleString();
-            //     } else if (col === 'FileName' && value !== 'N/A') {
-            //         const fileName = item[col];
-            //         value = `<a class="table-link" href="#" onclick="showImagePopup('${fileName}'); return false;">${fileName}</a>`;
-            //     }
-            }
-
-            if (!(typeof value === 'string' && value.startsWith('<a '))) {
-                value = escapeHtml(value ?? 'N/A');
-            }
-            return `<td>${value}</td>`;
-        }).join('');
-        return `<tr>${rowContent}</tr>`;
-    }).join('');
+    setupColumnResizing(table, orderedColumns);
 }
 
 function sortData() {
@@ -1023,5 +1065,5 @@ function debounce(func, timeout = 300) {
 }
 
 if (typeof module !== 'undefined') {
-    module.exports = { boundColumnResizeDelta };
+    module.exports = { boundColumnResizeDelta, fitColumnWidths };
 }

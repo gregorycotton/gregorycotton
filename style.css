@@ -776,6 +776,13 @@ td.thumbnail-col {
     text-overflow: ellipsis;
 }
 
+#projectsTable.columns-resized td.title-column,
+#fieldnotesTable.columns-resized td.title-column {
+    white-space: normal;
+    text-overflow: clip;
+    overflow-wrap: anywhere;
+}
+
 #projectsTable th.column-resize-hover,
 #fieldnotesTable th.column-resize-hover {
     background-color: #C8C8C8;
