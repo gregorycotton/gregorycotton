@@ -1,34 +1,24 @@
 +++
 kind = "project"
 slug = "rss-feed"
-display_title = "RSS feed"
+display_title = "Mouser"
 template = "custom"
 
 [[resources]]
 type = "image"
 group = "block-0"
-title = "RSS feed home"
-file = "ontology/images/rss-feed/rss-feed-home.jpg"
-thumbnail = "ontology/thumbnails/rss-feed/rss-feed-home-thumbnail.jpg"
-alt = "RSS feed home thumbnail"
-
-[[resources]]
-type = "image"
-group = "block-0"
-title = "RSS feed reader"
-file = "ontology/images/rss-feed/rss-feed-reader.jpg"
-thumbnail = "ontology/thumbnails/rss-feed/rss-feed-reader-thumbnail.jpg"
-alt = "RSS feed reader thumbnail"
+title = "mouser"
+file = "ontology/images/rss-feed/mouser.webp"
+thumbnail = "ontology/thumbnails/rss-feed/mouser-thumbnail.jpg"
+alt = "mouser"
 +++
 <br>
 
-<p>Self-hosted, personal feed aggregator, built as a Python web app with flask. </p>
+<p>Mouser is a macOS desktop app for reading RSS, Atom, Substack and YouTube feeds.</p>
 
-                <p>Features a live button to trigger feed reload, a fuzzy search, persistent multi-theme switcher, the
-                    ability to parse and embed YouTube videos directly, a local storage-backed archive, a modal popup to
-                    display full articles or video descriptions complete with controls for adjusting font size.</p>
+                <p>Articles are cached in SQLite, allowing the app to load recent content immediately, support pagination and search, and continue displaying previously downloaded items offline. Feeds refresh concurrently in the background every 15 minutes, while YouTube videos can be played directly inside the app. It also includes feed and theme management, archiving with automatic cleanup, and persistent local configuration.</p>
 
-                <p>I will be making <a href="https://github.com/gregorycotton/rss-greg" target="_blank" class="primary-link">updates to this project</a> as my personal needs/use cases evolve.</p>
+                <p>I will be making <a href="https://github.com/gregorycotton/mouser" target="_blank" class="primary-link">updates to this project</a> as my personal needs evolve.</p>
 
 <br>
 
