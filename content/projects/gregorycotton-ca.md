@@ -176,7 +176,7 @@ alt = "2025, March"
 
 <p>I first created a personal site in 2017 and have iterated upon it regularly until this current version went live in 2025. Below is a collection of select homepages over the years.</p>
 
-<p>Dates associated with versions are archival dates (eg. the first entry below was designed and built in 2017 but archived in 2018). Unfortunately I have not saved everything over the years so some instances of this site are not preserved.</p>
+<p>Dates associated with versions are archival dates (eg. the first entry below was designed and built in 2017 but archived in 2018). Some were built and archived prematurely and had not been archived since (eg. some reference me being in Lisbon before my move took place, but when it had been planned). Unfortunately I have not saved everything over the years so some instances of this site are not preserved.</p>
 
 
 {{resource-block:block-0}}
