@@ -14,7 +14,7 @@ alt = "Une bouteille de peinture thumbnail"
 +++
 <br>
 
-<p>An eight-year-old Gregory Cotton makes his debut in the art scene with an abstract painting created
+<p>An eight-year-old Gregory Cotton makes his debut in the fine arts scene with an abstract painting created
                     during a fourth grade art class. Critics argue it remains his finest work to date.</p>
 
 <br>
