@@ -7,58 +7,58 @@ template = "custom"
 [[resources]]
 type = "image"
 group = "block-0"
-title = "Authentication"
+title = "Fig 1. (authentication levels)"
 file = "ontology/images/public-secure-sso/authentication-levels.png"
 thumbnail = "ontology/thumbnails/public-secure-sso/authentication-levels-thumbnails.jpg"
-alt = "Authentication levels thumbnail"
+alt = "Fig 1. (authentication levels) thumbnail"
 
 [[resources]]
 type = "image"
 group = "block-1"
-title = "Authentication"
+title = "Fig 2. (user personas)"
 file = "ontology/images/public-secure-sso/user-personas.png"
 thumbnail = "ontology/thumbnails/public-secure-sso/user-personas-thumbnail.jpg"
-alt = "Authentication levels thumbnail"
+alt = "Fig 2. (user personas) thumbnail"
 
 [[resources]]
 type = "image"
 group = "block-2"
-title = "Authentication"
+title = "Fig 3. (sign up flow)"
 file = "ontology/images/public-secure-sso/sign-up-flow.png"
 thumbnail = "ontology/thumbnails/public-secure-sso/sign-up-flow-thumbnail.jpg"
-alt = "Sign up flow thumbnail"
+alt = "Fig 3. (sign up flow) thumbnail"
 
 [[resources]]
 type = "image"
 group = "block-2"
-title = "Authentication"
+title = "Fig 4. (managing additional IDs)"
 file = "ontology/images/public-secure-sso/managing-additional-ids.png"
 thumbnail = "ontology/thumbnails/public-secure-sso/managing-additional-ids-thumbnail.jpg"
-alt = "Managing additional IDs thumbnail"
+alt = "Fig 4. (managing additional IDs) thumbnail"
 
 [[resources]]
 type = "image"
 group = "block-3"
-title = "Authentication"
+title = "Fig 5. (ONe-key alerts)"
 file = "ontology/images/public-secure-sso/one-key-alerts.png"
 thumbnail = "ontology/thumbnails/public-secure-sso/one-key-alert-thumbnail.jpg"
-alt = "ONe-key alerts thumbnail"
+alt = "Fig 5. (ONe-key alerts) thumbnail"
 
 [[resources]]
 type = "image"
 group = "block-3"
-title = "Authentication"
+title = "Fig 6. (improved buttons)"
 file = "ontology/images/public-secure-sso/improved-buttons.png"
 thumbnail = "ontology/thumbnails/public-secure-sso/improved-button-thumbnail.jpg"
-alt = "Improved buttons thumbnail"
+alt = "Fig 6. (improved buttons) thumbnail"
 
 [[resources]]
 type = "image"
 group = "block-3"
-title = "Authentication"
+title = "Fig 7. (account management)"
 file = "ontology/images/public-secure-sso/account-management.png"
 thumbnail = "ontology/thumbnails/public-secure-sso/account-management-thumbnail.jpg"
-alt = "Account management thumbnail"
+alt = "Fig 7. (account management) thumbnail"
 
 [[resources]]
 type = "link"
