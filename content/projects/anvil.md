@@ -36,8 +36,6 @@ file = "ontology/images/anvil/anvil-404-page.jpg"
 thumbnail = "ontology/thumbnails/anvil/anvil-404-page-thumbnail.jpg"
 alt = "Anvil 404 page thumbnail"
 +++
-<br>
-
 <p>Web portfolio for ANVIL, a directing duo from Toronto, Ontario.</p>
 
                 <p>Fun highlights from this project include:</p>

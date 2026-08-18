@@ -147,8 +147,6 @@ url = "https://xd.adobe.com/view/2fc19bad-b2a2-4a29-47e8-0d2da5f27245-59f0/"
 link_type = "XD prototype"
 action = "New tab"
 +++
-<br>
-
 <p>The Food Library is an interactive exhibit spread across three rooms (Fig. 1, Fig. 2, Fig. 3, Fig.
                     4), immersing participants in a
                     future world where food security and climate change are addressed by a new urban form: the edible

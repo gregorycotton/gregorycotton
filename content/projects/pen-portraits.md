@@ -12,8 +12,6 @@ file = "ontology/images/pen-portraits/full-display.jpg"
 thumbnail = "ontology/thumbnails/pen-portraits/full-display-thumbnail.jpg"
 alt = "Pen Portraits thumbnail"
 +++
-<br>
-
 <p>"A persona in user-centered design is a fictional character created to represent a user type that might use a site, brand, or
                     product in a similar way. The term persona is
                     used widely in online and technology applications as well as in advertising, where other terms such

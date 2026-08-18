@@ -20,8 +20,6 @@ file = "ontology/images/browser-expressionism/browser-expressionism-demo.gif"
 thumbnail = "ontology/thumbnails/browser-expressionism/browser-expressionism-demo-thumbnail.jpg"
 alt = "Browser Expressionism demo thumbnail"
 +++
-<br>
-
 <p>Generative expressionist art using the browser and it's native pop-up functionality.</p>
 
 <br>

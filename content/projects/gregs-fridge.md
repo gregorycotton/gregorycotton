@@ -12,8 +12,6 @@ file = "ontology/images/gregs-fridge/gregs-fridge.jpg"
 thumbnail = "ontology/thumbnails/gregs-fridge/gresg-fridge-thumbnail.jpg"
 alt = "Fridge example thumbnail"
 +++
-<br>
-
 <p>My website guestbook.</p>
                 
                 <p>Leave me a note on my fridge at <a href="https://fridge.gregorycotton.ca" target="_blank" class="primary-link">fridge.gregorycotton.ca</a>.</p>

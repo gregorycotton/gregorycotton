@@ -52,8 +52,6 @@ file = "ontology/images/live-text-poetry/live-text-06.jpg"
 thumbnail = "ontology/thumbnails/live-text-poetry/live-text-06-thumbnail.jpg"
 alt = "Live Text 06 thumbnail"
 +++
-<br>
-
 <p>An exploration of language and technology. Part of an ongoing exploration of iOS as a medium, in
                     collaboration with <a href="https://www.instagram.com/faux__ghost/" target="_blank" class="primary-link">Toby Sherman</a>.</p>
 

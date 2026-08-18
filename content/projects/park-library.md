@@ -36,8 +36,6 @@ file = "ontology/images/park-library/park-library-card.jpg"
 thumbnail = "ontology/thumbnails/park-library/park-library-card-thumbnail.jpg"
 alt = "Park Library bulletin board thumbnail"
 +++
-<br>
-
 <p>'Park Library' is a digital library I built to house the art and writing of friends and others who
                     make cool stuff. Books are set to audio recordings I take at parks to try and best emulate a
                     'reading at the park' vibe online.</p>

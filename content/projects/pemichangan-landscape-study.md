@@ -124,8 +124,6 @@ file = "ontology/images/pemichangan-landscape-study/pemichangan-15.jpg"
 thumbnail = "ontology/thumbnails/pemichangan-landscape-study/pemichangan-15-thumbnail.jpg"
 alt = "Pemichangan Landscape Study 15 thumbnail"
 +++
-<br>
-
 <p>Landscape photos taken from the window of a moving car near Lac Pemichangan, Quebec.</p>
 
 <br>

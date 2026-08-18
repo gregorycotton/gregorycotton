@@ -12,8 +12,6 @@ file = "ontology/images/online-together/online-together.jpg"
 thumbnail = "ontology/thumbnails/online-together/online-together-thumbnail.jpg"
 alt = "Online Together example thumbnail"
 +++
-<br>
-
 <p>Online together strips back communication on the internet and reduces it to simply informing others
                     that you are logged on. When the webpage is tapped or clicked upon, the point of contact leaves
                     ripples that are seen live by anyone concurrently viewing the webpage</p>

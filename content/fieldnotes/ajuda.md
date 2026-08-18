@@ -4,8 +4,6 @@ slug = "ajuda"
 display_title = "Ajuda"
 template = "custom"
 +++
-<br>
-
 <p>On the western-most side of Lisbon, on a limestone hill, nestled in between Belem and Alcantara is
                     Ajuda, a devotional centre (owed to a 14th century Marian apparition) turned civil parish that saw
                     its population more than quadruple after people sought higher ground in the aftermath of 1755’s

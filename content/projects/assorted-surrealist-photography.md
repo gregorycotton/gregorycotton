@@ -60,8 +60,6 @@ file = "ontology/images/assorted-surrealist-photography/tea-time.jpg"
 thumbnail = "ontology/thumbnails/assorted-surrealist-photography/tea-time-thumbnail.jpg"
 alt = "Tea Time thumbnail"
 +++
-<br>
-
 <p>Collection of surrealist photography ranging from 2016 to 2018 in date.</p>
 
 <br>

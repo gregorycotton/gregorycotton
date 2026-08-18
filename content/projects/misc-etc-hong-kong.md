@@ -36,8 +36,6 @@ file = "ontology/images/misc-etc-hong-kong/loud-neighbourhood.jpg"
 thumbnail = "ontology/thumbnails/misc-etc-hong-kong/loud-neighbourhood-thumbnail.jpg"
 alt = "Loud Neighbourhood thumbnail"
 +++
-<br>
-
 <p>An abstract documentation and reflection of Hong Kong's density and geography, created with hundreds
                     of individual images taken over the course of a month.</p>
 

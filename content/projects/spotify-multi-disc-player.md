@@ -12,8 +12,6 @@ file = "ontology/images/spotify-multi-disc-player/spotify-multi-disc-player-exam
 thumbnail = "ontology/thumbnails/spotify-multi-disc-player/spotify-multi-disc-player-example-thumbnail.jpg"
 alt = "Spotify multi-disc player example thumbnail"
 +++
-<br>
-
 <p>When I was a kid my primary means of listening to music was through my dad's CD collection. At the
                     time, my family had a CD player that allowed you to put in three discs and shuffle their respective
                     tracklists together.</p>

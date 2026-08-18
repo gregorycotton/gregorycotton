@@ -196,8 +196,6 @@ file = "ontology/images/tokyo/thousand-toriis.jpg"
 thumbnail = "ontology/thumbnails/tokyo/thousand-toriis-thumbnail.jpg"
 alt = "Thousand Toriis thumbnail"
 +++
-<br>
-
 <p>Select images from Tokyo, Japan (September 2025).</p>
 
 <br>

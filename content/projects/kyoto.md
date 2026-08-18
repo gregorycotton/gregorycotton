@@ -252,8 +252,6 @@ file = "ontology/images/kyoto/uji-ii.jpg"
 thumbnail = "ontology/thumbnails/kyoto/uji-ii-thumbnail.jpg"
 alt = "Uji II thumbnail"
 +++
-<br>
-
 <p>Select images from Kyoto, Japan (September 2025).</p>
 
 <br>

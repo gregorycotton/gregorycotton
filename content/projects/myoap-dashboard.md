@@ -76,8 +76,6 @@ url = "https://www.figma.com/proto/iWkpPgxH7mhY3BZvMDntdF/Ontario-Autism-Program
 link_type = "Figma prototype"
 action = "New tab"
 +++
-<br>
-
 <p>To improve their digital delivery, the Ontario Autism Program wanted to create a secure web portal
                     for families. I worked in the discovery and alpha phases as one of two Product Designers, alongside
                     two developers and a lab leader, to create a proof of concept and to prototype some potential

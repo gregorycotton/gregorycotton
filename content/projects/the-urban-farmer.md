@@ -76,8 +76,6 @@ file = "ontology/images/the-urban-farmer/portrait-of-a-farmer-ii.jpg"
 thumbnail = "ontology/thumbnails/the-urban-farmer/portrait-of-a-farmer-ii-thumbnail.jpg"
 alt = "Portrait of a Farmer II thumbnail"
 +++
-<br>
-
 <p>Documenting Tom, a farmer who is set on growing high quality produce from his Toronto apartment.</p>
 
 <br>

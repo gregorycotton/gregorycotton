@@ -124,8 +124,6 @@ file = "ontology/images/imessage-ui-collages/tornado.jpg"
 thumbnail = "ontology/thumbnails/imessage-ui-collages/tornado-thumbnail.jpg"
 alt = "Tornado thumbnail"
 +++
-<br>
-
 <p>Using native iMessage functinality as an art-making tool. Part of an ongoing exploration of iOS as a medium, in collaboration with <a href="https://www.instagram.com/faux__ghost/" target="_blank" class="primary-link">Toby Sherman</a>.</p>
 
                 <p>A back and forth between two artists where blank iMessages are painted using Apple's 'sticker' functionality and default emojis.</p>

@@ -20,8 +20,6 @@ file = "ontology/images/jazz-calendar/jazz-calendar-widget.jpg"
 thumbnail = "ontology/thumbnails/jazz-calendar/jazz-calendar-widget-thumbnail.jpg"
 alt = "Jazz calendar widget thumbnail"
 +++
-<br>
-
 <p>Native macOS application/widget built for the purpose of introducing myself to a new jazz album every single day of 2026.</p>
 
 <br>

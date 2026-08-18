@@ -60,8 +60,6 @@ file = "ontology/images/nazare-wave-study/nazare-vii.jpg"
 thumbnail = "ontology/thumbnails/nazare-wave-study/nazare-vii-thumbnail.jpg"
 alt = "Nazare Wave Study VII thumbnail"
 +++
-<br>
-
 <p>Wave photos from Nazare.</p>
 
 <br>

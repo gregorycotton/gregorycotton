@@ -12,8 +12,6 @@ file = "ontology/images/static-point/static-point-logo.png"
 thumbnail = "ontology/thumbnails/static-point/static-point-logo-thumbnail.jpg"
 alt = "Static Point logo thumbnail"
 +++
-<br>
-
 <p>Logo for a Toronto-based band.</p>
 
 <br>

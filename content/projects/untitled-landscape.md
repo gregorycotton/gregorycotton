@@ -12,8 +12,6 @@ file = "ontology/images/untitled-landscape/untitled-landscape.jpg"
 thumbnail = "ontology/thumbnails/untitled-landscape/untitled-landscape-thumbnail.jpg"
 alt = "Untitled landscape thumbnail"
 +++
-<br>
-
 <p>Collage assembled from satellite imagery.</p>
 
 <br>

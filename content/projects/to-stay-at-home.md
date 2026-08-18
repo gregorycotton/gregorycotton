@@ -36,8 +36,6 @@ file = "ontology/images/to-stay-at-home/an-evening-with-adam.jpg"
 thumbnail = "ontology/thumbnails/to-stay-at-home/an-evening-with-adam-thumbnal.jpg"
 alt = "'An Evening With Adam' promotional poster thumbnail"
 +++
-<br>
-
 <p>Promotional material and album artwork for a musician from Toronto.</p>
 
 <br>

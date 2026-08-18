@@ -100,8 +100,6 @@ file = "ontology/images/kanazawa/vehicle-ii.jpg"
 thumbnail = "ontology/thumbnails/kanzawa/vehicle-ii-thumbnail.jpg"
 alt = "Vehicle II thumbnail"
 +++
-<br>
-
 <p>Select images from Kanazawa, Japan (September 2025).</p>
 
 <br>

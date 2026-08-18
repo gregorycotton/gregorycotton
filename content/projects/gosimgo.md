@@ -100,8 +100,6 @@ file = "ontology/images/gosimgo/boeing-737-visual-system-i.jpg"
 thumbnail = "ontology/thumbnails/gosimgo/boeing-737-visual-system-i-thumbnail.jpg"
 alt = "Boeing 737 visual system thumbnail"
 +++
-<br>
-
 <p>Product photography for a flight simulator in Ottawa. For use in real-life and digital promotional materials.</p>
 
 <br>

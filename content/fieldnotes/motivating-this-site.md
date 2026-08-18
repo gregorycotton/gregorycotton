@@ -4,8 +4,6 @@ slug = "motivating-this-site"
 display_title = "Motivating this site"
 template = "custom"
 +++
-<br>
-
 <p>I read a quote a while back, from whom I can't remember, that said (and I'm paraphrasing here) that
                     "with as much information and data as we have in our society today, context is the ultimate
                     luxury". I actually can't find who said this anywhere or where I saw it, but it's one that's stayed

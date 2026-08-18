@@ -36,8 +36,6 @@ file = "ontology/images/order/corridor.jpg"
 thumbnail = "ontology/thumbnails/order/corridor-thumbnail.jpg"
 alt = "Corridor thumbnail"
 +++
-<br>
-
 <p>Order is a series of compositions created from hand-drawn characters that were digitally scanned.</p>
 
 <br>

@@ -52,8 +52,6 @@ file = "ontology/images/bay-area-climate-change-council/hamilton-bus.png"
 thumbnail = "ontology/thumbnails/bay-area-climate-change-council/hamilton-bus-thumbnail.jpg"
 alt = "Hamilton bus thumbnail"
 +++
-<br>
-
 <p>Creating design resources, assets and iconography for reports and social media usage.</p>
 
 <br>

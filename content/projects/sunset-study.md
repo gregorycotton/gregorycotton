@@ -52,8 +52,6 @@ file = "ontology/images/sunset-study/sunset-study-06.jpg"
 thumbnail = "ontology/thumbnails/sunset-study/sunset-study-06-thumbnail.jpg"
 alt = "Sunset Study 06 thumbnail"
 +++
-<br>
-
 <p>Sunset photos from Sintra.</p>
 
 <br>

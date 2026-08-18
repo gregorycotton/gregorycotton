@@ -20,8 +20,6 @@ file = "ontology/images/pace-magazine-cover/backseat-driver.jpg"
 thumbnail = "ontology/thumbnails/pace-magazine-cover/backseat-driver-thumbnail.jpg"
 alt = "Backseat Driver thumbnail"
 +++
-<br>
-
 <p>Cover image for issue 05 of an independent arts and culture magazine from Ottawa.</p>
 
 <br>

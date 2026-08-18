@@ -68,8 +68,6 @@ file = "ontology/images/patchwork/PW-export-08.jpg"
 thumbnail = "ontology/thumbnails/patchwork/PW-export-08-thumbnail.jpg"
 alt = "PW_export_08 thumbnail"
 +++
-<br>
-
 <p>Patchwork is a blend of generative art and photography. Images of houses in Stratford, Ontario are given to a program written to output random
                     streetscapes. When viewed together, the numerous iterations of uniquely generated streetscapes slowly takes on the defining elements of
                     mass-suburbia.</p>

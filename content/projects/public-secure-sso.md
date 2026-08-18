@@ -100,8 +100,6 @@ url = "https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?pa
 link_type = "Figma prototype"
 action = "New tab"
 +++
-<br>
-
 <p> I worked as a Product Designer with the Ontario Digital Service to help lay the groundwork for a new
                     single sign-on (SSO) for the province's digital services. We worked alongside 13 different program
                     areas and the Public Secure team before handing our work off.</p>

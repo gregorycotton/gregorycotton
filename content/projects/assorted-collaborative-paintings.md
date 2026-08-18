@@ -84,8 +84,6 @@ file = "ontology/images/assorted-collaborative-paintings/untitled-x.jpg"
 thumbnail = "ontology/thumbnails/assorted-collaborative-paintings/untitled-x-thumbnail.jpg"
 alt = "Untitled X thumbnail"
 +++
-<br>
-
 <p>Collaborative paintings from December 2023 in Prague.</p>
 
 <br>

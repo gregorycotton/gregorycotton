@@ -4,8 +4,6 @@ slug = "japans-jazz-kissas"
 display_title = "Japan's jazz kissas"
 template = "custom"
 +++
-<br>
-
 <p>The jazz kissaten was a gathering spot in the early to mid 1900s in Japan where bars with
                     high-fidelity sound systems would play imported jazz records that were too costly for the general
                     public to purchase themselves. I traveled to Japan primarily to meet a few friends, but ended up

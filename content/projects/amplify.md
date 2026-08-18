@@ -68,8 +68,6 @@ url = "https://www.figma.com/proto/RvDV1HXuxTtjDsS9pB5tN1/Amplify-Digital-Civic-
 link_type = "Figma prototype"
 action = "New tab"
 +++
-<br>
-
 <p>Amplify is a digital civic engagement platform that empowers citizens to get involved in city
                     building by providing a space to collaborate, share ideas, and give feedback to their municipal
                     government. It incorporates the Ethical Smart Cities Framework and utilizes creative methods of data

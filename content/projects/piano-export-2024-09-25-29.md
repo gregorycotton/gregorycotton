@@ -11,8 +11,6 @@ title = "YouTube video player"
 url = "https://www.youtube.com/embed/H66VP-K65LM?si=w5p8NEtnLEiUlnub"
 provider = "youtube"
 +++
-<br>
-
 <p>Five generative piano tracks exported live daily during my morning coffee.</p>
 
 <br>
