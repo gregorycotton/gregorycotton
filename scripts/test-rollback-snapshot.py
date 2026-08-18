@@ -105,6 +105,7 @@ def verify_legacy_archive(
     temporary: Path,
 ) -> Path:
     legacy = manifest["legacyRuntime"]
+    assert "scripts/image-loader.js" in legacy["requiredFiles"]
     archive_path = snapshot_dir / legacy["archive"]
     runtime = temporary / "legacy-site"
     runtime.mkdir()

@@ -51,6 +51,30 @@ title = "Paginated forms"
 file = "ontology/images/myoap-dashboard/paginated-form.png"
 thumbnail = "ontology/thumbnails/myoap-dashboard/paginated-form-thumbnail.jpg"
 alt = "Paginated forms thumbnail"
+
+[[resources]]
+type = "link"
+group = "block-4"
+title = "App. A – Connect a profile"
+url = "https://www.figma.com/proto/iWkpPgxH7mhY3BZvMDntdF/Ontario-Autism-Program-Client-Portal-*?page-id=3937%3A17026&node-id=3937%3A17194&viewport=1641%2C1875%2C0.46&scaling=scale-down&starting-point-node-id=3937%3A17194&show-proto-sidebar=1"
+link_type = "Figma prototype"
+action = "New tab"
+
+[[resources]]
+type = "link"
+group = "block-4"
+title = "App. B – Register online"
+url = "https://www.figma.com/proto/iWkpPgxH7mhY3BZvMDntdF/Ontario-Autism-Program-Client-Portal-*?page-id=3937%3A17026&node-id=3961%3A17993&viewport=1641%2C1875%2C0.46&scaling=scale-down&starting-point-node-id=3961%3A17993&show-proto-sidebar=1"
+link_type = "Figma prototype"
+action = "New tab"
+
+[[resources]]
+type = "link"
+group = "block-4"
+title = "App. C – Add a new expense"
+url = "https://www.figma.com/proto/iWkpPgxH7mhY3BZvMDntdF/Ontario-Autism-Program-Client-Portal-*?page-id=3937%3A17026&node-id=3937%3A18715&viewport=1641%2C1875%2C0.46&scaling=scale-down&starting-point-node-id=3937%3A18715&show-proto-sidebar=1"
+link_type = "Figma prototype"
+action = "New tab"
 +++
 <br>
 
@@ -183,36 +207,4 @@ alt = "Paginated forms thumbnail"
 
 <br>
 
-<div class="proj-resource-container">
-                    <div class="table-container">
-                        <table class="image-loader-table" id="projectsTable">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Type</th>
-                                    <th>View</th>
-                                </tr>
-                            </thead>
-                            <tbody id="projectsTableBodyStatic">
-                                <tr>
-                                    <td>App. A – Connect a profile</td>
-                                    <td>Figma prototype</td>
-                                    <td><a target="_blank" class="table-link" href="https://www.figma.com/proto/iWkpPgxH7mhY3BZvMDntdF/Ontario-Autism-Program-Client-Portal-*?page-id=3937%3A17026&amp;node-id=3937%3A17194&amp;viewport=1641%2C1875%2C0.46&amp;scaling=scale-down&amp;starting-point-node-id=3937%3A17194&amp;show-proto-sidebar=1">New
-                                            tab</a></td>
-                                </tr>
-                                <tr>
-                                    <td>App. B – Register online</td>
-                                    <td>Figma prototype</td>
-                                    <td><a target="_blank" class="table-link" href="https://www.figma.com/proto/iWkpPgxH7mhY3BZvMDntdF/Ontario-Autism-Program-Client-Portal-*?page-id=3937%3A17026&amp;node-id=3961%3A17993&amp;viewport=1641%2C1875%2C0.46&amp;scaling=scale-down&amp;starting-point-node-id=3961%3A17993&amp;show-proto-sidebar=1">New
-                                            tab</a></td>
-                                </tr>
-                                <tr>
-                                    <td>App. C – Add a new expense</td>
-                                    <td>Figma prototype</td>
-                                    <td><a target="_blank" class="table-link" href="https://www.figma.com/proto/iWkpPgxH7mhY3BZvMDntdF/Ontario-Autism-Program-Client-Portal-*?page-id=3937%3A17026&amp;node-id=3937%3A18715&amp;viewport=1641%2C1875%2C0.46&amp;scaling=scale-down&amp;starting-point-node-id=3937%3A18715&amp;show-proto-sidebar=1">New
-                                            tab</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+{{resource-block:block-4}}

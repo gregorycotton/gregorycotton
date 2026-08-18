@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import sqlite3
 import sys
 import tempfile
@@ -18,6 +19,13 @@ class ValidationError(ValueError):
 
 RESOURCE_TYPES = {"image", "link", "download", "embed", "iframe"}
 TEMPLATES = {"project", "fieldnote", "custom"}
+GENERATED_IMAGE_CLASSES = {
+    "image-loader-table",
+    "image-resource-block",
+    "image-view-switch",
+    "image-viewer",
+    "resource-table--image",
+}
 
 
 def parse_page(path: Path) -> tuple[dict, str]:
@@ -92,6 +100,9 @@ def validate_resource(resource: object, index: int, root: Path) -> None:
     elif resource_type == "link":
         required_string(resource.get("title"), f"resources[{index}].title")
         validate_url(resource.get("url"), f"resources[{index}].url")
+        for field in ("link_type", "action"):
+            if field in resource:
+                required_string(resource[field], f"resources[{index}].{field}")
     elif resource_type == "embed":
         required_string(resource.get("title"), f"resources[{index}].title")
         required_string(resource.get("provider"), f"resources[{index}].provider")
@@ -123,6 +134,11 @@ def validate_page(path: Path, root: Path, database: sqlite3.Connection) -> None:
         raise ValidationError("resources must be an array of TOML tables")
     if not body and not resources:
         raise ValidationError("Markdown body must not be empty")
+    for class_name in GENERATED_IMAGE_CLASSES:
+        if re.search(rf'class=["\'][^"\']*\b{re.escape(class_name)}\b', body, re.IGNORECASE):
+            raise ValidationError(
+                f"page HTML must not use generated image class {class_name}; use a typed image resource"
+            )
 
     table = "projects" if kind == "project" else "fieldnotes"
     match = database.execute(f"SELECT 1 FROM {table} WHERE URL = ?", (slug,)).fetchone()
@@ -138,7 +154,7 @@ def validate_content(content_dir: Path, root: Path, database_path: Path) -> int:
     if not pages:
         raise ValidationError(f"no Markdown pages found in {content_dir}")
 
-    with sqlite3.connect(database_path) as database:
+    with sqlite3.connect(database_path.resolve().as_uri() + "?mode=ro", uri=True) as database:
         for page in pages:
             try:
                 validate_page(page, root, database)
@@ -170,6 +186,20 @@ def self_test(root: Path, database_path: Path) -> None:
             pass
         else:
             raise AssertionError("unknown SQLite slug should fail validation")
+
+        raw_content = content / "raw"
+        raw_content.mkdir()
+        (raw_content / "anvil.md").write_text(
+            "+++\nkind = \"project\"\nslug = \"anvil\"\n+++\n"
+            "<table class=\"resource-table--image\"></table>\n",
+            encoding="utf-8",
+        )
+        try:
+            validate_content(raw_content, root, database_path)
+        except ValidationError as error:
+            assert "use a typed image resource" in str(error)
+        else:
+            raise AssertionError("hand-written image behaviour classes should fail validation")
 
 
 def main() -> int:

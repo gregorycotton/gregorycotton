@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import importlib.util
 import json
@@ -25,11 +26,6 @@ ARRAY_FIELDS = {
     "Keywords": ("keywords", "Keyword"),
 }
 
-DIV_TAG_RE = re.compile(r"</?div\b[^>]*>", re.IGNORECASE)
-RESOURCE_CONTAINER_RE = re.compile(
-    r'<div\b[^>]*class=["\'][^"\']*\bproj-resource-container\b[^"\']*["\'][^>]*>',
-    re.IGNORECASE,
-)
 MARKDOWN_LINK = re.compile(r"!?(\[[^\]]*\])\(([^)\s]+)(?:\s+['\"]([^'\"]*)['\"])?\)")
 HTML_TAG = re.compile(r"(<[^>]+>)")
 
@@ -69,6 +65,10 @@ def safe_url(value: str, field: str) -> str:
 
 def public_asset_url(repo_path: str, public_page: str) -> str:
     return posixpath.relpath(repo_path, posixpath.dirname(public_page)).replace("\\", "/")
+
+
+def asset_version(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()[:12]
 
 
 def inline_markdown(text: str) -> str:
@@ -207,22 +207,48 @@ def render_image_group(resources: list[dict], page_rel: str, slug: str, group_in
         file_url = public_asset_url(resource["file"], page_rel)
         thumbnail_url = public_asset_url(resource["thumbnail"], page_rel)
         cell_id = f"fileSize-{slug}-{group_index}-{image_index}"
+        action = "Load GIF" if file_url.lower().endswith(".gif") else "Load image"
         rows.append(
-            "<tr>"
+            f'<tr data-image-index="{image_index}">'
             f'<td class="thumbnail-col"><img src="{html.escape(thumbnail_url, quote=True)}" alt="{html.escape(resource["alt"], quote=True)}" class="thumbnail-img"></td>'
             f'<td>{inline_markdown(resource["title"])}</td>'
             f'<td id="{cell_id}">{resource["size"]:,}</td>'
-            f'<td class="loadImageTrigger" data-fullimageurl="{html.escape(file_url, quote=True)}" data-title="{html.escape(resource["title"], quote=True)}"><a class="table-link">Load {"GIF" if file_url.lower().endswith(".gif") else "image"}</a></td>'
+            f'<td class="loadImageTrigger" data-fullimageurl="{html.escape(file_url, quote=True)}" data-title="{html.escape(resource["title"], quote=True)}"><button type="button" class="image-link-button image-load-button table-link" aria-label="{html.escape(action, quote=True)}: {html.escape(resource["title"], quote=True)}">{action}</button></td>'
             "</tr>"
         )
     table_id = f"resourceTable-{slug}-{group_index}"
+    viewer_id = f"imageViewer-{slug}-{group_index}"
+    viewer_title_id = f"imageViewerTitle-{slug}-{group_index}"
     return (
-        '<div class="proj-resource-container">'
+        f'<div class="proj-resource-container image-resource-block" data-image-count="{len(resources)}">'
+        '<div class="image-view-switch" aria-label="Image display mode">'
+        '<strong class="image-view-switch-label">Display:</strong>'
+        f'<button type="button" class="image-link-button image-table-mode" aria-controls="{table_id}" aria-pressed="true" disabled>Table</button>'
+        '<span class="image-view-switch-separator" aria-hidden="true">|</span>'
+        f'<button type="button" class="image-link-button image-contact-mode" aria-controls="{table_id}" aria-pressed="false">Contact sheet</button>'
+        '</div>'
         '<div class="table-container">'
-        f'<table class="image-loader-table" id="{table_id}">'
+        f'<table class="resource-table resource-table--image image-loader-table" id="{table_id}" aria-label="Image resources">'
         '<thead><tr><th class="thumbnail-col">*</th><th>Title</th><th>Size (bytes)</th><th>View</th></tr></thead>'
         f'<tbody>{"".join(rows)}</tbody>'
-        "</table></div><div class=\"image-display-area\"></div></div>"
+        '</table></div>'
+        f'<div class="image-display-area image-viewer" id="{viewer_id}" role="region" aria-labelledby="{viewer_title_id}" hidden>'
+        '<div class="image-viewer-header" tabindex="-1">'
+        f'<strong class="image-viewer-title" id="{viewer_title_id}"></strong>'
+        '<div class="image-viewer-controls">'
+        '<button type="button" class="image-link-button image-viewer-previous" disabled>← Previous</button>'
+        '<span class="image-viewer-separator" aria-hidden="true">|</span>'
+        '<span class="image-viewer-count"></span>'
+        '<span class="image-viewer-separator" aria-hidden="true">|</span>'
+        '<button type="button" class="image-link-button image-viewer-next" disabled>Next →</button>'
+        '<span class="image-viewer-separator" aria-hidden="true">|</span>'
+        '<button type="button" class="image-link-button image-viewer-back">Back to index</button>'
+        '<span class="image-viewer-separator" aria-hidden="true">|</span>'
+        '<a class="image-viewer-open" target="_blank" rel="noopener">Open image</a>'
+        '</div></div>'
+        '<div class="image-viewer-status" role="status" aria-live="polite"></div>'
+        '<div class="image-viewer-media"></div>'
+        '</div></div>'
     )
 
 
@@ -241,7 +267,7 @@ def render_link_group(resources: list[dict]) -> str:
         )
     return (
         '<div class="proj-resource-container"><div class="table-container">'
-        '<table class="image-loader-table"><thead><tr><th>Title</th><th>Type</th><th>View</th></tr></thead>'
+        '<table class="resource-table resource-table--link"><thead><tr><th>Title</th><th>Type</th><th>View</th></tr></thead>'
         f'<tbody>{"".join(rows)}</tbody></table></div></div>'
     )
 
@@ -259,37 +285,9 @@ def render_download_group(resources: list[dict], page_rel: str) -> str:
         )
     return (
         '<div class="proj-resource-container"><div class="table-container">'
-        '<table class="image-loader-table"><thead><tr><th>Title</th><th>Size (bytes)</th><th>File</th></tr></thead>'
+        '<table class="resource-table resource-table--download"><thead><tr><th>Title</th><th>Size (bytes)</th><th>File</th></tr></thead>'
         f'<tbody>{"".join(rows)}</tbody></table></div></div>'
     )
-
-
-def extract_raw_resource_containers(markup: str) -> tuple[str, OrderedDict[str, str]]:
-    blocks: OrderedDict[str, str] = OrderedDict()
-    pieces: list[str] = []
-    cursor = 0
-    block_index = 0
-    while match := RESOURCE_CONTAINER_RE.search(markup, cursor):
-        depth = 0
-        closing_end = None
-        for tag in DIV_TAG_RE.finditer(markup, match.start()):
-            if tag.group(0).startswith("</"):
-                depth -= 1
-            else:
-                depth += 1
-            if depth == 0:
-                closing_end = tag.end()
-                break
-        if closing_end is None:
-            raise ValueError("unclosed project resource container in page content")
-        group = f"__raw_resource_{block_index}__"
-        pieces.append(markup[cursor:match.start()])
-        pieces.append(f"<!-- RESOURCE-BLOCK:{group} -->")
-        blocks[group] = markup[match.start():closing_end]
-        cursor = closing_end
-        block_index += 1
-    pieces.append(markup[cursor:])
-    return "".join(pieces), blocks
 
 
 def render_resources(resources: list[dict], page_rel: str, slug: str, root: Path) -> OrderedDict[str, str]:
@@ -368,9 +366,6 @@ def render_page(source: Path, output_dir: Path, root: Path, database: sqlite3.Co
         token = f"{{{{resource-block:{group}}}}}"
         if token in body_html:
             body_html = body_html.replace(token, f"<!-- RESOURCE-BLOCK:{group} -->")
-    body_html, raw_resource_blocks = extract_raw_resource_containers(body_html)
-    all_resource_blocks = OrderedDict(resource_blocks)
-    all_resource_blocks.update(raw_resource_blocks)
     content_sections: list[str] = []
     sections = re.split(r"<!-- RESOURCE-BLOCK:([^>]+) -->", body_html)
     for index, section in enumerate(sections):
@@ -382,14 +377,16 @@ def render_page(source: Path, output_dir: Path, root: Path, database: sqlite3.Co
                     "</div>"
                 )
             continue
-        content_sections.append(f"<br>\n{all_resource_blocks[section]}")
+        content_sections.append(f"<br>\n{resource_blocks[section]}")
         used_blocks.add(section)
-    for group, block in all_resource_blocks.items():
+    for group, block in resource_blocks.items():
         if group not in used_blocks:
             content_sections.append(f"<br>\n{block}")
     content_html = "\n".join(content_sections)
+    style_version = asset_version(root / "style.css")
     if any(resource["type"] == "image" for resource in resources):
-        scripts = '<script src="../scripts/image-loader.js"></script>'
+        script_version = asset_version(root / "scripts/image-loader.js")
+        scripts = f'<script src="../scripts/image-loader.js?v={script_version}" defer></script>'
     heading = f"<h2>{html.escape(title)}</h2>" if kind == "project" else f"<p><u>{html.escape(title)}</u></p>"
     page = f'''<!DOCTYPE html>
 <html>
@@ -405,7 +402,7 @@ def render_page(source: Path, output_dir: Path, root: Path, database: sqlite3.Co
     <meta name="creator" content="gregorycotton.ca">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{html.escape(title)} | Gregory Cotton</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css?v={style_version}">
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
@@ -439,7 +436,7 @@ def build(source_dir: Path, output_dir: Path, database_path: Path, root: Path) -
         raise ValueError("content validation count changed during build")
     output_dir.mkdir(parents=True, exist_ok=True)
     generated: list[Path] = []
-    with sqlite3.connect(database_path) as database:
+    with sqlite3.connect(database_path.resolve().as_uri() + "?mode=ro", uri=True) as database:
         database.row_factory = sqlite3.Row
         for source in sources:
             generated.append(render_page(source, output_dir, root, database, validator))
@@ -469,23 +466,55 @@ def self_test(root: Path, database_path: Path) -> None:
         assert "server.php" not in text
         assert '<details id="propertiesDetails">' in text
         assert "Gregory Cotton" in text
+        assert re.search(r'\.\./style\.css\?v=[0-9a-f]{12}', text)
     anvil = (output_dir / "ontology/anvil.html").read_text(encoding="utf-8")
     assert anvil.count("data-fullimageurl=") == 4
     assert anvil.count("<td id=\"fileSize-") == 4
     assert "imageConfigurations" not in anvil
-    assert anvil.count('class="image-loader-table"') == 1
+    assert anvil.count('class="resource-table resource-table--image image-loader-table"') == 1
+    assert anvil.count('class="image-view-switch"') == 1
+    assert anvil.count('class="image-display-area image-viewer"') == 1
+    assert anvil.count('class="image-link-button image-load-button table-link"') == 4
+    assert '<strong class="image-view-switch-label">Display:</strong>' in anvil
+    assert re.search(r'\.\./scripts/image-loader\.js\?v=[0-9a-f]{12}', anvil)
     assert "anvil-homepage.jpg" in anvil
     text_start = anvil.index('<div class="proj-txt-container">')
     text_end = anvil.index("</div>", text_start)
-    resource_start = anvil.index('<div class="proj-resource-container">')
+    resource_start = anvil.index('<div class="proj-resource-container image-resource-block"')
     assert text_end < resource_start
     assert anvil.count('class="project-list"') == 1
     assert "list-style-position: inside" not in anvil
     amplify = (output_dir / "ontology/amplify.html").read_text(encoding="utf-8")
-    assert amplify.count('id="projectsTable"') == 1
+    assert 'id="projectsTable"' not in amplify
+    assert 'id="projectsTableBodyStatic"' not in amplify
+    assert amplify.count('class="resource-table resource-table--link"') == 1
+    assert amplify.count('class="image-view-switch"') == 1
+    assert "App. A – Amplify onboarding flow" in amplify
+    assert 'target="_blank" rel="noopener"' in amplify
     assert "</div>\n<br>\n<div class=\"proj-resource-container\">" in amplify
+    myoap = (output_dir / "ontology/myoap-dashboard.html").read_text(encoding="utf-8")
+    assert myoap.count('class="image-view-switch"') == 4
+    assert myoap.count('class="image-display-area image-viewer"') == 4
+    assert myoap.count('class="resource-table resource-table--link"') == 1
+    viewer_ids = re.findall(r'id="(imageViewer-myoap-dashboard-\d+)"', myoap)
+    assert len(viewer_ids) == len(set(viewer_ids)) == 4
+    public_secure = (output_dir / "ontology/public-secure-sso.html").read_text(encoding="utf-8")
+    assert public_secure.count('class="image-view-switch"') == 4
+    assert public_secure.count('class="resource-table resource-table--link"') == 1
+    food_library = (output_dir / "ontology/the-food-library.html").read_text(encoding="utf-8")
+    assert food_library.count('class="image-view-switch"') == 2
+    assert food_library.count('class="resource-table resource-table--link"') == 1
+    assert "youtube.com/embed/TbQxyBKgyZE" in food_library
+    forest = (output_dir / "ontology/forest-simulator.html").read_text(encoding="utf-8")
+    assert forest.count("data-fullimageurl=") == 1
+    assert "1 of 1" not in forest
+    assert 'class="resource-table resource-table--download"' in render_download_group(
+        [{"title": "Example", "file": "ontology/images/anvil/anvil-homepage.jpg", "size": 1}],
+        "ontology/anvil.html",
+    )
     toby = (output_dir / "ontology/tobys-barbershop.html").read_text(encoding="utf-8")
     assert "youtube.com/embed/WYxXBu0DFFA" in toby
+    assert "image-loader.js" not in toby
     fridge = (output_dir / "ontology/gregs-fridge.html").read_text(encoding="utf-8")
     assert "fridge.gregorycotton.ca" in fridge and "internetphonebook.net" in fridge
     fieldnote = (output_dir / "fieldnotes/ajuda.html").read_text(encoding="utf-8")

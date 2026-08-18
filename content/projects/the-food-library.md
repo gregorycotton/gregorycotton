@@ -98,6 +98,54 @@ title = "Seed database UI drawer"
 file = "ontology/images/the-food-library/seed-database-ui.gif"
 thumbnail = "ontology/thumbnails/the-food-library/seed-database-ui-thumbnail.jpg"
 alt = "Seed database UI thumbnail"
+
+[[resources]]
+type = "link"
+group = "block-3"
+title = "App. A – Owen on the food scanner"
+url = "https://youtu.be/-L34Hf1YKnI?si=HJQWKf8s0m3mPGet"
+link_type = "YouTube video"
+action = "New tab"
+
+[[resources]]
+type = "link"
+group = "block-3"
+title = "App. B – Food scanner prototype"
+url = "https://xd.adobe.com/view/0cc0377d-1be6-4e04-65c0-65b2421c1e70-7af1/"
+link_type = "XD prototype"
+action = "New tab"
+
+[[resources]]
+type = "link"
+group = "block-3"
+title = "App. C – Owen on the preserves shelves"
+url = "https://youtu.be/mlkj0GzIXH4?si=5M0zUIT2aPRMoGnI"
+link_type = "YouTube video"
+action = "New tab"
+
+[[resources]]
+type = "link"
+group = "block-3"
+title = "App. D – Library menu prototype"
+url = "https://xd.adobe.com/view/49bd72bc-e1e6-4155-4cf6-abd5917f1a55-3f8c/"
+link_type = "XD prototype"
+action = "New tab"
+
+[[resources]]
+type = "link"
+group = "block-3"
+title = "App. E – Owen on the seed exchange"
+url = "https://www.youtube.com/watch?v=_9GV0xO6asg"
+link_type = "YouTube video"
+action = "New tab"
+
+[[resources]]
+type = "link"
+group = "block-3"
+title = "App. F – Seed database prototype"
+url = "https://xd.adobe.com/view/2fc19bad-b2a2-4a29-47e8-0d2da5f27245-59f0/"
+link_type = "XD prototype"
+action = "New tab"
 +++
 <br>
 
@@ -160,57 +208,7 @@ alt = "Seed database UI thumbnail"
 
 <br>
 
-<div class="proj-resource-container">
-                <div class="table-container">
-                    <table class="image-loader-table" id="projectsTable">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Type</th>
-                                <th>View</th>
-                            </tr>
-                        </thead>
-                        <tbody id="projectsTableBodyStatic">
-                            <tr>
-                                <td>App. A – Owen on the food scanner</td>
-                                <td>YouTube video</td>
-                                <td><a target="_blank" class="table-link" href="https://youtu.be/-L34Hf1YKnI?si=HJQWKf8s0m3mPGet">New
-                                        tab</a></td>
-                            </tr>
-                            <tr>
-                                <td>App. B – Food scanner prototype</td>
-                                <td>XD prototype</td>
-                                <td><a target="_blank" class="table-link" href="https://xd.adobe.com/view/0cc0377d-1be6-4e04-65c0-65b2421c1e70-7af1/">New
-                                        tab</a></td>
-                            </tr>
-                            <tr>
-                                <td>App. C – Owen on the preserves shelves</td>
-                                <td>YouTube video</td>
-                                <td><a target="_blank" class="table-link" href="https://youtu.be/mlkj0GzIXH4?si=5M0zUIT2aPRMoGnI">New
-                                        tab</a></td>
-                            </tr>
-                            <tr>
-                                <td>App. D – Library menu prototype</td>
-                                <td>XD prototype</td>
-                                <td><a target="_blank" class="table-link" href="https://xd.adobe.com/view/49bd72bc-e1e6-4155-4cf6-abd5917f1a55-3f8c/">New
-                                        tab</a></td>
-                            </tr>
-                            <tr>
-                                <td>App. E – Owen on the seed exchange</td>
-                                <td>YouTube video</td>
-                                <td><a target="_blank" class="table-link" href="https://www.youtube.com/watch?v=_9GV0xO6asg">New
-                                        tab</a></td>
-                            </tr>
-                            <tr>
-                                <td>App. F – Seed database prototype</td>
-                                <td>XD prototype</td>
-                                <td><a target="_blank" class="table-link" href="https://xd.adobe.com/view/2fc19bad-b2a2-4a29-47e8-0d2da5f27245-59f0/">New
-                                        tab</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+{{resource-block:block-3}}
 
 <br>
 

@@ -51,6 +51,22 @@ title = "Turtle persona"
 file = "ontology/images/amplify/turtle-persona.png"
 thumbnail = "ontology/thumbnails/amplify/turtle-persona-thumbnail.jpg"
 alt = "Turtle persona thumbnail"
+
+[[resources]]
+type = "link"
+group = "block-1"
+title = "App. A – Amplify onboarding flow"
+url = "https://www.figma.com/proto/RvDV1HXuxTtjDsS9pB5tN1/Amplify-Digital-Civic-Engagement-*?page-id=1310%3A2971&node-id=1310%3A3280&viewport=1566%2C784%2C0.13&scaling=min-zoom&starting-point-node-id=1310%3A3280&show-proto-sidebar=1"
+link_type = "Figma prototype"
+action = "New tab"
+
+[[resources]]
+type = "link"
+group = "block-1"
+title = "App. B – Amplify map functionality"
+url = "https://www.figma.com/proto/RvDV1HXuxTtjDsS9pB5tN1/Amplify-Digital-Civic-Engagement-*?page-id=1310%3A2971&node-id=1329%3A3469&viewport=777%2C529%2C0.05&scaling=min-zoom&starting-point-node-id=1329%3A3469&show-proto-sidebar=1"
+link_type = "Figma prototype"
+action = "New tab"
 +++
 <br>
 
@@ -103,30 +119,4 @@ alt = "Turtle persona thumbnail"
 
 <br>
 
-<div class="proj-resource-container">
-                <div class="table-container">
-                    <table class="image-loader-table" id="projectsTable">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Type</th>
-                                <th>View</th>
-                            </tr>
-                        </thead>
-                        <tbody id="projectsTableBodyStatic">
-                            <tr>
-                                <td>App. A – Amplify onboarding flow</td>
-                                <td>Figma prototype</td>
-                                <td><a target="_blank" class="table-link" href="https://www.figma.com/proto/RvDV1HXuxTtjDsS9pB5tN1/Amplify-Digital-Civic-Engagement-*?page-id=1310%3A2971&amp;node-id=1310%3A3280&amp;viewport=1566%2C784%2C0.13&amp;scaling=min-zoom&amp;starting-point-node-id=1310%3A3280&amp;show-proto-sidebar=1">New
-                                        tab</a></td>
-                            </tr>
-                            <tr>
-                                <td>App. B – Amplify map functionality</td>
-                                <td>Figma prototype</td>
-                                <td><a target="_blank" class="table-link" href="https://www.figma.com/proto/RvDV1HXuxTtjDsS9pB5tN1/Amplify-Digital-Civic-Engagement-*?page-id=1310%3A2971&amp;node-id=1329%3A3469&amp;viewport=777%2C529%2C0.05&amp;scaling=min-zoom&amp;starting-point-node-id=1329%3A3469&amp;show-proto-sidebar=1">New
-                                        tab</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+{{resource-block:block-1}}

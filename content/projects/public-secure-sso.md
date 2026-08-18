@@ -59,6 +59,46 @@ title = "Authentication"
 file = "ontology/images/public-secure-sso/account-management.png"
 thumbnail = "ontology/thumbnails/public-secure-sso/account-management-thumbnail.jpg"
 alt = "Account management thumbnail"
+
+[[resources]]
+type = "link"
+group = "block-4"
+title = "App. A – High-level onboarding"
+url = "https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&node-id=4139%3A9629&viewport=623%2C319%2C0.07&scaling=min-zoom&starting-point-node-id=4139%3A9629&show-proto-sidebar=1"
+link_type = "Figma prototype"
+action = "New tab"
+
+[[resources]]
+type = "link"
+group = "block-4"
+title = "App. B – Low-level sign-on"
+url = "https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&node-id=4139%3A10434&viewport=623%2C319%2C0.07&scaling=min-zoom&starting-point-node-id=4139%3A10434&show-proto-sidebar=1"
+link_type = "Figma prototype"
+action = "New tab"
+
+[[resources]]
+type = "link"
+group = "block-4"
+title = "App. C – Password reset"
+url = "https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&node-id=4139%3A10763&viewport=623%2C319%2C0.07&scaling=min-zoom&starting-point-node-id=4139%3A10763&show-proto-sidebar=1"
+link_type = "Figma prototype"
+action = "New tab"
+
+[[resources]]
+type = "link"
+group = "block-4"
+title = "App. D – Account migration"
+url = "https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&node-id=4139%3A11213&viewport=623%2C319%2C0.07&scaling=min-zoom&starting-point-node-id=4139%3A11213&show-proto-sidebar=1"
+link_type = "Figma prototype"
+action = "New tab"
+
+[[resources]]
+type = "link"
+group = "block-4"
+title = "App. E – Account management"
+url = "https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&node-id=4139%3A11880&viewport=623%2C319%2C0.07&scaling=min-zoom&starting-point-node-id=4139%3A11880&show-proto-sidebar=1"
+link_type = "Figma prototype"
+action = "New tab"
 +++
 <br>
 
@@ -216,48 +256,4 @@ alt = "Account management thumbnail"
 
                 <br>
 
-<div class="proj-resource-container">
-                <div class="table-container">
-                    <table class="image-loader-table" id="projectsTable">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Type</th>
-                                <th>View</th>
-                            </tr>
-                        </thead>
-                        <tbody id="projectsTableBodyStatic">
-                            <tr>
-                                <td>App. A – High-level onboarding</td>
-                                <td>Figma prototype</td>
-                                <td><a target="_blank" class="table-link" href="https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&amp;node-id=4139%3A9629&amp;viewport=623%2C319%2C0.07&amp;scaling=min-zoom&amp;starting-point-node-id=4139%3A9629&amp;show-proto-sidebar=1">New
-                                        tab</a></td>
-                            </tr>
-                            <tr>
-                                <td>App. B – Low-level sign-on</td>
-                                <td>Figma prototype</td>
-                                <td><a target="_blank" class="table-link" href="https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&amp;node-id=4139%3A10434&amp;viewport=623%2C319%2C0.07&amp;scaling=min-zoom&amp;starting-point-node-id=4139%3A10434&amp;show-proto-sidebar=1">New
-                                        tab</a></td>
-                            </tr>
-                            <tr>
-                                <td>App. C – Password reset</td>
-                                <td>Figma prototype</td>
-                                <td><a target="_blank" class="table-link" href="https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&amp;node-id=4139%3A10763&amp;viewport=623%2C319%2C0.07&amp;scaling=min-zoom&amp;starting-point-node-id=4139%3A10763&amp;show-proto-sidebar=1">New
-                                        tab</a></td>
-                            </tr>
-                            <tr>
-                                <td>App. D – Account migration</td>
-                                <td>Figma prototype</td>
-                                <td><a target="_blank" class="table-link" href="https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&amp;node-id=4139%3A11213&amp;viewport=623%2C319%2C0.07&amp;scaling=min-zoom&amp;starting-point-node-id=4139%3A11213&amp;show-proto-sidebar=1">New
-                                        tab</a></td>
-                            </tr>
-                            <tr>
-                                <td>App. E – Account management</td>
-                                <td>Figma prototype</td>
-                                <td><a target="_blank" class="table-link" href="https://www.figma.com/proto/xvq1qPbkntspGvmuqqvF4x/Public-Secure-SSO-*?page-id=4138%3A9629&amp;node-id=4139%3A11880&amp;viewport=623%2C319%2C0.07&amp;scaling=min-zoom&amp;starting-point-node-id=4139%3A11880&amp;show-proto-sidebar=1">New
-                                        tab</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+{{resource-block:block-4}}

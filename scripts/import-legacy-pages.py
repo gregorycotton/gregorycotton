@@ -177,7 +177,11 @@ def resource_from_iframe(container: Node, block_name: str) -> list[dict]:
 
 def extract_resource_container(container: Node, page_rel: str, block_index: int) -> tuple[list[dict], list[str], int]:
     block_name = f"block-{block_index}"
-    table = first(container, lambda node: node.tag == "table" and "image-loader-table" in classes(node))
+    table = first(
+        container,
+        lambda node: node.tag == "table"
+        and bool({"resource-table--image", "image-loader-table"} & classes(node)),
+    )
     block_resources = resource_from_table(table, page_rel, block_name) if table else resource_from_iframe(container, block_name)
     if not block_resources:
         raw = serialize(container).strip()

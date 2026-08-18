@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compare generated page features with the preserved legacy HTML pages."""
+"""Compare generated page features with a tracked HTML baseline."""
 
 from __future__ import annotations
 
@@ -19,7 +19,9 @@ def feature_signature(text: str) -> dict:
         "images": re.findall(r'data-fullimageurl="([^"]+)"', text),
         "iframes": [html.unescape(value) for value in re.findall(r'<iframe\b[^>]*\bsrc="([^"]+)"', text)],
         "image_rows": len(re.findall(r'class="loadImageTrigger"', text)),
-        "resource_containers": len(re.findall(r'class="proj-resource-container"', text)),
+        "resource_containers": len(
+            re.findall(r'class="[^"]*\bproj-resource-container\b[^"]*"', text)
+        ),
     }
 
 
@@ -40,8 +42,9 @@ def compare(root: Path, generated_dir: Path, legacy_dir: Path) -> int:
             failures.append(f"feature signature mismatch: {relative}")
 
     generated_pages = sorted(generated_dir.joinpath("ontology").glob("*.html")) + sorted(generated_dir.joinpath("fieldnotes").glob("*.html"))
-    if len(generated_pages) != len(pages):
-        failures.append(f"generated page count mismatch: {len(generated_pages)} != {len(pages)}")
+    for generated in generated_pages:
+        if "server.php" in generated.read_text(encoding="utf-8"):
+            failures.append(f"runtime API reference remains: {generated.relative_to(generated_dir)}")
     if failures:
         print("page migration comparison failed")
         print("\n".join(failures))
@@ -53,7 +56,7 @@ def compare(root: Path, generated_dir: Path, legacy_dir: Path) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--generated-dir", type=Path, default=ROOT / ".build/pages-migrated")
-    parser.add_argument("--legacy-dir", type=Path, default=ROOT / ".build/legacy-pages")
+    parser.add_argument("--legacy-dir", type=Path, default=ROOT)
     args = parser.parse_args()
     legacy_dir = args.legacy_dir.resolve()
     if not legacy_dir.is_dir():

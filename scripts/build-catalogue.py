@@ -320,7 +320,7 @@ def build(
     if not database_path.is_file():
         raise BuildError(f"Database not found: {database_path}")
 
-    connection = sqlite3.connect(database_path)
+    connection = sqlite3.connect(database_path.resolve().as_uri() + "?mode=ro", uri=True)
     connection.row_factory = sqlite3.Row
     try:
         integrity = connection.execute("PRAGMA integrity_check").fetchone()[0]
