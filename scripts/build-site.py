@@ -10,13 +10,22 @@ import re
 import shutil
 import subprocess
 import sys
+import xml.etree.ElementTree as ET
+from datetime import datetime, timezone
+from email.utils import format_datetime
 from pathlib import Path
+from urllib.parse import quote
 
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_STAGE = ROOT / ".build/site"
 FOOTER_START = "<!-- GENERATED FOOTER:START -->"
 FOOTER_END = "<!-- GENERATED FOOTER:END -->"
+SITE_URL = "https://gregorycotton.ca"
+FEED_PATH = Path("fieldnotes.xml")
+ATOM_NAMESPACE = "http://www.w3.org/2005/Atom"
+
+ET.register_namespace("atom", ATOM_NAMESPACE)
 
 
 def sha256_file(path: Path) -> str:
@@ -33,7 +42,7 @@ def run(script: str, *arguments: str) -> None:
 
 
 def generated_paths(stage: Path) -> set[Path]:
-    paths = {Path("index.html"), Path("changelog.html")}
+    paths = {Path("index.html"), Path("changelog.html"), FEED_PATH}
     paths.update(path.relative_to(stage) for path in (stage / "ontology").glob("*.html"))
     paths.update(path.relative_to(stage) for path in (stage / "fieldnotes").glob("*.html"))
     return paths
@@ -43,9 +52,58 @@ def tracked_generated_paths() -> set[Path]:
     return {
         Path("index.html"),
         Path("changelog.html"),
+        FEED_PATH,
         *(path.relative_to(ROOT) for path in (ROOT / "ontology").glob("*.html")),
         *(path.relative_to(ROOT) for path in (ROOT / "fieldnotes").glob("*.html")),
     }
+
+
+def rss_date(value: str) -> str:
+    parsed = datetime.strptime(value, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    return format_datetime(parsed, usegmt=True)
+
+
+def build_fieldnotes_feed(catalogue_path: Path, output_path: Path) -> None:
+    catalogue = json.loads(catalogue_path.read_text(encoding="utf-8"))
+    records = catalogue["views"]["fieldnotes"]["rows"]
+    rss = ET.Element("rss", {"version": "2.0"})
+    channel = ET.SubElement(rss, "channel")
+    ET.SubElement(channel, "title").text = "Gregory Cotton — Fieldnotes"
+    ET.SubElement(channel, "link").text = f"{SITE_URL}/"
+    ET.SubElement(channel, "description").text = "Fieldnotes by Gregory Cotton"
+    ET.SubElement(channel, "language").text = "en"
+    ET.SubElement(
+        channel,
+        f"{{{ATOM_NAMESPACE}}}link",
+        {
+            "href": f"{SITE_URL}/{FEED_PATH}",
+            "rel": "self",
+            "type": "application/rss+xml",
+        },
+    )
+
+    for record in records:
+        for field in ("UUID", "Title", "PublishedDate", "URL"):
+            if not record.get(field):
+                raise ValueError(f"fieldnote feed record is missing {field}: {record!r}")
+
+    if records:
+        latest = max(record.get("LastUpdated") or record["PublishedDate"] for record in records)
+        ET.SubElement(channel, "lastBuildDate").text = rss_date(latest)
+
+    for record in records:
+        item_url = f"{SITE_URL}/fieldnotes/{quote(record['URL'], safe='-._~')}.html"
+        item = ET.SubElement(channel, "item")
+        ET.SubElement(item, "title").text = record["Title"]
+        ET.SubElement(item, "link").text = item_url
+        ET.SubElement(item, "guid", {"isPermaLink": "false"}).text = f"urn:uuid:{record['UUID']}"
+        ET.SubElement(item, "pubDate").text = rss_date(record["PublishedDate"])
+        ET.SubElement(item, "description").text = record.get("ShortDescription") or ""
+
+    ET.indent(rss, space="  ")
+    output_path.write_bytes(
+        ET.tostring(rss, encoding="utf-8", xml_declaration=True) + b"\n"
+    )
 
 
 def inject_footer(path: Path) -> None:
@@ -78,6 +136,7 @@ def stage(stage: Path) -> set[Path]:
         "--page-root",
         str(stage),
     )
+    build_fieldnotes_feed(stage / "catalogue/catalogue.json", stage / FEED_PATH)
     inject_footer(stage / "index.html")
     inject_footer(stage / "changelog.html")
     paths = generated_paths(stage)

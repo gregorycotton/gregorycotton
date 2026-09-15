@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Gregory Cotton — Fieldnotes</title>
+    <link>https://gregorycotton.ca/</link>
+    <description>Fieldnotes by Gregory Cotton</description>
+    <language>en</language>
+    <atom:link href="https://gregorycotton.ca/fieldnotes.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Ajuda</title>
+      <link>https://gregorycotton.ca/fieldnotes/ajuda.html</link>
+      <guid isPermaLink="false">urn:uuid:b687f1d2-60e8-491b-9db9-fd9d101e755b</guid>
+      <pubDate>Mon, 25 May 2026 00:00:00 GMT</pubDate>
+      <description>A weekend walk around the parish of Ajuda</description>
+    </item>
+    <item>
+      <title>Japan's jazz kissas</title>
+      <link>https://gregorycotton.ca/fieldnotes/japans-jazz-kissas.html</link>
+      <guid isPermaLink="false">urn:uuid:3ad24c54-5955-49da-9721-0e0be65fb057</guid>
+      <pubDate>Sat, 27 Sep 2025 00:00:00 GMT</pubDate>
+      <description>Notes from my travels in Japan</description>
+    </item>
+    <item>
+      <title>Motivating this site</title>
+      <link>https://gregorycotton.ca/fieldnotes/motivating-this-site.html</link>
+      <guid isPermaLink="false">urn:uuid:486a4f38-ae3d-4346-a934-2bc38ed4f767</guid>
+      <pubDate>Tue, 17 Jun 2025 00:00:00 GMT</pubDate>
+      <description>About gregorycotton.ca</description>
+    </item>
+    <item>
+      <title>Hello world</title>
+      <link>https://gregorycotton.ca/fieldnotes/hello-world.html</link>
+      <guid isPermaLink="false">urn:uuid:e5f6a7b8-c9d0-4e67-a7b8-012345678901</guid>
+      <pubDate>Fri, 07 May 1999 00:00:00 GMT</pubDate>
+      <description>Hello world</description>
+    </item>
+  </channel>
+</rss>
