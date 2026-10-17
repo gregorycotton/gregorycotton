@@ -389,7 +389,7 @@ def render_page(source: Path, output_dir: Path, root: Path, database: sqlite3.Co
         scripts = f'<script src="../scripts/image-loader.js?v={script_version}" defer></script>'
     heading = f"<h2>{html.escape(title)}</h2>" if kind == "project" else f"<p><u>{html.escape(title)}</u></p>"
     page = f'''<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="title" content="Gregory Cotton">
@@ -463,6 +463,7 @@ def self_test(root: Path, database_path: Path) -> None:
     assert expected.issubset({str(path.relative_to(output_dir)) for path in generated})
     for path in generated:
         text = path.read_text(encoding="utf-8")
+        assert '<html lang="en">' in text
         assert "server.php" not in text
         assert '<details id="propertiesDetails">' in text
         assert "Gregory Cotton" in text
