@@ -10,6 +10,7 @@ function escapeHtml(value) {
 }
 
 const resizedTableColumns = {};
+const columnResizeObservers = new WeakMap();
 const minimumColumnWidth = 60;
 
 function boundColumnResizeDelta(delta, leftWidth, rightWidth, leftMinimum, rightMinimum) {
@@ -185,6 +186,17 @@ function setupColumnResizing(table, columns) {
         handle.addEventListener('focus', () => th.classList.add('column-resize-hover'));
         handle.addEventListener('blur', () => th.classList.remove('column-resize-hover'));
     });
+
+    columnResizeObservers.get(table)?.disconnect();
+    const observer = new ResizeObserver(([entry]) => {
+        const stored = resizedTableColumns[table.id];
+        const fitted = fitColumnWidths(stored.widths, minimumWidths, entry.contentRect.width);
+        if (Math.abs(fitted.tableWidth - stored.tableWidth) >= 1) {
+            applyColumnWidths(table, columns, fitted.widths, fitted.tableWidth);
+        }
+    });
+    observer.observe(table.parentElement);
+    columnResizeObservers.set(table, observer);
 }
 
 function renderTable(data, options = {}) {
