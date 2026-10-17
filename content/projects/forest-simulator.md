@@ -14,8 +14,6 @@ alt = "Forest Simulator thumbnail"
 +++
 <p>Scenes to meditate to, inspired by my walks in the Ottawa Greenbelt.</p>
                 
-                <p><s>Visit the forest at <a href="https://forest.gregorycotton.ca" target="_blank" class="primary-link">forest.gregorycotton.ca</a>.</s></p>
-
 <br>
 
 {{resource-block:block-0}}

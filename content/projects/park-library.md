@@ -42,7 +42,8 @@ alt = "Park Library bulletin board thumbnail"
                 
                 <p>Complete with generative library card generator (no two cards the same!) and library bulletin board for community members to share messages.</p>
 
-                <p>Browse the library at <a href="https://parklibrary.org" target="_blank" class="primary-link">parklibrary.org</a>.</p>
+                <p><s>Browse the library at <a href="https://parklibrary.org" target="_blank" class="primary-link">parklibrary.org</a></s>.</p>
+<p>The library is currently closed.</p>
 
 <br>
 
