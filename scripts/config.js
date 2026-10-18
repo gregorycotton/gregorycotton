@@ -5,12 +5,10 @@ const ontologyColumns = ['UUID', 'Title', 'ShortDescription', 'Year',
     'Modality', 'Medium', 'Tools', 'Object',
     'Collaborators', 'Keywords', 'FeaturedWork'];
 const fieldnotesColumns = ['UUID', 'Title', 'ShortDescription', 'PublishedDate', 'LastUpdated', 'ReadingTimeMinutes', 'WordCount'];
-// const albumColumns = ['UUID', 'FileName', 'ShortDescription', 'Camera', 'SizeBytes', 'Year'];
 
 const defaultColumns = {
     ontology: ['Title', 'ShortDescription', 'Year', 'Object'],
     fieldnotes: ['Title', 'ShortDescription', 'PublishedDate', 'LastUpdated', 'ReadingTimeMinutes'],
-    // album: ['FileName', 'ShortDescription', 'Camera', 'Year']
 };
 
 const storageKey = 'gregoryCottonColumnPrefs_v3';
@@ -39,19 +37,11 @@ function loadColumnPrefs() {
                 prefs.fieldnotes = parsedPrefs.fieldnotes.filter(col => fieldnotesColumns.includes(col));
                 if (prefs.fieldnotes.length === 0) prefs.fieldnotes = defaultColumns.fieldnotes;
             }
-            // if (parsedPrefs.album && Array.isArray(parsedPrefs.album)) {
-            //     prefs.album = parsedPrefs.album.filter(col => albumColumns.includes(col));
-            //     if (prefs.album.length === 0) prefs.album = defaultColumns.album;
-            // }
         }
     } catch (error) {
         console.error('Error parsing column preferences from localStorage:', error);
         prefs = { ...defaultColumns };
     }
-    if (!prefs.ontology) prefs.ontology = defaultColumns.ontology;
-    if (!prefs.fieldnotes) prefs.fieldnotes = defaultColumns.fieldnotes;
-    // if (!prefs.album) prefs.album = defaultColumns.album;
-
     return prefs;
 }
 

@@ -230,9 +230,7 @@ function renderTable(data, options = {}) {
             (sortDirection === 'asc' ? '<span class="sort-arrow">▲</span>' : '<span class="sort-arrow">▼</span>') : '';
 
         let displayName = col;
-        if (col === 'SizeBytes') {
-            displayName = 'Size Bytes';
-        } else if (col === 'FeaturedWork') {
+        if (col === 'FeaturedWork') {
             displayName = 'Featured';
         } else if (col === 'PublishedDate') {
             displayName = 'Published';
@@ -256,7 +254,7 @@ function renderTable(data, options = {}) {
                 sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
             } else {
                 sortColumn = column;
-                sortDirection = ['Year', 'SizeBytes', 'PublishedDate', 'LastUpdated', 'ReadingTimeMinutes', 'WordCount'].includes(column) ? 'desc' : 'asc';
+                sortDirection = ['Year', 'PublishedDate', 'LastUpdated', 'ReadingTimeMinutes', 'WordCount'].includes(column) ? 'desc' : 'asc';
             }
             sortData();
             renderTable(currentData);
@@ -291,13 +289,6 @@ function renderTable(data, options = {}) {
                     } else if (col === 'WordCount' && value !== 'N/A') {
                         value = Number(value).toLocaleString();
                     }
-                // } else if (currentView === 'album') {
-                //     if (col === 'SizeBytes' && value !== 'N/A') {
-                //         value = Number(value).toLocaleString();
-                //     } else if (col === 'FileName' && value !== 'N/A') {
-                //         const fileName = item[col];
-                //         value = `<a class="table-link" href="#" onclick="showImagePopup('${fileName}'); return false;">${fileName}</a>`;
-                //     }
                 }
 
                 if (!(typeof value === 'string' && value.startsWith('<a '))) {
@@ -316,14 +307,14 @@ function sortData() {
     const config = getCurrentViewConfig();
     if (!config.columns.includes(sortColumn)) {
         sortColumn = config.defaultSort;
-        sortDirection = ['Year', 'SizeBytes', 'PublishedDate', 'LastUpdated', 'ReadingTimeMinutes', 'WordCount'].includes(sortColumn) ? 'desc' : 'asc';
+        sortDirection = ['Year', 'PublishedDate', 'LastUpdated', 'ReadingTimeMinutes', 'WordCount'].includes(sortColumn) ? 'desc' : 'asc';
     }
 
     currentData.sort((a, b) => {
         let valA = a[sortColumn];
         let valB = b[sortColumn];
 
-        if (['Year', 'SizeBytes', 'ReadingTimeMinutes', 'WordCount'].includes(sortColumn)) {
+        if (['Year', 'ReadingTimeMinutes', 'WordCount'].includes(sortColumn)) {
             valA = parseInt(valA, 10) || 0;
             valB = parseInt(valB, 10) || 0;
         } else if (['PublishedDate', 'LastUpdated'].includes(sortColumn)) {
@@ -366,9 +357,6 @@ function getCurrentViewConfig() {
             return {
                 columns: ontologyColumns,
                 tableId: 'projectsTable',
-                viewId: 'ontologyView',
-                apiBaseAction: 'projects',
-                titleField: 'Title',
                 defaultSort: 'Year',
                 searchColumns: ['UUID', 'Title', 'ShortDescription', 'Year', 'Modality', 'Medium', 'Tools', 'Object', 'Collaborators', 'Keywords']
             };
@@ -376,30 +364,15 @@ function getCurrentViewConfig() {
             return {
                 columns: fieldnotesColumns,
                 tableId: 'fieldnotesTable',
-                viewId: 'fieldnotesView',
-                apiBaseAction: 'fieldnotes',
-                titleField: 'Title',
                 defaultSort: 'PublishedDate',
                 searchColumns: ['UUID', 'Title', 'ShortDescription', 'PublishedDate', 'LastUpdated', 'WordCount', 'ReadingTimeMinutes']
             };
-        // case 'album':
-        //     return {
-        //         columns: albumColumns,
-        //         tableId: 'albumsTable',
-        //         viewId: 'albumView',
-        //         apiBaseAction: 'albums',
-        //         titleField: 'FileName',
-        //         defaultSort: 'Year'
-        //     };
         default:
             console.error("Invalid view selected:", currentView, ". Falling back to ontology.");
             currentView = 'ontology';
             return {
                 columns: ontologyColumns,
                 tableId: 'projectsTable',
-                viewId: 'ontologyView',
-                apiBaseAction: 'projects',
-                titleField: 'Title',
                 defaultSort: 'Year',
                 searchColumns: ['UUID', 'Title', 'ShortDescription', 'Year', 'Modality', 'Medium', 'Tools', 'Object', 'Collaborators', 'Keywords']
             };
@@ -417,14 +390,13 @@ function applyViewState(view) {
 
     document.getElementById('ontologyView').classList.toggle('hidden', currentView !== 'ontology');
     document.getElementById('fieldnotesView').classList.toggle('hidden', currentView !== 'fieldnotes');
-    // document.getElementById('albumView').classList.toggle('hidden', currentView !== 'album');
 
     const selectedView = document.querySelector(`input[name="viewType"][value="${currentView}"]`);
     if (selectedView) selectedView.checked = true;
 
     currentColumns = columnPrefs[currentView];
     sortColumn = config.defaultSort;
-    sortDirection = ['Year', 'SizeBytes', 'PublishedDate', 'LastUpdated', 'ReadingTimeMinutes', 'WordCount'].includes(sortColumn) ? 'desc' : 'asc';
+    sortDirection = ['Year', 'PublishedDate', 'LastUpdated', 'ReadingTimeMinutes', 'WordCount'].includes(sortColumn) ? 'desc' : 'asc';
     currentData = [];
 }
 
@@ -480,9 +452,7 @@ function setupColumnSelectors() {
             label.appendChild(checkbox);
 
             let displayName = col;
-            if (col === 'SizeBytes') {
-                displayName = 'Size Bytes';
-            } else if (col === 'FeaturedWork') {
+            if (col === 'FeaturedWork') {
                 displayName = 'Featured';
             } else if (col === 'PublishedDate') {
                 displayName = 'Published Date';
@@ -695,8 +665,7 @@ async function addCondition() {
                     <select class="field-select" onchange="updateConditionInput(this)">
                         ${config.columns.map(col => {
         let displayName = col;
-        if (col === 'SizeBytes') displayName = 'Size Bytes';
-        else if (col === 'FeaturedWork') displayName = 'Featured';
+        if (col === 'FeaturedWork') displayName = 'Featured';
         else if (col === 'PublishedDate') displayName = 'Published Date';
         else if (col === 'LastUpdated') displayName = 'Last Updated';
         else if (col === 'ReadingTimeMinutes') displayName = 'Reading Time';
@@ -759,20 +728,6 @@ async function updateConditionInput(selectElement) {
                 inputHTML = `<input type="number" min="0" step="1" placeholder="Enter number..." class="value-input">`;
             }
             break;
-
-        // case 'album':
-        //     if (field === 'Camera') {
-        //         try {
-        //             const values = await getDistinctValues(field);
-        //             inputHTML = `<div class="dropdown"><select class="value-select">${values.map(v => `<option>${v}</option>`).join('')}</select><div class="dropdown-button"></div></div>`;
-        //         } catch (error) {
-        //             console.error('Error loading distinct values for album:', error);
-        //             inputHTML = `<input type="text" placeholder="Error loading options" class="value-input" disabled>`;
-        //         }
-        //     } else if (['SizeBytes', 'Year'].includes(field)) {
-        //         inputHTML = `<input type="number" placeholder="Enter number..." class="value-input">`;
-        //     }
-        //     break;
     }
 
     operatorSelect.innerHTML = operators.map(op => `<option value="${op}">${op}</option>`).join('');

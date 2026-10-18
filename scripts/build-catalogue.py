@@ -13,7 +13,6 @@ import sys
 from pathlib import Path
 
 
-BUILDER_VERSION = 1
 CATALOGUE_SCHEMA_VERSION = 1
 
 ONTOLOGY_COLUMNS = [
@@ -316,7 +315,7 @@ def build(
     root: Path,
     homepage_path: Path | None = None,
     page_root: Path | None = None,
-) -> dict:
+) -> tuple[int, int]:
     if not database_path.is_file():
         raise BuildError(f"Database not found: {database_path}")
 
@@ -339,13 +338,9 @@ def build(
         },
         "views": {
             "ontology": {
-                "columns": ONTOLOGY_COLUMNS,
-                "defaultColumns": DEFAULT_COLUMNS["ontology"],
                 "rows": records["ontology"],
             },
             "fieldnotes": {
-                "columns": FIELDNOTE_COLUMNS,
-                "defaultColumns": DEFAULT_COLUMNS["fieldnotes"],
                 "rows": records["fieldnotes"],
             },
         },
@@ -353,37 +348,8 @@ def build(
 
     output_dir.mkdir(parents=True, exist_ok=True)
     write_json(output_dir / "catalogue.json", catalogue)
-    (output_dir / "ontology.html").write_text(
-        render_table("ontology", records["ontology"]), encoding="utf-8"
-    )
-    (output_dir / "fieldnotes.html").write_text(
-        render_table("fieldnotes", records["fieldnotes"]), encoding="utf-8"
-    )
     update_homepage(homepage_path or root / "index.html", catalogue)
-
-    manifest = {
-        "builder": {
-            "path": "scripts/build-catalogue.py",
-            "version": BUILDER_VERSION,
-        },
-        "catalogueSchemaVersion": CATALOGUE_SCHEMA_VERSION,
-        "source": {
-            "database": database_label(database_path, root),
-            "sha256": source_hash,
-        },
-        "counts": {
-            "ontology": len(records["ontology"]),
-            "fieldnotes": len(records["fieldnotes"]),
-        },
-        "outputs": [
-            "catalogue.json",
-            "ontology.html",
-            "fieldnotes.html",
-            "index.html",
-        ],
-    }
-    write_json(output_dir / "manifest.json", manifest)
-    return manifest
+    return len(records["ontology"]), len(records["fieldnotes"])
 
 
 def parse_args() -> argparse.Namespace:
@@ -427,7 +393,7 @@ def main() -> int:
     database_path = args.database.resolve()
     output_dir = args.output_dir.resolve()
     try:
-        manifest = build(
+        ontology_count, fieldnotes_count = build(
             database_path,
             output_dir,
             root,
@@ -440,8 +406,8 @@ def main() -> int:
 
     print(
         "Catalogue build complete: "
-        f"{manifest['counts']['ontology']} ontology records, "
-        f"{manifest['counts']['fieldnotes']} fieldnotes -> {output_dir}"
+        f"{ontology_count} ontology records, "
+        f"{fieldnotes_count} fieldnotes -> {output_dir}"
     )
     return 0
 

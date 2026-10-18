@@ -440,12 +440,6 @@ def build(source_dir: Path, output_dir: Path, database_path: Path, root: Path) -
         database.row_factory = sqlite3.Row
         for source in sources:
             generated.append(render_page(source, output_dir, root, database, validator))
-    manifest = {
-        "builder": "build-pages.py",
-        "sourceDirectory": str(source_dir.relative_to(root)),
-        "pages": [str(path.relative_to(output_dir)).replace("\\", "/") for path in generated],
-    }
-    (output_dir / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     return generated
 
 

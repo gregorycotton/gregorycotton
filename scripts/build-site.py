@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import re
 import shutil
@@ -26,14 +25,6 @@ FEED_PATH = Path("fieldnotes.xml")
 ATOM_NAMESPACE = "http://www.w3.org/2005/Atom"
 
 ET.register_namespace("atom", ATOM_NAMESPACE)
-
-
-def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as source:
-        for chunk in iter(lambda: source.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
 
 
 def run(script: str, *arguments: str) -> None:
@@ -139,14 +130,7 @@ def stage(stage: Path) -> set[Path]:
     build_fieldnotes_feed(stage / "catalogue/catalogue.json", stage / FEED_PATH)
     inject_footer(stage / "index.html")
     inject_footer(stage / "changelog.html")
-    paths = generated_paths(stage)
-    manifest = {
-        "builder": "build-site.py",
-        "trackedDeploymentPaths": sorted(path.as_posix() for path in paths),
-        "sha256": {path.as_posix(): sha256_file(stage / path) for path in sorted(paths)},
-    }
-    (stage / "site-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-    return paths
+    return generated_paths(stage)
 
 
 def compare_with_tracked(stage_dir: Path, paths: set[Path]) -> list[str]:

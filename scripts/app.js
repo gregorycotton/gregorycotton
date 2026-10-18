@@ -46,7 +46,7 @@ async function loadData() {
 
     if (!config.columns.includes(sortColumn)) {
         sortColumn = config.defaultSort;
-        sortDirection = ['Year', 'SizeBytes', 'PublishedDate', 'LastUpdated'].includes(sortColumn) ? 'desc' : 'asc';
+        sortDirection = ['Year', 'PublishedDate', 'LastUpdated'].includes(sortColumn) ? 'desc' : 'asc';
     }
     sortData();
     renderTable(currentData);

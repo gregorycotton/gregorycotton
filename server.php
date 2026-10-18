@@ -71,7 +71,7 @@ function getFieldnotesBaseQuery() {
 function buildWhereClause($conditions, $viewType = 'ontology') {
     $params = [];
     $whereClauses = [];
-    $numericFields = ['Year', 'SizeBytes', 'WordCount', 'ReadingTimeMinutes'];
+    $numericFields = ['Year', 'WordCount', 'ReadingTimeMinutes'];
 
     $ontologyTableMap = [
         'Modality' => ['table' => 'modalities', 'column' => 'Modality'],
@@ -86,7 +86,6 @@ function buildWhereClause($conditions, $viewType = 'ontology') {
     switch($viewType) {
         case 'ontology': $mainTableAlias = 'p'; break;
         case 'fieldnotes': $mainTableAlias = 'fn'; break;
-        // case 'album': $mainTableAlias = 'a'; break;
         default: throw new Exception("Invalid view type specified: $viewType");
     }
 
@@ -94,7 +93,6 @@ function buildWhereClause($conditions, $viewType = 'ontology') {
      switch($viewType) {
         case 'ontology': $validFields = ['UUID', 'Title', 'ShortDescription', 'Year', 'Modality', 'Medium', 'Tools', 'Object', 'Collaborators', 'Keywords', 'FeaturedWork']; break;
         case 'fieldnotes': $validFields = ['UUID', 'Title', 'ShortDescription', 'PublishedDate', 'LastUpdated', 'WordCount', 'ReadingTimeMinutes']; break;
-        // case 'album': $validFields = ['UUID', 'FileName', 'ShortDescription', 'Camera', 'SizeBytes', 'Year']; break;
      }
 
     foreach ($conditions as $index => $condition) {
@@ -667,48 +665,6 @@ try {
              $stmt->execute($whereResult['params']);
              echo json_encode($stmt->fetchAll());
             break;
-
-         // Album Actions
-        // case 'get_albums':
-        //     $stmt = $db->query("SELECT * FROM albums");
-        //     echo json_encode($stmt->fetchAll());
-        //     break;
-
-        // case 'search_albums':
-        //      $term = '%' . ($_GET['term'] ?? '') . '%';
-        //      $query = "SELECT * FROM albums a
-        //                WHERE a.UUID LIKE :term
-        //                OR a.FileName LIKE :term
-        //                OR a.ShortDescription LIKE :term
-        //                OR a.Camera LIKE :term
-        //                OR a.Year LIKE :term";
-        //      $stmt = $db->prepare($query);
-        //      $stmt->execute([':term' => $term]);
-        //      echo json_encode($stmt->fetchAll());
-        //     break;
-
-        // case 'get_distinct_albums':
-        //      $field = $_GET['field'] ?? null;
-        //      $allowedFields = ['Camera', 'Year'];
-        //      if ($field && in_array($field, $allowedFields)) {
-        //           if (!preg_match('/^[a-zA-Z0-9_]+$/', $field)) {
-        //              throw new Exception("Invalid field name for distinct query.");
-        //          }
-        //          $stmt = $db->query("SELECT DISTINCT $field FROM albums WHERE $field IS NOT NULL AND $field != '' ORDER BY $field COLLATE NOCASE");
-        //          echo json_encode($stmt->fetchAll(PDO::FETCH_COLUMN, 0));
-        //      } else {
-        //           echo json_encode([]);
-        //      }
-        //     break;
-
-        // case 'query_albums':
-        //     $conditions = $_GET['conditions'] ?? [];
-        //     $whereResult = buildWhereClause($conditions, 'album');
-        //     $query = "SELECT * FROM albums a " . $whereResult['sql']; 
-        //     $stmt = $db->prepare($query);
-        //     $stmt->execute($whereResult['params']);
-        //     echo json_encode($stmt->fetchAll());
-        //     break;
 
         default:
             echo json_encode(['error' => 'Invalid action specified.']);
